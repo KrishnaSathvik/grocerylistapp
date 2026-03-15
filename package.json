@@ -1,5 +1,5 @@
 {
-  "name": "grocery-list",
+  "name": "grocerylistapp",
   "version": "1.0.0",
   "private": true,
   "description": "A modern notepad-style grocery list PWA with smart categories, swipe-to-delete, dark mode, and more.",
@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
