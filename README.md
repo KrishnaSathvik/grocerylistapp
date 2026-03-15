@@ -2,7 +2,7 @@
 
 A modern notepad-style grocery list PWA with smart features.
 
-![Grocery List](https://grocery-list.vercel.app/og-image.png)
+![Grocery List](https://grocerylistapp.vercel.app/og-image.png)
 
 ## Features
 
