@@ -317,7 +317,10 @@ function SwipeRow({ children, onDelete, height }) {
 
 /* ═══ MAIN ═══ */
 export default function GroceryList() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(() => {
+    try { const s = localStorage.getItem("grocery-items"); return s ? JSON.parse(s) : []; }
+    catch { return []; }
+  });
   const [input, setInput] = useState("");
   const [selectedCat, setSelectedCat] = useState("pantry");
   const [autoDetectedCat, setAutoDetectedCat] = useState(null);
@@ -332,6 +335,8 @@ export default function GroceryList() {
   const [dragOverId, setDragOverId] = useState(null);
   const inputRef = useRef(null);
   const undoTimer = useRef(null);
+
+  useEffect(() => { try { localStorage.setItem("grocery-items", JSON.stringify(items)); } catch {} }, [items]);
 
   useEffect(() => { if (!input.trim()) { setAutoDetectedCat(null); return; } setAutoDetectedCat(detectCategory(parseQty(input).text)); }, [input]);
   const activeCat = autoDetectedCat || selectedCat;
