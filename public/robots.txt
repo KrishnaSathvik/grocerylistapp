@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://grocery-list.vercel.app/sitemap.xml

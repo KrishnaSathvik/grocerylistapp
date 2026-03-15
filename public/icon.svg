@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#faf8f4"/>
+  <rect x="80" y="60" width="352" height="392" rx="8" fill="#f0ebe3" stroke="#e4ddd3" stroke-width="2"/>
+  <line x1="140" y1="0" x2="140" y2="512" stroke="#e6a4a0" stroke-width="3" opacity="0.4"/>
+  <text x="256" y="290" text-anchor="middle" font-size="200" font-family="serif">🛒</text>
+  <line x1="160" y1="180" x2="380" y2="180" stroke="#e4ddd3" stroke-width="2"/>
+  <line x1="160" y1="230" x2="380" y2="230" stroke="#e4ddd3" stroke-width="2"/>
+  <line x1="160" y1="330" x2="380" y2="330" stroke="#e4ddd3" stroke-width="2"/>
+  <line x1="160" y1="380" x2="380" y2="380" stroke="#e4ddd3" stroke-width="2"/>
+</svg>

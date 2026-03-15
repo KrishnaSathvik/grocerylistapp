@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+    <!-- Primary SEO -->
+    <title>Grocery List — Smart Notepad Shopping List</title>
+    <meta name="description" content="A beautiful notepad-style grocery list app with smart category detection, swipe-to-delete, quantity parsing, dark mode, and offline support. Free and open source." />
+    <meta name="keywords" content="grocery list, shopping list, grocery app, PWA, notepad, meal planning, smart categories, offline grocery list" />
+    <meta name="author" content="Krishna Sathvik" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://grocery-list.vercel.app/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://grocery-list.vercel.app/" />
+    <meta property="og:title" content="Grocery List — Smart Notepad Shopping List" />
+    <meta property="og:description" content="A beautiful notepad-style grocery list with smart categories, swipe-to-delete, quantity support, and auto dark mode. Works offline." />
+    <meta property="og:image" content="https://grocery-list.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Grocery List" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://grocery-list.vercel.app/" />
+    <meta name="twitter:title" content="Grocery List — Smart Notepad Shopping List" />
+    <meta name="twitter:description" content="Smart grocery list with auto-categorization, swipe delete, quantities, dark mode, and offline PWA support." />
+    <meta name="twitter:image" content="https://grocery-list.vercel.app/og-image.png" />
+    <meta name="twitter:creator" content="@latentengineer_" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf8f4" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1e1e24" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Groceries" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Grocery List" />
+    <meta name="msapplication-TileColor" content="#faf8f4" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Grocery List",
+      "alternateName": "Smart Grocery List",
+      "description": "A modern notepad-style grocery list PWA with smart category auto-detection, swipe-to-delete, quantity parsing, drag-to-reorder, and automatic dark mode.",
+      "url": "https://grocery-list.vercel.app/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Krishna Sathvik"
+      },
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "softwareVersion": "1.0.0",
+      "screenshot": "https://grocery-list.vercel.app/og-image.png"
+    }
+    </script>
+
+    <style>
+      html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; width: 100%; -webkit-text-size-adjust: 100%; }
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+      #root { min-height: 100vh; min-height: 100dvh; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
