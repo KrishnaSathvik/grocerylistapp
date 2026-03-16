@@ -723,32 +723,32 @@ export default function GroceryList() {
         /* ═══ DARK THEME ═══ */
         @media (prefers-color-scheme: dark) {
           :root {
-            --bg: linear-gradient(155deg, #1a1a1f 0%, #141418 50%, #111115 100%);
-            --paper: #1e1e24;
-            --ink: #e8e4de;
-            --ink-soft: #a09888;
-            --ink-muted: #78716a;
-            --ink-faint: #5a544e;
-            --line: #2e2e35;
-            --line-dash: #35353d;
-            --margin: rgba(180,100,96,0.25);
-            --hole: linear-gradient(135deg, #2a2a32, #222228);
-            --hole-shadow: inset 0 1px 3px rgba(0,0,0,.4);
-            --shadow: 0 1px 3px rgba(0,0,0,.2), 0 8px 32px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04);
-            --badge-bg: #e8e4de;
-            --badge-fg: #1e1e24;
-            --border-btn: #3a3a42;
-            --check-unchecked: #4a4a52;
-            --checked-text: #5a544e;
-            --strike: #5a544e;
-            --drag: #4a4a52;
-            --curl1: #28282f;
-            --curl2: #1a1a20;
-            --toast-bg: #e8e4de;
-            --toast-fg: #1e1e24;
-            --focus-bg: rgba(74,124,89,0.08);
+            --bg: linear-gradient(155deg, #121215 0%, #0e0e12 50%, #0a0a0e 100%);
+            --paper: #22222a;
+            --ink: #ebe7e0;
+            --ink-soft: #a89e8e;
+            --ink-muted: #807868;
+            --ink-faint: #605848;
+            --line: #33333c;
+            --line-dash: #3c3c46;
+            --margin: rgba(200,110,105,0.45);
+            --hole: linear-gradient(135deg, #18181e, #13131a);
+            --hole-shadow: inset 0 1px 3px rgba(0,0,0,.6), inset 0 0 1px rgba(0,0,0,.3);
+            --shadow: 0 2px 6px rgba(0,0,0,.3), 0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
+            --badge-bg: #ebe7e0;
+            --badge-fg: #22222a;
+            --border-btn: #44444e;
+            --check-unchecked: #55555e;
+            --checked-text: #686060;
+            --strike: #686060;
+            --drag: #55555e;
+            --curl1: #2e2e38;
+            --curl2: #1a1a22;
+            --toast-bg: #ebe7e0;
+            --toast-fg: #22222a;
+            --focus-bg: rgba(74,124,89,0.12);
             --caret: #e07070;
-            --noise-opacity: 0.015;
+            --noise-opacity: 0.03;
           }
         }
 
