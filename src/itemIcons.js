@@ -8,7 +8,7 @@ const ITEM_ICONS = {
   mango:"🥭",mangoes:"🥭",aam:"🥭",kiwi:"🥝",coconut:"🥥",nariyal:"🥥",pomegranate:"🍎",anaar:"🍎",
   papaya:"🥭",guava:"🍐",amrud:"🍐",raspberry:"🍓",raspberries:"🍓",blackberry:"🫐",blackberries:"🫐",
   cranberry:"🍒",cranberries:"🍒",apricot:"🍑",plum:"🫐",plums:"🫐",fig:"🍇",figs:"🍇",anjeer:"🍇",
-  date:"🌴",dates:"🌴",khajoor:"🌴",lychee:"🍑",litchi:"🍑",jackfruit:"🍈",kathal:"🍈",fruit:"🍎",fruits:"🍎",
+  date:"🍯",dates:"🍯",khajoor:"🍯",lychee:"🍑",litchi:"🍑",jackfruit:"🍈",kathal:"🍈",fruit:"🍎",fruits:"🍎",
   // Vegetables
   tomato:"🍅",tomatoes:"🍅",carrot:"🥕",carrots:"🥕",potato:"🥔",potatoes:"🥔",
   "sweet potato":"🍠","sweet potatoes":"🍠",aloo:"🥔",corn:"🌽","corn on the cob":"🌽",bhutta:"🌽",
@@ -49,6 +49,7 @@ const ITEM_ICONS = {
   sausage:"🌭",sausages:"🌭","italian sausage":"🌭",bratwurst:"🌭",kielbasa:"🌭",chorizo:"🌭",
   turkey:"🦃","turkey breast":"🦃","ground turkey":"🦃",duck:"🦆",
   lamb:"🍖","lamb chop":"🍖","lamb chops":"🍖","lamb leg":"🍖","rack of lamb":"🍖",keema:"🍖",gosht:"🍖",
+  mutton:"🍖",goat:"🍖","goat meat":"🍖",bakra:"🍖",
   veal:"🥩",bison:"🥩",venison:"🥩",meatball:"🍖",meatballs:"🍖",patties:"🍔","burger patties":"🍔",
   ham:"🍖","spiral ham":"🍖",ribs:"🍖","baby back ribs":"🍖","spare ribs":"🍖",
   "hot dog":"🌭","hot dogs":"🌭",

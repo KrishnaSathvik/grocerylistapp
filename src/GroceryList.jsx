@@ -279,8 +279,8 @@ const ITEM_EMOJIS = {
   apricot: "🍑",
   pomegranate: "🍎", anaar: "🍎",
   raspberry: "🍓", raspberries: "🍓",
-  blackberry: "🍇", blackberries: "🍇",
-  cranberry: "🍎", cranberries: "🍎",
+  blackberry: "🫐", blackberries: "🫐",
+  cranberry: "🍒", cranberries: "🍒",
   guava: "🍐", amrud: "🍐",
   papaya: "🍈",
   lychee: "🍑", litchi: "🍑",
@@ -326,7 +326,7 @@ const ITEM_EMOJIS = {
   cheese: "🧀", cheddar: "🧀", mozzarella: "🧀", parmesan: "🧀", swiss: "🧀", provolone: "🧀", gouda: "🧀", brie: "🧀", feta: "🧀", ricotta: "🧀", "goat cheese": "🧀", "cream cheese": "🧀", "cottage cheese": "🧀", "shredded cheese": "🧀", "sliced cheese": "🧀", "string cheese": "🧀", paneer: "🧀",
   egg: "🥚", eggs: "🥚", "egg whites": "🥚", "dozen eggs": "🥚", anda: "🥚",
   butter: "🧈", "unsalted butter": "🧈", "salted butter": "🧈", margarine: "🧈", makhan: "🧈", ghee: "🧈",
-  yogurt: "🫙", "greek yogurt": "🫙", yoghurt: "🫙", dahi: "🫙", curd: "🫙",
+  yogurt: "🥛", "greek yogurt": "🥛", yoghurt: "🥛", dahi: "🥛", curd: "🥛",
   cream: "🥛", "heavy cream": "🥛", "whipping cream": "🥛", "sour cream": "🥛", "half and half": "🥛", malai: "🥛",
   "ice cream": "🍦", gelato: "🍦", kulfi: "🍦", "frozen yogurt": "🍦",
 
@@ -339,6 +339,7 @@ const ITEM_EMOJIS = {
   "hot dog": "🌭", "hot dogs": "🌭",
   turkey: "🦃", "turkey breast": "🦃", "ground turkey": "🦃",
   lamb: "🍖", "lamb chop": "🍖", "lamb chops": "🍖", "rack of lamb": "🍖", keema: "🍖", gosht: "🍖",
+  mutton: "🍖", goat: "🍖", "goat meat": "🍖", bakra: "🍖",
   ham: "🍖", ribs: "🍖", "baby back ribs": "🍖", "spare ribs": "🍖",
   duck: "🦆",
   meatball: "🧆", meatballs: "🧆",
@@ -394,7 +395,7 @@ const ITEM_EMOJIS = {
   pasta: "🍝", spaghetti: "🍝", penne: "🍝", fusilli: "🍝", rigatoni: "🍝", macaroni: "🍝", linguine: "🍝", fettuccine: "🍝", lasagna: "🍝",
   noodles: "🍜", ramen: "🍜", udon: "🍜", soba: "🍜", "rice noodles": "🍜", maggi: "🍜",
   flour: "🌾", "all purpose flour": "🌾", maida: "🌾", atta: "🌾", "bread flour": "🌾", "wheat flour": "🌾", besan: "🌾", "gram flour": "🌾",
-  oats: "🌾", oatmeal: "🌾", granola: "🌾", muesli: "🌾", cereal: "🥣", cheerios: "🥣", cornflakes: "🥣",
+  oats: "🥣", oatmeal: "🥣", granola: "🥣", muesli: "🥣", cereal: "🥣", cheerios: "🥣", cornflakes: "🥣",
   honey: "🍯", shahad: "🍯",
   "maple syrup": "🍁",
   "peanut butter": "🥜", "almond butter": "🥜", nutella: "🍫", tahini: "🫙",
@@ -411,7 +412,7 @@ const ITEM_EMOJIS = {
   rava: "🌾", suji: "🌾", semolina: "🌾",
 
   // Snacks
-  chips: "🥜", "potato chips": "🥜", "tortilla chips": "🥜",
+  chips: "🍟", "potato chips": "🍟", "tortilla chips": "🍟",
   popcorn: "🍿",
   chocolate: "🍫", "chocolate bar": "🍫",
   candy: "🍬",
@@ -421,7 +422,7 @@ const ITEM_EMOJIS = {
   "granola bar": "🥜", "granola bars": "🥜",
   "energy bar": "🥜", "energy bars": "🥜",
   "dried fruit": "🍇", raisins: "🍇", "dried mango": "🥭", "dried cranberries": "🍇",
-  salsa: "🫙",
+  salsa: "🌶️",
 
   // Condiments & Spices
   ketchup: "🍅",
@@ -463,7 +464,7 @@ const ITEM_EMOJIS = {
   detergent: "🧴", "laundry detergent": "🧴",
   sponge: "🧽", sponges: "🧽",
   bleach: "🧴", disinfectant: "🧴",
-  "aluminum foil": "🧻", foil: "🧻",
+  "aluminum foil": "🫙", foil: "🫙",
   candle: "🕯️", candles: "🕯️",
   batteries: "🔋", battery: "🔋",
   "light bulb": "💡", "light bulbs": "💡",
@@ -479,14 +480,14 @@ const ITEM_EMOJIS = {
   "band-aid": "🩹", bandaid: "🩹", bandage: "🩹",
   medicine: "💊", ibuprofen: "💊", tylenol: "💊", aspirin: "💊",
   vitamin: "💊", vitamins: "💊", multivitamin: "💊", supplement: "💊",
-  "eye drops": "💧",
+  "eye drops": "👁️",
   lipstick: "💄", makeup: "💄",
   "nail polish": "💅",
   "lip balm": "💄", chapstick: "💄",
 
   // Baby & Kids
   diapers: "👶", diaper: "👶", nappy: "👶",
-  "baby wipes": "👶", wipes: "👶",
+  "baby wipes": "🧻", wipes: "🧻",
   "baby food": "🍼", formula: "🍼", "baby bottle": "🍼",
   pacifier: "🍼",
 
