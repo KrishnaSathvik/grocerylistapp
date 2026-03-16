@@ -255,6 +255,274 @@ const CAT_KEYWORDS = {
   ],
 };
 
+/* ── Item-level emoji lookup ────────────────────────────────────── */
+const ITEM_EMOJIS = {
+  // Fruits
+  apple: "🍎", apples: "🍎", green_apple: "🍏",
+  banana: "🍌", bananas: "🍌",
+  grape: "🍇", grapes: "🍇",
+  orange: "🍊", oranges: "🍊", mandarin: "🍊", clementine: "🍊", tangerine: "🍊",
+  lemon: "🍋", lemons: "🍋", lime: "🍋", limes: "🍋",
+  watermelon: "🍉", tarbooz: "🍉",
+  melon: "🍈", cantaloupe: "🍈", honeydew: "🍈",
+  strawberry: "🍓", strawberries: "🍓",
+  blueberry: "🫐", blueberries: "🫐",
+  cherry: "🍒", cherries: "🍒",
+  peach: "🍑", peaches: "🍑", nectarine: "🍑",
+  mango: "🥭", mangoes: "🥭", aam: "🥭",
+  pineapple: "🍍",
+  coconut: "🥥", nariyal: "🥥",
+  kiwi: "🥝",
+  pear: "🍐", pears: "🍐",
+  plum: "🍑", plums: "🍑",
+  apricot: "🍑",
+  fig: "🫐", figs: "🫐", anjeer: "🫐",
+  date: "🫐", dates: "🫐", khajoor: "🫐",
+  pomegranate: "🫐", anaar: "🫐",
+  raspberry: "🫐", raspberries: "🫐",
+  blackberry: "🫐", blackberries: "🫐",
+  cranberry: "🫐", cranberries: "🫐",
+  guava: "🍈", amrud: "🍈",
+  papaya: "🍈",
+  lychee: "🍈", litchi: "🍈",
+  jackfruit: "🍈", kathal: "🍈",
+  "dragon fruit": "🍈",
+  "passion fruit": "🍈",
+  avocado: "🥑", avocados: "🥑",
+
+  // Vegetables
+  carrot: "🥕", carrots: "🥕", "baby carrots": "🥕",
+  broccoli: "🥦",
+  lettuce: "🥬", romaine: "🥬", kale: "🥬", spinach: "🥬", arugula: "🥬", "spring mix": "🥬", "mixed greens": "🥬", greens: "🥬", palak: "🥬",
+  cucumber: "🥒", cucumbers: "🥒",
+  tomato: "🍅", tomatoes: "🍅", "cherry tomato": "🍅", "grape tomato": "🍅",
+  "hot pepper": "🌶️", jalapeno: "🌶️", serrano: "🌶️", habanero: "🌶️", poblano: "🌶️", "green chili": "🌶️", "hari mirch": "🌶️",
+  pepper: "🫑", peppers: "🫑", "bell pepper": "🫑", capsicum: "🫑", shimla_mirch: "🫑",
+  corn: "🌽", "corn on the cob": "🌽", bhutta: "🌽",
+  potato: "🥔", potatoes: "🥔", "sweet potato": "🥔", "sweet potatoes": "🥔", yam: "🥔", aloo: "🥔",
+  eggplant: "🍆", baingan: "🍆", aubergine: "🍆",
+  onion: "🧅", onions: "🧅", "red onion": "🧅", "green onion": "🧅", shallot: "🧅", shallots: "🧅", scallion: "🧅", scallions: "🧅",
+  garlic: "🧄",
+  mushroom: "🍄", mushrooms: "🍄", portobello: "🍄", shiitake: "🍄", cremini: "🍄",
+  peanut: "🥜", peanuts: "🥜", moongfali: "🥜", "mixed nuts": "🥜", nuts: "🥜", almonds: "🥜", badam: "🥜", cashews: "🥜", kaju: "🥜", walnuts: "🥜", akhrot: "🥜", pecans: "🥜", pistachios: "🥜", pista: "🥜",
+  ginger: "🫚",
+  peas: "🟢", "green peas": "🟢", "snap peas": "🟢", "snow peas": "🟢", matar: "🟢",
+  "green beans": "🫘", beans: "🫘", "black beans": "🫘", "kidney beans": "🫘", rajma: "🫘", chickpeas: "🫘", chole: "🫘", chana: "🫘",
+  lentils: "🫘", dal: "🫘", "moong dal": "🫘", "toor dal": "🫘", "masoor dal": "🫘", "urad dal": "🫘",
+  celery: "🥬",
+  cauliflower: "🥦", gobi: "🥦",
+  "brussels sprouts": "🥦",
+  cabbage: "🥬", "bok choy": "🥬",
+  asparagus: "🥦",
+  zucchini: "🥒", squash: "🥒",
+  radish: "🥕", beet: "🥕", beets: "🥕", turnip: "🥕",
+  okra: "🫑", bhindi: "🫑",
+  "drumstick": "🥬", moringa: "🥬",
+
+  // Herbs
+  cilantro: "🌿", dhaniya: "🌿", basil: "🌿", tulsi: "🌿", mint: "🌿", pudina: "🌿", parsley: "🌿", dill: "🌿", rosemary: "🌿", thyme: "🌿", sage: "🌿", chives: "🌿", "fresh herbs": "🌿", herbs: "🌿", "curry leaves": "🌿", "kadi patta": "🌿", methi: "🌿",
+
+  // Dairy & Eggs
+  milk: "🥛", "whole milk": "🥛", "2% milk": "🥛", "skim milk": "🥛", buttermilk: "🥛", chaas: "🥛",
+  cheese: "🧀", cheddar: "🧀", mozzarella: "🧀", parmesan: "🧀", swiss: "🧀", provolone: "🧀", gouda: "🧀", brie: "🧀", feta: "🧀", ricotta: "🧀", "goat cheese": "🧀", "cream cheese": "🧀", "cottage cheese": "🧀", "shredded cheese": "🧀", "sliced cheese": "🧀", "string cheese": "🧀", paneer: "🧀",
+  egg: "🥚", eggs: "🥚", "egg whites": "🥚", "dozen eggs": "🥚", anda: "🥚",
+  butter: "🧈", "unsalted butter": "🧈", "salted butter": "🧈", margarine: "🧈", makhan: "🧈", ghee: "🧈",
+  yogurt: "🫙", "greek yogurt": "🫙", yoghurt: "🫙", dahi: "🫙", curd: "🫙",
+  cream: "🥛", "heavy cream": "🥛", "whipping cream": "🥛", "sour cream": "🥛", "half and half": "🥛", malai: "🥛",
+  "ice cream": "🍦", gelato: "🍦", kulfi: "🍦", "frozen yogurt": "🍦",
+
+  // Meat & Poultry
+  chicken: "🍗", "chicken breast": "🍗", "chicken thigh": "🍗", "chicken thighs": "🍗", "chicken wings": "🍗", "chicken legs": "🍗", "chicken drumsticks": "🍗", "chicken tender": "🍗", "chicken tenders": "🍗", murgh: "🍗",
+  beef: "🥩", "ground beef": "🥩", steak: "🥩", sirloin: "🥩", ribeye: "🥩", "filet mignon": "🥩", brisket: "🥩",
+  pork: "🥩", "pork chop": "🥩", "pork chops": "🥩", "pork loin": "🥩", "pork belly": "🥩",
+  bacon: "🥓", "turkey bacon": "🥓", "canadian bacon": "🥓",
+  sausage: "🌭", sausages: "🌭", "italian sausage": "🌭", bratwurst: "🌭", kielbasa: "🌭", chorizo: "🌭",
+  "hot dog": "🌭", "hot dogs": "🌭",
+  turkey: "🦃", "turkey breast": "🦃", "ground turkey": "🦃",
+  lamb: "🍖", "lamb chop": "🍖", "lamb chops": "🍖", "rack of lamb": "🍖", keema: "🍖", gosht: "🍖",
+  ham: "🍖", ribs: "🍖", "baby back ribs": "🍖", "spare ribs": "🍖",
+  duck: "🦆",
+  meatball: "🧆", meatballs: "🧆",
+
+  // Seafood
+  shrimp: "🦐", prawns: "🦐", jhinga: "🦐",
+  fish: "🐟", "fish fillet": "🐟", machhi: "🐟", tilapia: "🐟", cod: "🐟", halibut: "🐟", trout: "🐟", catfish: "🐟", bass: "🐟", snapper: "🐟", pomfret: "🐟", rohu: "🐟", surmai: "🐟",
+  salmon: "🍣", "salmon fillet": "🍣", "smoked salmon": "🍣", lox: "🍣",
+  tuna: "🐟", "tuna steak": "🐟", "canned tuna": "🐟",
+  crab: "🦀", "crab legs": "🦀", "crab meat": "🦀",
+  lobster: "🦞", "lobster tail": "🦞",
+  squid: "🦑", calamari: "🦑", octopus: "🐙",
+  oyster: "🦪", oysters: "🦪", clam: "🦪", clams: "🦪", mussel: "🦪", mussels: "🦪",
+  sushi: "🍣", sashimi: "🍣",
+  scallop: "🦪", scallops: "🦪",
+
+  // Bakery
+  bread: "🍞", "white bread": "🍞", "wheat bread": "🍞", "whole wheat bread": "🍞", "sourdough": "🍞", "rye bread": "🍞",
+  bagel: "🥯", bagels: "🥯", "everything bagel": "🥯",
+  croissant: "🥐", croissants: "🥐",
+  baguette: "🥖",
+  pretzel: "🥨", pretzels: "🥨",
+  pancake: "🥞", pancakes: "🥞",
+  waffle: "🧇", waffles: "🧇", "frozen waffles": "🧇",
+  cake: "🎂", "birthday cake": "🎂",
+  cupcake: "🧁", cupcakes: "🧁",
+  pie: "🥧", "pie crust": "🥧",
+  cookie: "🍪", cookies: "🍪",
+  donut: "🍩", donuts: "🍩", doughnut: "🍩", doughnuts: "🍩",
+  muffin: "🧁", muffins: "🧁",
+  tortilla: "🫓", tortillas: "🫓", wrap: "🫓", wraps: "🫓", pita: "🫓", "pita bread": "🫓", naan: "🫓", roti: "🫓", chapati: "🫓", paratha: "🫓", flatbread: "🫓",
+  "cinnamon roll": "🧁", "cinnamon rolls": "🧁",
+  brownie: "🍫", brownies: "🍫",
+
+  // Deli
+  "lunch meat": "🥪", "deli meat": "🥪", salami: "🥪", pepperoni: "🥪", prosciutto: "🥪", bologna: "🥪", pastrami: "🥪",
+  hummus: "🫕", guacamole: "🥑",
+  pickle: "🥒", pickles: "🥒", achar: "🥒",
+  olive: "🫒", olives: "🫒",
+  sandwich: "🥪", "deli sandwich": "🥪",
+
+  // Frozen
+  "frozen pizza": "🍕", pizza: "🍕",
+  "french fries": "🍟", "frozen fries": "🍟", "tater tots": "🍟",
+  popsicle: "🍦", popsicles: "🍦",
+  dumplings: "🥟", "frozen dumplings": "🥟", gyoza: "🥟",
+  samosa: "🥟", samosas: "🥟",
+  burrito: "🌯", "frozen burrito": "🌯", "frozen burritos": "🌯",
+  "hot pockets": "🌯",
+
+  // Pantry & Grains
+  rice: "🍚", "white rice": "🍚", "brown rice": "🍚", "basmati rice": "🍚", basmati: "🍚", "jasmine rice": "🍚", chawal: "🍚",
+  pasta: "🍝", spaghetti: "🍝", penne: "🍝", fusilli: "🍝", rigatoni: "🍝", macaroni: "🍝", linguine: "🍝", fettuccine: "🍝", lasagna: "🍝",
+  noodles: "🍜", ramen: "🍜", udon: "🍜", soba: "🍜", "rice noodles": "🍜", maggi: "🍜",
+  flour: "🌾", "all purpose flour": "🌾", maida: "🌾", atta: "🌾", "bread flour": "🌾", "wheat flour": "🌾", besan: "🌾", "gram flour": "🌾",
+  oats: "🌾", oatmeal: "🌾", granola: "🌾", muesli: "🌾", cereal: "🥣", cheerios: "🥣", cornflakes: "🥣",
+  honey: "🍯", shahad: "🍯",
+  "maple syrup": "🍁",
+  "peanut butter": "🥜", "almond butter": "🥜", nutella: "🍫", tahini: "🫙",
+  jam: "🍓", jelly: "🍇", preserves: "🍓", marmalade: "🍊",
+  "canned tomatoes": "🥫", "tomato paste": "🥫", "tomato sauce": "🥫", "canned soup": "🥫", "canned beans": "🥫", "canned corn": "🥫",
+  broth: "🥣", stock: "🥣", "chicken broth": "🥣", "chicken stock": "🥣", "vegetable broth": "🥣", soup: "🥣",
+  sugar: "🧂", "brown sugar": "🧂",
+  "coconut milk": "🥥",
+  tofu: "🧊", tempeh: "🧊",
+  "protein powder": "💪", "protein bar": "💪", "protein bars": "💪",
+  quinoa: "🌾", couscous: "🌾", bulgur: "🌾", barley: "🌾",
+  "chia seeds": "🌱", "flax seeds": "🌱", "hemp seeds": "🌱", "sunflower seeds": "🌻", "pumpkin seeds": "🌱", "sesame seeds": "🌱",
+  poha: "🍚", "flattened rice": "🍚", "puffed rice": "🍚",
+  rava: "🌾", suji: "🌾", semolina: "🌾",
+
+  // Snacks
+  chips: "🍿", "potato chips": "🍿", "tortilla chips": "🍿",
+  popcorn: "🍿",
+  chocolate: "🍫", "chocolate bar": "🍫",
+  candy: "🍬",
+  "gummy bears": "🍬", "gummy candy": "🍬",
+  lollipop: "🍭",
+  "trail mix": "🥜",
+  "granola bar": "🥜", "granola bars": "🥜",
+  "energy bar": "🥜", "energy bars": "🥜",
+  "dried fruit": "🍇", raisins: "🍇", "dried mango": "🥭", "dried cranberries": "🍇",
+  salsa: "🫙",
+
+  // Condiments & Spices
+  ketchup: "🍅",
+  mustard: "🟡",
+  "hot sauce": "🌶️", sriracha: "🌶️", tabasco: "🌶️",
+  "soy sauce": "🫙", "fish sauce": "🫙", "oyster sauce": "🫙",
+  vinegar: "🫙", "apple cider vinegar": "🫙", "balsamic vinegar": "🫙",
+  oil: "🫒", "olive oil": "🫒", "vegetable oil": "🫒", "coconut oil": "🥥", "sesame oil": "🫒", "mustard oil": "🫒", "avocado oil": "🥑",
+  salt: "🧂", "sea salt": "🧂", "kosher salt": "🧂", "pink salt": "🧂",
+  "black pepper": "🫚", "red pepper flakes": "🌶️",
+  cumin: "🫙", jeera: "🫙", turmeric: "🫙", haldi: "🫙", cinnamon: "🫙", dalchini: "🫙",
+  "garam masala": "🫙", "chaat masala": "🫙",
+  "bbq sauce": "🫙", "barbecue sauce": "🫙",
+  pesto: "🌿", "pasta sauce": "🍝", "alfredo sauce": "🫙", "pizza sauce": "🍕", marinara: "🍅",
+  chutney: "🫙",
+
+  // Beverages
+  water: "💧", "bottled water": "💧", "sparkling water": "💧",
+  coffee: "☕", "ground coffee": "☕", "coffee beans": "☕", "instant coffee": "☕", espresso: "☕", "cold brew": "☕",
+  tea: "🍵", "green tea": "🍵", "black tea": "🍵", "herbal tea": "🍵", chai: "🍵", matcha: "🍵", "iced tea": "🍵",
+  juice: "🧃", "orange juice": "🧃", "apple juice": "🧃", "cranberry juice": "🧃", lemonade: "🍋",
+  soda: "🥤", cola: "🥤", coke: "🥤", pepsi: "🥤", sprite: "🥤", "ginger ale": "🥤",
+  beer: "🍺", ipa: "🍺", lager: "🍺", ale: "🍺", stout: "🍺", "craft beer": "🍺",
+  wine: "🍷", "red wine": "🍷", "white wine": "🥂", rose: "🍷", champagne: "🥂", prosecco: "🥂",
+  vodka: "🍸", whiskey: "🥃", rum: "🍹", tequila: "🍸", gin: "🍸", bourbon: "🥃",
+  kombucha: "🍵",
+  "coconut water": "🥥", "nariyal pani": "🥥",
+  "almond milk": "🥛", "oat milk": "🥛", "soy milk": "🥛",
+  "energy drink": "⚡", "red bull": "⚡", "sports drink": "⚡", gatorade: "⚡",
+  "hot chocolate": "☕", "cocoa mix": "☕",
+  smoothie: "🥤",
+  lassi: "🥛",
+
+  // Household
+  "paper towel": "🧻", "paper towels": "🧻",
+  "toilet paper": "🧻",
+  "trash bag": "🗑️", "trash bags": "🗑️", "garbage bags": "🗑️",
+  "dish soap": "🧴", "dishwashing liquid": "🧴",
+  detergent: "🧴", "laundry detergent": "🧴",
+  sponge: "🧽", sponges: "🧽",
+  bleach: "🧴", disinfectant: "🧴",
+  "aluminum foil": "🫙", foil: "🫙",
+  candle: "🕯️", candles: "🕯️",
+  batteries: "🔋", battery: "🔋",
+  "light bulb": "💡", "light bulbs": "💡",
+  broom: "🧹", mop: "🧹",
+
+  // Health & Beauty
+  shampoo: "🧴", conditioner: "🧴",
+  soap: "🧼", "bar soap": "🧼", "hand soap": "🧼",
+  toothpaste: "🪥", toothbrush: "🪥",
+  lotion: "🧴", moisturizer: "🧴", sunscreen: "🧴",
+  deodorant: "🧴",
+  razor: "🪒", razors: "🪒",
+  "band-aid": "🩹", bandaid: "🩹", bandage: "🩹",
+  medicine: "💊", ibuprofen: "💊", tylenol: "💊", aspirin: "💊",
+  vitamin: "💊", vitamins: "💊", multivitamin: "💊", supplement: "💊",
+  "eye drops": "👁️",
+  lipstick: "💄", makeup: "💄",
+  "nail polish": "💅",
+  "lip balm": "💋", chapstick: "💋",
+
+  // Baby & Kids
+  diapers: "🧒", diaper: "🧒", nappy: "🧒",
+  "baby wipes": "🧒", wipes: "🧒",
+  "baby food": "🍼", formula: "🍼", "baby bottle": "🍼",
+  pacifier: "🍼",
+
+  // Pet
+  "dog food": "🐕", "dog treats": "🐕",
+  "cat food": "🐈", "cat treats": "🐈", "cat litter": "🐈",
+  "pet food": "🐾", "pet treats": "🐾",
+  "bird food": "🐦", "bird seed": "🐦",
+  "fish food": "🐠",
+
+  // Prepared Foods
+  tacos: "🌮", taco: "🌮", "taco shells": "🌮",
+  burger: "🍔", hamburger: "🍔",
+  "french toast": "🍞",
+  salad: "🥗",
+  stew: "🍲", curry: "🍛",
+  fried_rice: "🍛",
+  "mac and cheese": "🧀",
+};
+
+function getItemEmoji(text) {
+  const lower = text.toLowerCase().trim();
+  // Try exact match first
+  if (ITEM_EMOJIS[lower]) return ITEM_EMOJIS[lower];
+  // Try longest substring match
+  let best = null, bestLen = 0;
+  for (const [key, emoji] of Object.entries(ITEM_EMOJIS)) {
+    if (key.length > bestLen && (lower.includes(key) || lower === key + "s")) {
+      best = emoji;
+      bestLen = key.length;
+    }
+  }
+  return best;
+}
+
 function detectCategory(text) {
   const lower = text.toLowerCase().trim();
   let best = null, bestLen = 0;
@@ -593,6 +861,7 @@ export default function GroceryList() {
           </button>
           <input ref={inputRef} value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && addItem()} placeholder='Add item... (try "2x milk")'
             style={{ flex: 1, border: "none", outline: "none", fontSize: 21, fontFamily: "'Caveat', cursive", fontWeight: 500, color: "var(--ink)", background: "transparent", padding: 0, height: LINE_H, lineHeight: `${LINE_H}px`, letterSpacing: ".2px", caretColor: "var(--caret)", minWidth: 0, WebkitAppearance: "none", borderRadius: 0 }} />
+          {input.trim() && getItemEmoji(input.trim()) && <span style={{ fontSize: 18, lineHeight: 1, flexShrink: 0, userSelect: "none", animation: "fadeIn .2s ease" }}>{getItemEmoji(input.trim())}</span>}
           {autoDetectedCat && input.trim() && <span style={{ fontSize: 10, fontWeight: 600, color: "#4a7c59", textTransform: "uppercase", letterSpacing: ".8px", whiteSpace: "nowrap", opacity: .65, fontFamily: "'DM Sans', sans-serif" }}>{CATEGORIES[autoDetectedCat].label}</span>}
           <button onClick={addItem} className="g-add" style={{ width: 28, height: 28, borderRadius: "50%", border: `1.5px solid var(--border-btn)`, background: "transparent", color: "var(--ink-soft)", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "all .15s", lineHeight: 1 }} disabled={!input.trim()}>+</button>
         </div>
@@ -633,7 +902,8 @@ export default function GroceryList() {
                   </button>
                   {item.qty > 1 && <span style={{ fontSize: 12, fontWeight: 700, color: "var(--badge-fg)", background: "var(--badge-bg)", borderRadius: 8, padding: "1px 5px", lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif", flexShrink: 0, minWidth: 20, textAlign: "center" }}>{item.qty}×</span>}
                   <input className="g-edit" value={item.text} onChange={e => updateText(item.id, e.target.value)} onKeyDown={handleItemKeyDown} onBlur={() => handleItemBlur(item.id)} spellCheck={false} />
-                  <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .6 }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji}</span>
+                  {getItemEmoji(item.text) && <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{getItemEmoji(item.text)}</span>}
+                  <span style={{ fontSize: 11, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .5 }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji}</span>
                 </div>
               </SwipeRow>
             ))}
@@ -656,7 +926,8 @@ export default function GroceryList() {
                         <input className="g-edit done" value={item.text} onChange={e => updateText(item.id, e.target.value)} onKeyDown={handleItemKeyDown} onBlur={() => handleItemBlur(item.id)} spellCheck={false} style={{ textDecoration: "none" }} />
                         <div className={justChecked.has(item.id) ? "strike-anim" : ""} style={{ position: "absolute", left: 0, top: "50%", height: 1.5, background: "var(--strike)", transform: "rotate(-0.5deg)", width: justChecked.has(item.id) ? undefined : "100%", pointerEvents: "none" }} />
                       </div>
-                      <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .4 }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji}</span>
+                      {getItemEmoji(item.text) && <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .6 }}>{getItemEmoji(item.text)}</span>}
+                      <span style={{ fontSize: 11, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .35 }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji}</span>
                     </div>
                   </SwipeRow>
                 ))}
