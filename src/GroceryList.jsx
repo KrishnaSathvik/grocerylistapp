@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import { detectItemIcon } from "./itemIcons";
 
 const LINE_H = 44;
 const PER_PAGE = 10;
@@ -357,7 +358,8 @@ export default function GroceryList() {
     const { qty, text } = parseQty(raw);
     const cat = autoDetectedCat || selectedCat;
     setItems(prev => {
-      const next = [...prev, { id: Date.now(), text, qty, category: cat, checked: false }];
+      const icon = detectItemIcon(text);
+      const next = [...prev, { id: Date.now(), text, qty, category: cat, checked: false, icon }];
       const lp = Math.max(1, Math.ceil(next.length / PER_PAGE)) - 1;
       if (lp > page) goToPage(lp, "next");
       return next;
@@ -632,8 +634,9 @@ export default function GroceryList() {
                     <CheckMark color={CATEGORIES[item.category]?.color || "#888"} checked={false} justDone={false} />
                   </button>
                   {item.qty > 1 && <span style={{ fontSize: 12, fontWeight: 700, color: "var(--badge-fg)", background: "var(--badge-bg)", borderRadius: 8, padding: "1px 5px", lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif", flexShrink: 0, minWidth: 20, textAlign: "center" }}>{item.qty}×</span>}
+                  {(item.icon || detectItemIcon(item.text)) && <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{item.icon || detectItemIcon(item.text)}</span>}
                   <input className="g-edit" value={item.text} onChange={e => updateText(item.id, e.target.value)} onKeyDown={handleItemKeyDown} onBlur={() => handleItemBlur(item.id)} spellCheck={false} />
-                  <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .6 }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji}</span>
+                  <span style={{ fontSize: 11, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .5, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "2px 6px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
                 </div>
               </SwipeRow>
             ))}
@@ -652,11 +655,12 @@ export default function GroceryList() {
                         <CheckMark color={CATEGORIES[item.category]?.color || "#888"} checked={true} justDone={justChecked.has(item.id)} />
                       </button>
                       {item.qty > 1 && <span style={{ fontSize: 12, fontWeight: 700, color: "var(--badge-fg)", background: "var(--badge-bg)", borderRadius: 8, padding: "1px 5px", lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif", flexShrink: 0, opacity: .5 }}>{item.qty}×</span>}
+                      {(item.icon || detectItemIcon(item.text)) && <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .6 }}>{item.icon || detectItemIcon(item.text)}</span>}
                       <div style={{ flex: 1, position: "relative", height: LINE_H, display: "flex", alignItems: "center" }}>
                         <input className="g-edit done" value={item.text} onChange={e => updateText(item.id, e.target.value)} onKeyDown={handleItemKeyDown} onBlur={() => handleItemBlur(item.id)} spellCheck={false} style={{ textDecoration: "none" }} />
                         <div className={justChecked.has(item.id) ? "strike-anim" : ""} style={{ position: "absolute", left: 0, top: "50%", height: 1.5, background: "var(--strike)", transform: "rotate(-0.5deg)", width: justChecked.has(item.id) ? undefined : "100%", pointerEvents: "none" }} />
                       </div>
-                      <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .4 }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji}</span>
+                      <span style={{ fontSize: 11, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .4, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "2px 6px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
                     </div>
                   </SwipeRow>
                 ))}
