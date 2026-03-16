@@ -725,32 +725,32 @@ export default function GroceryList() {
         /* ═══ DARK THEME ═══ */
         @media (prefers-color-scheme: dark) {
           :root {
-            --bg: linear-gradient(155deg, #1a1a1f 0%, #141418 50%, #111115 100%);
-            --paper: #1e1e24;
-            --ink: #e8e4de;
-            --ink-soft: #a09888;
-            --ink-muted: #78716a;
-            --ink-faint: #5a544e;
-            --line: #2e2e35;
-            --line-dash: #35353d;
-            --margin: rgba(180,100,96,0.25);
-            --hole: linear-gradient(135deg, #2a2a32, #222228);
-            --hole-shadow: inset 0 1px 3px rgba(0,0,0,.4);
-            --shadow: 0 1px 3px rgba(0,0,0,.2), 0 8px 32px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04);
-            --badge-bg: #e8e4de;
-            --badge-fg: #1e1e24;
-            --border-btn: #3a3a42;
-            --check-unchecked: #4a4a52;
-            --checked-text: #5a544e;
-            --strike: #5a544e;
-            --drag: #4a4a52;
-            --curl1: #28282f;
-            --curl2: #1a1a20;
-            --toast-bg: #e8e4de;
-            --toast-fg: #1e1e24;
-            --focus-bg: rgba(74,124,89,0.08);
+            --bg: linear-gradient(155deg, #121215 0%, #0e0e12 50%, #0a0a0e 100%);
+            --paper: #22222a;
+            --ink: #ebe7e0;
+            --ink-soft: #a89e8e;
+            --ink-muted: #807868;
+            --ink-faint: #605848;
+            --line: #33333c;
+            --line-dash: #3c3c46;
+            --margin: rgba(200,110,105,0.45);
+            --hole: linear-gradient(135deg, #18181e, #13131a);
+            --hole-shadow: inset 0 1px 3px rgba(0,0,0,.6), inset 0 0 1px rgba(0,0,0,.3);
+            --shadow: 0 2px 6px rgba(0,0,0,.3), 0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
+            --badge-bg: #ebe7e0;
+            --badge-fg: #22222a;
+            --border-btn: #44444e;
+            --check-unchecked: #55555e;
+            --checked-text: #686060;
+            --strike: #686060;
+            --drag: #55555e;
+            --curl1: #2e2e38;
+            --curl2: #1a1a22;
+            --toast-bg: #ebe7e0;
+            --toast-fg: #22222a;
+            --focus-bg: rgba(74,124,89,0.12);
             --caret: #e07070;
-            --noise-opacity: 0.015;
+            --noise-opacity: 0.03;
           }
         }
 
@@ -861,7 +861,7 @@ export default function GroceryList() {
           </button>
           <input ref={inputRef} value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && addItem()} placeholder='Add item... (try "2x milk")'
             style={{ flex: 1, border: "none", outline: "none", fontSize: 21, fontFamily: "'Caveat', cursive", fontWeight: 500, color: "var(--ink)", background: "transparent", padding: 0, height: LINE_H, lineHeight: `${LINE_H}px`, letterSpacing: ".2px", caretColor: "var(--caret)", minWidth: 0, WebkitAppearance: "none", borderRadius: 0 }} />
-          {input.trim() && getItemEmoji(input.trim()) && <span style={{ fontSize: 18, lineHeight: 1, flexShrink: 0, userSelect: "none", animation: "fadeIn .2s ease" }}>{getItemEmoji(input.trim())}</span>}
+          {input.trim() && getItemEmoji(input.trim()) && <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0, userSelect: "none", animation: "fadeIn .2s ease" }}>{getItemEmoji(input.trim())}</span>}
           {autoDetectedCat && input.trim() && <span style={{ fontSize: 10, fontWeight: 600, color: "#4a7c59", textTransform: "uppercase", letterSpacing: ".8px", whiteSpace: "nowrap", opacity: .65, fontFamily: "'DM Sans', sans-serif" }}>{CATEGORIES[autoDetectedCat].label}</span>}
           <button onClick={addItem} className="g-add" style={{ width: 28, height: 28, borderRadius: "50%", border: `1.5px solid var(--border-btn)`, background: "transparent", color: "var(--ink-soft)", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "all .15s", lineHeight: 1 }} disabled={!input.trim()}>+</button>
         </div>
@@ -903,8 +903,8 @@ export default function GroceryList() {
                   {item.qty > 1 && <span style={{ fontSize: 12, fontWeight: 700, color: "var(--badge-fg)", background: "var(--badge-bg)", borderRadius: 8, padding: "1px 5px", lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif", flexShrink: 0, minWidth: 20, textAlign: "center" }}>{item.qty}×</span>}
                   {(item.icon || detectItemIcon(item.text)) && <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{item.icon || detectItemIcon(item.text)}</span>}
                   <input className="g-edit" value={item.text} onChange={e => updateText(item.id, e.target.value)} onKeyDown={handleItemKeyDown} onBlur={() => handleItemBlur(item.id)} spellCheck={false} />
-                  {getItemEmoji(item.text) && <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{getItemEmoji(item.text)}</span>}
-                  <span style={{ fontSize: 11, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .5, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "2px 6px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
+                  {getItemEmoji(item.text) && <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{getItemEmoji(item.text)}</span>}
+                  <span style={{ fontSize: 11, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .7, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "2px 6px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
                 </div>
               </SwipeRow>
             ))}
@@ -928,8 +928,8 @@ export default function GroceryList() {
                         <input className="g-edit done" value={item.text} onChange={e => updateText(item.id, e.target.value)} onKeyDown={handleItemKeyDown} onBlur={() => handleItemBlur(item.id)} spellCheck={false} style={{ textDecoration: "none" }} />
                         <div className={justChecked.has(item.id) ? "strike-anim" : ""} style={{ position: "absolute", left: 0, top: "50%", height: 1.5, background: "var(--strike)", transform: "rotate(-0.5deg)", width: justChecked.has(item.id) ? undefined : "100%", pointerEvents: "none" }} />
                       </div>
-                      {getItemEmoji(item.text) && <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .6 }}>{getItemEmoji(item.text)}</span>}
-                      <span style={{ fontSize: 11, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .4, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "2px 6px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
+                      {getItemEmoji(item.text) && <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .7 }}>{getItemEmoji(item.text)}</span>}
+                      <span style={{ fontSize: 11, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .5, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "2px 6px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
                     </div>
                   </SwipeRow>
                 ))}
