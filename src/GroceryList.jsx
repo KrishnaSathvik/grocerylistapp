@@ -341,15 +341,13 @@ export default function GroceryList() {
   useEffect(() => { if (!input.trim()) { setAutoDetectedCat(null); return; } setAutoDetectedCat(detectCategory(parseQty(input).text)); }, [input]);
   const activeCat = autoDetectedCat || selectedCat;
 
-  const unchecked = items.filter(i => !i.checked), checked = items.filter(i => i.checked);
-  const allVisible = [...unchecked, ...checked];
-  const totalPages = Math.max(1, Math.ceil(allVisible.length / PER_PAGE));
-  const totalLeft = unchecked.length;
+  const totalLeft = items.filter(i => !i.checked).length;
+  const totalPages = Math.max(1, Math.ceil(items.length / PER_PAGE));
 
   useEffect(() => { if (page >= totalPages) setPage(Math.max(0, totalPages - 1)); }, [totalPages, page]);
 
   const pageStart = page * PER_PAGE;
-  const pageItems = allVisible.slice(pageStart, pageStart + PER_PAGE);
+  const pageItems = items.slice(pageStart, pageStart + PER_PAGE);
   const pageUnchecked = pageItems.filter(i => !i.checked);
   const pageChecked = pageItems.filter(i => i.checked);
   const blankLines = Math.max(0, PER_PAGE - pageItems.length);
@@ -360,8 +358,7 @@ export default function GroceryList() {
     const cat = autoDetectedCat || selectedCat;
     setItems(prev => {
       const next = [...prev, { id: Date.now(), text, qty, category: cat, checked: false }];
-      const na = [...next.filter(i => !i.checked), ...next.filter(i => i.checked)];
-      const lp = Math.max(1, Math.ceil(na.length / PER_PAGE)) - 1;
+      const lp = Math.max(1, Math.ceil(next.length / PER_PAGE)) - 1;
       if (lp > page) goToPage(lp, "next");
       return next;
     });
