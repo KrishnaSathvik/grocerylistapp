@@ -1,6 +1,4 @@
 export const notepadStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
-
   /* ═══ LIGHT THEME (default) ═══ */
   :root {
     --bg: linear-gradient(155deg, #ddd6ca 0%, #cfc7b8 50%, #c4baa8 100%);
@@ -151,7 +149,7 @@ export const notepadStyles = `
   .cat-detected{animation:catPulse .6s ease-out}
 
   /* Onboarding */
-  .ob-backdrop{animation:fadeIn .4s ease}
+  .ob-backdrop{}
   .ob-backdrop.ob-exit{animation:obFadeOut .35s ease forwards}
   @keyframes obFadeOut{to{opacity:0;transform:scale(1.02)}}
   .ob-page{animation:obSlideIn .35s ease}

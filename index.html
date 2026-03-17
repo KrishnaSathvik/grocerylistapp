@@ -75,10 +75,24 @@
     }
     </script>
 
+    <!-- Fonts — preconnect + load before React to avoid FOUT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
     <style>
       html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; width: 100%; -webkit-text-size-adjust: 100%; }
-      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+      body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        overscroll-behavior: none; -webkit-tap-highlight-color: transparent;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        background: linear-gradient(155deg, #ddd6ca 0%, #cfc7b8 50%, #c4baa8 100%);
+        min-height: 100vh; min-height: 100dvh;
+      }
       #root { min-height: 100vh; min-height: 100dvh; }
+      @media (prefers-color-scheme: dark) {
+        body { background: linear-gradient(155deg, #0f1114 0%, #0c0e11 50%, #090a0d 100%); }
+      }
     </style>
   </head>
   <body>
