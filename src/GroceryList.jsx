@@ -39,6 +39,9 @@ export default function GroceryList() {
     try { const s = localStorage.getItem("grocery-stores"); return s ? JSON.parse(s) : {}; } catch { return {}; }
   });
   const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem("onboarding-done"));
+  const [editStoreItemId, setEditStoreItemId] = useState(null);
+  const [editStoreQuery, setEditStoreQuery] = useState("");
+  const [editStoreAutoIdx, setEditStoreAutoIdx] = useState(0);
   const inputRef = useRef(null);
   const undoTimer = useRef(null);
 
@@ -57,6 +60,9 @@ export default function GroceryList() {
   const storeMatches = storeQuery !== null ? Object.entries(allStores).filter(([k, s]) => k.startsWith(storeQuery) || s.label.toLowerCase().startsWith(storeQuery)) : [];
   const [storeAutoIdx, setStoreAutoIdx] = useState(0);
   useEffect(() => setStoreAutoIdx(0), [storeQuery]);
+
+  const editStoreMatches = editStoreItemId !== null ? Object.entries(allStores).filter(([k, s]) => k.startsWith(editStoreQuery) || s.label.toLowerCase().startsWith(editStoreQuery)) : [];
+  useEffect(() => setEditStoreAutoIdx(0), [editStoreQuery]);
 
   useEffect(() => { const t = inputClean.trim(); if (!t) { setAutoDetectedCat(null); return; } setAutoDetectedCat(detectCategory(parseQty(t).text)); }, [inputClean]);
   const totalLeft = items.filter(i => !i.checked).length;
@@ -133,9 +139,33 @@ export default function GroceryList() {
   };
   const handleUndo = () => { if (!undoItem) return; setItems(p => [...p, undoItem]); setUndoItem(null); setToast(null); if (undoTimer.current) clearTimeout(undoTimer.current); };
 
-  const updateText = useCallback((id, t) => setItems(p => p.map(i => i.id === id ? { ...i, text: t } : i)), []);
-  const handleItemKeyDown = e => { if (e.key === "Enter") { e.preventDefault(); e.target.blur(); inputRef.current?.focus(); } };
-  const handleItemBlur = id => setItems(p => { const it = p.find(i => i.id === id); return it && !it.text.trim() ? p.filter(i => i.id !== id) : p; });
+  const updateText = (id, t) => {
+    setItems(p => p.map(i => i.id === id ? { ...i, text: t } : i));
+    const { query } = parseStoreTag(t);
+    if (query !== null) { setEditStoreItemId(id); setEditStoreQuery(query); }
+    else if (editStoreItemId === id) { setEditStoreItemId(null); setEditStoreQuery(""); }
+  };
+  const handleEditStoreSelect = (itemId, storeKey) => {
+    setItems(p => p.map(i => {
+      if (i.id !== itemId) return i;
+      const cleanText = i.text.replace(/@\S*$/, "").trim();
+      return { ...i, text: cleanText, store: storeKey };
+    }));
+    setEditStoreItemId(null); setEditStoreQuery(""); setEditStoreAutoIdx(0);
+  };
+  const handleItemKeyDown = (e, itemId) => {
+    if (editStoreItemId === itemId && editStoreMatches.length > 0) {
+      if (e.key === "ArrowDown") { e.preventDefault(); setEditStoreAutoIdx(i => Math.min(i + 1, editStoreMatches.length - 1)); return; }
+      if (e.key === "ArrowUp") { e.preventDefault(); setEditStoreAutoIdx(i => Math.max(i - 1, 0)); return; }
+      if (e.key === "Tab" || (e.key === "Enter" && editStoreQuery !== "")) { e.preventDefault(); handleEditStoreSelect(itemId, editStoreMatches[editStoreAutoIdx][0]); return; }
+      if (e.key === "Escape") { e.preventDefault(); setEditStoreItemId(null); setEditStoreQuery(""); return; }
+    }
+    if (e.key === "Enter") { e.preventDefault(); e.target.blur(); inputRef.current?.focus(); }
+  };
+  const handleItemBlur = id => {
+    setItems(p => { const it = p.find(i => i.id === id); return it && !it.text.trim() ? p.filter(i => i.id !== id) : p; });
+    if (editStoreItemId === id) { setEditStoreItemId(null); setEditStoreQuery(""); }
+  };
   const clearChecked = () => setItems(p => p.filter(i => !i.checked));
 
   const shareList = async () => {
@@ -214,7 +244,9 @@ export default function GroceryList() {
             <StoreView storeGroups={storeGroups} allStores={allStores} page={page} pageStart={pageStart}
               justChecked={justChecked} onToggle={toggleCheck} onUpdateText={updateText}
               onItemKeyDown={handleItemKeyDown} onItemBlur={handleItemBlur} onRemove={removeItem}
-              onBlankTouchStart={onBTS} onBlankTouchEnd={onBTE} pageAnimClass={pageAnimClass} />
+              onBlankTouchStart={onBTS} onBlankTouchEnd={onBTE} pageAnimClass={pageAnimClass}
+              editStoreItemId={editStoreItemId} editStoreMatches={editStoreMatches}
+              editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={handleEditStoreSelect} />
           )}
 
           {viewMode === "list" && (
@@ -224,7 +256,9 @@ export default function GroceryList() {
               onItemBlur={handleItemBlur} onDragStart={handleDragStart} onDragOver={handleDragOver}
               onDrop={handleDrop} onDragEnd={handleDragEnd} onRemove={removeItem}
               onClearChecked={clearChecked} onBlankTouchStart={onBTS} onBlankTouchEnd={onBTE}
-              dragId={dragId} dragOverId={dragOverId} pageAnimClass={pageAnimClass} />
+              dragId={dragId} dragOverId={dragOverId} pageAnimClass={pageAnimClass}
+              editStoreItemId={editStoreItemId} editStoreMatches={editStoreMatches}
+              editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={handleEditStoreSelect} />
           )}
 
           {viewMode === "store" && items.length === 0 && (

@@ -2,7 +2,7 @@ import { UncheckedItem, CheckedItem } from "./GroceryItem";
 
 const LINE_H = 50;
 
-export default function ListView({ itemCount, pageUnchecked, pageChecked, blankLines, page, justChecked, allStores, onToggle, onUpdateText, onItemKeyDown, onItemBlur, onDragStart, onDragOver, onDrop, onDragEnd, onRemove, onClearChecked, onBlankTouchStart, onBlankTouchEnd, dragId, dragOverId, pageAnimClass }) {
+export default function ListView({ itemCount, pageUnchecked, pageChecked, blankLines, page, justChecked, allStores, onToggle, onUpdateText, onItemKeyDown, onItemBlur, onDragStart, onDragOver, onDrop, onDragEnd, onRemove, onClearChecked, onBlankTouchStart, onBlankTouchEnd, dragId, dragOverId, pageAnimClass, editStoreItemId, editStoreMatches, editStoreAutoIdx, onEditStoreSelect }) {
   return (
     <div key={page} className={pageAnimClass} style={{ transformOrigin: "center center", position: "relative", zIndex: 1 }}>
       {itemCount === 0 && (
@@ -15,7 +15,8 @@ export default function ListView({ itemCount, pageUnchecked, pageChecked, blankL
       )}
 
       {pageUnchecked.map(item => (
-        <UncheckedItem key={item.id} item={item} allStores={allStores} onToggle={onToggle} onUpdateText={onUpdateText} onKeyDown={onItemKeyDown} onBlur={onItemBlur} onDragStart={onDragStart} onDragOver={onDragOver} onDrop={onDrop} onDragEnd={onDragEnd} onDelete={onRemove} dragId={dragId} dragOverId={dragOverId} />
+        <UncheckedItem key={item.id} item={item} allStores={allStores} onToggle={onToggle} onUpdateText={onUpdateText} onKeyDown={onItemKeyDown} onBlur={onItemBlur} onDragStart={onDragStart} onDragOver={onDragOver} onDrop={onDrop} onDragEnd={onDragEnd} onDelete={onRemove} dragId={dragId} dragOverId={dragOverId}
+          editStoreActive={editStoreItemId === item.id} editStoreMatches={editStoreMatches} editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={onEditStoreSelect} />
       ))}
 
       {pageChecked.length > 0 && (
