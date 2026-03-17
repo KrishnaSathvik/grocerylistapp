@@ -12,6 +12,7 @@ import ListView from "./components/ListView";
 import StoreView from "./components/StoreView";
 import Pagination from "./components/Pagination";
 import Toast from "./components/Toast";
+import Onboarding from "./components/Onboarding";
 
 const LINE_H = 50;
 const PER_PAGE = 12;
@@ -37,6 +38,7 @@ export default function GroceryList() {
   const [customStores, setCustomStores] = useState(() => {
     try { const s = localStorage.getItem("grocery-stores"); return s ? JSON.parse(s) : {}; } catch { return {}; }
   });
+  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem("onboarding-done"));
   const inputRef = useRef(null);
   const undoTimer = useRef(null);
 
@@ -181,9 +183,16 @@ export default function GroceryList() {
     if (e.key === "Enter") addItem();
   };
 
+  const finishOnboarding = () => {
+    localStorage.setItem("onboarding-done", "1");
+    setShowOnboarding(false);
+  };
+
   return (
     <div className="notepad-outer" style={{ minHeight: "100dvh", background: "var(--bg)", display: "flex", justifyContent: "center", padding: "0", fontFamily: "'DM Sans', sans-serif", position: "relative", overflowX: "hidden", width: "100%" }}>
       <style>{notepadStyles}</style>
+
+      {showOnboarding && <Onboarding onDone={finishOnboarding} />}
 
       <div className="notepad-wrap" style={{ width: "100%", maxWidth: 520, minHeight: "100dvh", background: "var(--paper)", borderRadius: 0, boxShadow: "none", position: "relative", paddingLeft: 48, paddingRight: 16, paddingBottom: 18, overflow: "hidden" }}>
         <div style={{ position: "absolute", left: 38, top: 0, bottom: 0, width: 2, background: "var(--margin)", zIndex: 1 }} />

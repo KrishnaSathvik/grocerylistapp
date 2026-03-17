@@ -147,4 +147,63 @@ export const notepadStyles = `
   }
   @keyframes catPulse{0%{box-shadow:0 0 0 0 rgba(74,124,89,.4)}70%{box-shadow:0 0 0 8px rgba(74,124,89,0)}100%{box-shadow:0 0 0 0 rgba(74,124,89,0)}}
   .cat-detected{animation:catPulse .6s ease-out}
+
+  /* Onboarding */
+  .ob-backdrop{animation:fadeIn .4s ease}
+  .ob-backdrop.ob-exit{animation:obFadeOut .35s ease forwards}
+  @keyframes obFadeOut{to{opacity:0;transform:scale(1.02)}}
+  .ob-page{animation:obSlideIn .35s ease}
+  @keyframes obSlideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+  /* Onboarding card — mobile-first (full screen) */
+  .ob-card{
+    width:100%;height:100dvh;
+    background:var(--paper);
+    padding:60px 16px 36px 48px;
+    border-radius:0;box-shadow:none;
+  }
+  .ob-emoji{font-size:52px;margin-bottom:10px;line-height:1}
+  .ob-title{
+    font-family:'Caveat',cursive;font-size:34px;font-weight:700;
+    color:var(--ink);margin-bottom:18px;line-height:1.1;
+  }
+  .ob-line{
+    font-family:'Caveat',cursive;font-size:22px;font-weight:500;
+    color:var(--ink-soft);line-height:1.3;
+  }
+  .ob-btn:active{transform:scale(.96)}
+
+  /* Onboarding — small phones */
+  @media(max-width:380px){
+    .ob-card{padding-left:42px;padding-right:12px}
+    .ob-emoji{font-size:44px}
+    .ob-title{font-size:30px}
+    .ob-line{font-size:20px}
+  }
+  @media(max-width:320px){
+    .ob-card{padding-left:38px;padding-right:10px}
+    .ob-title{font-size:28px}
+    .ob-line{font-size:18px}
+  }
+
+  /* Onboarding — tablet / desktop: centered card */
+  @media(min-width:540px){
+    .ob-backdrop{padding:20px 8px 40px}
+    .ob-card{
+      width:100%;max-width:480px;height:auto;min-height:460px;
+      border-radius:6px;box-shadow:var(--shadow);
+      padding:56px 32px 40px 56px;
+    }
+    .ob-emoji{font-size:60px;margin-bottom:12px}
+    .ob-title{font-size:40px;margin-bottom:20px}
+    .ob-line{font-size:24px}
+  }
+
+  /* Onboarding — large desktop */
+  @media(min-width:768px){
+    .ob-card{max-width:520px;min-height:500px;padding:64px 40px 48px 64px}
+    .ob-emoji{font-size:64px}
+    .ob-title{font-size:44px}
+    .ob-line{font-size:26px}
+  }
 `;
