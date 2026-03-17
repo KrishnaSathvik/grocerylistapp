@@ -6,19 +6,37 @@ A modern notepad-style grocery list PWA with smart features.
 
 ## Features
 
-- **15 Smart Categories** — Auto-detects category as you type (500+ keywords including Indian groceries)
+- **15 Smart Categories** — Auto-detects category as you type (1,300+ keywords covering American, Indian, and Asian groceries)
+- **1,280+ Item Emojis** — Instant emoji preview and icons for every grocery item
+- **18 Stores** — Costco, Walmart, Target, Trader Joe's, Whole Foods Market, Kroger, ALDI, H-E-B, Amazon Fresh, Publix, Gerbes, Sam's Club, Indian Bazaar, Pan Asia Supermarket, Patel Brothers, H Mart, 99 Ranch Market, Sprouts Farmers Market
+- **Store Tagging** — Assign items to stores with "@costco" or "@hmart", group by store view with favicons
 - **Quantity Parsing** — Type "2x milk", "3 bananas", or "eggs x4"
-- **Store Tagging** — Assign items to stores with "@costco", group by store view
+- **Smart Sorting** — Checked items automatically move to the bottom
 - **Swipe to Delete** — Swipe left on mobile to reveal delete zone
 - **Undo Delete** — 3.5 second recovery toast with Undo button
 - **Drag to Reorder** — Grip handle to rearrange items (desktop)
 - **Handwritten Checkmark** — Animated SVG draw + strikethrough
-- **Pagination** — 10 items per page with smooth page-flip animation
+- **Pagination** — 12 items per page with smooth page-flip animation
 - **Share / Copy** — Native share API or clipboard fallback
 - **Dark Mode** — Auto-follows system preference via `prefers-color-scheme`
 - **Paper Texture** — SVG noise overlay + corner curl + spiral binding
 - **PWA** — Installable, works offline with service worker
 - **SEO Optimized** — Open Graph, Twitter Cards, JSON-LD structured data
+
+## Grocery Coverage
+
+Comprehensive coverage across all categories with Indian and Asian specialty items:
+
+| Category | Examples |
+|----------|----------|
+| **Produce** | Standard + lauki, karela, arbi, turai, amla, chikoo, sitaphal, edamame, bok choy |
+| **Dairy** | Standard + paneer, ghee, dahi, malai, khoya, shrikhand, lassi |
+| **Meat & Seafood** | Standard + mutton, goat, keema + pomfret, rohu, surmai, bangda, hilsa |
+| **Pantry & Grains** | Standard + basmati, poha, maggi, dal varieties + bajra, ragi, jowar, makhana, sattu |
+| **Condiments & Spices** | Standard + garam masala, hing, kasuri methi, 15+ masala blends, achar, chutneys |
+| **Snacks** | Standard + murukku, chakli, khakhra, gathiya, namak para, kurkure, parle-g |
+| **Drinks** | Standard + rooh afza, jaljeera, thandai, badam milk, thumbs up, limca, rasna, tang |
+| **Household** | Standard + agarbatti, harpic, phenyl + broom, mop, toilet cleaner |
 
 ## Tech Stack
 
