@@ -9,9 +9,10 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: [
         "favicon.ico",
+        "favicon.svg",
         "apple-touch-icon.png",
-        "icon-192.png",
-        "icon-512.png",
+        "android-chrome-192x192.png",
+        "android-chrome-512x512.png",
       ],
       manifest: {
         name: "Grocery List",
@@ -27,17 +28,17 @@ export default defineConfig({
         categories: ["productivity", "food", "utilities"],
         icons: [
           {
-            src: "/icon-192.png",
+            src: "/android-chrome-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/icon-512.png",
+            src: "/android-chrome-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "/icon-512.png",
+            src: "/android-chrome-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
