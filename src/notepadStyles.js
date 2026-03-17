@@ -159,9 +159,10 @@ export const notepadStyles = `
   .ob-card{
     width:100%;height:100dvh;
     background:var(--paper);
-    padding:60px 16px 36px 48px;
+    padding:36px 16px 36px 48px;
     border-radius:0;box-shadow:none;
   }
+  .ob-logo{width:80px;height:80px;border-radius:16px;margin-bottom:12px;object-fit:contain}
   .ob-emoji{font-size:52px;margin-bottom:10px;line-height:1}
   .ob-title{
     font-family:'Caveat',cursive;font-size:34px;font-weight:700;
@@ -194,6 +195,7 @@ export const notepadStyles = `
       border-radius:6px;box-shadow:var(--shadow);
       padding:56px 32px 40px 56px;
     }
+    .ob-logo{width:96px;height:96px;border-radius:20px}
     .ob-emoji{font-size:60px;margin-bottom:12px}
     .ob-title{font-size:40px;margin-bottom:20px}
     .ob-line{font-size:24px}
@@ -202,6 +204,7 @@ export const notepadStyles = `
   /* Onboarding — large desktop */
   @media(min-width:768px){
     .ob-card{max-width:520px;min-height:500px;padding:64px 40px 48px 64px}
+    .ob-logo{width:108px;height:108px;border-radius:22px}
     .ob-emoji{font-size:64px}
     .ob-title{font-size:44px}
     .ob-line{font-size:26px}

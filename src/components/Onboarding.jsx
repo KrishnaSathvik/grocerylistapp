@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const pages = [
   {
-    emoji: "🛒",
+    logo: true,
     title: "Welcome!",
     lines: [
       "Your smart grocery list",
@@ -63,7 +63,7 @@ export default function Onboarding({ onDone }) {
         cursor: "pointer",
       }}
     >
-      <div className="ob-card" style={{ position: "relative", overflow: "hidden" }}>
+      <div className="ob-card" style={{ position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
         {/* Margin line */}
         <div style={{ position: "absolute", left: 38, top: 0, bottom: 0, width: 2, background: "var(--margin)", zIndex: 1 }} />
 
@@ -89,14 +89,16 @@ export default function Onboarding({ onDone }) {
           </button>
         )}
 
-        {/* Centered content area */}
-        <div className="ob-content" style={{
+        {/* Centered content area — only main content centers */}
+        <div style={{
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          position: "relative", zIndex: 1, width: "100%", height: "100%",
+          position: "relative", zIndex: 1, flex: 1,
         }}>
-          {/* Page content */}
           <div key={step} className="ob-page" style={{ textAlign: "center", padding: "0 8px" }}>
-            <div className="ob-emoji">{p.emoji}</div>
+            {p.logo
+              ? <img src="/logo.png" alt="Grocery List" className="ob-logo" />
+              : <div className="ob-emoji">{p.emoji}</div>
+            }
             <h2 className="ob-title">{p.title}</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {p.lines.map((line, i) => (
@@ -104,9 +106,11 @@ export default function Onboarding({ onDone }) {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Dots */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 36 }}>
+        {/* Bottom area — dots + action pinned to bottom */}
+        <div style={{ textAlign: "center", paddingBottom: 8, position: "relative", zIndex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 20 }}>
             {pages.map((_, i) => (
               <div key={i} style={{
                 width: i === step ? 20 : 7, height: 7, borderRadius: 4,
@@ -115,31 +119,27 @@ export default function Onboarding({ onDone }) {
               }} />
             ))}
           </div>
-
-          {/* Action */}
-          <div style={{ textAlign: "center", marginTop: 24 }}>
-            {isLast ? (
-              <button
-                onClick={advance}
-                className="ob-btn"
-                style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 600,
-                  background: "var(--ink)", color: "var(--paper)",
-                  border: "none", borderRadius: 24, padding: "12px 40px",
-                  cursor: "pointer", transition: "transform .15s",
-                }}
-              >
-                Get Started
-              </button>
-            ) : (
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 12,
-                color: "var(--ink-faint)", fontStyle: "italic",
-              }}>
-                tap anywhere to continue
-              </p>
-            )}
-          </div>
+          {isLast ? (
+            <button
+              onClick={advance}
+              className="ob-btn"
+              style={{
+                fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 600,
+                background: "var(--ink)", color: "var(--paper)",
+                border: "none", borderRadius: 24, padding: "12px 40px",
+                cursor: "pointer", transition: "transform .15s",
+              }}
+            >
+              Get Started
+            </button>
+          ) : (
+            <p style={{
+              fontFamily: "'DM Sans', sans-serif", fontSize: 12,
+              color: "var(--ink-faint)", fontStyle: "italic",
+            }}>
+              tap anywhere to continue
+            </p>
+          )}
         </div>
 
         {/* Paper texture */}
