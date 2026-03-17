@@ -1,8 +1,14 @@
-# 🛒 Grocery List
+<p align="center">
+  <img src="public/logo.png" alt="Grocery List Logo" width="128" height="128" />
+</p>
 
-A modern notepad-style grocery list PWA with smart features.
+<h1 align="center">Grocery List</h1>
 
-![Grocery List](https://grocerylistapp.vercel.app/og-image.png)
+<p align="center">A modern notepad-style grocery list PWA with smart features.</p>
+
+<p align="center">
+  <img src="public/og-image.png" alt="Grocery List Preview" width="600" />
+</p>
 
 ## Features
 
@@ -76,16 +82,14 @@ Or connect your GitHub repo to [vercel.com](https://vercel.com) for automatic de
 
 ## PWA Icons
 
-Before deploying, add these icon files to `/public`:
-- `favicon.ico` (32x32)
-- `favicon-16.png` (16x16)
-- `favicon-32.png` (32x32)
-- `apple-touch-icon.png` (180x180)
-- `icon-192.png` (192x192)
-- `icon-512.png` (512x512)
-- `og-image.png` (1200x630)
-
-You can generate these from a single source using [realfavicongenerator.net](https://realfavicongenerator.net) or [favicon.io](https://favicon.io).
+All icons are included in `/public`:
+- `favicon.ico` — Browser tab icon
+- `favicon.svg` — SVG favicon for modern browsers
+- `favicon-16x16.png` / `favicon-32x32.png` — PNG fallbacks
+- `apple-touch-icon.png` (180x180) — iOS home screen
+- `android-chrome-192x192.png` / `android-chrome-512x512.png` — Android PWA
+- `logo.png` — App header logo
+- `og-image.png` (1200x630) — Social sharing preview
 
 ## Project Structure
 
