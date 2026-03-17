@@ -3,6 +3,7 @@ import { storeFavicon } from "../data/stores";
 import { detectItemIcon } from "../itemIcons";
 import SwipeRow from "./SwipeRow";
 import CheckMark from "./CheckMark";
+import ContentEditable from "./ContentEditable";
 
 const LINE_H = 50;
 const PER_PAGE = 12;
@@ -44,7 +45,7 @@ export default function StoreView({ storeGroups, allStores, page, pageStart, jus
                 </button>
                 {item.qty > 1 && <span style={{ fontSize: 13, fontWeight: 700, color: "var(--badge-fg)", background: "var(--badge-bg)", borderRadius: 8, padding: "2px 6px", lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif", flexShrink: 0, minWidth: 20, textAlign: "center" }}>{item.qty}×</span>}
                 {(item.icon || detectItemIcon(item.text)) && <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{item.icon || detectItemIcon(item.text)}</span>}
-                <input className="g-edit" value={item.text} onChange={e => onUpdateText(item.id, e.target.value)} onKeyDown={e => onItemKeyDown(e, item.id)} onBlur={() => onItemBlur(item.id)} spellCheck={false} />
+                <ContentEditable className="g-edit" value={item.text} onChange={text => onUpdateText(item.id, text)} onKeyDown={e => onItemKeyDown(e, item.id)} onBlur={() => onItemBlur(item.id)} spellCheck={false} />
                 <span style={{ fontSize: 12, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .7, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "3px 7px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
               </div>
             </SwipeRow>

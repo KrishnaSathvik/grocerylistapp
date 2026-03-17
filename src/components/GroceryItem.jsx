@@ -3,6 +3,7 @@ import { storeFavicon } from "../data/stores";
 import { detectItemIcon } from "../itemIcons";
 import SwipeRow from "./SwipeRow";
 import CheckMark from "./CheckMark";
+import ContentEditable from "./ContentEditable";
 
 const LINE_H = 50;
 
@@ -19,7 +20,7 @@ export function UncheckedItem({ item, allStores, onToggle, onUpdateText, onKeyDo
           </button>
           {item.qty > 1 && <span style={{ fontSize: 13, fontWeight: 700, color: "var(--badge-fg)", background: "var(--badge-bg)", borderRadius: 8, padding: "2px 6px", lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif", flexShrink: 0, minWidth: 20, textAlign: "center" }}>{item.qty}×</span>}
           {(item.icon || detectItemIcon(item.text)) && <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{item.icon || detectItemIcon(item.text)}</span>}
-          <input className="g-edit" value={item.text} onChange={e => onUpdateText(item.id, e.target.value)} onKeyDown={e => onKeyDown(e, item.id)} onBlur={() => onBlur(item.id)} spellCheck={false} />
+          <ContentEditable className="g-edit" value={item.text} onChange={text => onUpdateText(item.id, text)} onKeyDown={e => onKeyDown(e, item.id)} onBlur={() => onBlur(item.id)} spellCheck={false} />
           {item.store && allStores[item.store] && (
             <span style={{ display: "inline-flex", alignItems: "center", gap: 2, flexShrink: 0 }} title={allStores[item.store].label}>
               {allStores[item.store].domain ? <img src={storeFavicon(allStores[item.store].domain)} alt="" width={14} height={14} style={{ borderRadius: 2 }} onError={e => { e.target.style.display = "none"; }} /> : <span style={{ width: 14, height: 14, borderRadius: 2, background: allStores[item.store].color, color: "#fff", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 8, fontWeight: 700 }}>{allStores[item.store].label[0]}</span>}
@@ -57,7 +58,7 @@ export function CheckedItem({ item, allStores, justChecked, onToggle, onUpdateTe
         {item.qty > 1 && <span style={{ fontSize: 13, fontWeight: 700, color: "var(--badge-fg)", background: "var(--badge-bg)", borderRadius: 8, padding: "2px 6px", lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif", flexShrink: 0, opacity: .5 }}>{item.qty}×</span>}
         {(item.icon || detectItemIcon(item.text)) && <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .6 }}>{item.icon || detectItemIcon(item.text)}</span>}
         <div style={{ flex: 1, position: "relative", height: LINE_H, display: "flex", alignItems: "center" }}>
-          <input className="g-edit done" value={item.text} onChange={e => onUpdateText(item.id, e.target.value)} onKeyDown={e => onKeyDown(e, item.id)} onBlur={() => onBlur(item.id)} spellCheck={false} style={{ textDecoration: "none" }} />
+          <ContentEditable className="g-edit done" value={item.text} onChange={text => onUpdateText(item.id, text)} onKeyDown={e => onKeyDown(e, item.id)} onBlur={() => onBlur(item.id)} spellCheck={false} style={{ textDecoration: "none" }} />
           <div className={isJustChecked ? "strike-anim" : ""} style={{ position: "absolute", left: 0, top: "50%", height: 1.5, background: "var(--strike)", transform: "rotate(-0.5deg)", width: isJustChecked ? undefined : "100%", pointerEvents: "none" }} />
         </div>
         {item.store && allStores[item.store] && (

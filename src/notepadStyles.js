@@ -68,6 +68,7 @@ export const notepadStyles = `
   body{overscroll-behavior-y:none}
   input,textarea,select,button{font-size:16px}
   input::placeholder{color:var(--ink-faint);font-style:italic}
+  [contenteditable][data-placeholder]:empty::before{content:attr(data-placeholder);color:var(--ink-faint);font-style:italic;pointer-events:none}
   ::-webkit-scrollbar{width:5px}
   ::-webkit-scrollbar-thumb{background:var(--line-dash);border-radius:3px}
 
@@ -129,6 +130,7 @@ export const notepadStyles = `
     color:var(--ink);background:transparent;padding:0;
     line-height:50px;height:50px;
     letter-spacing:.2px;caret-color:var(--caret);min-width:0;
+    white-space:nowrap;overflow:hidden;
   }
   .g-edit:focus{background:var(--focus-bg);border-radius:3px;padding:0 4px;margin:0 -4px}
   .g-edit.done{color:var(--checked-text)}
