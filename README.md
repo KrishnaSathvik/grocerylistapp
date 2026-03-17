@@ -8,6 +8,7 @@ A modern notepad-style grocery list PWA with smart features.
 
 - **15 Smart Categories** — Auto-detects category as you type (500+ keywords including Indian groceries)
 - **Quantity Parsing** — Type "2x milk", "3 bananas", or "eggs x4"
+- **Store Tagging** — Assign items to stores with "@costco", group by store view
 - **Swipe to Delete** — Swipe left on mobile to reveal delete zone
 - **Undo Delete** — 3.5 second recovery toast with Undo button
 - **Drag to Reorder** — Grip handle to rearrange items (desktop)
@@ -76,12 +77,29 @@ grocery-list/
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── src/
-│   ├── GroceryList.jsx    # Main component (all-in-one)
-│   └── main.jsx           # React entry point
-├── index.html             # HTML with SEO meta tags
+│   ├── components/
+│   │   ├── CheckMark.jsx      # Animated check circle
+│   │   ├── GroceryItem.jsx    # Item row (unchecked + checked variants)
+│   │   ├── Header.jsx         # Title, item count, view toggle, share
+│   │   ├── InputBar.jsx       # Text input, emoji preview, store autocomplete
+│   │   ├── ListView.jsx       # List view with unchecked/checked sections
+│   │   ├── Pagination.jsx     # Prev/next buttons, dots, page label
+│   │   ├── StoreView.jsx      # Store-grouped view with headers
+│   │   ├── SwipeRow.jsx       # Swipe-to-delete gesture wrapper
+│   │   └── Toast.jsx          # Fixed-position toast with undo
+│   ├── data/
+│   │   ├── categories.js      # Category definitions + keyword lists
+│   │   ├── itemEmojis.js      # Item emoji mappings + lookup function
+│   │   └── stores.js          # Store definitions + favicon helper
+│   ├── GroceryList.jsx        # Root component (state, handlers, composition)
+│   ├── itemIcons.js           # Item icon detection
+│   ├── notepadStyles.js       # Global CSS styles
+│   ├── utils.js               # detectCategory(), parseQty()
+│   └── main.jsx               # React entry point
+├── index.html                 # HTML with SEO meta tags
 ├── package.json
-├── vercel.json            # Vercel deployment config
-├── vite.config.js         # Vite + PWA config
+├── vercel.json                # Vercel deployment config
+├── vite.config.js             # Vite + PWA config
 └── README.md
 ```
 
