@@ -1,6 +1,6 @@
 export default function Header({ itemCount, filteredLeft, viewMode, onToggleView, onShare }) {
   return (
-    <div style={{ paddingTop: 20, paddingBottom: 8, position: "relative", zIndex: 1 }}>
+    <div style={{ paddingTop: 24, paddingBottom: 10, position: "relative", zIndex: 1 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <img src="/logo.png" alt="" width={36} height={36} style={{ borderRadius: 8, flexShrink: 0 }} />
         <h1 style={{ fontFamily: "'Caveat', cursive", fontSize: 38, fontWeight: 700, color: "var(--ink)", lineHeight: 1.1 }}>Grocery List</h1>

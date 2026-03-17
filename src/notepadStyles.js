@@ -81,16 +81,16 @@ export const notepadStyles = `
     .notepad-outer { padding: 20px 8px 40px !important; }
     .notepad-wrap { border-radius: 2px !important; box-shadow: var(--shadow) !important; min-height: auto !important; }
   }
-  /* Mobile: full width, tighter padding */
+  /* Mobile: full width, comfortable padding */
   @media (max-width: 520px) {
-    .notepad-wrap { padding-left: 42px !important; padding-right: 12px !important; }
+    .notepad-wrap { padding-left: 44px !important; padding-right: 18px !important; }
   }
   @media (max-width: 380px) {
-    .notepad-wrap { padding-left: 38px !important; padding-right: 10px !important; }
+    .notepad-wrap { padding-left: 40px !important; padding-right: 14px !important; }
     .g-edit { font-size: 20px !important; }
   }
   @media (max-width: 320px) {
-    .notepad-wrap { padding-left: 34px !important; padding-right: 8px !important; }
+    .notepad-wrap { padding-left: 36px !important; padding-right: 10px !important; }
     .g-edit { font-size: 18px !important; }
   }
 

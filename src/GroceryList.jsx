@@ -196,7 +196,7 @@ export default function GroceryList() {
 
       <div className="notepad-wrap" style={{ width: "100%", maxWidth: 520, minHeight: "100dvh", background: "var(--paper)", borderRadius: 0, boxShadow: "none", position: "relative", paddingLeft: 48, paddingRight: 16, paddingBottom: 18, overflow: "hidden" }}>
         <div style={{ position: "absolute", left: 38, top: 0, bottom: 0, width: 2, background: "var(--margin)", zIndex: 1 }} />
-        <div style={{ position: "absolute", left: 0, top: 16, bottom: 16, width: 24, display: "flex", flexDirection: "column", gap: 22, alignItems: "center", zIndex: 2 }}>
+        <div className="notepad-holes" style={{ position: "absolute", left: 0, top: 16, bottom: 16, width: 24, display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center", zIndex: 2 }}>
           {Array.from({ length: 18 }).map((_, i) => <div key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--hole)", boxShadow: "var(--hole-shadow)", flexShrink: 0 }} />)}
         </div>
 
