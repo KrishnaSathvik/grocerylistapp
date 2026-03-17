@@ -21,5 +21,7 @@ export function parseQty(raw) {
   if (m) return { qty: parseInt(m[2]), text: m[1].trim() };
   m = t.match(/^(\d+)\s+(.+)$/);
   if (m && parseInt(m[1]) > 1 && parseInt(m[1]) < 100) return { qty: parseInt(m[1]), text: m[2].trim() };
+  m = t.match(/^(.+?)\s+(\d+)$/);
+  if (m && parseInt(m[2]) > 1 && parseInt(m[2]) < 100) return { qty: parseInt(m[2]), text: m[1].trim() };
   return { qty: 1, text: t };
 }

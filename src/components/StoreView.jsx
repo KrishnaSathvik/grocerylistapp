@@ -5,7 +5,7 @@ import SwipeRow from "./SwipeRow";
 import CheckMark from "./CheckMark";
 
 const LINE_H = 50;
-const PER_PAGE = 10;
+const PER_PAGE = 12;
 
 export default function StoreView({ storeGroups, allStores, page, pageStart, justChecked, onToggle, onUpdateText, onItemKeyDown, onItemBlur, onRemove, onBlankTouchStart, onBlankTouchEnd, pageAnimClass }) {
   // Build a flat list of renderable rows: headers + items

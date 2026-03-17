@@ -9,7 +9,7 @@ export default function InputBar({ input, onInputChange, onAddItem, onKeyDown, i
     <>
       <div style={{ display: "flex", alignItems: "center", gap: 8, height: LINE_H, borderBottom: "1px solid var(--line)", position: "relative", zIndex: 1 }}>
         <input ref={inputRef} value={input} onChange={e => onInputChange(e.target.value)} onKeyDown={onKeyDown}
-          placeholder='Add item... (try "2x milk @costco")'
+          placeholder='Add item... (try "2 milk @costco")'
           style={{ flex: 1, border: "none", outline: "none", fontSize: 24, fontFamily: "'Caveat', cursive", fontWeight: 500, color: "var(--ink)", background: "transparent", padding: 0, height: LINE_H, lineHeight: `${LINE_H}px`, letterSpacing: ".2px", caretColor: "var(--caret)", minWidth: 0, WebkitAppearance: "none", borderRadius: 0 }} />
         {inputClean.trim() && getItemEmoji(inputClean.trim()) && <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0, userSelect: "none", animation: "fadeIn .2s ease" }}>{getItemEmoji(inputClean.trim())}</span>}
         {autoDetectedCat && inputClean.trim() && <span style={{ fontSize: 10, fontWeight: 600, color: "#4a7c59", textTransform: "uppercase", letterSpacing: ".8px", whiteSpace: "nowrap", opacity: .65, fontFamily: "'DM Sans', sans-serif" }}>{CATEGORIES[autoDetectedCat].label}</span>}

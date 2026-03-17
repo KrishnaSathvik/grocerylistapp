@@ -2,14 +2,14 @@ import { UncheckedItem, CheckedItem } from "./GroceryItem";
 
 const LINE_H = 50;
 
-export default function ListView({ items, pageUnchecked, pageChecked, blankLines, page, justChecked, allStores, onToggle, onUpdateText, onItemKeyDown, onItemBlur, onDragStart, onDragOver, onDrop, onDragEnd, onRemove, onClearChecked, onBlankTouchStart, onBlankTouchEnd, dragId, dragOverId, pageAnimClass }) {
+export default function ListView({ itemCount, pageUnchecked, pageChecked, blankLines, page, justChecked, allStores, onToggle, onUpdateText, onItemKeyDown, onItemBlur, onDragStart, onDragOver, onDrop, onDragEnd, onRemove, onClearChecked, onBlankTouchStart, onBlankTouchEnd, dragId, dragOverId, pageAnimClass }) {
   return (
     <div key={page} className={pageAnimClass} style={{ transformOrigin: "center center", position: "relative", zIndex: 1 }}>
-      {items.length === 0 && (
+      {itemCount === 0 && (
         <div style={{ textAlign: "center", padding: "36px 0", animation: "fadeIn .3s ease" }}>
           <span style={{ fontSize: 36, display: "block", marginBottom: 6 }}>📝</span>
           <p style={{ fontFamily: "'Caveat', cursive", fontSize: 24, color: "var(--ink-muted)", fontWeight: 600 }}>Start adding items</p>
-          <p style={{ fontSize: 13, color: "var(--ink-faint)", marginTop: 4, fontStyle: "italic" }}>Try "2x milk" or "3 bananas" for quantities</p>
+          <p style={{ fontSize: 13, color: "var(--ink-faint)", marginTop: 4, fontStyle: "italic" }}>Try "2 milk" or "3 bananas" for quantities</p>
           <p style={{ fontSize: 13, color: "var(--ink-faint)", marginTop: 4, fontStyle: "italic" }}>Categories auto-detect · swipe left to delete</p>
         </div>
       )}

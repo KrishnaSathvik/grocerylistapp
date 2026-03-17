@@ -14,7 +14,7 @@ import Pagination from "./components/Pagination";
 import Toast from "./components/Toast";
 
 const LINE_H = 50;
-const PER_PAGE = 10;
+const PER_PAGE = 12;
 
 export default function GroceryList() {
   const [items, setItems] = useState(() => {
@@ -77,13 +77,14 @@ export default function GroceryList() {
   })();
 
   const storeRowCount = storeGroups ? storeGroups.reduce((sum, [, si]) => sum + 1 + si.length, 0) : 0;
-  const displayItems = items;
-  const totalPages = Math.max(1, Math.ceil((viewMode === "store" ? storeRowCount : displayItems.length) / PER_PAGE));
+  // Combined list: unchecked first, then checked
+  const sortedItems = [...items.filter(i => !i.checked), ...items.filter(i => i.checked)];
+  const totalPages = Math.max(1, Math.ceil((viewMode === "store" ? storeRowCount : sortedItems.length) / PER_PAGE));
 
   useEffect(() => { if (page >= totalPages) setPage(Math.max(0, totalPages - 1)); }, [totalPages, page]);
 
   const pageStart = page * PER_PAGE;
-  const pageItems = displayItems.slice(pageStart, pageStart + PER_PAGE);
+  const pageItems = sortedItems.slice(pageStart, pageStart + PER_PAGE);
   const pageUnchecked = pageItems.filter(i => !i.checked);
   const pageChecked = pageItems.filter(i => i.checked);
   const blankLines = Math.max(0, PER_PAGE - pageItems.length);
@@ -208,7 +209,7 @@ export default function GroceryList() {
           )}
 
           {viewMode === "list" && (
-            <ListView items={items} pageUnchecked={pageUnchecked} pageChecked={pageChecked}
+            <ListView itemCount={items.length} pageUnchecked={pageUnchecked} pageChecked={pageChecked}
               blankLines={blankLines} page={page} justChecked={justChecked} allStores={allStores}
               onToggle={toggleCheck} onUpdateText={updateText} onItemKeyDown={handleItemKeyDown}
               onItemBlur={handleItemBlur} onDragStart={handleDragStart} onDragOver={handleDragOver}
