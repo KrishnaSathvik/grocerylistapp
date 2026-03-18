@@ -66,7 +66,6 @@ export const notepadStyles = `
   body{overscroll-behavior-y:none}
   input,textarea,select,button{font-size:16px}
   input::placeholder{color:var(--ink-faint);font-style:italic}
-  [contenteditable][data-placeholder]:empty::before{content:attr(data-placeholder);color:var(--ink-faint);font-style:italic;pointer-events:none}
   ::-webkit-scrollbar{width:5px}
   ::-webkit-scrollbar-thumb{background:var(--line-dash);border-radius:3px}
 
@@ -124,6 +123,31 @@ export const notepadStyles = `
   }
   .g-edit:focus{background:var(--focus-bg);border-radius:3px;padding:0 4px;margin:0 -4px}
   .g-edit.done{color:var(--checked-text)}
+
+  /* Desktop delete button — visible on hover */
+  .g-delete-btn{display:none!important}
+  @media(min-width:768px){
+    .g-item:hover .g-delete-btn{display:flex!important}
+    .g-delete-btn:hover{color:#a63d40!important;background:rgba(166,61,64,.08)!important}
+  }
+
+  /* Checkbox hover on desktop */
+  @media(min-width:768px){
+    .g-check{transition:all .15s}
+    button:hover .g-check:not([style*="background-color: transparent"]){filter:brightness(1.1)}
+    button:hover .g-check{box-shadow:0 0 0 2px rgba(0,0,0,.06)}
+  }
+
+  /* Store name: hide on very small screens */
+  @media(max-width:380px){
+    .g-store-name{display:none!important}
+  }
+
+  /* Desktop: tighter item sizing */
+  @media(min-width:768px){
+    .g-edit{font-size:18px!important;line-height:42px!important;height:42px!important}
+    .g-item-emoji{font-size:16px!important}
+  }
 
   .notepad-wrap::after{
     content:'';position:absolute;bottom:0;right:0;width:40px;height:40px;
