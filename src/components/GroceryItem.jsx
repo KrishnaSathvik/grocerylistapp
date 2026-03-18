@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import { CATEGORIES } from "../data/categories";
 import { storeFavicon } from "../data/stores";
 import { detectItemIcon } from "../itemIcons";
@@ -7,7 +8,33 @@ import ContentEditable from "./ContentEditable";
 
 const LINE_H = 50;
 
-export function UncheckedItem({ item, allStores, onToggle, onUpdateText, onKeyDown, onBlur, onDragStart, onDragOver, onDrop, onDragEnd, onDelete, dragId, dragOverId, editStoreActive, editStoreMatches, editStoreAutoIdx, onEditStoreSelect }) {
+function CategoryPicker({ currentCat, onSelect, onClose }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) onClose(); };
+    document.addEventListener("mousedown", handler);
+    document.addEventListener("touchstart", handler);
+    return () => { document.removeEventListener("mousedown", handler); document.removeEventListener("touchstart", handler); };
+  }, [onClose]);
+
+  return (
+    <div ref={ref} style={{ position: "absolute", right: 0, top: LINE_H, zIndex: 30, background: "var(--paper)", border: "1.5px solid var(--line)", borderRadius: 10, boxShadow: "0 4px 16px rgba(0,0,0,.12)", padding: "4px 0", animation: "fadeIn .1s ease", maxHeight: 240, overflowY: "auto", minWidth: 180 }}>
+      {Object.entries(CATEGORIES).map(([key, { label, emoji, color }]) => (
+        <button key={key} onMouseDown={e => { e.preventDefault(); e.stopPropagation(); onSelect(key); }}
+          style={{ display: "flex", alignItems: "center", gap: 8, width: "100%", padding: "6px 12px", border: "none", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, transition: "background .1s",
+            background: key === currentCat ? color + "18" : "transparent", color: "var(--ink)" }}>
+          <span style={{ fontSize: 16 }}>{emoji}</span>
+          <span>{label}</span>
+          {key === currentCat && <span style={{ marginLeft: "auto", fontSize: 11, color: color, fontWeight: 700 }}>✓</span>}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+export function UncheckedItem({ item, allStores, onToggle, onUpdateText, onKeyDown, onBlur, onDragStart, onDragOver, onDrop, onDragEnd, onDelete, dragId, dragOverId, editStoreActive, editStoreMatches, editStoreAutoIdx, onEditStoreSelect, onUpdateCategory }) {
+  const [showCatPicker, setShowCatPicker] = useState(false);
+
   return (
     <div style={{ position: "relative" }}>
       <SwipeRow onDelete={() => onDelete(item.id)} height={LINE_H}>
@@ -26,9 +53,12 @@ export function UncheckedItem({ item, allStores, onToggle, onUpdateText, onKeyDo
               {allStores[item.store].domain ? <img src={storeFavicon(allStores[item.store].domain)} alt="" width={14} height={14} style={{ borderRadius: 2 }} onError={e => { e.target.style.display = "none"; }} /> : <span style={{ width: 14, height: 14, borderRadius: 2, background: allStores[item.store].color, color: "#fff", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 8, fontWeight: 700 }}>{allStores[item.store].label[0]}</span>}
             </span>
           )}
-          <span style={{ fontSize: 12, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .7, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "3px 7px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
+          <button onClick={() => setShowCatPicker(p => !p)} style={{ fontSize: 12, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .7, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "3px 7px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap", border: "none", cursor: "pointer", transition: "opacity .15s" }} title="Change category">{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</button>
         </div>
       </SwipeRow>
+      {showCatPicker && (
+        <CategoryPicker currentCat={item.category} onSelect={cat => { onUpdateCategory(item.id, cat); setShowCatPicker(false); }} onClose={() => setShowCatPicker(false)} />
+      )}
       {editStoreActive && editStoreMatches.length > 0 && (
         <div style={{ position: "absolute", left: 0, right: 0, top: LINE_H, zIndex: 20, background: "var(--paper)", border: "1.5px solid var(--line)", borderRadius: 10, boxShadow: "0 4px 16px rgba(0,0,0,.1)", padding: "4px 0", animation: "fadeIn .1s ease" }}>
           {editStoreMatches.map(([key, { label, domain, color }], i) => (
@@ -71,4 +101,3 @@ export function CheckedItem({ item, allStores, justChecked, onToggle, onUpdateTe
     </SwipeRow>
   );
 }
-

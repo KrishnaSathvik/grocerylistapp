@@ -3,7 +3,7 @@ export default function Header({ itemCount, filteredLeft, viewMode, onToggleView
     <div style={{ paddingTop: 24, paddingBottom: 10, position: "relative", zIndex: 1 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <img src="/logo.png" alt="" width={36} height={36} style={{ borderRadius: 8, flexShrink: 0 }} />
-        <h1 style={{ fontFamily: "'Caveat', cursive", fontSize: 38, fontWeight: 700, color: "var(--ink)", lineHeight: 1.1 }}>Grocery List</h1>
+        <h1 style={{ fontFamily: "'Patrick Hand', cursive", fontSize: 38, fontWeight: 700, color: "var(--ink)", lineHeight: 1.1 }}>Grocery List</h1>
         {itemCount > 0 && <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minWidth: 20, height: 20, borderRadius: 10, background: "var(--badge-bg)", color: "var(--badge-fg)", fontSize: 12, fontWeight: 600, padding: "0 6px" }}>{filteredLeft}</span>}
         {itemCount > 0 && (
           <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 6 }}>

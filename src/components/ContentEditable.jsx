@@ -11,6 +11,7 @@ function setCursorToEnd(el) {
 
 export default function ContentEditable({ value, onChange, onKeyDown, onBlur, innerRef, placeholder, className, style, spellCheck }) {
   const elRef = useRef(null);
+  const userTyping = useRef(false);
 
   useEffect(() => {
     if (!innerRef) return;
@@ -21,11 +22,16 @@ export default function ContentEditable({ value, onChange, onKeyDown, onBlur, in
   useEffect(() => {
     const el = elRef.current;
     if (!el || el.textContent === value) return;
+    // Only restore cursor to end for programmatic updates (e.g. store autocomplete),
+    // not when the user is actively typing (their cursor position is already correct)
+    const shouldRestoreCursor = document.activeElement === el && !userTyping.current;
     el.textContent = value;
-    if (document.activeElement === el) setCursorToEnd(el);
+    if (shouldRestoreCursor) setCursorToEnd(el);
+    userTyping.current = false;
   }, [value]);
 
   const handleInput = useCallback((e) => {
+    userTyping.current = true;
     const el = e.currentTarget;
     const text = el.textContent || "";
     if (!text && el.firstChild) el.textContent = "";

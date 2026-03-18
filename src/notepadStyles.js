@@ -95,25 +95,17 @@ export const notepadStyles = `
 
   @keyframes slideIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-  @keyframes pgOutL{0%{opacity:1;transform:translateX(0) rotateY(0)}100%{opacity:0;transform:translateX(-40px) rotateY(8deg)}}
-  @keyframes pgOutR{0%{opacity:1;transform:translateX(0) rotateY(0)}100%{opacity:0;transform:translateX(40px) rotateY(-8deg)}}
-  @keyframes pgIn{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
-  .pg-out-l{animation:pgOutL .3s ease-in forwards}
-  .pg-out-r{animation:pgOutR .3s ease-in forwards}
-  .pg-in{animation:pgIn .25s ease-out forwards}
   @keyframes drawCheck{from{stroke-dashoffset:20}to{stroke-dashoffset:0}}
   .check-draw{stroke-dasharray:20;stroke-dashoffset:20;animation:drawCheck .4s ease-out .05s forwards}
   @keyframes strikeAnim{from{width:0}to{width:100%}}
   .strike-anim::after{content:'';position:absolute;left:0;top:50%;height:1.5px;background:var(--strike);width:0;animation:strikeAnim .35s ease-out .15s forwards;transform:rotate(-0.5deg)}
   @keyframes toastIn{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
+  @keyframes sheetUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 
   .g-add:hover:not(:disabled){background:var(--ink)!important;color:var(--paper)!important;border-color:var(--ink)!important}
   .g-cat-dot:hover{transform:scale(1.15)}
   .g-clear:hover{opacity:1!important}
   .g-chip:hover{transform:translateY(-1px)}
-  .g-nav:hover:not(:disabled){background:var(--ink)!important;color:var(--paper)!important}
-  .g-nav:disabled{opacity:.25;cursor:default}
-  .g-dot:hover{transform:scale(1.3)}
   .g-share:hover{background:var(--ink)!important;color:var(--paper)!important}
 
   .g-item.dragging{opacity:.4}
@@ -124,7 +116,7 @@ export const notepadStyles = `
 
   .g-edit{
     flex:1;border:none;outline:none;
-    font-size:24px;font-family:'Caveat',cursive;font-weight:500;
+    font-size:24px;font-family:'Patrick Hand',cursive;font-weight:500;
     color:var(--ink);background:transparent;padding:0;
     line-height:50px;height:50px;
     letter-spacing:.2px;caret-color:var(--caret);min-width:0;
@@ -165,11 +157,11 @@ export const notepadStyles = `
   .ob-logo{width:80px;height:80px;border-radius:16px;margin-bottom:12px;object-fit:contain}
   .ob-emoji{font-size:52px;margin-bottom:10px;line-height:1}
   .ob-title{
-    font-family:'Caveat',cursive;font-size:34px;font-weight:700;
+    font-family:'Patrick Hand',cursive;font-size:34px;font-weight:700;
     color:var(--ink);margin-bottom:18px;line-height:1.1;
   }
   .ob-line{
-    font-family:'Caveat',cursive;font-size:22px;font-weight:500;
+    font-family:'Patrick Hand',cursive;font-size:22px;font-weight:500;
     color:var(--ink-soft);line-height:1.3;
   }
   .ob-btn:active{transform:scale(.96)}

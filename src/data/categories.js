@@ -14,6 +14,7 @@ export const CATEGORIES = {
   health:     { label: "Health & Beauty",   color: "#8b6f8e", emoji: "🧴" },
   baby:       { label: "Baby & Kids",       color: "#d4889a", emoji: "🍼" },
   pet:        { label: "Pet",               color: "#7a8b6f", emoji: "🐾" },
+  misc:       { label: "Misc",              color: "#9e9e9e", emoji: "📦" },
 };
 
 export const CAT_KEYWORDS = {
@@ -52,7 +53,7 @@ export const CAT_KEYWORDS = {
     "chili","chillies","tangerine",
     "acorn squash","spaghetti squash",
     "enoki","oyster mushroom","edamame",
-    "fennel","leek","leeks","parsnip","rhubarb","watercress",
+    "fennel","leek","leeks","parsnip","rhubarb","watercress","horseradish",
     "fruit","fruits","vegetable","vegetables","veggies","sabzi","salad","herbs","fresh herbs","greens",
   ],
   dairy: [

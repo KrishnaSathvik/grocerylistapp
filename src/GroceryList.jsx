@@ -3,19 +3,20 @@ import { detectItemIcon } from "./itemIcons";
 import { CATEGORIES } from "./data/categories";
 import { DEFAULT_STORES, storeFavicon } from "./data/stores";
 import { getItemEmoji } from "./data/itemEmojis";
-import { detectCategory, parseQty } from "./utils";
+import { detectCategory, parseQty, encodeList, decodeList } from "./utils";
 import { notepadStyles } from "./notepadStyles";
 
 import Header from "./components/Header";
 import InputBar from "./components/InputBar";
 import ListView from "./components/ListView";
 import StoreView from "./components/StoreView";
-import Pagination from "./components/Pagination";
 import Toast from "./components/Toast";
 import Onboarding from "./components/Onboarding";
+import ShareSheet from "./components/ShareSheet";
+import ImportModal from "./components/ImportModal";
+import QRModal from "./components/QRModal";
 
-const LINE_H = 50;
-const PER_PAGE = 12;
+const BASE_URL = "https://grocerylistapp.vercel.app/";
 
 export default function GroceryList() {
   const [items, setItems] = useState(() => {
@@ -23,12 +24,9 @@ export default function GroceryList() {
     catch { return []; }
   });
   const [input, setInput] = useState("");
-  const selectedCat = "pantry";
+  const selectedCat = "misc";
   const [autoDetectedCat, setAutoDetectedCat] = useState(null);
 
-  const [page, setPage] = useState(0);
-  const [flipDir, setFlipDir] = useState(null);
-  const [animating, setAnimating] = useState(false);
   const [justChecked, setJustChecked] = useState(new Set());
   const [toast, setToast] = useState(null);
   const [undoItem, setUndoItem] = useState(null);
@@ -42,6 +40,10 @@ export default function GroceryList() {
   const [editStoreItemId, setEditStoreItemId] = useState(null);
   const [editStoreQuery, setEditStoreQuery] = useState("");
   const [editStoreAutoIdx, setEditStoreAutoIdx] = useState(0);
+  const [showShareSheet, setShowShareSheet] = useState(false);
+  const [showQR, setShowQR] = useState(false);
+  const [qrUrl, setQrUrl] = useState("");
+  const [importData, setImportData] = useState(null);
   const inputRef = useRef(null);
   const undoTimer = useRef(null);
 
@@ -49,6 +51,21 @@ export default function GroceryList() {
 
   useEffect(() => { try { localStorage.setItem("grocery-items", JSON.stringify(items)); } catch {} }, [items]);
   useEffect(() => { try { localStorage.setItem("grocery-stores", JSON.stringify(customStores)); } catch {} }, [customStores]);
+
+  // Check for import hash on mount
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash.startsWith("#import=")) return;
+    const encoded = hash.slice(8);
+    const decoded = decodeList(encoded);
+    if (decoded && decoded.length > 0) {
+      // Assign icons to imported items
+      decoded.forEach(item => { item.icon = detectItemIcon(item.text); });
+      setImportData(decoded);
+    }
+    // Clear hash without triggering navigation
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }, []);
 
   // Parse @store from input
   const parseStoreTag = (raw) => {
@@ -84,29 +101,14 @@ export default function GroceryList() {
     return ordered;
   })();
 
-  const storeRowCount = storeGroups ? storeGroups.reduce((sum, [, si]) => sum + 1 + si.length, 0) : 0;
-  // Combined list: unchecked first, then checked
-  const sortedItems = [...items.filter(i => !i.checked), ...items.filter(i => i.checked)];
-  const totalPages = Math.max(1, Math.ceil((viewMode === "store" ? storeRowCount : sortedItems.length) / PER_PAGE));
-
-  useEffect(() => { if (page >= totalPages) setPage(Math.max(0, totalPages - 1)); }, [totalPages, page]);
-
-  const pageStart = page * PER_PAGE;
-  const pageItems = sortedItems.slice(pageStart, pageStart + PER_PAGE);
-  const pageUnchecked = pageItems.filter(i => !i.checked);
-  const pageChecked = pageItems.filter(i => i.checked);
-  const blankLines = Math.max(0, PER_PAGE - pageItems.length);
+  const uncheckedItems = items.filter(i => !i.checked);
+  const checkedItems = items.filter(i => i.checked);
 
   const selectStoreAutoComplete = (key) => {
     const before = input.replace(/@\S*$/, "@" + key + " ");
     setInput(before);
     inputRef.current?.focus();
   };
-
-  const goToPage = (t, d) => { if (animating || t === page) return; setFlipDir(d); setAnimating(true); setTimeout(() => { setPage(t); setFlipDir(null); setAnimating(false); }, 300); };
-  const prevPage = () => page > 0 && goToPage(page - 1, "prev");
-  const nextPage = () => page < totalPages - 1 && goToPage(page + 1, "next");
-  const pageAnimClass = flipDir === "next" ? "pg-out-l" : flipDir === "prev" ? "pg-out-r" : "pg-in";
 
   const addItem = () => {
     const raw = input.trim(); if (!raw) return;
@@ -116,10 +118,7 @@ export default function GroceryList() {
     const cat = autoDetectedCat || selectedCat;
     setItems(prev => {
       const icon = detectItemIcon(text);
-      const next = [...prev, { id: Date.now(), text, qty, category: cat, checked: false, icon, store: resolvedStore }];
-      const lp = Math.max(1, Math.ceil(next.length / PER_PAGE)) - 1;
-      if (lp > page) goToPage(lp, "next");
-      return next;
+      return [...prev, { id: Date.now(), text, qty, category: cat, checked: false, icon, store: resolvedStore }];
     });
     setInput(""); setAutoDetectedCat(null); inputRef.current?.focus();
   };
@@ -167,8 +166,11 @@ export default function GroceryList() {
     if (editStoreItemId === id) { setEditStoreItemId(null); setEditStoreQuery(""); }
   };
   const clearChecked = () => setItems(p => p.filter(i => !i.checked));
+  const updateCategory = (id, cat) => setItems(p => p.map(i => i.id === id ? { ...i, category: cat } : i));
 
-  const shareList = async () => {
+  // Share: copy as text
+  const shareAsText = async () => {
+    setShowShareSheet(false);
     const unc = items.filter(i => !i.checked), chk = items.filter(i => i.checked);
     let t = "🛒 Grocery List\n" + new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }) + "\n\n";
     const storeMap = {};
@@ -191,6 +193,55 @@ export default function GroceryList() {
     try { await navigator.clipboard.writeText(t); setToast("Copied!"); setTimeout(() => setToast(null), 2200); } catch { setToast("Couldn't copy"); setTimeout(() => setToast(null), 2200); }
   };
 
+  // Share: as link
+  const shareAsLink = async () => {
+    setShowShareSheet(false);
+    const encoded = encodeList(items);
+    if (!encoded) {
+      // List too large, fall back to text
+      setToast("List too large for link — copied as text instead");
+      setTimeout(() => setToast(null), 2800);
+      shareAsText();
+      return;
+    }
+    const url = `${BASE_URL}#import=${encoded}`;
+    if (navigator.share) { try { await navigator.share({ title: "Grocery List", url }); return; } catch {} }
+    try { await navigator.clipboard.writeText(url); setToast("Link copied!"); setTimeout(() => setToast(null), 2200); } catch { setToast("Couldn't copy"); setTimeout(() => setToast(null), 2200); }
+  };
+
+  // Share: show QR
+  const shareAsQR = () => {
+    setShowShareSheet(false);
+    const encoded = encodeList(items);
+    if (!encoded) {
+      setToast("List too large for QR code");
+      setTimeout(() => setToast(null), 2200);
+      return;
+    }
+    setQrUrl(`${BASE_URL}#import=${encoded}`);
+    setShowQR(true);
+  };
+
+  // Import handlers
+  const handleImportAdd = () => {
+    if (!importData) return;
+    // Give each item a unique id
+    const withIds = importData.map(i => ({ ...i, id: Date.now() + Math.random() }));
+    setItems(p => [...p, ...withIds]);
+    setImportData(null);
+    setToast(`Added ${withIds.length} items`);
+    setTimeout(() => setToast(null), 2200);
+  };
+  const handleImportReplace = () => {
+    if (!importData) return;
+    const withIds = importData.map(i => ({ ...i, id: Date.now() + Math.random() }));
+    setItems(withIds);
+    setImportData(null);
+    setToast(`Loaded ${withIds.length} items`);
+    setTimeout(() => setToast(null), 2200);
+  };
+  const handleImportCancel = () => setImportData(null);
+
   const handleDragStart = id => setDragId(id);
   const handleDragOver = (e, id) => { e.preventDefault(); setDragOverId(id); };
   const handleDrop = tid => {
@@ -199,10 +250,6 @@ export default function GroceryList() {
     setDragId(null); setDragOverId(null);
   };
   const handleDragEnd = () => { setDragId(null); setDragOverId(null); };
-
-  const blankTouch = useRef({ x: 0, y: 0 });
-  const onBTS = e => { blankTouch.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; };
-  const onBTE = e => { const dx = e.changedTouches[0].clientX - blankTouch.current.x, dy = e.changedTouches[0].clientY - blankTouch.current.y; if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 60) { dx < 0 ? nextPage() : prevPage(); } };
 
   const handleInputKeyDown = e => {
     if (storeQuery !== null && storeMatches.length > 0) {
@@ -222,7 +269,10 @@ export default function GroceryList() {
     <div className="notepad-outer" style={{ minHeight: "100dvh", background: "var(--bg)", display: "flex", justifyContent: "center", padding: "0", fontFamily: "'DM Sans', sans-serif", position: "relative", overflowX: "hidden", width: "100%" }}>
       <style>{notepadStyles}</style>
 
-      {showOnboarding && <Onboarding onDone={finishOnboarding} />}
+      {showOnboarding && <Onboarding onDone={finishOnboarding} importData={importData} onImportAccept={(action) => {
+        if (action === "add") handleImportAdd();
+        else if (action === "replace") handleImportReplace();
+      }} />}
 
       <div className="notepad-wrap" style={{ width: "100%", maxWidth: 520, minHeight: "100dvh", background: "var(--paper)", borderRadius: 0, boxShadow: "none", position: "relative", paddingLeft: 48, paddingRight: 16, paddingBottom: 18, overflow: "hidden" }}>
         <div style={{ position: "absolute", left: 38, top: 0, bottom: 0, width: 2, background: "var(--margin)", zIndex: 1 }} />
@@ -231,48 +281,56 @@ export default function GroceryList() {
         </div>
 
         <Header itemCount={items.length} filteredLeft={filteredLeft} viewMode={viewMode}
-          onToggleView={() => { setViewMode(viewMode === "list" ? "store" : "list"); setPage(0); }}
-          onShare={shareList} />
+          onToggleView={() => setViewMode(viewMode === "list" ? "store" : "list")}
+          onShare={() => setShowShareSheet(true)} />
 
         <InputBar input={input} onInputChange={setInput} onAddItem={addItem} onKeyDown={handleInputKeyDown}
           inputRef={inputRef} autoDetectedCat={autoDetectedCat} inputClean={inputClean}
           storeQuery={storeQuery} storeMatches={storeMatches} storeAutoIdx={storeAutoIdx}
           onSelectStore={selectStoreAutoComplete} />
 
-        <div style={{ minHeight: PER_PAGE * LINE_H, position: "relative", perspective: "800px", overflow: "hidden", touchAction: "pan-y" }}>
+        <div style={{ position: "relative" }}>
           {viewMode === "store" && items.length > 0 && storeGroups && (
-            <StoreView storeGroups={storeGroups} allStores={allStores} page={page} pageStart={pageStart}
+            <StoreView storeGroups={storeGroups} allStores={allStores}
               justChecked={justChecked} onToggle={toggleCheck} onUpdateText={updateText}
               onItemKeyDown={handleItemKeyDown} onItemBlur={handleItemBlur} onRemove={removeItem}
-              onBlankTouchStart={onBTS} onBlankTouchEnd={onBTE} pageAnimClass={pageAnimClass}
               editStoreItemId={editStoreItemId} editStoreMatches={editStoreMatches}
-              editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={handleEditStoreSelect} />
+              editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={handleEditStoreSelect}
+              onUpdateCategory={updateCategory} />
           )}
 
           {viewMode === "list" && (
-            <ListView itemCount={items.length} pageUnchecked={pageUnchecked} pageChecked={pageChecked}
-              blankLines={blankLines} page={page} justChecked={justChecked} allStores={allStores}
+            <ListView itemCount={items.length} uncheckedItems={uncheckedItems} checkedItems={checkedItems}
+              justChecked={justChecked} allStores={allStores}
               onToggle={toggleCheck} onUpdateText={updateText} onItemKeyDown={handleItemKeyDown}
               onItemBlur={handleItemBlur} onDragStart={handleDragStart} onDragOver={handleDragOver}
               onDrop={handleDrop} onDragEnd={handleDragEnd} onRemove={removeItem}
-              onClearChecked={clearChecked} onBlankTouchStart={onBTS} onBlankTouchEnd={onBTE}
-              dragId={dragId} dragOverId={dragOverId} pageAnimClass={pageAnimClass}
+              onClearChecked={clearChecked}
+              dragId={dragId} dragOverId={dragOverId}
               editStoreItemId={editStoreItemId} editStoreMatches={editStoreMatches}
-              editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={handleEditStoreSelect} />
+              editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={handleEditStoreSelect}
+              onUpdateCategory={updateCategory} />
           )}
 
           {viewMode === "store" && items.length === 0 && (
             <div style={{ textAlign: "center", padding: "36px 0", animation: "fadeIn .3s ease" }}>
               <span style={{ fontSize: 36, display: "block", marginBottom: 6 }}>📝</span>
-              <p style={{ fontFamily: "'Caveat', cursive", fontSize: 24, color: "var(--ink-muted)", fontWeight: 600 }}>Start adding items</p>
+              <p style={{ fontFamily: "'Patrick Hand', cursive", fontSize: 24, color: "var(--ink-muted)", fontWeight: 600 }}>Start adding items</p>
               <p style={{ fontSize: 13, color: "var(--ink-faint)", marginTop: 4, fontStyle: "italic" }}>Select a store, then add items</p>
             </div>
           )}
         </div>
-
-        <Pagination page={page} totalPages={totalPages} animating={animating}
-          onPrev={prevPage} onNext={nextPage} onGoTo={goToPage} />
       </div>
+
+      {showShareSheet && (
+        <ShareSheet onCopyText={shareAsText} onShareLink={shareAsLink} onShowQR={shareAsQR} onClose={() => setShowShareSheet(false)} />
+      )}
+
+      {showQR && <QRModal url={qrUrl} onClose={() => setShowQR(false)} />}
+
+      {importData && !showOnboarding && (
+        <ImportModal itemCount={importData.length} onAdd={handleImportAdd} onReplace={handleImportReplace} onCancel={handleImportCancel} />
+      )}
 
       <Toast toast={toast} undoItem={undoItem} onUndo={handleUndo} />
     </div>
