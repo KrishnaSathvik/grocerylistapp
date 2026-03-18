@@ -138,9 +138,10 @@ export const notepadStyles = `
     button:hover .g-check{box-shadow:0 0 0 2px rgba(0,0,0,.06)}
   }
 
-  /* Store name: hide on very small screens */
-  @media(max-width:380px){
-    .g-store-name{display:none!important}
+  /* Store name: truncate on mobile, full on desktop */
+  .g-store-name{max-width:65px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block!important}
+  @media(min-width:768px){
+    .g-store-name{max-width:none}
   }
 
   /* Desktop: tighter item sizing */
