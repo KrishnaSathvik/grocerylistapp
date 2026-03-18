@@ -66,7 +66,6 @@ export const notepadStyles = `
   body{overscroll-behavior-y:none}
   input,textarea,select,button{font-size:16px}
   input::placeholder{color:var(--ink-faint);font-style:italic}
-  [contenteditable][data-placeholder]:empty::before{content:attr(data-placeholder);color:var(--ink-faint);font-style:italic;pointer-events:none}
   ::-webkit-scrollbar{width:5px}
   ::-webkit-scrollbar-thumb{background:var(--line-dash);border-radius:3px}
 

@@ -31,9 +31,10 @@ export default function StoreView({ storeGroups, allStores, justChecked, onToggl
                         <CheckMark color={CATEGORIES[item.category]?.color || "#888"} checked={false} justDone={false} />
                       </button>
                       {item.qty > 1 && <span style={{ fontSize: 13, fontWeight: 700, color: "var(--badge-fg)", background: "var(--badge-bg)", borderRadius: 8, padding: "2px 6px", lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif", flexShrink: 0, minWidth: 20, textAlign: "center" }}>{item.qty}×</span>}
-                      {(item.icon || detectItemIcon(item.text)) && <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{item.icon || detectItemIcon(item.text)}</span>}
+                      {(item.icon || detectItemIcon(item.text)) && <span className="g-item-emoji" style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, userSelect: "none" }}>{item.icon || detectItemIcon(item.text)}</span>}
                       <ContentEditable className="g-edit" value={item.text} onChange={text => onUpdateText(item.id, text)} onKeyDown={e => onItemKeyDown(e, item.id)} onBlur={() => onItemBlur(item.id)} spellCheck={false} />
                       <span style={{ fontSize: 12, lineHeight: 1, flexShrink: 0, userSelect: "none", opacity: .7, background: CATEGORIES[item.category]?.color + "18", color: CATEGORIES[item.category]?.color, padding: "3px 7px", borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, whiteSpace: "nowrap" }} title={CATEGORIES[item.category]?.label}>{CATEGORIES[item.category]?.emoji} {CATEGORIES[item.category]?.label}</span>
+                      <button className="g-delete-btn" onClick={() => onRemove(item.id)} title="Delete item" style={{ display: "none", alignItems: "center", justifyContent: "center", width: 24, height: 24, border: "none", background: "transparent", cursor: "pointer", color: "var(--ink-faint)", fontSize: 16, flexShrink: 0, borderRadius: 4, transition: "color .15s, background .15s", padding: 0 }}>×</button>
                     </div>
                   </SwipeRow>
                   {storeActive && editStoreMatches.length > 0 && (
