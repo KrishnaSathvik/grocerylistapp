@@ -28,6 +28,7 @@
 - **Import via Link** — Shared lists encoded in URL hash (`#import=`), decoded on open with contextual onboarding for first-time users
 - **QR Code Sharing** — Offline QR generation via `qrcode-generator` (no external API)
 - **Dark Mode** — Auto-follows system preference via `prefers-color-scheme`
+- **Handwritten Font** — Patrick Hand for a natural notepad feel
 - **Paper Texture** — SVG noise overlay + corner curl + spiral binding
 - **PWA** — Installable, works offline with service worker
 - **SEO Optimized** — Open Graph, Twitter Cards, JSON-LD structured data
