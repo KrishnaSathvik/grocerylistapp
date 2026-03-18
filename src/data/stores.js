@@ -12,7 +12,7 @@ export const DEFAULT_STORES = {
   gerbes:      { label: "Gerbes",        domain: "gerbes.com",              color: "#e21a2c" },
   samsclub:    { label: "Sam's Club",    domain: "samsclub.com",            color: "#0060a9" },
   indianbazaar:{ label: "Indian Bazaar", domain: "indiabazaarusa.com",     color: "#e87722" },
-  panasia:     { label: "Pan Asia Supermarket", domain: "panasiasupermarket.com", color: "#c62828" },
+  panasia:     { label: "Pan Asia",             domain: "panasiasupermarket.com", color: "#c62828" },
   patelbros:   { label: "Patel Brothers",domain: "patelbros.com",          color: "#e53935" },
   hmart:       { label: "H Mart",        domain: "hmart.com",              color: "#e12229" },
   ranch99:     { label: "99 Ranch Market",domain:"99ranch.com",            color: "#d32f2f" },
