@@ -61,6 +61,51 @@ When a recipient opens a shared link:
 - **First-time users** see a contextual onboarding page showing the imported items with icons, quantities, and categories, with options to "Add items to my list" or "Replace my current list"
 - **Returning users** see a compact import modal with the same add/replace options
 
+## Why Choose Grocery List?
+
+In a crowded space full of apps that require accounts, show ads, or force real-time sync, **Grocery List** stands out by staying **simple, private, and delightful**:
+
+- No login or tracking — your data never leaves your device.
+- Works 100% offline as a true PWA.
+- Unique handwritten notepad aesthetic with animated checkmarks and paper texture.
+- Deep support for Indian & Asian groceries (paneer, garam masala, murukku, etc.) alongside standard items.
+- Elegant sharing: offline QR codes + URL import with smart onboarding.
+
+Most alternatives (AnyList, Bring!, Cozi, Listonic, Out of Milk, OurGroceries) are excellent but typically require accounts and feel more corporate/utility-focused. Grocery List feels like a warm paper list that got smart superpowers.
+
+---
+
+## Comparison: Grocery List vs. Top Apps (2026)
+
+| Aspect                | **Grocery List (PWA)**                                                                                                                | **AnyList**                                    | **Bring!**           | **Out of Milk**       | **Cozi**                       | **Listonic**                | **OurGroceries**      |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|----------------------|-----------------------|---------------------------------|-----------------------------|-----------------------|
+| Core Philosophy       | Minimalist notepad + smart features, zero bloat                                                                                      | Feature-rich, recipes optional                 | Colorful, icon-heavy  | Simple + pantry       | Full family organizer           | Simple, live sync           | Lightweight           |
+| Account Required      | **No (fully local, zero tracking)**                                                                                                  | Yes                                            | Yes                  | Yes                   | Yes                            | Yes                        | Yes                  |
+| Offline Support       | **Full (true PWA, works completely offline)**                                                                                        | Limited (sync needed)                          | Limited              | Partial               | Limited                        | Partial                    | Partial              |
+| Auto-Categorization   | **Excellent (1,300+ keywords, editable, 16 categories, strong Indian/Asian coverage)**                                               | Good (auto-groups)                             | Good (icons)         | Basic                 | Basic                          | Good (auto-sorts)           | Basic                |
+| Store Support         | **Strong (39 stores w/ @tagging, favicons; incl. Patel Bros, H Mart, Costco)**                                                       | Multi-store lists                              | Store-specific        | Basic                 | Basic                          | Limited                    | Limited              |
+| Sharing               | **Best-in-class: Text, URL import (`#import=`), offline QR code, smart onboarding**                                                  | Real-time link/email                           | Social/link          | Link/sync             | Family accounts                | Live real-time sharing      | Link/sync            |
+| UI/Feel               | **Delightful notepad, animated checkmark, paper texture**                                                                            | Clean & modern                                 | Bright, tiles        | Clean & simple        | Family-friendly                 | Simple & functional         | Functional           |
+| Unique Delights       | Quantity parsing, swipe-to-delete w/ undo, drag reorder, 1,280+ emojis, natural single scroll, no pagination                         | Recipe import, delivery sync                   | Voice input, visuals | Pantry tracking       | Calendar/reminders              | Fast reuse of lists         | Very lightweight      |
+| Privacy / Bloat       | **Excellent (no ads, no tracking, all local data)**                                                                                  | Good (premium upsells)                         | Ads in free          | Mostly free           | Ads in free                    | Free but tracks for sync    | Mostly free           |
+| Cultural Coverage     | **Outstanding (paneer, garam masala, murukku, lauki, rooh afza, etc.)**                                                             | Standard Western                               | Standard             | Standard              | Standard                       | Standard                    | Standard             |
+| Pricing               | **Completely free (MIT-friendly for forks)**                                                                                         | Free + premium                                 | Free + premium       | Free                  | Free + Gold                    | Free                       | Free                  |
+| Mom-Test / Simplicity | **Very high (already validated with non-technical mom)**                                                                             | High                                           | High                 | High                  | High (for families)             | High                       | Medium-high           |
+
+_Note: Comparison focuses on pure grocery list apps. Meal planners (Mealime, Paprika, etc.) are excluded to avoid recipe/import bloat, which Grocery List avoids by design._
+
+---
+
+**Key Takeaways:**
+- Grocery List delivers a true zero-account, full offline PWA experience (no forced login for sharing).
+- QR code and URL hash import sharing is still unmatched for quick family/roommate handoff — no installs or accounts needed.
+- Cultural depth (Indian/Asian items and emojis) is excellent—most rivals don’t compete here.
+- Delightful analog feel (paper texture, handwriting, undo toast) makes list-making emotionally pleasant, not just functional.
+
+Other apps lead in special niches—AnyList for recipes/delivery, Bring! for visual/voice fun, Cozi for families—but none combine your exact mix of paper-like charm, smart keywords, privacy-first offline sharing, and multicultural support.
+
+---
+
 ## Tech Stack
 
 - React 18
