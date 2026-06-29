@@ -66,8 +66,6 @@ struct StoreTabView: View {
                                 GroupedBrowseToolbar(title: "Stores", actionTitle: "Add Store") {
                                     showAddStoreSheet = true
                                 }
-                                .adaptiveHorizontalPadding()
-                                .padding(.top, AppSpacing.sectionSpacing)
 
                                 ForEach(groupsWithItems) { group in
                                     NavigationLink(
@@ -86,9 +84,10 @@ struct StoreTabView: View {
                                         )
                                     }
                                     .buttonStyle(.plain)
-                                    .adaptiveHorizontalPadding()
                                 }
                             }
+                            .adaptiveHorizontalPadding()
+                            .padding(.top, AppSpacing.sectionSpacing)
                             .padding(.bottom, 32)
                         }
                     }
@@ -105,7 +104,7 @@ struct StoreTabView: View {
                     )
                 }
             }
-            .sheet(isPresented: $showAddStoreSheet) {
+            .adaptiveSheet(isPresented: $showAddStoreSheet) {
                 AddCustomStoreSheet()
             }
         }

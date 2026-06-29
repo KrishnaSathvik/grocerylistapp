@@ -138,10 +138,10 @@ struct ListDetailView: View {
             ActiveListResolver.setActive(list)
         }
         .toolbar(.hidden, for: .navigationBar)
-        .sheet(isPresented: $showShareSheet) {
+        .adaptiveSheet(isPresented: $showShareSheet) {
             ShareListSheet(list: list)
         }
-        .sheet(isPresented: $showRenameSheet) {
+        .adaptiveSheet(isPresented: $showRenameSheet) {
             EditListSheet(mode: .edit(list)) { name, description, icon, tint in
                 GroceryListService.updateList(
                     list,
@@ -168,7 +168,7 @@ struct ListDetailView: View {
                 }
             )
         }
-        .sheet(isPresented: $viewModel.showAssignSheet) {
+        .adaptiveSheet(isPresented: $viewModel.showAssignSheet) {
             AssignToListSheet(currentListId: list.id) { target in
                 viewModel.assignSelected(to: target, from: list, context: modelContext)
             }
@@ -178,7 +178,7 @@ struct ListDetailView: View {
                 viewModel.exitSelectionMode()
             }
         }
-        .sheet(isPresented: $showAddItem) {
+        .adaptiveSheet(isPresented: $showAddItem) {
             AddItemSheet(list: list, initialText: addItemPrefill)
         }
         .onChange(of: showAddItem) { _, isShowing in

@@ -53,8 +53,6 @@ struct CategoriesTabView: View {
                                 GroupedBrowseToolbar(title: "Categories", actionTitle: "Add Category") {
                                     showAddCategorySheet = true
                                 }
-                                .adaptiveHorizontalPadding()
-                                .padding(.top, AppSpacing.sectionSpacing)
 
                                 ForEach(groupsWithItems) { group in
                                     NavigationLink(
@@ -73,9 +71,10 @@ struct CategoriesTabView: View {
                                         )
                                     }
                                     .buttonStyle(.plain)
-                                    .adaptiveHorizontalPadding()
                                 }
                             }
+                            .adaptiveHorizontalPadding()
+                            .padding(.top, AppSpacing.sectionSpacing)
                             .padding(.bottom, 32)
                         }
                     }
@@ -92,7 +91,7 @@ struct CategoriesTabView: View {
                     )
                 }
             }
-            .sheet(isPresented: $showAddCategorySheet) {
+            .adaptiveSheet(isPresented: $showAddCategorySheet) {
                 AddCustomCategorySheet()
             }
         }

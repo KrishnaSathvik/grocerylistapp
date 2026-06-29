@@ -153,6 +153,7 @@ private struct ListOptionsSheet: View {
         }
         .presentationDetents([.height(listOptionsSheetHeight)])
         .presentationDragIndicator(.visible)
+        .adaptiveSheetPresentation(.form)
     }
 
     private var listOptionsSheetHeight: CGFloat {

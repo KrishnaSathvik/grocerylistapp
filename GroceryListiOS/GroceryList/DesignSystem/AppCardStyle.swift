@@ -50,6 +50,7 @@ struct AppScreenBackground: View {
 struct TopLevelTabScreen<Content: View>: View {
     let title: String
     let subtitle: String
+    var layout: AdaptiveContentLayout = .standard
     @ViewBuilder let content: () -> Content
 
     var body: some View {
@@ -62,7 +63,7 @@ struct TopLevelTabScreen<Content: View>: View {
                 content()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
-            .adaptiveContentWidth(alignment: .top)
+            .adaptiveContentWidth(layout: layout, alignment: .top)
         }
         .background(AppScreenBackground())
         .tabBarSafePadding()
@@ -71,16 +72,34 @@ struct TopLevelTabScreen<Content: View>: View {
 
 // MARK: - Adaptive layout (iPhone + iPad)
 
+enum AdaptiveContentLayout {
+    case standard
+    case settings
+}
+
 enum AdaptiveLayout {
     static let phoneMaxContentWidth: CGFloat = 640
-    static let tabletMaxContentWidth: CGFloat = 704
+    /// Primary content column on iPad — wide enough to feel native, not phone-sized.
+    static let tabletMaxContentWidth: CGFloat = 860
+    /// Narrower column for settings-style pages on iPad.
+    static let tabletSettingsMaxContentWidth: CGFloat = 720
+    static let tabletHorizontalPadding: CGFloat = 24
 
-    static func maxContentWidth(for horizontalSizeClass: UserInterfaceSizeClass?) -> CGFloat {
-        horizontalSizeClass == .regular ? tabletMaxContentWidth : phoneMaxContentWidth
+    static func maxContentWidth(
+        for horizontalSizeClass: UserInterfaceSizeClass?,
+        layout: AdaptiveContentLayout = .standard
+    ) -> CGFloat {
+        guard horizontalSizeClass == .regular else { return phoneMaxContentWidth }
+        switch layout {
+        case .standard:
+            return tabletMaxContentWidth
+        case .settings:
+            return tabletSettingsMaxContentWidth
+        }
     }
 
     static func screenHorizontal(for horizontalSizeClass: UserInterfaceSizeClass?) -> CGFloat {
-        horizontalSizeClass == .regular ? 24 : AppSpacing.screenHorizontal
+        horizontalSizeClass == .regular ? tabletHorizontalPadding : AppSpacing.screenHorizontal
     }
 }
 
@@ -88,10 +107,11 @@ private struct AdaptiveContentWidthModifier: ViewModifier {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var maxWidth: CGFloat?
+    var layout: AdaptiveContentLayout
     var alignment: Alignment
 
     func body(content: Content) -> some View {
-        let resolvedWidth = maxWidth ?? AdaptiveLayout.maxContentWidth(for: horizontalSizeClass)
+        let resolvedWidth = maxWidth ?? AdaptiveLayout.maxContentWidth(for: horizontalSizeClass, layout: layout)
         content
             .frame(maxWidth: resolvedWidth)
             .frame(maxWidth: .infinity, alignment: alignment)
@@ -101,12 +121,13 @@ private struct AdaptiveContentWidthModifier: ViewModifier {
 private struct AdaptiveScreenContentModifier: ViewModifier {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
+    var layout: AdaptiveContentLayout
     var alignment: Alignment
 
     func body(content: Content) -> some View {
         content
             .padding(.horizontal, AdaptiveLayout.screenHorizontal(for: horizontalSizeClass))
-            .frame(maxWidth: AdaptiveLayout.maxContentWidth(for: horizontalSizeClass))
+            .frame(maxWidth: AdaptiveLayout.maxContentWidth(for: horizontalSizeClass, layout: layout))
             .frame(maxWidth: .infinity, alignment: alignment)
     }
 }
@@ -122,18 +143,83 @@ private struct AdaptiveHorizontalPaddingModifier: ViewModifier {
 }
 
 extension View {
-    /// Centers content in a readable column on iPad and wide layouts.
-    func adaptiveContentWidth(maxWidth: CGFloat? = nil, alignment: Alignment = .center) -> some View {
-        modifier(AdaptiveContentWidthModifier(maxWidth: maxWidth, alignment: alignment))
+    /// Centers content in a readable column; wider on iPad, capped on iPhone.
+    func adaptiveContentWidth(
+        maxWidth: CGFloat? = nil,
+        layout: AdaptiveContentLayout = .standard,
+        alignment: Alignment = .center
+    ) -> some View {
+        modifier(AdaptiveContentWidthModifier(maxWidth: maxWidth, layout: layout, alignment: alignment))
     }
 
     /// Applies adaptive horizontal padding and max content width for full screens.
-    func adaptiveScreenContent(alignment: Alignment = .top) -> some View {
-        modifier(AdaptiveScreenContentModifier(alignment: alignment))
+    func adaptiveScreenContent(
+        layout: AdaptiveContentLayout = .standard,
+        alignment: Alignment = .top
+    ) -> some View {
+        modifier(AdaptiveScreenContentModifier(layout: layout, alignment: alignment))
     }
 
     func adaptiveHorizontalPadding(_ edges: Edge.Set = .horizontal) -> some View {
         modifier(AdaptiveHorizontalPaddingModifier(edges: edges))
+    }
+
+    /// Presents a full-screen cover on iPad and a page-sized sheet on iPhone.
+    func adaptiveSheet<Content: View>(
+        isPresented: Binding<Bool>,
+        onDismiss: (() -> Void)? = nil,
+        @ViewBuilder content: @escaping () -> Content
+    ) -> some View {
+        modifier(AdaptiveSheetHost(isPresented: isPresented, onDismiss: onDismiss, sheetContent: content))
+    }
+
+    func adaptiveSheetPresentation(_ style: AdaptiveSheetPresentation = .page) -> some View {
+        modifier(AdaptiveSheetPresentationModifier(style: style))
+    }
+}
+
+// MARK: - Adaptive sheet presentation
+
+enum AdaptiveSheetPresentation {
+    case form
+    case page
+}
+
+private struct AdaptiveSheetPresentationModifier: ViewModifier {
+    let style: AdaptiveSheetPresentation
+
+    func body(content: Content) -> some View {
+        if #available(iOS 18.0, *) {
+            switch style {
+            case .form:
+                content.presentationSizing(.form)
+            case .page:
+                content.presentationSizing(.page)
+            }
+        } else {
+            content
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+}
+
+private struct AdaptiveSheetHost<SheetContent: View>: ViewModifier {
+    @Binding var isPresented: Bool
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    var onDismiss: (() -> Void)?
+    @ViewBuilder let sheetContent: () -> SheetContent
+
+    func body(content: Content) -> some View {
+        if horizontalSizeClass == .regular {
+            content
+                .fullScreenCover(isPresented: $isPresented, onDismiss: onDismiss, content: sheetContent)
+        } else {
+            content
+                .sheet(isPresented: $isPresented, onDismiss: onDismiss) {
+                    sheetContent()
+                        .adaptiveSheetPresentation(.page)
+                }
+        }
     }
 }
 

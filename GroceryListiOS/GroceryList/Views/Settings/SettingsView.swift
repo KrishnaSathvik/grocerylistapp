@@ -35,39 +35,35 @@ struct SettingsView: View {
         NavigationStack {
             TopLevelTabScreen(
                 title: "More",
-                subtitle: "Customize your app, share lists, and get help."
+                subtitle: "Customize your app, share lists, and get help.",
+                layout: .settings
             ) {
-                GeometryReader { geometry in
-                    ScrollView {
-                        VStack(spacing: 0) {
-                            preferencesSection
+                ScrollView {
+                    VStack(spacing: 0) {
+                        preferencesSection
 
-                            sectionGap
+                        sectionGap
 
-                            sharingSection
+                        sharingSection
 
-                            sectionGap
+                        sectionGap
 
-                            customizationSection
+                        customizationSection
 
-                            sectionGap
+                        sectionGap
 
-                            helpSection
-                        }
-                        .adaptiveHorizontalPadding()
-                        .padding(.top, 4)
-                        .padding(.bottom, AppSpacing.screenHorizontal)
-                        .frame(maxWidth: .infinity)
-                        .frame(minHeight: geometry.size.height, alignment: .top)
+                        helpSection
                     }
+                    .adaptiveHorizontalPadding()
+                    .padding(.top, 4)
+                    .padding(.bottom, 24)
                 }
-                .frame(maxHeight: .infinity, alignment: .top)
             }
             .navigationBarHidden(true)
-            .sheet(isPresented: $showAbout) {
+            .adaptiveSheet(isPresented: $showAbout) {
                 AboutView()
             }
-            .sheet(isPresented: $showFeedback) {
+            .adaptiveSheet(isPresented: $showFeedback) {
                 FeedbackView()
             }
             .sheet(isPresented: $showPrivacyPolicySafari) {
