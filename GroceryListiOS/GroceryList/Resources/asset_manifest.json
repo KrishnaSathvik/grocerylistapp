@@ -1,0 +1,562 @@
+[
+  {
+    "assetName": "category-produce",
+    "type": "category",
+    "categoryId": "produce",
+    "displayName": "Produce",
+    "priority": 1,
+    "prompt": "grouped fresh fruits and vegetables, soft 3D realistic illustration, transparent background"
+  },
+  {
+    "assetName": "category-dairy",
+    "type": "category",
+    "categoryId": "dairy",
+    "displayName": "Dairy & Eggs",
+    "priority": 1,
+    "prompt": "milk carton, cheese wedge, and eggs grouped together, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-meat",
+    "type": "category",
+    "categoryId": "meat",
+    "displayName": "Meat & Poultry",
+    "priority": 1,
+    "prompt": "raw chicken breast and beef cuts grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-seafood",
+    "type": "category",
+    "categoryId": "seafood",
+    "displayName": "Seafood",
+    "priority": 1,
+    "prompt": "fish fillet and shrimp grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-bakery",
+    "type": "category",
+    "categoryId": "bakery",
+    "displayName": "Bakery",
+    "priority": 1,
+    "prompt": "loaf of bread, croissant, and bagel grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-deli",
+    "type": "category",
+    "categoryId": "deli",
+    "displayName": "Deli",
+    "priority": 1,
+    "prompt": "sliced deli meats and hummus grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-frozen",
+    "type": "category",
+    "categoryId": "frozen",
+    "displayName": "Frozen",
+    "priority": 1,
+    "prompt": "frozen vegetables and ice cream grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-pantry",
+    "type": "category",
+    "categoryId": "pantry",
+    "displayName": "Pantry & Grains",
+    "priority": 1,
+    "prompt": "rice bag, pasta box, and canned goods grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-snacks",
+    "type": "category",
+    "categoryId": "snacks",
+    "displayName": "Snacks",
+    "priority": 1,
+    "prompt": "chips bag, cookies, and popcorn grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-condiments",
+    "type": "category",
+    "categoryId": "condiments",
+    "displayName": "Condiments & Spices",
+    "priority": 1,
+    "prompt": "spice jars, hot sauce, and olive oil bottle grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-drinks",
+    "type": "category",
+    "categoryId": "drinks",
+    "displayName": "Beverages",
+    "priority": 1,
+    "prompt": "water bottle, juice carton, and coffee bag grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-household",
+    "type": "category",
+    "categoryId": "household",
+    "displayName": "Household",
+    "priority": 1,
+    "prompt": "paper towels, dish soap, and cleaning supplies grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-health",
+    "type": "category",
+    "categoryId": "health",
+    "displayName": "Health & Beauty",
+    "priority": 1,
+    "prompt": "shampoo bottle, toothpaste, and vitamins grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-baby",
+    "type": "category",
+    "categoryId": "baby",
+    "displayName": "Baby & Kids",
+    "priority": 1,
+    "prompt": "diapers and baby formula grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-pet",
+    "type": "category",
+    "categoryId": "pet",
+    "displayName": "Pet",
+    "priority": 1,
+    "prompt": "dog food bag and pet treats grouped, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "category-misc",
+    "type": "category",
+    "categoryId": "misc",
+    "displayName": "Misc",
+    "priority": 1,
+    "prompt": "generic grocery bag with mixed items, soft 3D illustration, transparent background"
+  },
+  {
+    "assetName": "product-milk-whole",
+    "type": "product",
+    "productId": "milk-whole",
+    "categoryId": "dairy",
+    "displayName": "Milk",
+    "priority": 2,
+    "prompt": "milk, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-milk-oat",
+    "type": "product",
+    "productId": "milk-oat",
+    "categoryId": "drinks",
+    "displayName": "Oat Milk",
+    "priority": 2,
+    "prompt": "oat milk, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-milk-almond",
+    "type": "product",
+    "productId": "milk-almond",
+    "categoryId": "drinks",
+    "displayName": "Almond Milk",
+    "priority": 2,
+    "prompt": "almond milk, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-milk-soy",
+    "type": "product",
+    "productId": "milk-soy",
+    "categoryId": "drinks",
+    "displayName": "Soy Milk",
+    "priority": 2,
+    "prompt": "soy milk, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-eggs-white",
+    "type": "product",
+    "productId": "eggs-white",
+    "categoryId": "dairy",
+    "displayName": "Eggs",
+    "priority": 2,
+    "prompt": "eggs, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-eggs-brown",
+    "type": "product",
+    "productId": "eggs-brown",
+    "categoryId": "dairy",
+    "displayName": "Brown Eggs",
+    "priority": 2,
+    "prompt": "brown eggs, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-butter",
+    "type": "product",
+    "productId": "butter",
+    "categoryId": "dairy",
+    "displayName": "Butter",
+    "priority": 2,
+    "prompt": "butter, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-cheese",
+    "type": "product",
+    "productId": "cheese",
+    "categoryId": "dairy",
+    "displayName": "Cheese",
+    "priority": 2,
+    "prompt": "cheese, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-yogurt",
+    "type": "product",
+    "productId": "yogurt",
+    "categoryId": "dairy",
+    "displayName": "Yogurt",
+    "priority": 2,
+    "prompt": "yogurt, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-bananas",
+    "type": "product",
+    "productId": "bananas",
+    "categoryId": "produce",
+    "displayName": "Bananas",
+    "priority": 2,
+    "prompt": "bananas, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-apples",
+    "type": "product",
+    "productId": "apples",
+    "categoryId": "produce",
+    "displayName": "Apples",
+    "priority": 2,
+    "prompt": "apples, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-tomatoes",
+    "type": "product",
+    "productId": "tomatoes",
+    "categoryId": "produce",
+    "displayName": "Tomatoes",
+    "priority": 2,
+    "prompt": "tomatoes, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-onions",
+    "type": "product",
+    "productId": "onions",
+    "categoryId": "produce",
+    "displayName": "Onions",
+    "priority": 2,
+    "prompt": "onions, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-potatoes",
+    "type": "product",
+    "productId": "potatoes",
+    "categoryId": "produce",
+    "displayName": "Potatoes",
+    "priority": 2,
+    "prompt": "potatoes, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-cilantro",
+    "type": "product",
+    "productId": "cilantro",
+    "categoryId": "produce",
+    "displayName": "Cilantro",
+    "priority": 2,
+    "prompt": "cilantro, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-spinach",
+    "type": "product",
+    "productId": "spinach",
+    "categoryId": "produce",
+    "displayName": "Spinach",
+    "priority": 2,
+    "prompt": "spinach, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-avocados",
+    "type": "product",
+    "productId": "avocados",
+    "categoryId": "produce",
+    "displayName": "Avocados",
+    "priority": 2,
+    "prompt": "avocados, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-lemons",
+    "type": "product",
+    "productId": "lemons",
+    "categoryId": "produce",
+    "displayName": "Lemons",
+    "priority": 2,
+    "prompt": "lemons, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-bread-loaf",
+    "type": "product",
+    "productId": "bread-loaf",
+    "categoryId": "bakery",
+    "displayName": "Bread",
+    "priority": 2,
+    "prompt": "bread, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-bagels",
+    "type": "product",
+    "productId": "bagels",
+    "categoryId": "bakery",
+    "displayName": "Bagels",
+    "priority": 2,
+    "prompt": "bagels, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-tortillas",
+    "type": "product",
+    "productId": "tortillas",
+    "categoryId": "bakery",
+    "displayName": "Tortillas",
+    "priority": 3,
+    "prompt": "tortillas, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-naan",
+    "type": "product",
+    "productId": "naan",
+    "categoryId": "bakery",
+    "displayName": "Naan",
+    "priority": 3,
+    "prompt": "naan, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-chicken-breast",
+    "type": "product",
+    "productId": "chicken-breast",
+    "categoryId": "meat",
+    "displayName": "Chicken",
+    "priority": 3,
+    "prompt": "chicken, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-ground-beef",
+    "type": "product",
+    "productId": "ground-beef",
+    "categoryId": "meat",
+    "displayName": "Ground Beef",
+    "priority": 3,
+    "prompt": "ground beef, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-steak",
+    "type": "product",
+    "productId": "steak",
+    "categoryId": "meat",
+    "displayName": "Steak",
+    "priority": 3,
+    "prompt": "steak, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-bacon",
+    "type": "product",
+    "productId": "bacon",
+    "categoryId": "meat",
+    "displayName": "Bacon",
+    "priority": 3,
+    "prompt": "bacon, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-pork",
+    "type": "product",
+    "productId": "pork",
+    "categoryId": "meat",
+    "displayName": "Pork",
+    "priority": 3,
+    "prompt": "pork, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-salmon",
+    "type": "product",
+    "productId": "salmon",
+    "categoryId": "seafood",
+    "displayName": "Salmon",
+    "priority": 3,
+    "prompt": "salmon, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-shrimp",
+    "type": "product",
+    "productId": "shrimp",
+    "categoryId": "seafood",
+    "displayName": "Shrimp",
+    "priority": 3,
+    "prompt": "shrimp, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-rice-basmati",
+    "type": "product",
+    "productId": "rice-basmati",
+    "categoryId": "pantry",
+    "displayName": "Basmati Rice",
+    "priority": 3,
+    "prompt": "basmati rice, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-rice-white",
+    "type": "product",
+    "productId": "rice-white",
+    "categoryId": "pantry",
+    "displayName": "Rice",
+    "priority": 3,
+    "prompt": "rice, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-pasta",
+    "type": "product",
+    "productId": "pasta",
+    "categoryId": "pantry",
+    "displayName": "Pasta",
+    "priority": 3,
+    "prompt": "pasta, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-flour",
+    "type": "product",
+    "productId": "flour",
+    "categoryId": "pantry",
+    "displayName": "Flour",
+    "priority": 3,
+    "prompt": "flour, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-olive-oil",
+    "type": "product",
+    "productId": "olive-oil",
+    "categoryId": "condiments",
+    "displayName": "Olive Oil",
+    "priority": 3,
+    "prompt": "olive oil, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-gochujang",
+    "type": "product",
+    "productId": "gochujang",
+    "categoryId": "condiments",
+    "displayName": "Gochujang",
+    "priority": 3,
+    "prompt": "gochujang, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-kimchi",
+    "type": "product",
+    "productId": "kimchi",
+    "categoryId": "deli",
+    "displayName": "Kimchi",
+    "priority": 3,
+    "prompt": "kimchi, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-coffee",
+    "type": "product",
+    "productId": "coffee",
+    "categoryId": "drinks",
+    "displayName": "Coffee",
+    "priority": 3,
+    "prompt": "coffee, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-tea",
+    "type": "product",
+    "productId": "tea",
+    "categoryId": "drinks",
+    "displayName": "Tea",
+    "priority": 3,
+    "prompt": "tea, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-water",
+    "type": "product",
+    "productId": "water",
+    "categoryId": "drinks",
+    "displayName": "Water",
+    "priority": 3,
+    "prompt": "water, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-orange-juice",
+    "type": "product",
+    "productId": "orange-juice",
+    "categoryId": "drinks",
+    "displayName": "Orange Juice",
+    "priority": 3,
+    "prompt": "orange juice, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-ice-cream",
+    "type": "product",
+    "productId": "ice-cream",
+    "categoryId": "frozen",
+    "displayName": "Ice Cream",
+    "priority": 3,
+    "prompt": "ice cream, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-frozen-pizza",
+    "type": "product",
+    "productId": "frozen-pizza",
+    "categoryId": "frozen",
+    "displayName": "Frozen Pizza",
+    "priority": 3,
+    "prompt": "frozen pizza, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-chips",
+    "type": "product",
+    "productId": "chips",
+    "categoryId": "snacks",
+    "displayName": "Chips",
+    "priority": 3,
+    "prompt": "chips, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-paper-towels",
+    "type": "product",
+    "productId": "paper-towels",
+    "categoryId": "household",
+    "displayName": "Paper Towels",
+    "priority": 3,
+    "prompt": "paper towels, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-toilet-paper",
+    "type": "product",
+    "productId": "toilet-paper",
+    "categoryId": "household",
+    "displayName": "Toilet Paper",
+    "priority": 3,
+    "prompt": "toilet paper, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-dish-soap",
+    "type": "product",
+    "productId": "dish-soap",
+    "categoryId": "household",
+    "displayName": "Dish Soap",
+    "priority": 3,
+    "prompt": "dish soap, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-diapers",
+    "type": "product",
+    "productId": "diapers",
+    "categoryId": "baby",
+    "displayName": "Diapers",
+    "priority": 3,
+    "prompt": "diapers, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-dog-food",
+    "type": "product",
+    "productId": "dog-food",
+    "categoryId": "pet",
+    "displayName": "Dog Food",
+    "priority": 3,
+    "prompt": "dog food, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  }
+]

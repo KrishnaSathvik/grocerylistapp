@@ -1,0 +1,514 @@
+[
+  {
+    "keyword": "lactose free milk",
+    "assetName": "product-milk-whole"
+  },
+  {
+    "keyword": "evaporated milk",
+    "assetName": "product-milk-whole"
+  },
+  {
+    "keyword": "condensed milk",
+    "assetName": "product-milk-whole"
+  },
+  {
+    "keyword": "oat milk",
+    "assetName": "product-milk-oat"
+  },
+  {
+    "keyword": "almond milk",
+    "assetName": "product-milk-almond"
+  },
+  {
+    "keyword": "plant milk",
+    "assetName": "product-milk-almond"
+  },
+  {
+    "keyword": "soy milk",
+    "assetName": "product-milk-soy"
+  },
+  {
+    "keyword": "frozen veggies",
+    "assetName": "product-eggs-white"
+  },
+  {
+    "keyword": "egg noodles",
+    "assetName": "product-eggs-white"
+  },
+  {
+    "keyword": "deggi mirch",
+    "assetName": "product-eggs-white"
+  },
+  {
+    "keyword": "brown eggs",
+    "assetName": "product-eggs-brown"
+  },
+  {
+    "keyword": "brown egg",
+    "assetName": "product-eggs-brown"
+  },
+  {
+    "keyword": "butternut squash",
+    "assetName": "product-butter"
+  },
+  {
+    "keyword": "unsalted butter",
+    "assetName": "product-butter"
+  },
+  {
+    "keyword": "salted butter",
+    "assetName": "product-butter"
+  },
+  {
+    "keyword": "shredded cheese",
+    "assetName": "product-cheese"
+  },
+  {
+    "keyword": "cheese crackers",
+    "assetName": "product-cheese"
+  },
+  {
+    "keyword": "cottage cheese",
+    "assetName": "product-cheese"
+  },
+  {
+    "keyword": "greek yogurt",
+    "assetName": "product-yogurt"
+  },
+  {
+    "keyword": "yoghurt",
+    "assetName": "product-yogurt"
+  },
+  {
+    "keyword": "yogurt",
+    "assetName": "product-yogurt"
+  },
+  {
+    "keyword": "banana bread",
+    "assetName": "product-bananas"
+  },
+  {
+    "keyword": "raw banana",
+    "assetName": "product-bananas"
+  },
+  {
+    "keyword": "bananas",
+    "assetName": "product-bananas"
+  },
+  {
+    "keyword": "apple cider vinegar",
+    "assetName": "product-apples"
+  },
+  {
+    "keyword": "custard apple",
+    "assetName": "product-apples"
+  },
+  {
+    "keyword": "green apple",
+    "assetName": "product-apples"
+  },
+  {
+    "keyword": "crushed tomatoes",
+    "assetName": "product-tomatoes"
+  },
+  {
+    "keyword": "canned tomatoes",
+    "assetName": "product-tomatoes"
+  },
+  {
+    "keyword": "diced tomatoes",
+    "assetName": "product-tomatoes"
+  },
+  {
+    "keyword": "spring onion",
+    "assetName": "product-onions"
+  },
+  {
+    "keyword": "onion powder",
+    "assetName": "product-onions"
+  },
+  {
+    "keyword": "green onion",
+    "assetName": "product-onions"
+  },
+  {
+    "keyword": "sweet potatoes",
+    "assetName": "product-potatoes"
+  },
+  {
+    "keyword": "sweet potato",
+    "assetName": "product-potatoes"
+  },
+  {
+    "keyword": "potato salad",
+    "assetName": "product-potatoes"
+  },
+  {
+    "keyword": "cilantro",
+    "assetName": "product-cilantro"
+  },
+  {
+    "keyword": "dhaniya",
+    "assetName": "product-cilantro"
+  },
+  {
+    "keyword": "baby spinach",
+    "assetName": "product-spinach"
+  },
+  {
+    "keyword": "spinach",
+    "assetName": "product-spinach"
+  },
+  {
+    "keyword": "palak",
+    "assetName": "product-spinach"
+  },
+  {
+    "keyword": "avocado oil",
+    "assetName": "product-avocados"
+  },
+  {
+    "keyword": "avocados",
+    "assetName": "product-avocados"
+  },
+  {
+    "keyword": "avocado",
+    "assetName": "product-avocados"
+  },
+  {
+    "keyword": "lemon pickle",
+    "assetName": "product-lemons"
+  },
+  {
+    "keyword": "lemonade",
+    "assetName": "product-lemons"
+  },
+  {
+    "keyword": "lemons",
+    "assetName": "product-lemons"
+  },
+  {
+    "keyword": "whole wheat bread",
+    "assetName": "product-bread-loaf"
+  },
+  {
+    "keyword": "multigrain bread",
+    "assetName": "product-bread-loaf"
+  },
+  {
+    "keyword": "garlic bread",
+    "assetName": "product-bread-loaf"
+  },
+  {
+    "keyword": "everything bagel seasoning",
+    "assetName": "product-bagels"
+  },
+  {
+    "keyword": "everything bagel",
+    "assetName": "product-bagels"
+  },
+  {
+    "keyword": "bagels",
+    "assetName": "product-bagels"
+  },
+  {
+    "keyword": "flour tortilla",
+    "assetName": "product-tortillas"
+  },
+  {
+    "keyword": "corn tortilla",
+    "assetName": "product-tortillas"
+  },
+  {
+    "keyword": "tortillas",
+    "assetName": "product-tortillas"
+  },
+  {
+    "keyword": "frozen paratha",
+    "assetName": "product-naan"
+  },
+  {
+    "keyword": "garlic naan",
+    "assetName": "product-naan"
+  },
+  {
+    "keyword": "frozen naan",
+    "assetName": "product-naan"
+  },
+  {
+    "keyword": "rotisserie chicken",
+    "assetName": "product-chicken-breast"
+  },
+  {
+    "keyword": "chicken drumsticks",
+    "assetName": "product-chicken-breast"
+  },
+  {
+    "keyword": "chicken tenders",
+    "assetName": "product-chicken-breast"
+  },
+  {
+    "keyword": "ground beef",
+    "assetName": "product-ground-beef"
+  },
+  {
+    "keyword": "beef stew",
+    "assetName": "product-ground-beef"
+  },
+  {
+    "keyword": "flank steak",
+    "assetName": "product-steak"
+  },
+  {
+    "keyword": "steak sauce",
+    "assetName": "product-steak"
+  },
+  {
+    "keyword": "tuna steak",
+    "assetName": "product-steak"
+  },
+  {
+    "keyword": "canadian bacon",
+    "assetName": "product-bacon"
+  },
+  {
+    "keyword": "turkey bacon",
+    "assetName": "product-bacon"
+  },
+  {
+    "keyword": "bacon",
+    "assetName": "product-bacon"
+  },
+  {
+    "keyword": "pork tenderloin",
+    "assetName": "product-pork"
+  },
+  {
+    "keyword": "pork chops",
+    "assetName": "product-pork"
+  },
+  {
+    "keyword": "pork belly",
+    "assetName": "product-pork"
+  },
+  {
+    "keyword": "salmon fillet",
+    "assetName": "product-salmon"
+  },
+  {
+    "keyword": "smoked salmon",
+    "assetName": "product-salmon"
+  },
+  {
+    "keyword": "salmon",
+    "assetName": "product-salmon"
+  },
+  {
+    "keyword": "frozen shrimp",
+    "assetName": "product-shrimp"
+  },
+  {
+    "keyword": "shrimp",
+    "assetName": "product-shrimp"
+  },
+  {
+    "keyword": "prawns",
+    "assetName": "product-shrimp"
+  },
+  {
+    "keyword": "basmati rice",
+    "assetName": "product-rice-basmati"
+  },
+  {
+    "keyword": "basmati",
+    "assetName": "product-rice-basmati"
+  },
+  {
+    "keyword": "flattened rice",
+    "assetName": "product-rice-white"
+  },
+  {
+    "keyword": "jasmine rice",
+    "assetName": "product-rice-white"
+  },
+  {
+    "keyword": "rice noodles",
+    "assetName": "product-rice-white"
+  },
+  {
+    "keyword": "spaghetti squash",
+    "assetName": "product-pasta"
+  },
+  {
+    "keyword": "macaroni salad",
+    "assetName": "product-pasta"
+  },
+  {
+    "keyword": "pasta sauce",
+    "assetName": "product-pasta"
+  },
+  {
+    "keyword": "water chestnut flour",
+    "assetName": "product-flour"
+  },
+  {
+    "keyword": "all purpose flour",
+    "assetName": "product-flour"
+  },
+  {
+    "keyword": "whole wheat flour",
+    "assetName": "product-flour"
+  },
+  {
+    "keyword": "extra virgin olive oil",
+    "assetName": "product-olive-oil"
+  },
+  {
+    "keyword": "olive oil",
+    "assetName": "product-olive-oil"
+  },
+  {
+    "keyword": "gochujang",
+    "assetName": "product-gochujang"
+  },
+  {
+    "keyword": "kimchi",
+    "assetName": "product-kimchi"
+  },
+  {
+    "keyword": "instant coffee",
+    "assetName": "product-coffee"
+  },
+  {
+    "keyword": "coffee creamer",
+    "assetName": "product-coffee"
+  },
+  {
+    "keyword": "ground coffee",
+    "assetName": "product-coffee"
+  },
+  {
+    "keyword": "chai masala",
+    "assetName": "product-tea"
+  },
+  {
+    "keyword": "chai patti",
+    "assetName": "product-tea"
+  },
+  {
+    "keyword": "herbal tea",
+    "assetName": "product-tea"
+  },
+  {
+    "keyword": "sparkling water",
+    "assetName": "product-water"
+  },
+  {
+    "keyword": "bottled water",
+    "assetName": "product-water"
+  },
+  {
+    "keyword": "mineral water",
+    "assetName": "product-water"
+  },
+  {
+    "keyword": "cranberry juice",
+    "assetName": "product-orange-juice"
+  },
+  {
+    "keyword": "orange juice",
+    "assetName": "product-orange-juice"
+  },
+  {
+    "keyword": "grape juice",
+    "assetName": "product-orange-juice"
+  },
+  {
+    "keyword": "ice cream sandwich",
+    "assetName": "product-ice-cream"
+  },
+  {
+    "keyword": "ice cream bars",
+    "assetName": "product-ice-cream"
+  },
+  {
+    "keyword": "frozen yogurt",
+    "assetName": "product-ice-cream"
+  },
+  {
+    "keyword": "frozen pizza",
+    "assetName": "product-frozen-pizza"
+  },
+  {
+    "keyword": "pizza rolls",
+    "assetName": "product-frozen-pizza"
+  },
+  {
+    "keyword": "pizza sauce",
+    "assetName": "product-frozen-pizza"
+  },
+  {
+    "keyword": "tortilla chips",
+    "assetName": "product-chips"
+  },
+  {
+    "keyword": "potato chips",
+    "assetName": "product-chips"
+  },
+  {
+    "keyword": "veggie chips",
+    "assetName": "product-chips"
+  },
+  {
+    "keyword": "paper towels",
+    "assetName": "product-paper-towels"
+  },
+  {
+    "keyword": "paper towel",
+    "assetName": "product-paper-towels"
+  },
+  {
+    "keyword": "toilet paper",
+    "assetName": "product-toilet-paper"
+  },
+  {
+    "keyword": "bath tissue",
+    "assetName": "product-toilet-paper"
+  },
+  {
+    "keyword": "dishwashing liquid",
+    "assetName": "product-dish-soap"
+  },
+  {
+    "keyword": "dish soap",
+    "assetName": "product-dish-soap"
+  },
+  {
+    "keyword": "dawn",
+    "assetName": "product-dish-soap"
+  },
+  {
+    "keyword": "diaper cream",
+    "assetName": "product-diapers"
+  },
+  {
+    "keyword": "pull-ups",
+    "assetName": "product-diapers"
+  },
+  {
+    "keyword": "diapers",
+    "assetName": "product-diapers"
+  },
+  {
+    "keyword": "dog food",
+    "assetName": "product-dog-food"
+  },
+  {
+    "keyword": "pet food",
+    "assetName": "product-dog-food"
+  },
+  {
+    "keyword": "kibble",
+    "assetName": "product-dog-food"
+  }
+]
