@@ -2,7 +2,7 @@ import { UncheckedItem, CheckedItem } from "./GroceryItem";
 
 const LINE_H = 50;
 
-export default function ListView({ itemCount, uncheckedItems, checkedItems, justChecked, allStores, onToggle, onUpdateText, onItemKeyDown, onItemBlur, onDragStart, onDragOver, onDrop, onDragEnd, onRemove, onClearChecked, dragId, dragOverId, editStoreItemId, editStoreMatches, editStoreAutoIdx, onEditStoreSelect, onUpdateCategory }) {
+export default function ListView({ itemCount, uncheckedItems, checkedItems, justChecked, allStores, onToggle, onUpdateText, onItemKeyDown, onItemBlur, onDragStart, onDragOver, onDrop, onDragEnd, onRemove, onClearChecked, dragId, dragOverId, editStoreItemId, editStoreMatches, editStoreAutoIdx, onEditStoreSelect, onUpdateCategory, onUpdateStore }) {
   return (
     <div style={{ position: "relative", zIndex: 1 }}>
       {itemCount === 0 && (
@@ -16,7 +16,7 @@ export default function ListView({ itemCount, uncheckedItems, checkedItems, just
 
       {uncheckedItems.map(item => (
         <UncheckedItem key={item.id} item={item} allStores={allStores} onToggle={onToggle} onUpdateText={onUpdateText} onKeyDown={onItemKeyDown} onBlur={onItemBlur} onDragStart={onDragStart} onDragOver={onDragOver} onDrop={onDrop} onDragEnd={onDragEnd} onDelete={onRemove} dragId={dragId} dragOverId={dragOverId}
-          editStoreActive={editStoreItemId === item.id} editStoreMatches={editStoreMatches} editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={onEditStoreSelect} onUpdateCategory={onUpdateCategory} />
+          editStoreActive={editStoreItemId === item.id} editStoreMatches={editStoreMatches} editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={onEditStoreSelect} onUpdateCategory={onUpdateCategory} onUpdateStore={onUpdateStore} />
       ))}
 
       {checkedItems.length > 0 && (

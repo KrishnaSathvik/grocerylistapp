@@ -167,6 +167,7 @@ export default function GroceryList() {
   };
   const clearChecked = () => setItems(p => p.filter(i => !i.checked));
   const updateCategory = (id, cat) => setItems(p => p.map(i => i.id === id ? { ...i, category: cat } : i));
+  const updateStore = (id, store) => setItems(p => p.map(i => i.id === id ? { ...i, store } : i));
 
   // Share: copy as text
   const shareAsText = async () => {
@@ -296,7 +297,7 @@ export default function GroceryList() {
               onItemKeyDown={handleItemKeyDown} onItemBlur={handleItemBlur} onRemove={removeItem}
               editStoreItemId={editStoreItemId} editStoreMatches={editStoreMatches}
               editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={handleEditStoreSelect}
-              onUpdateCategory={updateCategory} />
+              onUpdateCategory={updateCategory} onUpdateStore={updateStore} />
           )}
 
           {viewMode === "list" && (
@@ -309,7 +310,7 @@ export default function GroceryList() {
               dragId={dragId} dragOverId={dragOverId}
               editStoreItemId={editStoreItemId} editStoreMatches={editStoreMatches}
               editStoreAutoIdx={editStoreAutoIdx} onEditStoreSelect={handleEditStoreSelect}
-              onUpdateCategory={updateCategory} />
+              onUpdateCategory={updateCategory} onUpdateStore={updateStore} />
           )}
 
           {viewMode === "store" && items.length === 0 && (
