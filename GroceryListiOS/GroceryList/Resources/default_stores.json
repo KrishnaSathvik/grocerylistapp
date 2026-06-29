@@ -1,0 +1,238 @@
+{
+  "stores": [
+    {
+      "id": "costco",
+      "label": "Costco",
+      "domain": "costco.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "walmart",
+      "label": "Walmart",
+      "domain": "walmart.com",
+      "color": "#0071dc"
+    },
+    {
+      "id": "target",
+      "label": "Target",
+      "domain": "target.com",
+      "color": "#cc0000"
+    },
+    {
+      "id": "traderjoes",
+      "label": "Trader Joe's",
+      "domain": "traderjoes.com",
+      "color": "#ba2026"
+    },
+    {
+      "id": "wholefoods",
+      "label": "Whole Foods Market",
+      "domain": "wholefoodsmarket.com",
+      "color": "#00674b"
+    },
+    {
+      "id": "kroger",
+      "label": "Kroger",
+      "domain": "kroger.com",
+      "color": "#2b2fee"
+    },
+    {
+      "id": "aldi",
+      "label": "ALDI",
+      "domain": "aldi.us",
+      "color": "#00005f"
+    },
+    {
+      "id": "heb",
+      "label": "H-E-B",
+      "domain": "heb.com",
+      "color": "#ee1c2e"
+    },
+    {
+      "id": "amazon",
+      "label": "Amazon Fresh",
+      "domain": "amazon.com",
+      "color": "#ff9900"
+    },
+    {
+      "id": "publix",
+      "label": "Publix",
+      "domain": "publix.com",
+      "color": "#3b8739"
+    },
+    {
+      "id": "gerbes",
+      "label": "Gerbes",
+      "domain": "gerbes.com",
+      "color": "#e21a2c"
+    },
+    {
+      "id": "samsclub",
+      "label": "Sam's Club",
+      "domain": "samsclub.com",
+      "color": "#0060a9"
+    },
+    {
+      "id": "indianbazaar",
+      "label": "Indian Bazaar",
+      "domain": "indiabazaarusa.com",
+      "color": "#e87722"
+    },
+    {
+      "id": "panasia",
+      "label": "Pan Asia Supermarket",
+      "domain": "panasiasupermarket.com",
+      "color": "#c62828"
+    },
+    {
+      "id": "patelbros",
+      "label": "Patel Brothers",
+      "domain": "patelbros.com",
+      "color": "#e53935"
+    },
+    {
+      "id": "hmart",
+      "label": "H Mart",
+      "domain": "hmart.com",
+      "color": "#e12229"
+    },
+    {
+      "id": "ranch99",
+      "label": "99 Ranch Market",
+      "domain": "99ranch.com",
+      "color": "#d32f2f"
+    },
+    {
+      "id": "sprouts",
+      "label": "Sprouts Farmers Market",
+      "domain": "sprouts.com",
+      "color": "#3e7d1a"
+    },
+    {
+      "id": "shoprite",
+      "label": "ShopRite",
+      "domain": "shoprite.com",
+      "color": "#e21a2c"
+    },
+    {
+      "id": "wegmans",
+      "label": "Wegmans",
+      "domain": "wegmans.com",
+      "color": "#004e2e"
+    },
+    {
+      "id": "albertsons",
+      "label": "Albertsons",
+      "domain": "albertsons.com",
+      "color": "#0072ce"
+    },
+    {
+      "id": "safeway",
+      "label": "Safeway",
+      "domain": "safeway.com",
+      "color": "#e31a27"
+    },
+    {
+      "id": "stopandshop",
+      "label": "Stop & Shop",
+      "domain": "stopandshop.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "giantfood",
+      "label": "Giant Food",
+      "domain": "giantfood.com",
+      "color": "#5c2d91"
+    },
+    {
+      "id": "gianteagle",
+      "label": "Giant Eagle",
+      "domain": "gianteagle.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "foodlion",
+      "label": "Food Lion",
+      "domain": "foodlion.com",
+      "color": "#0056a6"
+    },
+    {
+      "id": "meijer",
+      "label": "Meijer",
+      "domain": "meijer.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "winco",
+      "label": "WinCo Foods",
+      "domain": "wincofoods.com",
+      "color": "#003a70"
+    },
+    {
+      "id": "marketbasket",
+      "label": "Market Basket",
+      "domain": "shopmarketbasket.com",
+      "color": "#e21a2c"
+    },
+    {
+      "id": "hyvee",
+      "label": "Hy-Vee",
+      "domain": "hy-vee.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "ralphs",
+      "label": "Ralph's",
+      "domain": "ralphs.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "harristeeter",
+      "label": "Harris Teeter",
+      "domain": "harristeeter.com",
+      "color": "#e21a2c"
+    },
+    {
+      "id": "pigglywiggly",
+      "label": "Piggly Wiggly",
+      "domain": "pigglywiggly.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "savealot",
+      "label": "Save A Lot",
+      "domain": "savealot.com",
+      "color": "#ffc72c"
+    },
+    {
+      "id": "lidl",
+      "label": "Lidl",
+      "domain": "lidl.com",
+      "color": "#0050aa"
+    },
+    {
+      "id": "bjs",
+      "label": "BJ's Wholesale",
+      "domain": "bjs.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "stewleonards",
+      "label": "Stew Leonard's",
+      "domain": "stewleonards.com",
+      "color": "#006838"
+    },
+    {
+      "id": "foodtown",
+      "label": "Foodtown",
+      "domain": "foodtown.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "keyfood",
+      "label": "Key Food",
+      "domain": "keyfood.com",
+      "color": "#e21a2c"
+    }
+  ]
+}

@@ -1,0 +1,680 @@
+[
+  {
+    "id": "milk-whole",
+    "displayName": "Milk",
+    "assetName": "product-milk-whole",
+    "categoryId": "dairy",
+    "keywords": [
+      "lactose free milk",
+      "evaporated milk",
+      "condensed milk",
+      "coconut milk",
+      "whole milk",
+      "buttermilk",
+      "badam milk",
+      "kesar milk",
+      "skim milk",
+      "2% milk",
+      "milk"
+    ]
+  },
+  {
+    "id": "milk-oat",
+    "displayName": "Oat Milk",
+    "assetName": "product-milk-oat",
+    "categoryId": "drinks",
+    "keywords": [
+      "oat milk"
+    ]
+  },
+  {
+    "id": "milk-almond",
+    "displayName": "Almond Milk",
+    "assetName": "product-milk-almond",
+    "categoryId": "drinks",
+    "keywords": [
+      "almond milk",
+      "plant milk"
+    ]
+  },
+  {
+    "id": "milk-soy",
+    "displayName": "Soy Milk",
+    "assetName": "product-milk-soy",
+    "categoryId": "drinks",
+    "keywords": [
+      "soy milk"
+    ]
+  },
+  {
+    "id": "eggs-white",
+    "displayName": "Eggs",
+    "assetName": "product-eggs-white",
+    "categoryId": "dairy",
+    "keywords": [
+      "frozen veggies",
+      "egg noodles",
+      "deggi mirch",
+      "egg whites",
+      "dozen eggs",
+      "mandarin",
+      "eggplant",
+      "veggies",
+      "thandai",
+      "bandaid",
+      "bandage",
+      "eggs",
+      "anda",
+      "eggo",
+      "egg"
+    ]
+  },
+  {
+    "id": "eggs-brown",
+    "displayName": "Brown Eggs",
+    "assetName": "product-eggs-brown",
+    "categoryId": "dairy",
+    "keywords": [
+      "brown eggs",
+      "brown egg"
+    ]
+  },
+  {
+    "id": "butter",
+    "displayName": "Butter",
+    "assetName": "product-butter",
+    "categoryId": "dairy",
+    "keywords": [
+      "butternut squash",
+      "unsalted butter",
+      "salted butter",
+      "peanut butter",
+      "almond butter",
+      "phool makhana",
+      "margarine",
+      "makhana",
+      "butter",
+      "makhan",
+      "ghee"
+    ]
+  },
+  {
+    "id": "cheese",
+    "displayName": "Cheese",
+    "assetName": "product-cheese",
+    "categoryId": "dairy",
+    "keywords": [
+      "shredded cheese",
+      "cheese crackers",
+      "cottage cheese",
+      "sliced cheese",
+      "string cheese",
+      "paneer masala",
+      "cream cheese",
+      "cheese puffs",
+      "goat cheese",
+      "mozzarella",
+      "parmesan",
+      "cheddar",
+      "cheese",
+      "paneer"
+    ]
+  },
+  {
+    "id": "yogurt",
+    "displayName": "Yogurt",
+    "assetName": "product-yogurt",
+    "categoryId": "dairy",
+    "keywords": [
+      "greek yogurt",
+      "yoghurt",
+      "yogurt",
+      "dahi",
+      "curd"
+    ]
+  },
+  {
+    "id": "bananas",
+    "displayName": "Bananas",
+    "assetName": "product-bananas",
+    "categoryId": "produce",
+    "keywords": [
+      "banana bread",
+      "raw banana",
+      "bananas",
+      "banana"
+    ]
+  },
+  {
+    "id": "apples",
+    "displayName": "Apples",
+    "assetName": "product-apples",
+    "categoryId": "produce",
+    "keywords": [
+      "apple cider vinegar",
+      "custard apple",
+      "green apple",
+      "apple juice",
+      "wood apple",
+      "applesauce",
+      "pineapple",
+      "apples",
+      "apple"
+    ]
+  },
+  {
+    "id": "tomatoes",
+    "displayName": "Tomatoes",
+    "assetName": "product-tomatoes",
+    "categoryId": "produce",
+    "keywords": [
+      "crushed tomatoes",
+      "canned tomatoes",
+      "diced tomatoes",
+      "cherry tomato",
+      "grape tomato",
+      "tomato paste",
+      "tomato sauce",
+      "tomatoes",
+      "tomato"
+    ]
+  },
+  {
+    "id": "onions",
+    "displayName": "Onions",
+    "assetName": "product-onions",
+    "categoryId": "produce",
+    "keywords": [
+      "spring onion",
+      "onion powder",
+      "green onion",
+      "red onion",
+      "scallions",
+      "scallion",
+      "shallots",
+      "shallot",
+      "onions",
+      "onion"
+    ]
+  },
+  {
+    "id": "potatoes",
+    "displayName": "Potatoes",
+    "assetName": "product-potatoes",
+    "categoryId": "produce",
+    "keywords": [
+      "sweet potatoes",
+      "sweet potato",
+      "potato salad",
+      "potatoes",
+      "potato",
+      "aloo"
+    ]
+  },
+  {
+    "id": "cilantro",
+    "displayName": "Cilantro",
+    "assetName": "product-cilantro",
+    "categoryId": "produce",
+    "keywords": [
+      "cilantro",
+      "dhaniya"
+    ]
+  },
+  {
+    "id": "spinach",
+    "displayName": "Spinach",
+    "assetName": "product-spinach",
+    "categoryId": "produce",
+    "keywords": [
+      "baby spinach",
+      "spinach",
+      "palak"
+    ]
+  },
+  {
+    "id": "avocados",
+    "displayName": "Avocados",
+    "assetName": "product-avocados",
+    "categoryId": "produce",
+    "keywords": [
+      "avocado oil",
+      "avocados",
+      "avocado"
+    ]
+  },
+  {
+    "id": "lemons",
+    "displayName": "Lemons",
+    "assetName": "product-lemons",
+    "categoryId": "produce",
+    "keywords": [
+      "lemon pickle",
+      "lemonade",
+      "lemons",
+      "lemon",
+      "limes",
+      "lime"
+    ]
+  },
+  {
+    "id": "bread-loaf",
+    "displayName": "Bread",
+    "assetName": "product-bread-loaf",
+    "categoryId": "bakery",
+    "keywords": [
+      "whole wheat bread",
+      "multigrain bread",
+      "garlic bread",
+      "white bread",
+      "wheat bread",
+      "bread rolls",
+      "breadcrumbs",
+      "sourdough",
+      "rye bread",
+      "cornbread",
+      "bread"
+    ]
+  },
+  {
+    "id": "bagels",
+    "displayName": "Bagels",
+    "assetName": "product-bagels",
+    "categoryId": "bakery",
+    "keywords": [
+      "everything bagel seasoning",
+      "everything bagel",
+      "bagels",
+      "bagel"
+    ]
+  },
+  {
+    "id": "tortillas",
+    "displayName": "Tortillas",
+    "assetName": "product-tortillas",
+    "categoryId": "bakery",
+    "keywords": [
+      "flour tortilla",
+      "corn tortilla",
+      "tortillas",
+      "tortilla",
+      "wraps",
+      "wrap"
+    ]
+  },
+  {
+    "id": "naan",
+    "displayName": "Naan",
+    "assetName": "product-naan",
+    "categoryId": "bakery",
+    "keywords": [
+      "frozen paratha",
+      "garlic naan",
+      "frozen naan",
+      "pita bread",
+      "rotisserie",
+      "flatbread",
+      "chapati",
+      "paratha",
+      "naan",
+      "roti",
+      "pita"
+    ]
+  },
+  {
+    "id": "chicken-breast",
+    "displayName": "Chicken",
+    "assetName": "product-chicken-breast",
+    "categoryId": "meat",
+    "keywords": [
+      "rotisserie chicken",
+      "chicken drumsticks",
+      "chicken tenders",
+      "chicken breast",
+      "chicken thighs",
+      "chicken tender",
+      "sliced chicken",
+      "frozen chicken",
+      "chicken masala",
+      "chicken thigh",
+      "chicken wings",
+      "whole chicken",
+      "chicken broth",
+      "chicken stock",
+      "chicken legs",
+      "chicken",
+      "murgh"
+    ]
+  },
+  {
+    "id": "ground-beef",
+    "displayName": "Ground Beef",
+    "assetName": "product-ground-beef",
+    "categoryId": "meat",
+    "keywords": [
+      "ground beef",
+      "beef stew"
+    ]
+  },
+  {
+    "id": "steak",
+    "displayName": "Steak",
+    "assetName": "product-steak",
+    "categoryId": "meat",
+    "keywords": [
+      "flank steak",
+      "steak sauce",
+      "tuna steak",
+      "sirloin",
+      "ribeye",
+      "steak"
+    ]
+  },
+  {
+    "id": "bacon",
+    "displayName": "Bacon",
+    "assetName": "product-bacon",
+    "categoryId": "meat",
+    "keywords": [
+      "canadian bacon",
+      "turkey bacon",
+      "bacon"
+    ]
+  },
+  {
+    "id": "pork",
+    "displayName": "Pork",
+    "assetName": "product-pork",
+    "categoryId": "meat",
+    "keywords": [
+      "pork tenderloin",
+      "pork chops",
+      "pork belly",
+      "pork chop",
+      "pork loin",
+      "pork"
+    ]
+  },
+  {
+    "id": "salmon",
+    "displayName": "Salmon",
+    "assetName": "product-salmon",
+    "categoryId": "seafood",
+    "keywords": [
+      "salmon fillet",
+      "smoked salmon",
+      "salmon",
+      "lox"
+    ]
+  },
+  {
+    "id": "shrimp",
+    "displayName": "Shrimp",
+    "assetName": "product-shrimp",
+    "categoryId": "seafood",
+    "keywords": [
+      "frozen shrimp",
+      "shrimp",
+      "prawns",
+      "jhinga"
+    ]
+  },
+  {
+    "id": "rice-basmati",
+    "displayName": "Basmati Rice",
+    "assetName": "product-rice-basmati",
+    "categoryId": "pantry",
+    "keywords": [
+      "basmati rice",
+      "basmati"
+    ]
+  },
+  {
+    "id": "rice-white",
+    "displayName": "Rice",
+    "assetName": "product-rice-white",
+    "categoryId": "pantry",
+    "keywords": [
+      "flattened rice",
+      "jasmine rice",
+      "rice noodles",
+      "rice vinegar",
+      "puffed rice",
+      "white rice",
+      "brown rice",
+      "rice cakes",
+      "rice cake",
+      "chawal",
+      "rice"
+    ]
+  },
+  {
+    "id": "pasta",
+    "displayName": "Pasta",
+    "assetName": "product-pasta",
+    "categoryId": "pantry",
+    "keywords": [
+      "spaghetti squash",
+      "macaroni salad",
+      "pasta sauce",
+      "fettuccine",
+      "spaghetti",
+      "macaroni",
+      "linguine",
+      "pasta",
+      "penne"
+    ]
+  },
+  {
+    "id": "flour",
+    "displayName": "Flour",
+    "assetName": "product-flour",
+    "categoryId": "pantry",
+    "keywords": [
+      "water chestnut flour",
+      "all purpose flour",
+      "whole wheat flour",
+      "singhara flour",
+      "coconut flour",
+      "almond flour",
+      "bread flour",
+      "jowar flour",
+      "kadi patta",
+      "gram flour",
+      "rice flour",
+      "ragi flour",
+      "corn flour",
+      "urad flour",
+      "tej patta",
+      "ciabatta",
+      "flour",
+      "maida",
+      "atta"
+    ]
+  },
+  {
+    "id": "olive-oil",
+    "displayName": "Olive Oil",
+    "assetName": "product-olive-oil",
+    "categoryId": "condiments",
+    "keywords": [
+      "extra virgin olive oil",
+      "olive oil"
+    ]
+  },
+  {
+    "id": "gochujang",
+    "displayName": "Gochujang",
+    "assetName": "product-gochujang",
+    "categoryId": "condiments",
+    "keywords": [
+      "gochujang"
+    ]
+  },
+  {
+    "id": "kimchi",
+    "displayName": "Kimchi",
+    "assetName": "product-kimchi",
+    "categoryId": "deli",
+    "keywords": [
+      "kimchi"
+    ]
+  },
+  {
+    "id": "coffee",
+    "displayName": "Coffee",
+    "assetName": "product-coffee",
+    "categoryId": "drinks",
+    "keywords": [
+      "instant coffee",
+      "coffee creamer",
+      "ground coffee",
+      "coffee beans",
+      "espresso",
+      "coffee"
+    ]
+  },
+  {
+    "id": "tea",
+    "displayName": "Tea",
+    "assetName": "product-tea",
+    "categoryId": "drinks",
+    "keywords": [
+      "chai masala",
+      "chai patti",
+      "herbal tea",
+      "tea leaves",
+      "green tea",
+      "black tea",
+      "iced tea",
+      "matcha",
+      "chai",
+      "tea"
+    ]
+  },
+  {
+    "id": "water",
+    "displayName": "Water",
+    "assetName": "product-water",
+    "categoryId": "drinks",
+    "keywords": [
+      "sparkling water",
+      "bottled water",
+      "mineral water",
+      "coconut water",
+      "tonic water",
+      "watermelon",
+      "watercress",
+      "water"
+    ]
+  },
+  {
+    "id": "orange-juice",
+    "displayName": "Orange Juice",
+    "assetName": "product-orange-juice",
+    "categoryId": "drinks",
+    "keywords": [
+      "cranberry juice",
+      "orange juice",
+      "grape juice",
+      "juice boxes",
+      "juice box",
+      "juice"
+    ]
+  },
+  {
+    "id": "ice-cream",
+    "displayName": "Ice Cream",
+    "assetName": "product-ice-cream",
+    "categoryId": "frozen",
+    "keywords": [
+      "ice cream sandwich",
+      "ice cream bars",
+      "frozen yogurt",
+      "ice cream",
+      "gelato",
+      "kulfi"
+    ]
+  },
+  {
+    "id": "frozen-pizza",
+    "displayName": "Frozen Pizza",
+    "assetName": "product-frozen-pizza",
+    "categoryId": "frozen",
+    "keywords": [
+      "frozen pizza",
+      "pizza rolls",
+      "pizza sauce",
+      "pizza"
+    ]
+  },
+  {
+    "id": "chips",
+    "displayName": "Chips",
+    "assetName": "product-chips",
+    "categoryId": "snacks",
+    "keywords": [
+      "tortilla chips",
+      "potato chips",
+      "veggie chips",
+      "corn chips",
+      "pita chips",
+      "chips"
+    ]
+  },
+  {
+    "id": "paper-towels",
+    "displayName": "Paper Towels",
+    "assetName": "product-paper-towels",
+    "categoryId": "household",
+    "keywords": [
+      "paper towels",
+      "paper towel"
+    ]
+  },
+  {
+    "id": "toilet-paper",
+    "displayName": "Toilet Paper",
+    "assetName": "product-toilet-paper",
+    "categoryId": "household",
+    "keywords": [
+      "toilet paper",
+      "bath tissue"
+    ]
+  },
+  {
+    "id": "dish-soap",
+    "displayName": "Dish Soap",
+    "assetName": "product-dish-soap",
+    "categoryId": "household",
+    "keywords": [
+      "dishwashing liquid",
+      "dish soap",
+      "dawn"
+    ]
+  },
+  {
+    "id": "diapers",
+    "displayName": "Diapers",
+    "assetName": "product-diapers",
+    "categoryId": "baby",
+    "keywords": [
+      "diaper cream",
+      "pull-ups",
+      "diapers",
+      "diaper",
+      "nappy"
+    ]
+  },
+  {
+    "id": "dog-food",
+    "displayName": "Dog Food",
+    "assetName": "product-dog-food",
+    "categoryId": "pet",
+    "keywords": [
+      "dog food",
+      "pet food",
+      "kibble"
+    ]
+  }
+]
