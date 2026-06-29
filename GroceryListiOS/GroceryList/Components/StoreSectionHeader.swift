@@ -7,7 +7,7 @@ struct StoreSectionHeader: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            StoreLogoView(storeId: storeId, displayLabel: label, size: 36, cornerRadius: 10)
+            StoreLogoView(storeId: storeId, displayLabel: label, size: 44, cornerRadius: 11)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(label)

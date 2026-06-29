@@ -19,24 +19,28 @@ struct ShareActiveListView: View {
         ShareTextFormatter.format(list: list)
     }
 
+    private var itemCountText: String {
+        "\(shareItems.count) item\(shareItems.count == 1 ? "" : "s")"
+    }
+
     private var isEmpty: Bool {
         shareItems.isEmpty
     }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 16) {
                 if isEmpty {
                     emptyState
                 } else {
-                    heroSection
-                    actionButtons
-                    explanation
+                    listSummaryCard
+                    qrCodeCard
+                    actionCard
                 }
             }
-            .padding(AppSpacing.screenHorizontal)
             .padding(.vertical, 16)
             .padding(.bottom, 8)
+            .adaptiveScreenContent()
         }
         .background(AppColors.backgroundGrouped)
         .navigationTitle("Share Active List")
@@ -74,37 +78,48 @@ struct ShareActiveListView: View {
         .padding(.top, 40)
     }
 
-    private var heroSection: some View {
-        VStack(spacing: 16) {
-            VStack(spacing: 6) {
-                Text(list.name)
-                    .font(AppTypography.onboardingTitle)
-                    .foregroundStyle(AppColors.ink)
-                    .multilineTextAlignment(.center)
+    private var listSummaryCard: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: "list.bullet.rectangle")
+                    .font(.system(size: 22, weight: .semibold))
+                    .foregroundStyle(AppColors.accentPrimary)
+                    .frame(width: 38, height: 38)
+                    .background(AppColors.accentPrimary.opacity(0.12))
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
 
-                Text("\(shareItems.count) item\(shareItems.count == 1 ? "" : "s")")
-                    .font(AppTypography.metadata)
-                    .foregroundStyle(AppColors.inkSecondary)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(list.name)
+                        .font(AppTypography.cardTitle)
+                        .foregroundStyle(AppColors.ink)
+                        .lineLimit(2)
 
-                Text("No account required. The other person gets their own copy.")
-                    .font(AppTypography.caption)
-                    .foregroundStyle(AppColors.inkSecondary)
-                    .multilineTextAlignment(.center)
+                    Text(itemCountText)
+                        .font(AppTypography.metadata)
+                        .foregroundStyle(AppColors.inkSecondary)
+                }
+
+                Spacer(minLength: 0)
             }
 
-            if let code = shareCode, let image = QRCodeGenerator.image(for: code, dimension: 240) {
+            Text("The other person gets their own copy.")
+                .font(AppTypography.caption)
+                .foregroundStyle(AppColors.inkSecondary)
+        }
+        .appCard()
+    }
+
+    private var qrCodeCard: some View {
+        VStack(spacing: 14) {
+            if let code = shareCode, let image = QRCodeGenerator.image(for: code, dimension: 260) {
                 Image(uiImage: image)
                     .interpolation(.none)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 240, height: 240)
-                    .padding(16)
-                    .background(AppColors.backgroundPrimary)
-                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .stroke(AppColors.cardBorder, lineWidth: 1)
-                    )
+                    .frame(width: 250, height: 250)
+                    .padding(14)
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     .accessibilityLabel("QR code for \(list.name)")
                     .accessibilityHint("Scan on another iPhone to import this list")
             }
@@ -115,19 +130,19 @@ struct ShareActiveListView: View {
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
+        .appCard()
     }
 
     @ViewBuilder
-    private var actionButtons: some View {
+    private var actionCard: some View {
         if let code = shareCode {
-            VStack(spacing: 10) {
+            VStack(spacing: 12) {
                 ShareLink(
-                    item: shareText,
-                    subject: Text(list.name),
-                    message: Text(code)
+                    item: "\(shareText)\n\nImport code:\n\(code)",
+                    subject: Text(list.name)
                 ) {
                     HStack(spacing: 8) {
-                        Image(systemName: "square.and.arrow.up.fill")
+                        Image(systemName: "square.and.arrow.up")
                         Text("Share List")
                     }
                 }
@@ -140,16 +155,15 @@ struct ShareActiveListView: View {
                 .font(AppTypography.button)
                 .foregroundStyle(AppColors.accentPrimary)
                 .accessibilityLabel("Copy shared list code")
-            }
-        }
-    }
 
-    private var explanation: some View {
-        Text("Show this QR code to someone nearby, or send the list through Messages, AirDrop, WhatsApp, or email.")
-            .font(AppTypography.caption)
-            .foregroundStyle(AppColors.inkSecondary)
-            .multilineTextAlignment(.center)
-            .padding(.top, 4)
+                Text("Share through Messages, AirDrop, WhatsApp, or email.")
+                    .font(AppTypography.caption)
+                    .foregroundStyle(AppColors.inkSecondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 2)
+            }
+            .appCard()
+        }
     }
 
     private func copyCode(_ code: String) {

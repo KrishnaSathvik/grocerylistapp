@@ -17,7 +17,7 @@ enum ListImportService {
             sortOrder += 1
         }
         list.updatedAt = .now
-        try? context.save()
+        PersistenceService.save(context: context, operation: "add imported items")
     }
 
     static func replaceItems(
@@ -37,7 +37,7 @@ enum ListImportService {
             list.items.append(item)
         }
         list.updatedAt = .now
-        try? context.save()
+        PersistenceService.save(context: context, operation: "replace imported items")
     }
 
     private static func makeItem(
@@ -50,12 +50,14 @@ enum ListImportService {
             name: entry.name,
             normalizedName: normalized,
             quantityValue: entry.quantityValue,
+            quantityText: entry.quantityText,
             categoryId: entry.categoryId,
             storeId: entry.storeId,
             isCompleted: entry.isCompleted,
             iconName: ItemEmojiCatalog.emoji(for: normalized),
             imageAssetName: ProductImageCatalog.assetName(for: normalized),
             sortOrder: sortOrder,
+            notes: entry.notes,
             completedAt: entry.isCompleted ? .now : nil,
             list: list
         )

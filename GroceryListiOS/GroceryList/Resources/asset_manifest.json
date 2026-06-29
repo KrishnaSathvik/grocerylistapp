@@ -120,6 +120,14 @@
     "prompt": "dog food bag and pet treats grouped, soft 3D illustration, transparent background"
   },
   {
+    "assetName": "category-floral",
+    "type": "category",
+    "categoryId": "floral",
+    "displayName": "Floral",
+    "priority": 1,
+    "prompt": "fresh flower bouquet with roses and tulips grouped, soft 3D illustration, transparent background"
+  },
+  {
     "assetName": "category-misc",
     "type": "category",
     "categoryId": "misc",
@@ -558,5 +566,140 @@
     "displayName": "Dog Food",
     "priority": 3,
     "prompt": "dog food, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-flowers",
+    "type": "product",
+    "productId": "flowers",
+    "categoryId": "floral",
+    "displayName": "Flowers",
+    "priority": 3,
+    "prompt": "flowers, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-cereal",
+    "type": "product",
+    "productId": "cereal",
+    "categoryId": "pantry",
+    "displayName": "Cereal",
+    "priority": 3,
+    "prompt": "cereal, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-lettuce",
+    "type": "product",
+    "productId": "lettuce",
+    "categoryId": "produce",
+    "displayName": "Lettuce",
+    "priority": 3,
+    "prompt": "lettuce, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-soup",
+    "type": "product",
+    "productId": "soup",
+    "categoryId": "pantry",
+    "displayName": "Soup",
+    "priority": 3,
+    "prompt": "soup, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-toothpaste",
+    "type": "product",
+    "productId": "toothpaste",
+    "categoryId": "health",
+    "displayName": "Toothpaste",
+    "priority": 3,
+    "prompt": "toothpaste, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-shampoo",
+    "type": "product",
+    "productId": "shampoo",
+    "categoryId": "health",
+    "displayName": "Shampoo",
+    "priority": 3,
+    "prompt": "shampoo, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-sausage",
+    "type": "product",
+    "productId": "sausage",
+    "categoryId": "meat",
+    "displayName": "Sausage",
+    "priority": 3,
+    "prompt": "sausage, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-cat-food",
+    "type": "product",
+    "productId": "cat-food",
+    "categoryId": "pet",
+    "displayName": "Cat Food",
+    "priority": 3,
+    "prompt": "cat food, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-peanut-butter",
+    "type": "product",
+    "productId": "peanut-butter",
+    "categoryId": "pantry",
+    "displayName": "Peanut Butter",
+    "priority": 3,
+    "prompt": "peanut butter, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-granola-bars",
+    "type": "product",
+    "productId": "granola-bars",
+    "categoryId": "snacks",
+    "displayName": "Granola Bars",
+    "priority": 3,
+    "prompt": "granola bars, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-ground-turkey",
+    "type": "product",
+    "productId": "ground-turkey",
+    "categoryId": "meat",
+    "displayName": "Ground Turkey",
+    "priority": 3,
+    "prompt": "ground turkey, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-beer",
+    "type": "product",
+    "productId": "beer",
+    "categoryId": "drinks",
+    "displayName": "Beer",
+    "priority": 3,
+    "prompt": "beer, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-hummus",
+    "type": "product",
+    "productId": "hummus",
+    "categoryId": "deli",
+    "displayName": "Hummus",
+    "priority": 3,
+    "prompt": "hummus, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-frozen-vegetables",
+    "type": "product",
+    "productId": "frozen-vegetables",
+    "categoryId": "frozen",
+    "displayName": "Frozen Vegetables",
+    "priority": 3,
+    "prompt": "frozen vegetables, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+  },
+  {
+    "assetName": "product-baby-wipes",
+    "type": "product",
+    "productId": "baby-wipes",
+    "categoryId": "baby",
+    "displayName": "Baby Wipes",
+    "priority": 3,
+    "prompt": "baby wipes, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
   }
 ]

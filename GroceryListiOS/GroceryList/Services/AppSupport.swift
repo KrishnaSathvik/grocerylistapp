@@ -3,7 +3,9 @@ import UIKit
 
 enum AppSupport {
     static var feedbackEmail: String { AppConfig.feedbackEmail }
+    static var marketingPageURL: URL? { AppConfig.marketingPageURL }
     static var privacyPolicyURL: URL? { AppConfig.privacyPolicyURL }
+    static var supportPageURL: URL? { AppConfig.supportPageURL }
 
     static var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
@@ -39,6 +41,7 @@ enum AppSupport {
 }
 
 enum FeedbackType: String, CaseIterable, Identifiable {
+    case support = "Support"
     case bugReport = "Bug Report"
     case featureIdea = "Feature Idea"
     case general = "General Feedback"
@@ -46,6 +49,11 @@ enum FeedbackType: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 
     var emailSubject: String {
-        "Grocery List Feedback — \(rawValue)"
+        switch self {
+        case .support:
+            return "Grocery List Support"
+        default:
+            return "Grocery List Feedback — \(rawValue)"
+        }
     }
 }

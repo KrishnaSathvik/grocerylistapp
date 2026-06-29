@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery List — Dead-simple grocery lists for real life</title>
+    <meta
+      name="description"
+      content="Create grocery lists, organize by store or category, and share them in seconds. No account required. Private by design."
+    />
+    <link rel="canonical" href="https://grocerylistapp.vercel.app/home" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://grocerylistapp.vercel.app/home" />
+    <meta property="og:title" content="Grocery List — Dead-simple grocery lists for real life" />
+    <meta
+      property="og:description"
+      content="Plan shopping trips without clutter, accounts, or complicated setup."
+    />
+    <meta property="og:image" content="https://grocerylistapp.vercel.app/og-image.png?v=3" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/marketing/marketing.css" />
+    <link rel="stylesheet" href="/marketing/demo-screens.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="/home">
+          <img class="brand__icon" src="/marketing/images/app-icon.png" alt="" width="36" height="36" />
+          <span class="brand__name">Grocery List</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a class="site-nav__link" href="#features">Features</a>
+          <a class="site-nav__link" href="#how-it-works">How it works</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <span class="hero__eyebrow">
+              <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+              iOS app · No account required
+            </span>
+            <h1 class="hero__title">Grocery lists that just work</h1>
+            <p class="hero__subtitle">
+              Add items naturally, organize by store or category, and share in seconds — without clutter or complicated setup.
+            </p>
+            <div class="hero__actions" id="download">
+              <a
+                class="app-store-badge app-store-badge--soon"
+                href="#"
+                aria-label="Download on the App Store — coming soon"
+                title="Coming soon to the App Store"
+              >
+                <img
+                  src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+                  alt="Download on the App Store"
+                  width="150"
+                  height="50"
+                />
+              </a>
+              <a class="btn btn--ghost" href="#how-it-works">See how it works</a>
+            </div>
+            <ul class="hero__stats" aria-label="Highlights">
+              <li><strong>Local-first</strong><span>Data stays on device</span></li>
+              <li><strong>Smart input</strong><span>Quantities &amp; stores detected</span></li>
+              <li><strong>Share instantly</strong><span>QR or text export</span></li>
+            </ul>
+          </div>
+          <div class="hero__visuals" aria-hidden="true">
+            <div class="hero__phones">
+              <img
+                class="hero__phone hero__phone--left"
+                src="/marketing/images/onboarding_add_naturally.png"
+                alt=""
+                width="200"
+                height="433"
+              />
+              <img
+                class="hero__phone hero__phone--center"
+                src="/marketing/images/onboarding_shop_smarter.png"
+                alt=""
+                width="240"
+                height="520"
+              />
+              <img
+                class="hero__phone hero__phone--right"
+                src="/marketing/images/onboarding_every_view.png"
+                alt=""
+                width="200"
+                height="433"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="features">
+        <div class="container">
+          <header class="section__header">
+            <p class="section__kicker">Why it feels easy</p>
+            <h2 class="section__title">Built for real grocery runs</h2>
+            <p class="section__lead">Simple by design — not another complicated productivity app.</p>
+          </header>
+          <div class="bento">
+            <article class="bento__card bento__card--wide">
+              <div class="bento__icon" aria-hidden="true">✨</div>
+              <h3 class="bento__title">Quick to add</h3>
+              <p class="bento__body">
+                Type naturally — quantities, stores, and categories are detected for you. No rigid fields or formatting rules.
+              </p>
+            </article>
+            <article class="bento__card">
+              <div class="bento__icon" aria-hidden="true">📋</div>
+              <h3 class="bento__title">Easy to organize</h3>
+              <p class="bento__body">
+                View by list, store, or category. Switch views anytime without reorganizing anything.
+              </p>
+            </article>
+            <article class="bento__card">
+              <div class="bento__icon" aria-hidden="true">↗️</div>
+              <h3 class="bento__title">Easy to share</h3>
+              <p class="bento__body">
+                Share with a QR code or text. The other person imports their own copy — no account needed.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <header class="section__header section__header--left">
+            <p class="section__kicker">Everyday shopping</p>
+            <h2 class="section__title">Everything you need, nothing you don’t</h2>
+          </header>
+          <div class="benefit-grid">
+            <div class="benefit-pill">
+              <span class="benefit-pill__check" aria-hidden="true">✓</span>
+              <p class="benefit-pill__text">Plan your weekly list</p>
+            </div>
+            <div class="benefit-pill">
+              <span class="benefit-pill__check" aria-hidden="true">✓</span>
+              <p class="benefit-pill__text">Shop by store</p>
+            </div>
+            <div class="benefit-pill">
+              <span class="benefit-pill__check" aria-hidden="true">✓</span>
+              <p class="benefit-pill__text">Browse by category</p>
+            </div>
+            <div class="benefit-pill">
+              <span class="benefit-pill__check" aria-hidden="true">✓</span>
+              <p class="benefit-pill__text">Track what you picked up</p>
+            </div>
+            <div class="benefit-pill">
+              <span class="benefit-pill__check" aria-hidden="true">✓</span>
+              <p class="benefit-pill__text">Reorder categories for your route</p>
+            </div>
+            <div class="benefit-pill">
+              <span class="benefit-pill__check" aria-hidden="true">✓</span>
+              <p class="benefit-pill__text">Share with family or roommates</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="how-it-works">
+        <div class="container">
+          <header class="section__header">
+            <p class="section__kicker">How it works</p>
+            <h2 class="section__title">Three steps to done shopping</h2>
+            <p class="section__lead">From empty list to checked-off cart in minutes.</p>
+          </header>
+          <div class="steps">
+            <article class="step">
+              <span class="step__number" aria-hidden="true">1</span>
+              <div>
+                <h3 class="step__title">Create a list</h3>
+                <p class="step__body">Start in seconds. No sign-up, no onboarding forms.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span class="step__number" aria-hidden="true">2</span>
+              <div>
+                <h3 class="step__title">Organize automatically</h3>
+                <p class="step__body">Sort by store or category. The app keeps everything tidy as you add.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span class="step__number" aria-hidden="true">3</span>
+              <div>
+                <h3 class="step__title">Shop and share</h3>
+                <p class="step__body">Check things off while you shop, or send the list to someone else in a tap.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--showcase">
+        <div class="container">
+          <header class="section__header">
+            <p class="section__kicker">See it in action</p>
+            <h2 class="section__title">Calm, clean, and made for your phone</h2>
+            <p class="section__lead">The same thoughtful experience from first launch through every trip.</p>
+          </header>
+
+          <div class="feature-row">
+            <div class="feature-row__content">
+              <span class="feature-row__label">Smart input</span>
+              <h3 class="feature-row__title">Add naturally</h3>
+              <p class="feature-row__body">
+                Type “2 eggs from Walmart” and the app detects the item, quantity, category, and store — so you focus on what you need, not formatting.
+              </p>
+            </div>
+            <div class="feature-row__media feature-row__media--demo">
+                <div class="phone-demo" data-demo="add" aria-label="Interactive demo: add items naturally">
+                  <div class="phone-demo__bezel">
+                    <div class="phone-demo__notch" aria-hidden="true"></div>
+                    <div class="phone-demo__screen">
+                      <div class="phone-demo__status" aria-hidden="true"><span>9:41</span><span>▮▮▮</span></div>
+                      <div class="phone-demo__content">
+                        <div class="demo-list-header">
+                          <span class="demo-list-header__btn" aria-hidden="true">‹</span>
+                          <div class="demo-list-header__title">Weekly Groceries <span>⌄</span></div>
+                          <span class="demo-list-header__btn" aria-hidden="true">⋯</span>
+                        </div>
+                        <div class="demo-add-wrap">
+                          <div class="demo-add-bar">
+                            <span class="demo-add-bar__plus" aria-hidden="true">⊕</span>
+                            <span class="demo-add-bar__input is-placeholder" data-demo-input>Add item…</span>
+                            <span class="demo-add-bar__submit" data-demo-submit aria-hidden="true">+</span>
+                          </div>
+                          <p class="demo-helper" data-demo-helper>Try “2 eggs from Walmart”</p>
+                          <p class="demo-detection" data-demo-detection>Will add: <strong>2 Eggs · Dairy · Walmart</strong></p>
+                        </div>
+                        <div class="demo-scroll">
+                          <p class="demo-section-head">To Get (2)</p>
+                          <div class="demo-item-stack" data-demo-stack>
+                            <div class="demo-item-card">
+                              <button class="demo-check" type="button" aria-label="Mark complete"><span class="demo-check__ring"></span></button>
+                              <img class="demo-thumb" src="/marketing/demo/product-bananas.png" alt="" width="38" height="38" />
+                              <div class="demo-item-main">
+                                <div class="demo-item-name">Bananas</div>
+                                <div class="demo-item-meta">Produce</div>
+                              </div>
+                              <div class="demo-item-actions">
+                                <div class="demo-stepper"><span class="demo-stepper__btn">−</span><span class="demo-stepper__val">1</span><span class="demo-stepper__btn">+</span></div>
+                                <button class="demo-edit" type="button" aria-label="Edit item">✎</button>
+                              </div>
+                            </div>
+                            <div class="demo-item-card">
+                              <button class="demo-check" type="button" aria-label="Mark complete"><span class="demo-check__ring"></span></button>
+                              <img class="demo-thumb" src="/marketing/demo/product-milk-whole.png" alt="" width="38" height="38" />
+                              <div class="demo-item-main">
+                                <div class="demo-item-name">Milk</div>
+                                <div class="demo-item-meta">Dairy · Costco</div>
+                              </div>
+                              <div class="demo-item-actions">
+                                <div class="demo-stepper"><span class="demo-stepper__btn">−</span><span class="demo-stepper__val">1</span><span class="demo-stepper__btn">+</span></div>
+                                <button class="demo-edit" type="button" aria-label="Edit item">✎</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="phone-demo__home-indicator" aria-hidden="true"></div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="feature-row feature-row--reverse">
+            <div class="feature-row__content">
+              <span class="feature-row__label">Every view</span>
+              <h3 class="feature-row__title">Lists, stores, and categories</h3>
+              <p class="feature-row__body">
+                Switch between list, store, and category views without reorganizing anything. Shop the way that fits your trip.
+              </p>
+            </div>
+            <div class="feature-row__media feature-row__media--demo">
+                <div class="phone-demo" data-demo="views" aria-label="Interactive demo: list, store, and category tabs">
+                  <div class="phone-demo__bezel">
+                    <div class="phone-demo__notch" aria-hidden="true"></div>
+                    <div class="phone-demo__screen">
+                      <div class="phone-demo__status" aria-hidden="true"><span>9:41</span><span>▮▮▮</span></div>
+                      <div class="phone-demo__content">
+                        <div class="demo-screen-panel is-active" data-demo-screen="list">
+                          <div class="demo-list-header">
+                            <span class="demo-list-header__btn" aria-hidden="true">‹</span>
+                            <div class="demo-list-header__title">Weekly Groceries <span>⌄</span></div>
+                            <span class="demo-list-header__btn" aria-hidden="true">⋯</span>
+                          </div>
+                          <div class="demo-add-wrap">
+                            <div class="demo-add-bar">
+                              <span class="demo-add-bar__plus" aria-hidden="true">⊕</span>
+                              <span class="demo-add-bar__input is-placeholder">Add item…</span>
+                            </div>
+                          </div>
+                          <div class="demo-scroll">
+                            <p class="demo-section-head">To Get (3)</p>
+                            <div class="demo-item-stack">
+                              <div class="demo-item-card">
+                                <button class="demo-check" type="button" aria-label="Mark complete"><span class="demo-check__ring"></span></button>
+                                <img class="demo-thumb" src="/marketing/demo/product-spinach.png" alt="" width="38" height="38" />
+                                <div class="demo-item-main"><div class="demo-item-name">Spinach</div><div class="demo-item-meta">Produce</div></div>
+                                <div class="demo-item-actions">
+                                  <div class="demo-stepper"><span class="demo-stepper__btn">−</span><span class="demo-stepper__val">1</span><span class="demo-stepper__btn">+</span></div>
+                                  <button class="demo-edit" type="button" aria-label="Edit item">✎</button>
+                                </div>
+                              </div>
+                              <div class="demo-item-card">
+                                <button class="demo-check" type="button" aria-label="Mark complete"><span class="demo-check__ring"></span></button>
+                                <img class="demo-thumb" src="/marketing/demo/product-eggs-brown.png" alt="" width="38" height="38" />
+                                <div class="demo-item-main"><div class="demo-item-name">Eggs</div><div class="demo-item-meta">Dairy · Walmart</div></div>
+                                <div class="demo-item-actions">
+                                  <div class="demo-stepper"><span class="demo-stepper__btn">−</span><span class="demo-stepper__val">2</span><span class="demo-stepper__btn">+</span></div>
+                                  <button class="demo-edit" type="button" aria-label="Edit item">✎</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="demo-screen-panel" data-demo-screen="store">
+                          <h2 class="demo-large-title">Store</h2>
+                          <p class="demo-large-sub">See what to buy from each store.</p>
+                          <div class="demo-browse-toolbar">
+                            <span class="demo-browse-toolbar__label">Stores</span>
+                            <span class="demo-browse-toolbar__btn">+ Add Store</span>
+                          </div>
+                          <div class="demo-scroll">
+                            <div class="demo-group-card">
+                              <div class="demo-group-head">
+                                <img class="demo-group-logo" src="/marketing/demo/store-walmart.png" alt="" width="44" height="44" />
+                                <div class="demo-group-main">
+                                  <div class="demo-group-title">Walmart</div>
+                                  <div class="demo-group-sub">1 to buy · 0 picked up</div>
+                                  <div class="demo-progress"><div class="demo-progress__fill" style="width: 0%"></div></div>
+                                </div>
+                                <span class="demo-chevron">›</span>
+                              </div>
+                              <div class="demo-group-divider"></div>
+                              <div class="demo-group-row"><span class="demo-group-row__name">Eggs</span><span class="demo-group-row__meta">2 · Dairy</span></div>
+                            </div>
+                            <div class="demo-group-card">
+                              <div class="demo-group-head">
+                                <img class="demo-group-logo" src="/marketing/demo/store-costco.png" alt="" width="44" height="44" />
+                                <div class="demo-group-main">
+                                  <div class="demo-group-title">Costco</div>
+                                  <div class="demo-group-sub">1 to buy · 0 picked up</div>
+                                  <div class="demo-progress"><div class="demo-progress__fill" style="width: 0%"></div></div>
+                                </div>
+                                <span class="demo-chevron">›</span>
+                              </div>
+                              <div class="demo-group-divider"></div>
+                              <div class="demo-group-row"><span class="demo-group-row__name">Milk</span><span class="demo-group-row__meta">1 · Dairy</span></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="demo-screen-panel" data-demo-screen="categories">
+                          <h2 class="demo-large-title">Categories</h2>
+                          <p class="demo-large-sub">Browse your list by grocery aisle or item type.</p>
+                          <div class="demo-browse-toolbar">
+                            <span class="demo-browse-toolbar__label">Categories</span>
+                            <span class="demo-browse-toolbar__btn">+ Add Category</span>
+                          </div>
+                          <div class="demo-scroll">
+                            <div class="demo-group-card">
+                              <div class="demo-group-head">
+                                <img class="demo-group-icon" src="/marketing/demo/category-produce.png" alt="" width="44" height="44" />
+                                <div class="demo-group-main">
+                                  <div class="demo-group-title">Produce</div>
+                                  <div class="demo-group-sub">1 to buy · 0 picked up</div>
+                                  <div class="demo-progress"><div class="demo-progress__fill" style="width: 0%"></div></div>
+                                </div>
+                                <span class="demo-chevron">›</span>
+                              </div>
+                              <div class="demo-group-divider"></div>
+                              <div class="demo-group-row"><span class="demo-group-row__name">Spinach</span><span class="demo-group-row__meta">1 · No store</span></div>
+                            </div>
+                            <div class="demo-group-card">
+                              <div class="demo-group-head">
+                                <img class="demo-group-icon" src="/marketing/demo/category-dairy.png" alt="" width="44" height="44" />
+                                <div class="demo-group-main">
+                                  <div class="demo-group-title">Dairy</div>
+                                  <div class="demo-group-sub">2 to buy · 0 picked up</div>
+                                  <div class="demo-progress"><div class="demo-progress__fill" style="width: 0%"></div></div>
+                                </div>
+                                <span class="demo-chevron">›</span>
+                              </div>
+                              <div class="demo-group-divider"></div>
+                              <div class="demo-group-row"><span class="demo-group-row__name">Eggs</span><span class="demo-group-row__meta">2 · Walmart</span></div>
+                              <div class="demo-group-row"><span class="demo-group-row__name">Milk</span><span class="demo-group-row__meta">1 · Costco</span></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="demo-tabs demo-tabs--hidden" data-demo-tabs>
+                          <button class="demo-tab demo-tab--active" type="button" data-demo-tab="list"><span class="demo-tab__icon" aria-hidden="true">☰</span>Lists</button>
+                          <button class="demo-tab" type="button" data-demo-tab="store"><span class="demo-tab__icon" aria-hidden="true">🏬</span>Store</button>
+                          <button class="demo-tab" type="button" data-demo-tab="categories"><span class="demo-tab__icon" aria-hidden="true">▦</span>Categories</button>
+                          <button class="demo-tab" type="button" data-demo-tab="more"><span class="demo-tab__icon" aria-hidden="true">⚙</span>More</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="phone-demo__home-indicator" aria-hidden="true"></div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature-row__content">
+              <span class="feature-row__label">Sharing</span>
+              <h3 class="feature-row__title">Share anywhere</h3>
+              <p class="feature-row__body">
+                Send lists to family or import them back. Works offline — each person gets their own copy on their device.
+              </p>
+            </div>
+            <div class="feature-row__media feature-row__media--demo">
+                <div class="phone-demo" data-demo="share" aria-label="Interactive demo: share and import grocery lists">
+                  <div class="phone-demo__bezel">
+                    <div class="phone-demo__notch" aria-hidden="true"></div>
+                    <div class="phone-demo__screen phone-demo__screen--share">
+                      <div class="phone-demo__status" aria-hidden="true"><span>9:41</span><span>▮▮▮</span></div>
+                      <div class="phone-demo__content phone-demo__content--share">
+                        <div class="demo-share-panels">
+                          <div class="demo-share-panel is-active" data-demo-share-screen="share">
+                            <div class="demo-ios-nav" aria-hidden="true">
+                              <span class="demo-ios-nav__back">
+                                <svg width="10" height="18" viewBox="0 0 10 18" fill="none" aria-hidden="true">
+                                  <path d="M9 1L1 9l8 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                              </span>
+                              <h2 class="demo-ios-nav__title">Share Active List</h2>
+                              <span class="demo-ios-nav__spacer" aria-hidden="true"></span>
+                            </div>
+                            <div class="demo-share-body">
+                              <div class="demo-share-active-stack">
+                                <div class="demo-app-card demo-share-list-card">
+                                  <div class="demo-share-list-card__row">
+                                    <div class="demo-share-list-card__icon" aria-hidden="true">
+                                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                                        <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                                      </svg>
+                                    </div>
+                                    <div class="demo-share-list-card__text">
+                                      <div class="demo-share-list-card__name">Weekly Groceries</div>
+                                      <div class="demo-share-list-card__count">3 items</div>
+                                    </div>
+                                  </div>
+                                  <p class="demo-share-list-card__note">The other person gets their own copy.</p>
+                                </div>
+
+                                <div class="demo-app-card demo-share-qr-card">
+                                  <div class="demo-share-qr-wrap">
+                                    <img
+                                      class="demo-share-qr-img"
+                                      src="/marketing/demo/share-qr.svg"
+                                      alt=""
+                                      width="220"
+                                      height="220"
+                                      decoding="async"
+                                    />
+                                  </div>
+                                  <p class="demo-share-qr-caption">Scan this code on another iPhone to import the list.</p>
+                                </div>
+
+                                <div class="demo-app-card demo-share-actions-card">
+                                  <button class="demo-primary-btn" type="button">
+                                    <svg class="demo-primary-btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                                      <polyline points="16 6 12 2 8 6" />
+                                      <line x1="12" y1="2" x2="12" y2="15" />
+                                    </svg>
+                                    Share List
+                                  </button>
+                                  <button class="demo-text-btn" type="button">Copy Code</button>
+                                  <p class="demo-share-actions-card__footer">Share through Messages, AirDrop, WhatsApp, or email.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="demo-share-panel" data-demo-share-screen="import">
+                            <div class="demo-ios-nav" aria-hidden="true">
+                              <span class="demo-ios-nav__back">
+                                <svg width="10" height="18" viewBox="0 0 10 18" fill="none" aria-hidden="true">
+                                  <path d="M9 1L1 9l8 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                              </span>
+                              <h2 class="demo-ios-nav__title">Import Shared List</h2>
+                              <span class="demo-ios-nav__spacer" aria-hidden="true"></span>
+                            </div>
+                            <div class="demo-share-body">
+                              <div class="demo-import-stack">
+                                <p class="demo-import-lead">Bring in a grocery list someone shared with you.</p>
+
+                                <div class="demo-app-card demo-import-scan-card">
+                                  <div class="demo-import-scan-card__icon demo-import-scan-card__icon--green" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                      <rect x="3" y="3" width="7" height="7" rx="1" />
+                                      <rect x="14" y="3" width="7" height="7" rx="1" />
+                                      <rect x="3" y="14" width="7" height="7" rx="1" />
+                                      <rect x="14" y="14" width="3" height="3" />
+                                    </svg>
+                                  </div>
+                                  <div class="demo-import-scan-card__text">
+                                    <div class="demo-import-scan-card__title">Scan QR Code</div>
+                                    <div class="demo-import-scan-card__subtitle">Use your camera to scan a Grocery List code.</div>
+                                  </div>
+                                  <span class="demo-import-chevron" aria-hidden="true">›</span>
+                                </div>
+
+                                <div class="demo-app-card demo-import-paste-card">
+                                  <div class="demo-import-paste-card__header">
+                                    <div class="demo-import-paste-card__icon" aria-hidden="true">
+                                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="8" y="2" width="8" height="4" rx="1" />
+                                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                                      </svg>
+                                    </div>
+                                    <div>
+                                      <div class="demo-import-paste-card__title">Paste Shared Code</div>
+                                      <div class="demo-import-paste-card__subtitle">Paste a code from Messages, WhatsApp, or email.</div>
+                                    </div>
+                                  </div>
+                                  <div class="demo-import-field" aria-hidden="true">Paste shared code here</div>
+                                  <button class="demo-text-btn demo-text-btn--left" type="button">Paste from Clipboard</button>
+                                  <button class="demo-primary-btn demo-primary-btn--disabled" type="button" disabled>Import List</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="phone-demo__home-indicator" aria-hidden="true"></div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt">
+        <div class="container">
+          <div class="trust-box">
+            <div class="trust-box__icon" aria-hidden="true">🔒</div>
+            <h2 class="trust-box__title">Private by design</h2>
+            <p class="trust-box__body">
+              No account required. Your grocery lists stay on your device. Shared lists are only sent when you choose — and the recipient gets their own copy.
+            </p>
+            <a class="trust-box__link" href="/privacy">Read our privacy policy →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-section__glow" aria-hidden="true"></div>
+        <div class="container cta-section__inner">
+          <h2 class="cta-section__title">Ready to make grocery shopping easier?</h2>
+          <p class="cta-section__body">Download Grocery List on the App Store.</p>
+          <a
+            class="app-store-badge app-store-badge--soon"
+            href="#"
+            aria-label="Download on the App Store — coming soon"
+            title="Coming soon to the App Store"
+          >
+            <img
+              src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83"
+              alt="Download on the App Store"
+              width="150"
+              height="50"
+            />
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <a class="brand brand--footer" href="/home">
+          <img class="brand__icon" src="/marketing/images/app-icon.png" alt="" width="32" height="32" />
+          <span class="brand__name">Grocery List</span>
+        </a>
+        <nav class="site-footer__links" aria-label="Footer">
+          <a href="/support">Support</a>
+          <a href="/privacy">Privacy Policy</a>
+        </nav>
+        <p class="site-footer__copy">© 2026 Grocery List</p>
+      </div>
+    </footer>
+    <script src="/marketing/demo-screens.js" defer></script>
+  </body>
+</html>

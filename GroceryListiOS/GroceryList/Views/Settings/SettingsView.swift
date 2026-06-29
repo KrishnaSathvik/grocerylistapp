@@ -10,11 +10,10 @@ struct SettingsView: View {
 
     @AppStorage(AppSettings.Keys.enableHaptics) private var enableHaptics = true
     @AppStorage(AppSettings.Keys.preferredColorScheme) private var colorSchemeRaw = AppColorSchemePreference.system.rawValue
-    @AppStorage(AppSettings.Keys.hasCompletedOnboarding) private var hasCompletedOnboarding = true
 
     @State private var showAbout = false
     @State private var showFeedback = false
-    @State private var showPrivacyPolicy = false
+    @State private var showPrivacyPolicySafari = false
     @State private var statusMessage: String?
 
     private var activeList: GroceryList? {
@@ -28,23 +27,41 @@ struct SettingsView: View {
         )
     }
 
+    private var sectionGap: some View {
+        Spacer(minLength: AppSpacing.settingsSectionSpacing)
+    }
+
     var body: some View {
         NavigationStack {
             TopLevelTabScreen(
                 title: "More",
-                subtitle: "Preferences, sharing, and app info"
+                subtitle: "Customize your app, share lists, and get help."
             ) {
-                ScrollView {
-                    VStack(spacing: AppSpacing.sectionSpacing) {
-                        preferencesSection
-                        sharingSection
-                        backupSection
-                        customizationSection
-                        helpSection
+                GeometryReader { geometry in
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            preferencesSection
+
+                            sectionGap
+
+                            sharingSection
+
+                            sectionGap
+
+                            customizationSection
+
+                            sectionGap
+
+                            helpSection
+                        }
+                        .adaptiveHorizontalPadding()
+                        .padding(.top, 4)
+                        .padding(.bottom, AppSpacing.screenHorizontal)
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: geometry.size.height, alignment: .top)
                     }
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
-                    .padding(.bottom, 32)
                 }
+                .frame(maxHeight: .infinity, alignment: .top)
             }
             .navigationBarHidden(true)
             .sheet(isPresented: $showAbout) {
@@ -53,8 +70,11 @@ struct SettingsView: View {
             .sheet(isPresented: $showFeedback) {
                 FeedbackView()
             }
-            .sheet(isPresented: $showPrivacyPolicy) {
-                PrivacyPolicyView()
+            .sheet(isPresented: $showPrivacyPolicySafari) {
+                if let url = AppConfig.privacyPolicyURL {
+                    SafariView(url: url)
+                        .ignoresSafeArea()
+                }
             }
             .alert("Settings", isPresented: Binding(
                 get: { statusMessage != nil },
@@ -71,7 +91,7 @@ struct SettingsView: View {
         SettingsCard(title: "Preferences") {
             SettingsRow(
                 title: "Haptic Feedback",
-                icon: "hand.tap.fill",
+                icon: "hand.tap",
                 iconColor: AppColors.accentSuccess,
                 isOn: $enableHaptics
             )
@@ -82,10 +102,11 @@ struct SettingsView: View {
                 SettingsRow(
                     title: "Appearance",
                     value: colorSchemePreference.wrappedValue.label,
-                    icon: "moon.circle.fill",
+                    icon: "circle.lefthalf.filled",
                     iconColor: AppColors.colorHex("#8B6F8E")
                 )
             }
+            .buttonStyle(.plain)
         }
     }
 
@@ -98,15 +119,16 @@ struct SettingsView: View {
                     SettingsRow(
                         title: "Share Active List",
                         subtitle: "Show a QR code for your current list.",
-                        icon: "square.and.arrow.up.fill",
+                        icon: "qrcode.viewfinder",
                         iconColor: AppColors.accentPrimary
                     )
                 }
+                .buttonStyle(.plain)
             } else {
                 SettingsRow(
                     title: "Share Active List",
                     subtitle: "Create a list first to share it.",
-                    icon: "square.and.arrow.up.fill",
+                    icon: "qrcode.viewfinder",
                     iconColor: AppColors.inkSecondary,
                     showsChevron: false
                 )
@@ -121,66 +143,28 @@ struct SettingsView: View {
                 SettingsRow(
                     title: "Import Shared List",
                     subtitle: "Scan a QR code or paste shared text.",
-                    icon: "square.and.arrow.down.fill",
+                    icon: "square.and.arrow.down",
                     iconColor: AppColors.accentSuccess
                 )
             }
-        }
-    }
-
-    private var backupSection: some View {
-        SettingsCard(title: "Backup") {
-            NavigationLink {
-                BackupRestoreView(mode: .backup)
-            } label: {
-                SettingsRow(
-                    title: "Back Up All Data",
-                    subtitle: "Save all lists to a backup file.",
-                    icon: "externaldrive.fill",
-                    iconColor: AppColors.accentPrimary
-                )
-            }
-            SettingsDivider()
-            NavigationLink {
-                BackupRestoreView(mode: .restore)
-            } label: {
-                SettingsRow(
-                    title: "Restore Backup",
-                    subtitle: "Import a saved backup file.",
-                    icon: "arrow.clockwise.circle.fill",
-                    iconColor: AppColors.colorHex("#8B6F8E")
-                )
-            }
+            .buttonStyle(.plain)
         }
     }
 
     private var customizationSection: some View {
         SettingsCard(title: "Customization") {
-            if AppIconService.supportsAlternateIcons {
-                NavigationLink {
-                    AppIconPickerView()
-                } label: {
-                    SettingsRow(
-                        title: "App Icon",
-                        subtitle: "Choose your Home Screen icon.",
-                        value: AppIconService.currentOption.label,
-                        icon: "app.fill",
-                        iconColor: AppColors.accentPrimary
-                    )
-                }
-                SettingsDivider()
-            }
-
             NavigationLink {
-                CategoryOrderView()
+                AppIconPickerView()
             } label: {
                 SettingsRow(
-                    title: "Reorder Categories",
-                    subtitle: "Drag categories to match your shopping route.",
-                    icon: "arrow.up.arrow.down",
-                    iconColor: AppColors.accentSuccess
+                    title: "App Icon",
+                    subtitle: "Choose your Home Screen icon.",
+                    value: AppIconService.currentOption.label,
+                    icon: "app.badge",
+                    iconColor: AppColors.accentPrimary
                 )
             }
+            .buttonStyle(.plain)
         }
     }
 
@@ -191,9 +175,9 @@ struct SettingsView: View {
             } label: {
                 SettingsRow(
                     title: "Send Feedback",
-                    subtitle: "Help improve Grocery List.",
-                    icon: "envelope.fill",
-                    iconColor: AppColors.accentPrimary
+                    subtitle: AppConfig.feedbackEmail,
+                    icon: "envelope",
+                    iconColor: AppColors.accentSuccess
                 )
             }
             .buttonStyle(.plain)
@@ -213,7 +197,7 @@ struct SettingsView: View {
                 SettingsRow(
                     title: "Privacy Policy",
                     subtitle: "How your data is handled.",
-                    icon: "hand.raised.fill",
+                    icon: "lock.shield",
                     iconColor: AppColors.colorHex("#8B6F8E")
                 )
             }
@@ -227,26 +211,11 @@ struct SettingsView: View {
                 SettingsRow(
                     title: "About Grocery List",
                     subtitle: "Version \(AppSupport.appVersion)",
-                    icon: "info.circle.fill",
+                    icon: "info.circle",
                     iconColor: AppColors.inkSecondary
                 )
             }
             .buttonStyle(.plain)
-
-            #if DEBUG
-            SettingsDivider()
-            Button {
-                hasCompletedOnboarding = false
-                statusMessage = "Onboarding will show on next launch."
-            } label: {
-                SettingsRow(
-                    title: "Reset Onboarding",
-                    icon: "arrow.clockwise",
-                    iconColor: AppColors.inkSecondary
-                )
-            }
-            .buttonStyle(.plain)
-            #endif
         }
     }
 
@@ -255,7 +224,7 @@ struct SettingsView: View {
             statusMessage = "Privacy policy link isn't available yet."
             return
         }
-        showPrivacyPolicy = true
+        showPrivacyPolicySafari = true
     }
 
     private var appearancePicker: some View {

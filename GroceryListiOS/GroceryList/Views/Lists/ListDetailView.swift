@@ -24,6 +24,8 @@ struct ListDetailView: View {
     @State private var addItemPrefill = ""
     @State private var showRenameSheet = false
     @State private var showClearCompletedAlert = false
+    @State private var showDeleteListAlert = false
+    @State private var showCantDeleteLastListAlert = false
 
     init(list: GroceryList, viewModel: ListDetailViewModel, onSwitchList: ((UUID) -> Void)? = nil) {
         self.list = list
@@ -36,9 +38,7 @@ struct ListDetailView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            AppScreenBackground()
-
+        AdaptiveScreenShell {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 12) {
                     ListDetailHeader(
@@ -54,7 +54,14 @@ struct ListDetailView: View {
                             viewModel.showCompletedItems.toggle()
                             HapticsService.selection()
                         },
-                        onClearCompleted: { showClearCompletedAlert = true }
+                        onClearCompleted: { showClearCompletedAlert = true },
+                        onDeleteList: {
+                            if allLists.count > 1 {
+                                showDeleteListAlert = true
+                            } else {
+                                showCantDeleteLastListAlert = true
+                            }
+                        }
                     )
 
                     VStack(alignment: .leading, spacing: 6) {
@@ -74,7 +81,7 @@ struct ListDetailView: View {
                     }
                     .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: isQuickAddFocused)
                 }
-                .padding(.horizontal, AppSpacing.screenHorizontal)
+                .adaptiveHorizontalPadding()
                 .padding(.top, 8)
                 .padding(.bottom, 12)
 
@@ -98,28 +105,30 @@ struct ListDetailView: View {
                     .scrollContentBackground(.hidden)
                 }
             }
-
-            if viewModel.isSelectionMode, !viewModel.selectedItemIds.isEmpty {
-                SelectionToolbar(
-                    selectedCount: viewModel.selectedItemIds.count,
-                    onAssign: { viewModel.showAssignSheet = true },
-                    onShare: shareSelected,
-                    onCopy: copySelected,
-                    onDelete: { viewModel.deleteSelected(in: list, context: modelContext) }
-                )
-                .padding(.bottom, 12)
-                .transition(reduceMotion ? .identity : .move(edge: .bottom).combined(with: .opacity))
-            } else if let message = viewModel.toastMessage {
-                if viewModel.undoSnapshot != nil {
-                    UndoBanner(message: message) {
-                        viewModel.undoDelete(in: list, context: modelContext)
-                    }
-                    .padding(.bottom, 16)
+        } bottomOverlay: {
+            Group {
+                if viewModel.isSelectionMode, !viewModel.selectedItemIds.isEmpty {
+                    SelectionToolbar(
+                        selectedCount: viewModel.selectedItemIds.count,
+                        onAssign: { viewModel.showAssignSheet = true },
+                        onShare: shareSelected,
+                        onCopy: copySelected,
+                        onDelete: { viewModel.deleteSelected(in: list, context: modelContext) }
+                    )
+                    .padding(.bottom, 12)
                     .transition(reduceMotion ? .identity : .move(edge: .bottom).combined(with: .opacity))
-                } else {
-                    ToastBanner(message: message)
+                } else if let message = viewModel.toastMessage {
+                    if viewModel.undoSnapshot != nil {
+                        UndoBanner(message: message) {
+                            viewModel.undoDelete(in: list, context: modelContext)
+                        }
                         .padding(.bottom, 16)
                         .transition(reduceMotion ? .identity : .move(edge: .bottom).combined(with: .opacity))
+                    } else {
+                        ToastBanner(message: message)
+                            .padding(.bottom, 16)
+                            .transition(reduceMotion ? .identity : .move(edge: .bottom).combined(with: .opacity))
+                    }
                 }
             }
         }
@@ -183,6 +192,19 @@ struct ListDetailView: View {
         } message: {
             Text("This removes completed items from \"\(list.name)\".")
         }
+        .alert("Delete List?", isPresented: $showDeleteListAlert) {
+            Button("Delete", role: .destructive) {
+                deleteList()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This will permanently delete \"\(list.name)\" and all its items.")
+        }
+        .alert("Can't Delete List", isPresented: $showCantDeleteLastListAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("You need at least one list. Create another list before deleting this one.")
+        }
     }
 
     private var activeItems: [GroceryItem] {
@@ -201,6 +223,13 @@ struct ListDetailView: View {
         guard target.id != list.id else { return }
         ActiveListResolver.setActive(target)
         onSwitchList?(target.id)
+    }
+
+    private func deleteList() {
+        guard allLists.count > 1 else { return }
+        _ = GroceryListService.deleteList(list, context: modelContext)
+        HapticsService.selection()
+        dismiss()
     }
 
     private func shareSelected() {

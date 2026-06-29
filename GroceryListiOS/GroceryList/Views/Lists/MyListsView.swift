@@ -12,8 +12,6 @@ struct MyListsView: View {
 
     @State private var path = NavigationPath()
     @State private var sheetMode: ListSheetMode?
-    @State private var listToDelete: GroceryList?
-    @State private var showDeleteAlert = false
 
     enum ListSheetMode: Identifiable {
         case create
@@ -25,14 +23,6 @@ struct MyListsView: View {
             case .edit(let list): return list.id.uuidString
             }
         }
-    }
-
-    private var totalItemsToBuy: Int {
-        lists.reduce(0) { $0 + $1.activeItemCount }
-    }
-
-    private var totalPickedUp: Int {
-        lists.reduce(0) { $0 + $1.completedItemCount }
     }
 
     private var activeListId: UUID? {
@@ -49,17 +39,12 @@ struct MyListsView: View {
         return lists.filter { $0.id != activeListId }
     }
 
-    private var headerSubtitle: String {
-        MyListsHeaderMetadata.subtitle(
-            listCount: lists.count,
-            totalItemsToBuy: totalItemsToBuy,
-            totalPickedUp: totalPickedUp
-        )
-    }
-
     var body: some View {
         NavigationStack(path: $path) {
-            TopLevelTabScreen(title: "My Lists", subtitle: headerSubtitle) {
+            TopLevelTabScreen(
+                title: "My Lists",
+                subtitle: "Plan each grocery run and keep everything organized."
+            ) {
                 ScrollView {
                     VStack(spacing: 0) {
                         PrimaryActionRow(
@@ -68,28 +53,28 @@ struct MyListsView: View {
                         ) {
                             sheetMode = .create
                         }
-                        .padding(.horizontal, AppSpacing.screenHorizontal)
+                        .adaptiveHorizontalPadding()
 
                         if lists.isEmpty {
                             MyListsEmptyState(onCreateList: { sheetMode = .create })
-                                .padding(.horizontal, AppSpacing.screenHorizontal)
+                                .adaptiveHorizontalPadding()
                                 .padding(.top, AppSpacing.sectionSpacing)
                         } else {
                             LazyVStack(alignment: .leading, spacing: AppSpacing.sectionSpacing) {
                                 if let activeList {
                                     Text("Active")
                                         .appSectionLabel()
-                                        .padding(.horizontal, AppSpacing.screenHorizontal)
+                                        .adaptiveHorizontalPadding()
                                         .padding(.top, AppSpacing.sectionSpacing)
 
                                     listLink(for: activeList, isActive: true)
-                                        .padding(.horizontal, AppSpacing.screenHorizontal)
+                                        .adaptiveHorizontalPadding()
                                 }
 
                                 if !otherLists.isEmpty {
                                     ForEach(otherLists) { list in
                                         listLink(for: list, isActive: false)
-                                            .padding(.horizontal, AppSpacing.screenHorizontal)
+                                            .adaptiveHorizontalPadding()
                                     }
                                 }
                             }
@@ -132,14 +117,6 @@ struct MyListsView: View {
                     }
                 }
             }
-            .alert("Delete List?", isPresented: $showDeleteAlert, presenting: listToDelete) { list in
-                Button("Delete", role: .destructive) {
-                    deleteList(list)
-                }
-                Button("Cancel", role: .cancel) {}
-            } message: { list in
-                Text("This will permanently delete \"\(list.name)\" and all its items.")
-            }
         }
     }
 
@@ -171,7 +148,7 @@ struct MyListsView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Start faster")
                     .appSectionLabel()
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
+                    .adaptiveHorizontalPadding()
 
                 VStack(spacing: 10) {
                     ForEach(templates) { template in
@@ -180,7 +157,7 @@ struct MyListsView: View {
                         }
                     }
                 }
-                .padding(.horizontal, AppSpacing.screenHorizontal)
+                .adaptiveHorizontalPadding()
             }
         }
     }
@@ -221,21 +198,6 @@ struct MyListsView: View {
             UIPasteboard.general.string = ShareTextFormatter.format(list: list)
         } label: {
             Label("Copy as Text", systemImage: AppIcons.clipboard)
-        }
-        Divider()
-        Button(role: .destructive) {
-            listToDelete = list
-            showDeleteAlert = true
-        } label: {
-            Label("Delete", systemImage: "trash")
-        }
-    }
-
-    private func deleteList(_ list: GroceryList) {
-        guard lists.count > 1 else { return }
-        if let fallback = GroceryListService.deleteList(list, context: modelContext) {
-            path = NavigationPath()
-            path.append(fallback.id)
         }
     }
 }

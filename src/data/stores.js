@@ -38,6 +38,13 @@ export const DEFAULT_STORES = {
   stewleonards:{ label: "Stew Leonard's",   domain: "stewleonards.com",        color: "#006838" },
   foodtown:    { label: "Foodtown",         domain: "foodtown.com",            color: "#e31837" },
   keyfood:     { label: "Key Food",         domain: "keyfood.com",             color: "#e21a2c" },
+  raleys:      { label: "Raley's",          domain: "raleys.com",              color: "#c8102e" },
+  frys:        { label: "Fry's Food Stores", domain: "frysfood.com",           color: "#e31837" },
+  kingsoopers: { label: "King Soopers",     domain: "kingsoopers.com",         color: "#e31837" },
+  fredmeyer:   { label: "Fred Meyer",       domain: "fredmeyer.com",           color: "#e31837" },
+  marianos:    { label: "Mariano's",        domain: "marianos.com",            color: "#e21a2c" },
+  jewelosco:   { label: "Jewel-Osco",       domain: "jewelosco.com",           color: "#e31837" },
+  ingles:      { label: "Ingles",           domain: "ingles-markets.com",      color: "#e31837" },
 };
 
 export function storeFavicon(domain) {

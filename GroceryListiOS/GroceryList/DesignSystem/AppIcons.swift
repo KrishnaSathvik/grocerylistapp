@@ -33,6 +33,7 @@ enum AppIcons {
         case "health": return "heart.fill"
         case "baby": return "figure.and.child.holdinghands"
         case "pet": return "pawprint.fill"
+        case "floral": return "camera.macro"
         default: return "cart.fill"
         }
     }

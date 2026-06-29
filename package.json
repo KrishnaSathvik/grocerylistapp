@@ -7,7 +7,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "export-seed-data": "node scripts/export-seed-data.mjs",
+    "export-ios-catalog": "node scripts/export-ios-catalog.mjs",
+    "verify-category-detection": "node scripts/verify-category-detection.mjs",
+    "verify-product-resolution": "node scripts/verify-product-resolution.mjs",
+    "ios:process-product-sources": "python3 GroceryListiOS/scripts/process-product-sources.py",
+    "ios:download-store-logos": "python3 GroceryListiOS/scripts/download-store-logos.py",
+    "ios:reprocess-store-logos": "python3 GroceryListiOS/scripts/download-store-logos.py --reprocess-only",
+    "ios:normalize-catalog-assets": "python3 GroceryListiOS/scripts/normalize-catalog-assets.py"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

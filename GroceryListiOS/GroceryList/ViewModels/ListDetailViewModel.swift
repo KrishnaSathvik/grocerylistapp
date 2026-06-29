@@ -24,23 +24,27 @@ final class ListDetailViewModel {
     }
 
     func toggleComplete(_ item: GroceryItem, context: ModelContext) {
-        GroceryItemService.toggleComplete(item, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.toggleComplete(item, context: context)) else { return }
         HapticsService.check()
     }
 
     func incrementQuantity(_ item: GroceryItem, context: ModelContext) {
         let current = max(item.quantityValue ?? 1, 1)
-        GroceryItemService.updateQuantity(item, value: min(current + 1, 99), context: context)
+        guard showSaveFailureIfNeeded(
+            GroceryItemService.updateQuantity(item, value: min(current + 1, 99), context: context)
+        ) else { return }
         HapticsService.stepper()
     }
 
     func decrementQuantity(_ item: GroceryItem, context: ModelContext) {
         let current = max(item.quantityValue ?? 1, 1)
+        let saved: Bool
         if current <= 1 {
-            GroceryItemService.updateQuantity(item, value: nil, context: context)
+            saved = GroceryItemService.updateQuantity(item, value: nil, context: context)
         } else {
-            GroceryItemService.updateQuantity(item, value: current - 1, context: context)
+            saved = GroceryItemService.updateQuantity(item, value: current - 1, context: context)
         }
+        guard showSaveFailureIfNeeded(saved) else { return }
         HapticsService.stepper()
     }
 
@@ -53,14 +57,14 @@ final class ListDetailViewModel {
     func undoDelete(in list: GroceryList, context: ModelContext) {
         guard let snapshot = undoSnapshot else { return }
         cancelUndoTimer()
-        GroceryItemService.restoreItem(snapshot, to: list, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.restoreItem(snapshot, to: list, context: context)) else { return }
         undoSnapshot = nil
         toastMessage = nil
         HapticsService.undo()
     }
 
     func saveEdit(for item: GroceryItem, draft: ItemEditDraft, context: ModelContext) {
-        GroceryItemService.updateItem(item, draft: draft, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.updateItem(item, draft: draft, context: context)) else { return }
         editingItem = nil
     }
 
@@ -72,17 +76,17 @@ final class ListDetailViewModel {
     }
 
     func clearCompleted(in list: GroceryList, context: ModelContext) {
-        GroceryItemService.clearCompleted(in: list, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.clearCompleted(in: list, context: context)) else { return }
         HapticsService.selection()
     }
 
     func duplicateItem(_ item: GroceryItem, in list: GroceryList, context: ModelContext) {
-        GroceryItemService.duplicateItem(item, in: list, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.duplicateItem(item, in: list, context: context)) else { return }
         HapticsService.add()
     }
 
     func duplicateFromEdit(_ item: GroceryItem, in list: GroceryList, context: ModelContext) {
-        GroceryItemService.duplicateItem(item, in: list, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.duplicateItem(item, in: list, context: context)) else { return }
         editingItem = nil
         showInfoToast("Duplicated \(item.name)")
         HapticsService.add()
@@ -100,17 +104,19 @@ final class ListDetailViewModel {
     }
 
     func updateCategory(_ item: GroceryItem, categoryId: String, context: ModelContext) {
-        GroceryItemService.updateCategory(item, categoryId: categoryId, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.updateCategory(item, categoryId: categoryId, context: context)) else { return }
         HapticsService.selection()
     }
 
     func updateStore(_ item: GroceryItem, storeId: String?, context: ModelContext) {
-        GroceryItemService.updateStore(item, storeId: storeId, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.updateStore(item, storeId: storeId, context: context)) else { return }
         HapticsService.selection()
     }
 
     func moveActiveItems(in list: GroceryList, from source: IndexSet, to destination: Int, context: ModelContext) {
-        GroceryItemService.moveItems(in: list, from: source, to: destination, activeOnly: true, context: context)
+        showSaveFailureIfNeeded(
+            GroceryItemService.moveItems(in: list, from: source, to: destination, activeOnly: true, context: context)
+        )
     }
 
     func toggleSelection(for item: GroceryItem) {
@@ -159,7 +165,7 @@ final class ListDetailViewModel {
 
     func assignSelected(to target: GroceryList, from list: GroceryList, context: ModelContext) {
         let items = selectedItems(in: list)
-        GroceryItemService.assignItems(items, to: target, context: context)
+        guard showSaveFailureIfNeeded(GroceryItemService.assignItems(items, to: target, context: context)) else { return }
         exitSelectionMode()
         HapticsService.selection()
     }
@@ -179,5 +185,12 @@ final class ListDetailViewModel {
     private func cancelUndoTimer() {
         undoDismissTask?.cancel()
         undoDismissTask = nil
+    }
+
+    @discardableResult
+    private func showSaveFailureIfNeeded(_ saved: Bool) -> Bool {
+        guard !saved else { return true }
+        showInfoToast("Couldn't save. Please try again.")
+        return false
     }
 }

@@ -42,6 +42,8 @@ struct AssignToListSheet: View {
                 }
             }
             .listStyle(.plain)
+            .adaptiveContentWidth(alignment: .top)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .searchable(text: $searchText, prompt: "Search lists")
             .navigationTitle("Assign to List")
             .navigationBarTitleDisplayMode(.inline)

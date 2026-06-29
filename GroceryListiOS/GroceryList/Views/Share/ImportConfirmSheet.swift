@@ -73,7 +73,6 @@ struct ImportConfirmSheet: View {
                         RoundedRectangle(cornerRadius: AppSpacing.cardCornerRadius, style: .continuous)
                             .stroke(AppColors.cardBorder, lineWidth: 1)
                     )
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
 
                     VStack(spacing: 10) {
                         Button("Add to Current List") {
@@ -105,9 +104,9 @@ struct ImportConfirmSheet: View {
                         .foregroundStyle(AppColors.inkSecondary)
                         .accessibilityLabel("Cancel import")
                     }
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
                     .padding(.bottom, 24)
                 }
+                .adaptiveScreenContent()
             }
             .background(AppColors.backgroundGrouped)
             .navigationBarTitleDisplayMode(.inline)

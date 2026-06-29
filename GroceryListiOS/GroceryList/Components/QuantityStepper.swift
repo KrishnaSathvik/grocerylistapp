@@ -2,8 +2,17 @@ import SwiftUI
 
 struct QuantityStepper: View {
     let value: Int
+    var isMuted: Bool = false
     var onDecrement: () -> Void
     var onIncrement: () -> Void
+
+    private var glyphColor: Color {
+        isMuted ? AppColors.completedInk.opacity(0.85) : AppColors.inkSecondary.opacity(0.85)
+    }
+
+    private var buttonGlyphColor: Color {
+        isMuted ? AppColors.completedInk.opacity(0.7) : AppColors.inkSecondary.opacity(0.7)
+    }
 
     var body: some View {
         HStack(spacing: 0) {
@@ -14,7 +23,7 @@ struct QuantityStepper: View {
             )
             Text("\(value)")
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
-                .foregroundStyle(AppColors.inkSecondary.opacity(0.85))
+                .foregroundStyle(glyphColor)
                 .frame(minWidth: 18)
                 .accessibilityHidden(true)
             stepperButton(
@@ -24,12 +33,17 @@ struct QuantityStepper: View {
             )
         }
         .padding(.horizontal, 2)
-        .frame(width: 76, height: 26)
-        .background(AppColors.filterUnselected.opacity(0.4))
+        .frame(width: 88, height: 28)
+        .background(
+            isMuted
+                ? AppColors.completedRowBackground
+                : AppColors.filterUnselected.opacity(0.4)
+        )
         .clipShape(Capsule())
         .overlay(
-            Capsule().stroke(AppColors.cardBorder.opacity(0.35), lineWidth: 0.5)
+            Capsule().stroke(AppColors.cardBorder.opacity(isMuted ? 0.25 : 0.35), lineWidth: 0.5)
         )
+        .frame(minHeight: AppSpacing.minTapTarget)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Quantity")
         .accessibilityValue("\(value)")
@@ -44,12 +58,11 @@ struct QuantityStepper: View {
         Button(action: action) {
             Image(systemName: systemName)
                 .font(.system(size: 9, weight: .bold))
-                .foregroundStyle(AppColors.inkSecondary.opacity(0.7))
+                .foregroundStyle(buttonGlyphColor)
                 .frame(width: 24, height: 24)
-                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .frame(minWidth: 32, minHeight: 32)
+        .frame(width: AppSpacing.minTapTarget, height: AppSpacing.minTapTarget)
         .contentShape(Rectangle())
         .accessibilityLabel(label)
     }

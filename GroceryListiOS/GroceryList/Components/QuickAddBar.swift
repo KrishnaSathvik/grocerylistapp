@@ -12,27 +12,30 @@ struct QuickAddBar: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: "plus.circle.fill")
-                .font(.system(size: 20, weight: .medium))
-                .foregroundStyle(AppColors.accentPrimary)
+            Image(systemName: "plus")
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundStyle(AppColors.inkTertiary)
+                .frame(width: 20)
                 .accessibilityHidden(true)
 
             TextField(placeholder, text: $text)
                 .font(trimmed.isEmpty ? AppTypography.bodyMedium : AppTypography.itemTitle)
                 .foregroundStyle(AppColors.ink)
-                .submitLabel(.done)
+                .submitLabel(.send)
                 .onSubmit(submitIfValid)
                 .modifier(QuickAddFocusModifier(focus: focus))
 
             if !trimmed.isEmpty {
                 Button(action: submitIfValid) {
-                    Image(systemName: AppIcons.add)
-                        .font(.system(size: 14, weight: .bold))
-                        .foregroundStyle(.white)
-                        .frame(width: 32, height: 32)
-                        .background(AppColors.accentPrimary, in: Circle())
+                    Image(systemName: "arrow.up")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(AppColors.accentCTAForeground)
+                        .frame(width: 28, height: 28)
+                        .background(AppColors.accentCTA, in: Circle())
                 }
                 .buttonStyle(.plain)
+                .frame(width: AppSpacing.minTapTarget, height: AppSpacing.minTapTarget)
+                .contentShape(Rectangle())
                 .accessibilityLabel("Add item")
                 .transition(.scale.combined(with: .opacity))
             }

@@ -89,7 +89,7 @@ struct EditItemSheet: View {
                             .buttonStyle(.plain)
                         }
                     }
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
+                    .adaptiveScreenContent()
                     .padding(.top, 8)
                     .padding(.bottom, 32)
                 }
@@ -181,7 +181,6 @@ struct EditItemSheet: View {
                 CategoryIconView(
                     categoryId: draft.categoryId,
                     containerSize: 52,
-                    imageSize: 40,
                     cornerRadius: 14
                 )
             }

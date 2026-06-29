@@ -17,7 +17,7 @@ struct TabPrimaryActionBar: View {
                 Spacer(minLength: 0)
             }
             .padding(.horizontal, 16)
-            .frame(height: AppSpacing.addBarHeight)
+            .frame(minHeight: AppSpacing.minTapTarget)
             .background(AppColors.backgroundPrimary)
             .clipShape(RoundedRectangle(cornerRadius: AppSpacing.buttonCornerRadius, style: .continuous))
             .overlay(

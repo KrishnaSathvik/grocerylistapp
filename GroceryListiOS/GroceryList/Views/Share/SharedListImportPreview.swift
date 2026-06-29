@@ -58,7 +58,6 @@ struct SharedListImportPreview: View {
                         RoundedRectangle(cornerRadius: AppSpacing.cardCornerRadius, style: .continuous)
                             .stroke(AppColors.cardBorder, lineWidth: 1)
                     )
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
 
                     VStack(spacing: 10) {
                         Button("Import List") {
@@ -75,9 +74,9 @@ struct SharedListImportPreview: View {
                         .font(AppTypography.button)
                         .foregroundStyle(AppColors.inkSecondary)
                     }
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
                     .padding(.bottom, 24)
                 }
+                .adaptiveScreenContent()
             }
             .background(AppColors.backgroundGrouped)
             .navigationBarTitleDisplayMode(.inline)

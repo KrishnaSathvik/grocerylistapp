@@ -89,6 +89,47 @@ final class GroceryListServiceTests: XCTestCase {
     }
 }
 
+final class FocusedShoppingAddTests: XCTestCase {
+    @MainActor
+    func testAddFromStoreDetailPrefillsStore() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Test")
+        context.insert(list)
+
+        let created = GroceryItemService.addItems(
+            name: "milk",
+            to: list,
+            context: context,
+            prefilledStoreId: "costco",
+            prefilledCategoryId: nil
+        )
+
+        XCTAssertEqual(created.count, 1)
+        XCTAssertEqual(created.first?.storeId, "costco")
+        XCTAssertEqual(created.first?.name.lowercased(), "milk")
+    }
+
+    @MainActor
+    func testAddFromCategoryDetailPrefillsCategory() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Test")
+        context.insert(list)
+
+        let created = GroceryItemService.addItems(
+            name: "milk",
+            to: list,
+            context: context,
+            prefilledStoreId: nil,
+            prefilledCategoryId: "dairy"
+        )
+
+        XCTAssertEqual(created.count, 1)
+        XCTAssertEqual(created.first?.categoryId, "dairy")
+    }
+}
+
 final class CategoryLearningResetTests: XCTestCase {
     @MainActor
     func testResetAllClearsRules() throws {

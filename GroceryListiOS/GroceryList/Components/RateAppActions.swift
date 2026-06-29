@@ -5,7 +5,9 @@ enum AppConfig {
     /// Set after the app is created in App Store Connect.
     static let appStoreId: String? = nil
 
-    static let feedbackEmail = "feedback@grocerylist.app"
+    static let feedbackEmail = "grocerylistapp.support@gmail.com"
+    static let marketingPageURL = URL(string: "https://grocerylistapp.vercel.app/home")
+    static let supportPageURL = URL(string: "https://grocerylistapp.vercel.app/support")
     static let privacyPolicyURL = URL(string: "https://grocerylistapp.vercel.app/privacy")
 
     static var appStoreURL: URL? {

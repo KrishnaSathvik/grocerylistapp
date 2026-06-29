@@ -54,6 +54,12 @@ enum CategoryService {
         return SeedData.categoryColorHexFromSeed(for: categoryId)
     }
 
+    /// Saturated accent colors for custom categories (matches built-in catalog tints).
+    static let customCategoryColorOptions: [String] = [
+        "#4A7C59", "#3D7EA6", "#C4883C", "#A63D40", "#6A8E7F", "#5E7EA8",
+        "#D4889A", "#8B6F8E", "#7A8B6F", "#B08968", "#6B7D8E", "#A0855B",
+    ]
+
     @discardableResult
     static func addCustomCategory(label rawLabel: String, emoji: String, color: String) -> CategoryInfo? {
         let label = rawLabel.trimmingCharacters(in: .whitespacesAndNewlines)

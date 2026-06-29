@@ -233,6 +233,48 @@
       "label": "Key Food",
       "domain": "keyfood.com",
       "color": "#e21a2c"
+    },
+    {
+      "id": "raleys",
+      "label": "Raley's",
+      "domain": "raleys.com",
+      "color": "#c8102e"
+    },
+    {
+      "id": "frys",
+      "label": "Fry's Food Stores",
+      "domain": "frysfood.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "kingsoopers",
+      "label": "King Soopers",
+      "domain": "kingsoopers.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "fredmeyer",
+      "label": "Fred Meyer",
+      "domain": "fredmeyer.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "marianos",
+      "label": "Mariano's",
+      "domain": "marianos.com",
+      "color": "#e21a2c"
+    },
+    {
+      "id": "jewelosco",
+      "label": "Jewel-Osco",
+      "domain": "jewelosco.com",
+      "color": "#e31837"
+    },
+    {
+      "id": "ingles",
+      "label": "Ingles",
+      "domain": "ingles-markets.com",
+      "color": "#e31837"
     }
   ]
 }

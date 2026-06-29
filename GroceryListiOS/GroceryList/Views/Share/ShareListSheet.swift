@@ -79,7 +79,7 @@ struct ShareListSheet: View {
                     }
                     .buttonStyle(PrimaryButtonStyle())
                 }
-                .padding(AppSpacing.screenHorizontal)
+                .adaptiveScreenContent()
                 .padding(.bottom, 24)
             }
             .background(AppColors.backgroundGrouped)

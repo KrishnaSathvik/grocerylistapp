@@ -5,13 +5,15 @@ struct AddCustomCategorySheet: View {
 
     @State private var categoryName = ""
     @State private var selectedSymbol = CustomCategoryIconOptions.symbols[0].name
-    @State private var selectedColor = "#E8F5E9"
+    @State private var selectedColor = CategoryService.customCategoryColorOptions[0]
     @FocusState private var isFocused: Bool
-
-    private let colorOptions = ["#E8F5E9", "#E8F4FD", "#FDE8E8", "#FFF3E0", "#FFF8E1", "#E8EAF6", "#FCE4EC", "#E0F2F1"]
 
     private var trimmed: String {
         categoryName.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private var accentColor: Color {
+        AppColors.colorHex(selectedColor)
     }
 
     var body: some View {
@@ -45,40 +47,41 @@ struct AddCustomCategorySheet: View {
                             spacing: 10
                         ) {
                             ForEach(CustomCategoryIconOptions.symbols, id: \.name) { option in
-                                CategoryIconPickerButton(
-                                    option: .system(option.name),
-                                    isSelected: selectedSymbol == option.name,
-                                    accessibilityLabel: option.label
-                                ) {
-                                    selectedSymbol = option.name
-                                    HapticsService.selection()
-                                }
+                                customIconButton(for: option)
                             }
                         }
                     }
 
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Color")
+                        Text("Accent color")
                             .font(AppTypography.metadata.weight(.semibold))
                             .foregroundStyle(AppColors.inkSecondary)
-                        HStack(spacing: 10) {
-                            ForEach(colorOptions, id: \.self) { hex in
+                        LazyVGrid(
+                            columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 6),
+                            spacing: 12
+                        ) {
+                            ForEach(CategoryService.customCategoryColorOptions, id: \.self) { hex in
                                 Button {
                                     selectedColor = hex
                                     HapticsService.selection()
                                 } label: {
                                     Circle()
                                         .fill(AppColors.colorHex(hex))
-                                        .frame(width: 30, height: 30)
+                                        .frame(width: 34, height: 34)
                                         .overlay {
                                             if selectedColor == hex {
                                                 Circle()
-                                                    .stroke(AppColors.accentPrimary, lineWidth: 2.5)
-                                                    .padding(-3)
+                                                    .stroke(AppColors.backgroundPrimary, lineWidth: 2.5)
+                                                    .padding(2)
+                                                Circle()
+                                                    .stroke(AppColors.accentPrimary, lineWidth: 2)
+                                                    .padding(-2)
                                             }
                                         }
                                 }
                                 .buttonStyle(.plain)
+                                .accessibilityLabel("Color \(hex)")
+                                .accessibilityAddTraits(selectedColor == hex ? .isSelected : [])
                             }
                         }
                     }
@@ -92,7 +95,7 @@ struct AddCustomCategorySheet: View {
                         .disabled(trimmed.isEmpty)
                         .opacity(trimmed.isEmpty ? 0.55 : 1)
                 }
-                .padding(AppSpacing.screenHorizontal)
+                .adaptiveScreenContent()
                 .padding(.top, 8)
                 .padding(.bottom, 24)
             }
@@ -113,6 +116,33 @@ struct AddCustomCategorySheet: View {
         }
     }
 
+    private func customIconButton(for option: (name: String, label: String)) -> some View {
+        let isSelected = selectedSymbol == option.name
+        return Button {
+            selectedSymbol = option.name
+            HapticsService.selection()
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(isSelected ? accentColor.opacity(0.18) : AppColors.backgroundPrimary)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .stroke(
+                                isSelected ? accentColor : AppColors.cardBorder,
+                                lineWidth: isSelected ? 2 : 1
+                            )
+                    )
+                Image(systemName: option.name)
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(isSelected ? accentColor : AppColors.ink.opacity(0.75))
+            }
+            .frame(width: 44, height: 44)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(option.label)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
     private var previewCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Preview")
@@ -122,11 +152,11 @@ struct AddCustomCategorySheet: View {
             HStack(spacing: 14) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(AppColors.colorHex(selectedColor).opacity(0.22))
+                        .fill(accentColor.opacity(0.18))
                         .frame(width: 44, height: 44)
                     Image(systemName: selectedSymbol)
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundStyle(AppColors.colorHex(selectedColor))
+                        .foregroundStyle(accentColor)
                 }
                 Text(trimmed.isEmpty ? "Category name" : trimmed)
                     .font(AppTypography.itemTitle)

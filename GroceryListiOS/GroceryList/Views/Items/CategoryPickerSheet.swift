@@ -28,13 +28,11 @@ struct CategoryPickerSheet: View {
             VStack(spacing: 0) {
                 if let itemName {
                     itemContextHeader(name: itemName)
-                        .padding(.horizontal, AppSpacing.screenHorizontal)
                         .padding(.top, 4)
                         .padding(.bottom, 12)
                 }
 
                 searchField
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
                     .padding(.bottom, 12)
 
                 ScrollView {
@@ -43,10 +41,11 @@ struct CategoryPickerSheet: View {
                             categoryRow(category)
                         }
                     }
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
                     .padding(.bottom, 16)
                 }
             }
+            .adaptiveScreenContent()
+            .frame(maxHeight: .infinity, alignment: .top)
             .background(AppColors.backgroundGrouped)
             .navigationTitle("Change Category")
             .navigationBarTitleDisplayMode(.inline)
@@ -103,12 +102,12 @@ struct CategoryPickerSheet: View {
         return Button {
             selectedCategoryId = category.id
             HapticsService.selection()
+            dismiss()
         } label: {
             HStack(spacing: 14) {
                 CategoryIconView(
                     categoryId: category.id,
                     containerSize: 36,
-                    imageSize: 28,
                     cornerRadius: 10
                 )
 

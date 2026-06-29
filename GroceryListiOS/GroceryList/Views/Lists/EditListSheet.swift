@@ -121,7 +121,7 @@ struct EditListSheet: View {
                         }
                     }
                 }
-                .padding(AppSpacing.screenHorizontal)
+                .adaptiveScreenContent()
                 .padding(.bottom, 24)
             }
             .background(AppColors.backgroundGrouped)

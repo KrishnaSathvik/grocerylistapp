@@ -81,6 +81,40 @@ final class V1PolishCustomStoreTests: XCTestCase {
     }
 }
 
+final class V1PolishStoreLogoTests: XCTestCase {
+    func testKnownStoresResolveBundledAssets() {
+        let cases = ["costco", "walmart", "gerbes", "target", "hmart", "raleys", "frys", "kingsoopers", "fredmeyer", "marianos", "jewelosco", "ingles"]
+        for storeId in cases {
+            XCTAssertNotNil(
+                StoreLogoResolver.bundledAssetName(storeId: storeId, displayLabel: nil),
+                "Expected bundled asset for \(storeId)"
+            )
+        }
+    }
+
+    func testGrebesAliasResolvesGerbesBundledAsset() {
+        XCTAssertEqual(
+            StoreLogoResolver.resolvedStoreId(storeId: "grebes", displayLabel: nil),
+            "gerbes"
+        )
+        XCTAssertEqual(
+            StoreLogoResolver.bundledAssetName(storeId: "grebes", displayLabel: nil),
+            "store-gerbes"
+        )
+    }
+
+    func testStoreLogoResolverNormalizesLabels() {
+        XCTAssertEqual(
+            StoreLogoResolver.resolvedStoreId(storeId: nil, displayLabel: "  walmart  "),
+            "walmart"
+        )
+        XCTAssertEqual(
+            StoreLogoResolver.resolvedStoreId(storeId: nil, displayLabel: "Grebes"),
+            "gerbes"
+        )
+    }
+}
+
 final class V1PolishImportPreviewTests: XCTestCase {
     @MainActor
     func testImportAddAppendsWithoutRemovingExisting() throws {
@@ -173,6 +207,15 @@ final class V1PolishProductFallbackTests: XCTestCase {
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "cheese"), "product-cheese")
     }
 
+    func testEggProductDoesNotMatchUnrelatedItems() {
+        XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "large eggs"), "product-eggs-white")
+        XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "dozen eggs"), "product-eggs-white")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "eggplant"), "product-eggs-white")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "bandaid"), "product-eggs-white")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "bandage"), "product-eggs-white")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "frozen veggies"), "product-eggs-white")
+    }
+
     func testBundledMeatProductsUseProductAssets() {
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "chicken"), "product-chicken-breast")
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "ground beef"), "product-ground-beef")
@@ -206,6 +249,98 @@ final class V1PolishProductFallbackTests: XCTestCase {
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "chips"), "product-chips")
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "dish soap"), "product-dish-soap")
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "dog food"), "product-dog-food")
+    }
+
+    func testTierABProductThumbnailsResolve() {
+        let cases: [(String, String)] = [
+            ("flowers", "product-flowers"),
+            ("corn flakes", "product-cereal"),
+            ("lettuce", "product-lettuce"),
+            ("canned soup", "product-soup"),
+            ("toothpaste", "product-toothpaste"),
+            ("shampoo", "product-shampoo"),
+            ("sausage", "product-sausage"),
+            ("cat food", "product-cat-food"),
+            ("peanut butter", "product-peanut-butter"),
+            ("granola bars", "product-granola-bars"),
+            ("ground turkey", "product-ground-turkey"),
+            ("beer", "product-beer"),
+            ("hummus", "product-hummus"),
+            ("frozen vegetables", "product-frozen-vegetables"),
+            ("baby wipes", "product-baby-wipes"),
+        ]
+        for (item, asset) in cases {
+            XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: item), asset, item)
+        }
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "disinfecting wipes"), "product-baby-wipes")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "eggplant"), "product-eggs-white")
+    }
+}
+
+final class V1PolishCategoryIconTests: XCTestCase {
+    func testCategoryResolverNormalizesLabelsAndPunctuation() {
+        XCTAssertEqual(GroceryCatalog.category(for: "  dairy  ")?.id, "dairy")
+        XCTAssertEqual(GroceryCatalog.category(for: "Dairy & Eggs")?.id, "dairy")
+        XCTAssertEqual(GroceryCatalog.category(for: "Produce")?.assetName, "category-produce")
+    }
+
+    func testCategoryIconRenderingResolvesKnownAssets() {
+        XCTAssertEqual(CategoryIconRendering.resolvedAssetName(for: "dairy"), "category-dairy")
+        XCTAssertEqual(CategoryIconRendering.resolvedAssetName(for: "Dairy & Eggs"), "category-dairy")
+        XCTAssertEqual(CategoryIconRendering.resolvedAssetName(for: "produce"), "category-produce")
+        XCTAssertEqual(CategoryIconRendering.resolvedAssetName(for: "floral"), "category-floral")
+    }
+
+    func testFloralCategoryAssetIsBundled() {
+        XCTAssertTrue(CatalogAssetAvailability.isUsable("category-floral"))
+        XCTAssertEqual(GroceryCatalog.category(for: "floral")?.displayName, "Floral")
+    }
+
+    func testBadgeTrimProducesConsistentVisibleFill() throws {
+        let dairy = try XCTUnwrap(CatalogBadgeImage.trimmed(named: "category-dairy"))
+        let produce = try XCTUnwrap(CatalogBadgeImage.trimmed(named: "category-produce"))
+
+        let dairyFill = Self.visibleFillRatio(for: dairy)
+        let produceFill = Self.visibleFillRatio(for: produce)
+
+        XCTAssertGreaterThan(dairyFill, 0.85)
+        XCTAssertGreaterThan(produceFill, 0.85)
+        XCTAssertEqual(dairyFill, produceFill, accuracy: 0.08)
+    }
+
+    private static func visibleFillRatio(for image: UIImage) -> CGFloat {
+        guard let cgImage = image.cgImage,
+              let data = cgImage.dataProvider?.data,
+              let bytes = CFDataGetBytePtr(data) else {
+            return 0
+        }
+
+        let width = cgImage.width
+        let height = cgImage.height
+        let bytesPerPixel = cgImage.bitsPerPixel / 8
+        let bytesPerRow = cgImage.bytesPerRow
+        guard bytesPerPixel >= 4, width > 0, height > 0 else { return 0 }
+
+        var minX = width
+        var minY = height
+        var maxX = 0
+        var maxY = 0
+
+        for y in 0..<height {
+            for x in 0..<width {
+                let offset = y * bytesPerRow + x * bytesPerPixel
+                if bytes[offset + 3] > 12 {
+                    minX = min(minX, x)
+                    minY = min(minY, y)
+                    maxX = max(maxX, x)
+                    maxY = max(maxY, y)
+                }
+            }
+        }
+
+        guard maxX >= minX, maxY >= minY else { return 0 }
+        let visible = CGFloat((maxX - minX + 1) * (maxY - minY + 1))
+        return visible / CGFloat(width * height)
     }
 }
 

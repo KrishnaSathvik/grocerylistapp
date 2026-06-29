@@ -93,4 +93,60 @@ final class ListCodecTests: XCTestCase {
         XCTAssertEqual(parsed.items.count, 2)
         XCTAssertEqual(parsed.items.first?.name, "milk")
     }
+
+    func testSharePayloadTextUsesValidImportPayload() {
+        let list = GroceryList(name: "Weekly Groceries")
+        list.items = [
+            GroceryItem(name: "milk", quantityValue: 2, categoryId: "dairy", storeId: "walmart"),
+        ]
+
+        guard let payload = ListCodec.sharePayloadText(for: list) else {
+            XCTFail("Expected share payload")
+            return
+        }
+
+        let parsed = ListCodec.parseSharedList(from: payload)
+        XCTAssertEqual(parsed?.listName, "Weekly Groceries")
+        XCTAssertEqual(parsed?.items.first?.name, "milk")
+        XCTAssertEqual(parsed?.items.first?.storeId, "walmart")
+    }
+
+    func testInvalidSharedListTextReturnsNil() {
+        XCTAssertNil(ListCodec.parseSharedList(from: "this is not a shared list code"))
+    }
+
+    @MainActor
+    func testShareCodeImportPreservesTextQuantityAndNotes() throws {
+        let list = GroceryList(name: "Pantry Run")
+        let rice = GroceryItem(
+            name: "rice",
+            quantityText: "2 lb",
+            categoryId: "pantry",
+            storeId: "costco",
+            notes: "basmati preferred"
+        )
+        list.items = [rice]
+
+        guard let code = ListCodec.shareCode(for: list),
+              let parsed = ListCodec.parseSharedList(from: code) else {
+            XCTFail("Expected parsed share code")
+            return
+        }
+
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let importedList = GroceryList(name: "Imported")
+        context.insert(importedList)
+
+        ListImportService.replaceItems(parsed.items, in: importedList, context: context)
+
+        let imported = try XCTUnwrap(importedList.items.first)
+        XCTAssertEqual(imported.name, "rice")
+        XCTAssertNil(imported.quantityValue)
+        XCTAssertEqual(imported.quantityText, "2 lb")
+        XCTAssertEqual(imported.notes, "basmati preferred")
+        XCTAssertEqual(imported.categoryId, "pantry")
+        XCTAssertEqual(imported.storeId, "costco")
+        XCTAssertFalse(imported.isCompleted)
+    }
 }

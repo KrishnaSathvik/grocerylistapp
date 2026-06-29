@@ -10,7 +10,6 @@ struct StorePickerSheet: View {
     var itemName: String?
 
     @State private var searchText = ""
-    @State private var showAddStore = false
 
     private var allStores: [StoreService.StoreInfo] {
         StoreService.allStores(context: modelContext)
@@ -45,13 +44,11 @@ struct StorePickerSheet: View {
             VStack(spacing: 0) {
                 if let itemName {
                     itemContextHeader(name: itemName)
-                        .padding(.horizontal, AppSpacing.screenHorizontal)
                         .padding(.top, 4)
                         .padding(.bottom, 12)
                 }
 
                 searchField
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
                     .padding(.bottom, 12)
 
                 ScrollView {
@@ -71,27 +68,12 @@ struct StorePickerSheet: View {
                                 storeRow(store: store)
                             }
                         }
-
-                        Button {
-                            showAddStore = true
-                        } label: {
-                            HStack(spacing: 10) {
-                                Image(systemName: "plus.circle.fill")
-                                    .foregroundStyle(AppColors.accentLink)
-                                Text("Add Custom Store")
-                                    .font(AppTypography.itemTitle)
-                                    .foregroundStyle(AppColors.accentLink)
-                            }
-                            .padding(.horizontal, 14)
-                            .frame(minHeight: 52)
-                        }
-                        .buttonStyle(.plain)
-                        .padding(.top, 8)
                     }
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
                     .padding(.bottom, 16)
                 }
             }
+            .adaptiveScreenContent()
+            .frame(maxHeight: .infinity, alignment: .top)
             .background(AppColors.backgroundGrouped)
             .navigationTitle("Choose Store")
             .navigationBarTitleDisplayMode(.inline)
@@ -104,9 +86,6 @@ struct StorePickerSheet: View {
                         .fontWeight(.semibold)
                         .accessibilityLabel("Done choosing store")
                 }
-            }
-            .sheet(isPresented: $showAddStore) {
-                AddCustomStoreSheet()
             }
         }
     }
@@ -167,6 +146,7 @@ struct StorePickerSheet: View {
         Button {
             selectedStoreId = id
             HapticsService.selection()
+            dismiss()
         } label: {
             HStack(spacing: 14) {
                 if let id {

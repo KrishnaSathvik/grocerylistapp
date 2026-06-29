@@ -15,8 +15,11 @@ enum AppSpacing {
     static let listIconSize: CGFloat = 52
     static let sectionSpacing: CGFloat = 12
     static let groupedSectionSpacing: CGFloat = 12
+    /// Vertical gap between settings cards on the More tab.
+    static let settingsSectionSpacing: CGFloat = 20
     static let groupedSectionCornerRadius: CGFloat = 18
     static let groupedNestedRowCornerRadius: CGFloat = 12
     static let pillHeight: CGFloat = 34
     static let maxContentWidth: CGFloat = 640
+    static let minTapTarget: CGFloat = 44
 }

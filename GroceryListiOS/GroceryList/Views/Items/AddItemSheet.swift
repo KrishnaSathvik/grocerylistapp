@@ -92,7 +92,7 @@ struct AddItemSheet: View {
                         .disabled(trimmed.isEmpty || !hasValidParsedItems)
                         .opacity(trimmed.isEmpty ? 0.5 : 1)
                 }
-                .padding(AppSpacing.screenHorizontal)
+                .adaptiveScreenContent()
                 .padding(.top, 8)
             }
             .background(AppColors.backgroundGrouped)

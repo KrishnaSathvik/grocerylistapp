@@ -1,9 +1,9 @@
 import Foundation
 
 enum StoreBranding {
-    private static let palette = [
-        "#4A7C59", "#3D6B8E", "#8B6F8E", "#C17B3A",
-        "#5C7A4A", "#6B5B95", "#2E7D6E", "#B85C38",
+    static let customStoreColorOptions: [String] = [
+        "#4A7C59", "#3D7EA6", "#C4883C", "#A63D40", "#6A8E7F", "#5E7EA8",
+        "#8B6F8E", "#7A8B6F", "#B08968", "#6B7D8E", "#2E7D6E", "#B85C38",
     ]
 
     static func iconSymbol(for label: String) -> String {
@@ -20,6 +20,27 @@ enum StoreBranding {
 
     static func colorHex(for label: String) -> String {
         let hash = abs(label.lowercased().hashValue)
-        return palette[hash % palette.count]
+        return customStoreColorOptions[hash % customStoreColorOptions.count]
     }
+}
+
+enum CustomStoreIconOptions {
+    static let symbols: [(name: String, label: String)] = [
+        ("storefront.fill", "Storefront"),
+        ("cart.fill", "Cart"),
+        ("basket.fill", "Basket"),
+        ("bag.fill", "Bag"),
+        ("building.2.fill", "Building"),
+        ("leaf.fill", "Farmers market"),
+        ("fork.knife", "Food shop"),
+        ("cup.and.saucer.fill", "Cafe"),
+        ("cross.case.fill", "Pharmacy"),
+        ("pawprint.fill", "Pet store"),
+        ("takeoutbag.and.cup.and.straw.fill", "Takeout"),
+        ("mappin.and.ellipse", "Local shop"),
+        ("house.fill", "Neighborhood"),
+        ("star.fill", "Favorite"),
+        ("sparkles", "Specialty"),
+        ("shippingbox.fill", "Bulk"),
+    ]
 }

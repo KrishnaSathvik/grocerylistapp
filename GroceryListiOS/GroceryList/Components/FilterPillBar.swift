@@ -13,10 +13,10 @@ struct FilterPillBar: View {
                 } label: {
                     Text(mode.rawValue)
                         .font(AppTypography.button)
-                        .foregroundStyle(selection == mode ? Color.white : AppColors.ink)
+                        .foregroundStyle(selection == mode ? AppColors.accentCTAForeground : AppColors.ink)
                         .padding(.horizontal, 16)
-                        .frame(height: AppSpacing.pillHeight)
-                        .background(selection == mode ? AppColors.accentPrimary : AppColors.filterUnselected)
+                        .frame(minHeight: AppSpacing.minTapTarget)
+                        .background(selection == mode ? AppColors.accentCTA : AppColors.filterUnselected)
                         .clipShape(Capsule())
                 }
                 .buttonStyle(.plain)

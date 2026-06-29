@@ -37,68 +37,74 @@ struct StoreTabView: View {
         displayStoreGroups.filter { !$0.items.isEmpty }
     }
 
-    private var headerSubtitle: String {
-        guard let activeList else { return "Create a list to shop by store" }
-        let count = groupsWithItems.count
-        let label = count == 1 ? "store" : "stores"
-        return "\(activeList.name) · \(count) \(label)"
-    }
-
     var body: some View {
         NavigationStack {
-            TopLevelTabScreen(title: "Store", subtitle: headerSubtitle) {
-                ScrollView {
-                    VStack(spacing: 0) {
-                        PrimaryActionRow(
-                            title: "Add Store",
-                            systemImage: "plus.circle.fill"
-                        ) {
-                            showAddStoreSheet = true
-                        }
-                        .padding(.horizontal, AppSpacing.screenHorizontal)
-
-                        if activeList == nil {
-                            EmptyStateView(
-                                title: "No active list",
-                                message: "Create a list on the Lists tab to shop by store.",
-                                systemImage: AppIcons.store
-                            )
-                            .padding(.horizontal, AppSpacing.screenHorizontal)
-                            .padding(.top, AppSpacing.sectionSpacing)
-                        } else if groupsWithItems.isEmpty {
-                            ImageEmptyStateHero(
-                                imageName: "empty_store_illustration",
-                                fallbackSystemImage: "storefront",
-                                title: "No stores yet",
-                                subtitle: "Add items with a store, like “milk from Costco”, and they'll appear here grouped by where you shop."
-                            )
-                            .padding(.horizontal, AppSpacing.screenHorizontal)
-                            .padding(.top, AppSpacing.sectionSpacing)
-                        } else {
+            TopLevelTabScreen(
+                title: "Store",
+                subtitle: "See what to buy from each store."
+            ) {
+                Group {
+                    if activeList == nil {
+                        BrowseTabInactiveEmptyState(
+                            imageName: "empty_list_illustration",
+                            fallbackSystemImage: AppIcons.store,
+                            title: "No active list",
+                            subtitle: "Create a list on the Lists tab to shop by store."
+                        )
+                    } else if groupsWithItems.isEmpty {
+                        BrowseTabEmptyState(
+                            actionTitle: "Add custom store",
+                            action: { showAddStoreSheet = true },
+                            imageName: "empty_list_illustration",
+                            fallbackSystemImage: AppIcons.store,
+                            title: "No stores yet",
+                            subtitle: "Add a custom store above, or add items with a store on your list — like “milk from Costco”."
+                        )
+                    } else {
+                        ScrollView {
                             VStack(alignment: .leading, spacing: AppSpacing.groupedSectionSpacing) {
-                                Text("Stores")
-                                    .appSectionLabel()
-                                    .padding(.horizontal, AppSpacing.screenHorizontal)
-                                    .padding(.top, AppSpacing.sectionSpacing)
+                                GroupedBrowseToolbar(title: "Stores", actionTitle: "Add Store") {
+                                    showAddStoreSheet = true
+                                }
+                                .adaptiveHorizontalPadding()
+                                .padding(.top, AppSpacing.sectionSpacing)
 
                                 ForEach(groupsWithItems) { group in
-                                    GroupedSummaryCard(
-                                        kind: .store(
-                                            storeId: group.id == "__unassigned__" ? nil : group.id,
+                                    NavigationLink(
+                                        value: StoreShoppingRoute(
+                                            storeId: group.id,
                                             label: group.label
-                                        ),
-                                        itemCount: group.items.count,
-                                        items: group.items
-                                    )
-                                    .padding(.horizontal, AppSpacing.screenHorizontal)
+                                        )
+                                    ) {
+                                        GroupedSummaryCard(
+                                            kind: .store(
+                                                storeId: group.id == "__unassigned__" ? nil : group.id,
+                                                label: group.label
+                                            ),
+                                            itemCount: group.items.count,
+                                            items: group.items
+                                        )
+                                    }
+                                    .buttonStyle(.plain)
+                                    .adaptiveHorizontalPadding()
                                 }
                             }
+                            .padding(.bottom, 32)
                         }
                     }
-                    .padding(.bottom, 32)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
             .navigationBarHidden(true)
+            .navigationDestination(for: StoreShoppingRoute.self) { route in
+                if let activeList {
+                    StoreDetailView(
+                        storeId: route.storeId,
+                        storeLabel: route.label,
+                        list: activeList
+                    )
+                }
+            }
             .sheet(isPresented: $showAddStoreSheet) {
                 AddCustomStoreSheet()
             }

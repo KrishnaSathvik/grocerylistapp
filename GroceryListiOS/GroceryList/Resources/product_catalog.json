@@ -52,20 +52,11 @@
     "assetName": "product-eggs-white",
     "categoryId": "dairy",
     "keywords": [
-      "frozen veggies",
       "egg noodles",
-      "deggi mirch",
       "egg whites",
       "dozen eggs",
-      "mandarin",
-      "eggplant",
-      "veggies",
-      "thandai",
-      "bandaid",
-      "bandage",
       "eggs",
       "anda",
-      "eggo",
       "egg"
     ]
   },
@@ -85,14 +76,9 @@
     "assetName": "product-butter",
     "categoryId": "dairy",
     "keywords": [
-      "butternut squash",
       "unsalted butter",
       "salted butter",
-      "peanut butter",
-      "almond butter",
-      "phool makhana",
       "margarine",
-      "makhana",
       "butter",
       "makhan",
       "ghee"
@@ -156,8 +142,6 @@
       "green apple",
       "apple juice",
       "wood apple",
-      "applesauce",
-      "pineapple",
       "apples",
       "apple"
     ]
@@ -189,9 +173,7 @@
       "onion powder",
       "green onion",
       "red onion",
-      "scallions",
       "scallion",
-      "shallots",
       "shallot",
       "onions",
       "onion"
@@ -250,7 +232,6 @@
     "categoryId": "produce",
     "keywords": [
       "lemon pickle",
-      "lemonade",
       "lemons",
       "lemon",
       "limes",
@@ -269,10 +250,8 @@
       "white bread",
       "wheat bread",
       "bread rolls",
-      "breadcrumbs",
       "sourdough",
       "rye bread",
-      "cornbread",
       "bread"
     ]
   },
@@ -312,7 +291,6 @@
       "garlic naan",
       "frozen naan",
       "pita bread",
-      "rotisserie",
       "flatbread",
       "chapati",
       "paratha",
@@ -479,14 +457,11 @@
       "almond flour",
       "bread flour",
       "jowar flour",
-      "kadi patta",
       "gram flour",
       "rice flour",
       "ragi flour",
       "corn flour",
       "urad flour",
-      "tej patta",
-      "ciabatta",
       "flour",
       "maida",
       "atta"
@@ -563,8 +538,6 @@
       "mineral water",
       "coconut water",
       "tonic water",
-      "watermelon",
-      "watercress",
       "water"
     ]
   },
@@ -672,9 +645,186 @@
     "assetName": "product-dog-food",
     "categoryId": "pet",
     "keywords": [
+      "dog kibble",
       "dog food",
-      "pet food",
       "kibble"
+    ]
+  },
+  {
+    "id": "flowers",
+    "displayName": "Flowers",
+    "assetName": "product-flowers",
+    "categoryId": "floral",
+    "keywords": [
+      "fresh flowers",
+      "bouquets",
+      "flowers",
+      "bouquet",
+      "flower"
+    ]
+  },
+  {
+    "id": "cereal",
+    "displayName": "Cereal",
+    "assetName": "product-cereal",
+    "categoryId": "pantry",
+    "keywords": [
+      "frosted flakes",
+      "corn flakes",
+      "baby cereal",
+      "cheerios",
+      "oatmeal",
+      "cereal"
+    ]
+  },
+  {
+    "id": "lettuce",
+    "displayName": "Lettuce",
+    "assetName": "product-lettuce",
+    "categoryId": "produce",
+    "keywords": [
+      "iceberg lettuce",
+      "spring mix",
+      "lettuce",
+      "romaine"
+    ]
+  },
+  {
+    "id": "soup",
+    "displayName": "Soup",
+    "assetName": "product-soup",
+    "categoryId": "pantry",
+    "keywords": [
+      "chicken soup",
+      "canned soup",
+      "tomato soup",
+      "soup"
+    ]
+  },
+  {
+    "id": "toothpaste",
+    "displayName": "Toothpaste",
+    "assetName": "product-toothpaste",
+    "categoryId": "health",
+    "keywords": [
+      "toothpaste"
+    ]
+  },
+  {
+    "id": "shampoo",
+    "displayName": "Shampoo",
+    "assetName": "product-shampoo",
+    "categoryId": "health",
+    "keywords": [
+      "baby shampoo",
+      "conditioner",
+      "pet shampoo",
+      "shampoo"
+    ]
+  },
+  {
+    "id": "sausage",
+    "displayName": "Sausage",
+    "assetName": "product-sausage",
+    "categoryId": "meat",
+    "keywords": [
+      "italian sausage",
+      "bratwurst",
+      "sausages",
+      "kielbasa",
+      "sausage"
+    ]
+  },
+  {
+    "id": "cat-food",
+    "displayName": "Cat Food",
+    "assetName": "product-cat-food",
+    "categoryId": "pet",
+    "keywords": [
+      "kitty food",
+      "cat kibble",
+      "cat food"
+    ]
+  },
+  {
+    "id": "peanut-butter",
+    "displayName": "Peanut Butter",
+    "assetName": "product-peanut-butter",
+    "categoryId": "pantry",
+    "keywords": [
+      "peanut butter",
+      "almond butter"
+    ]
+  },
+  {
+    "id": "granola-bars",
+    "displayName": "Granola Bars",
+    "assetName": "product-granola-bars",
+    "categoryId": "snacks",
+    "keywords": [
+      "granola bars",
+      "protein bars",
+      "granola bar",
+      "cereal bars",
+      "protein bar",
+      "cereal bar"
+    ]
+  },
+  {
+    "id": "ground-turkey",
+    "displayName": "Ground Turkey",
+    "assetName": "product-ground-turkey",
+    "categoryId": "meat",
+    "keywords": [
+      "ground turkey",
+      "turkey breast"
+    ]
+  },
+  {
+    "id": "beer",
+    "displayName": "Beer",
+    "assetName": "product-beer",
+    "categoryId": "drinks",
+    "keywords": [
+      "craft beer",
+      "ginger ale",
+      "root beer",
+      "lager",
+      "stout",
+      "beer",
+      "ipa",
+      "ale"
+    ]
+  },
+  {
+    "id": "hummus",
+    "displayName": "Hummus",
+    "assetName": "product-hummus",
+    "categoryId": "deli",
+    "keywords": [
+      "hummus"
+    ]
+  },
+  {
+    "id": "frozen-vegetables",
+    "displayName": "Frozen Vegetables",
+    "assetName": "product-frozen-vegetables",
+    "categoryId": "frozen",
+    "keywords": [
+      "frozen vegetables",
+      "frozen veggies",
+      "frozen peas",
+      "frozen corn"
+    ]
+  },
+  {
+    "id": "baby-wipes",
+    "displayName": "Baby Wipes",
+    "assetName": "product-baby-wipes",
+    "categoryId": "baby",
+    "keywords": [
+      "baby wipes",
+      "wet wipes"
     ]
   }
 ]

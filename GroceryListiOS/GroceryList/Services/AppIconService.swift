@@ -1,5 +1,13 @@
 import UIKit
 
+enum AppIconError: LocalizedError {
+    case alternateIconsUnavailable
+
+    var errorDescription: String? {
+        "App icon changes work on a physical iPhone. They aren't available in the simulator."
+    }
+}
+
 enum AppIconService {
     static var supportsAlternateIcons: Bool {
         UIApplication.shared.supportsAlternateIcons
@@ -15,7 +23,9 @@ enum AppIconService {
 
     @MainActor
     static func setIcon(_ option: AppIconOption) async throws {
-        guard supportsAlternateIcons else { return }
+        guard supportsAlternateIcons else {
+            throw AppIconError.alternateIconsUnavailable
+        }
         guard option.alternateIconName != currentAlternateIconName else { return }
 
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in

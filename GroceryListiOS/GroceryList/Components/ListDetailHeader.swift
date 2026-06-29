@@ -11,6 +11,7 @@ struct ListDetailHeader: View {
     var onRenameList: () -> Void
     var onToggleCompletedVisibility: () -> Void
     var onClearCompleted: () -> Void
+    var onDeleteList: () -> Void
 
     @State private var showListOptions = false
 
@@ -38,7 +39,7 @@ struct ListDetailHeader: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("List options")
-                .accessibilityHint("Share, rename, or manage completed items")
+                .accessibilityHint("Share, rename, delete, or manage completed items")
             }
 
             Menu {
@@ -81,6 +82,10 @@ struct ListDetailHeader: View {
                 onClearCompleted: {
                     showListOptions = false
                     onClearCompleted()
+                },
+                onDeleteList: {
+                    showListOptions = false
+                    onDeleteList()
                 }
             )
         }
@@ -96,35 +101,46 @@ private struct ListOptionsSheet: View {
     let onRename: () -> Void
     let onToggleCompletedVisibility: () -> Void
     let onClearCompleted: () -> Void
+    let onDeleteList: () -> Void
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                optionRow(
-                    title: "Share list",
-                    systemImage: AppIcons.share,
-                    action: onShare
-                )
-                optionRow(
-                    title: "Rename list",
-                    systemImage: "pencil",
-                    action: onRename
-                )
-                optionRow(
-                    title: showCompletedItems ? "Hide Completed Items" : "Show Completed Items",
-                    systemImage: showCompletedItems ? "eye.slash" : "eye",
-                    action: onToggleCompletedVisibility
-                )
-                if canClearCompleted {
+            ScrollView {
+                VStack(spacing: 0) {
                     optionRow(
-                        title: "Clear Completed Items",
-                        systemImage: "checkmark.circle",
-                        action: onClearCompleted
+                        title: "Share list",
+                        systemImage: AppIcons.share,
+                        action: onShare
+                    )
+                    optionRow(
+                        title: "Rename list",
+                        systemImage: "pencil",
+                        action: onRename
+                    )
+                    optionRow(
+                        title: showCompletedItems ? "Hide Completed Items" : "Show Completed Items",
+                        systemImage: showCompletedItems ? "eye.slash" : "eye",
+                        action: onToggleCompletedVisibility
+                    )
+                    if canClearCompleted {
+                        optionRow(
+                            title: "Clear Completed Items",
+                            systemImage: "checkmark.circle",
+                            action: onClearCompleted
+                        )
+                    }
+                    Divider()
+                        .padding(.horizontal, AppSpacing.screenHorizontal)
+                        .padding(.vertical, 4)
+                    optionRow(
+                        title: "Delete list",
+                        systemImage: "trash",
+                        isDestructive: true,
+                        action: onDeleteList
                     )
                 }
-                Spacer(minLength: 0)
+                .padding(.top, 8)
             }
-            .padding(.top, 8)
             .background(AppColors.backgroundGrouped)
             .navigationTitle("List Options")
             .navigationBarTitleDisplayMode(.inline)
@@ -135,13 +151,20 @@ private struct ListOptionsSheet: View {
                 }
             }
         }
-        .presentationDetents([.medium])
+        .presentationDetents([.height(listOptionsSheetHeight)])
         .presentationDragIndicator(.visible)
+    }
+
+    private var listOptionsSheetHeight: CGFloat {
+        var rows: CGFloat = 4 // share, rename, completed visibility, delete
+        if canClearCompleted { rows += 1 }
+        return 56 + (rows * 52) + 24 // nav bar + rows + padding
     }
 
     private func optionRow(
         title: String,
         systemImage: String,
+        isDestructive: Bool = false,
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
@@ -149,15 +172,15 @@ private struct ListOptionsSheet: View {
                 Image(systemName: systemImage)
                     .font(.system(size: 17, weight: .medium))
                     .frame(width: 24)
-                    .foregroundStyle(AppColors.accentPrimary)
+                    .foregroundStyle(isDestructive ? AppColors.accentDestructive : AppColors.accentPrimary)
 
                 Text(title)
                     .font(AppTypography.itemTitle)
-                    .foregroundStyle(AppColors.ink)
+                    .foregroundStyle(isDestructive ? AppColors.accentDestructive : AppColors.ink)
 
                 Spacer(minLength: 0)
             }
-            .padding(.horizontal, AppSpacing.screenHorizontal)
+            .adaptiveHorizontalPadding()
             .padding(.vertical, 14)
             .contentShape(Rectangle())
         }

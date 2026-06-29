@@ -70,6 +70,8 @@ struct OnboardingMeshBackground: View {
 }
 
 struct OnboardingPageDots: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     let count: Int
     let current: Int
 
@@ -84,7 +86,7 @@ struct OnboardingPageDots: View {
                     .fill(
                         index == current
                             ? AppColors.accentPrimary
-                            : AppColors.ink.opacity(0.18)
+                            : AppColors.inkTertiary.opacity(colorScheme == .dark ? 0.55 : 0.35)
                     )
                     .frame(
                         width: index == current ? activeWidth : inactiveSize,

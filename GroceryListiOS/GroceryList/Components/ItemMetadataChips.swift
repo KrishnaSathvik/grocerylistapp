@@ -5,13 +5,24 @@ enum ItemRowMetadataMode {
     case full
     case categoryOnly
     case storeOnly
+    /// Read-only store label (focused category shopping).
+    case storeLabel
+    /// No secondary metadata (focused store shopping, grouped by category).
+    case hidden
 
     var showsCategory: Bool {
         self == .full || self == .categoryOnly
     }
 
     var showsStore: Bool {
-        self == .full || self == .storeOnly
+        self == .full || self == .storeOnly || self == .storeLabel
+    }
+
+    var allowsMetadataEditing: Bool {
+        switch self {
+        case .full, .categoryOnly, .storeOnly: return true
+        case .storeLabel, .hidden: return false
+        }
     }
 }
 
@@ -20,25 +31,46 @@ struct ItemMetadataChips: View {
     let mode: ItemRowMetadataMode
     let categories: [CategoryService.CategoryInfo]
     let stores: [StoreService.StoreInfo]
+    var isMuted: Bool = false
     let onSelectCategory: (String) -> Void
     let onSelectStore: (String?) -> Void
+
+    private var secondaryInk: Color {
+        isMuted ? AppColors.completedInk : AppColors.inkSecondary
+    }
 
     var body: some View {
         switch mode {
         case .full:
-            FullMetadataDisplay(item: item)
+            FullMetadataDisplay(item: item, inkColor: secondaryInk, isMuted: isMuted)
+        case .hidden:
+            EmptyView()
         case .categoryOnly:
-            CategoryChipMenu(
-                categoryId: item.categoryId,
-                categories: categories,
-                onSelect: onSelectCategory
-            )
+            if mode.allowsMetadataEditing {
+                CategoryChipMenu(
+                    categoryId: item.categoryId,
+                    categories: categories,
+                    onSelect: onSelectCategory
+                )
+            } else {
+                CategoryCompactPill(
+                    categoryId: item.categoryId,
+                    label: CategoryService.label(for: item.categoryId),
+                    isMuted: isMuted
+                )
+            }
         case .storeOnly:
-            StoreChipMenu(
-                storeId: item.storeId,
-                stores: stores,
-                onSelect: onSelectStore
-            )
+            if mode.allowsMetadataEditing {
+                StoreChipMenu(
+                    storeId: item.storeId,
+                    stores: stores,
+                    onSelect: onSelectStore
+                )
+            } else {
+                StoreLabelDisplay(item: item, inkColor: secondaryInk)
+            }
+        case .storeLabel:
+            StoreLabelDisplay(item: item, inkColor: secondaryInk)
         }
     }
 
@@ -58,6 +90,8 @@ struct ItemMetadataChips: View {
 
 private struct FullMetadataDisplay: View {
     let item: GroceryItem
+    var inkColor: Color = AppColors.inkSecondary
+    var isMuted: Bool = false
 
     private var categoryLabel: String {
         CategoryService.label(for: item.categoryId)
@@ -73,7 +107,11 @@ private struct FullMetadataDisplay: View {
         ViewThatFits(in: .horizontal) {
             metadataLine(includeStore: true)
             metadataLine(includeStore: false)
-            CategoryCompactPill(categoryId: item.categoryId, label: categoryLabel)
+            CategoryCompactPill(
+                categoryId: item.categoryId,
+                label: categoryLabel,
+                isMuted: isMuted
+            )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityLabel(metadataAccessibilityLabel)
@@ -84,12 +122,12 @@ private struct FullMetadataDisplay: View {
         if includeStore, let storeLabel {
             Text("\(categoryLabel) · \(storeLabel)")
                 .font(AppTypography.metadata)
-                .foregroundStyle(AppColors.inkSecondary)
+                .foregroundStyle(inkColor)
                 .fixedSize(horizontal: true, vertical: false)
         } else {
             Text(categoryLabel)
                 .font(AppTypography.metadata)
-                .foregroundStyle(AppColors.inkSecondary)
+                .foregroundStyle(inkColor)
                 .fixedSize(horizontal: true, vertical: false)
         }
     }
@@ -102,13 +140,39 @@ private struct FullMetadataDisplay: View {
     }
 }
 
+// MARK: - Read-only store label
+
+private struct StoreLabelDisplay: View {
+    let item: GroceryItem
+    var inkColor: Color = AppColors.inkSecondary
+
+    private var storeLabel: String? {
+        guard let storeId = item.storeId, !storeId.isEmpty else { return nil }
+        let label = SeedData.storeLabel(for: storeId)
+        return label == "Unassigned" ? nil : label
+    }
+
+    var body: some View {
+        if let storeLabel {
+            Text(storeLabel)
+                .font(AppTypography.metadata)
+                .foregroundStyle(inkColor)
+                .lineLimit(1)
+        }
+    }
+}
+
 // MARK: - Compact category pill
 
 private struct CategoryCompactPill: View {
     let categoryId: String
     let label: String
+    var isMuted: Bool = false
 
     private var accent: Color {
+        if isMuted {
+            return AppColors.completedInk
+        }
         if let hex = CategoryService.colorHex(for: categoryId) {
             return AppColors.colorHex(hex)
         }

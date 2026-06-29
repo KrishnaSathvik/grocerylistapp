@@ -1,6 +1,6 @@
 name: GroceryList
 options:
-  bundleIdPrefix: com.grocerylist
+  bundleIdPrefix: com.krishnasathvik
   deploymentTarget:
     iOS: "17.0"
   developmentLanguage: en
@@ -16,8 +16,8 @@ targets:
         excludes:
           - "**/.DS_Store"
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.grocerylist.app
-      INFOPLIST_KEY_CFBundleDisplayName: Grocery List
+      PRODUCT_BUNDLE_IDENTIFIER: com.krishnasathvik.grocerylistapp
+      INFOPLIST_KEY_CFBundleDisplayName: Smart Grocery
       INFOPLIST_KEY_UILaunchScreen_Generation: YES
       GENERATE_INFOPLIST_FILE: YES
       ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon

@@ -7,6 +7,7 @@ enum StoreService {
         let label: String
         let domain: String?
         let colorHex: String
+        let iconSymbol: String?
         let isCustom: Bool
         let sortOrder: Int
 
@@ -27,6 +28,7 @@ enum StoreService {
                     label: store.label,
                     domain: store.domain,
                     colorHex: store.color,
+                    iconSymbol: nil,
                     isCustom: false,
                     sortOrder: index
                 )
@@ -38,6 +40,7 @@ enum StoreService {
                 label: $0.label,
                 domain: $0.domain,
                 colorHex: $0.colorHex,
+                iconSymbol: $0.iconSymbol,
                 isCustom: $0.isCustom,
                 sortOrder: $0.sortOrder
             )
@@ -59,6 +62,10 @@ enum StoreService {
     static func colorHex(for storeId: String, context: ModelContext) -> String? {
         allStores(context: context).first(where: { $0.id == storeId })?.colorHex
             ?? SeedData.storeColorHex(for: storeId)
+    }
+
+    static func iconSymbol(for storeId: String, context: ModelContext) -> String? {
+        allStores(context: context).first(where: { $0.id == storeId })?.iconSymbol
     }
 
     static func domain(for storeId: String, context: ModelContext) -> String? {
@@ -97,8 +104,13 @@ enum StoreService {
     }
 
     @discardableResult
-    static func addCustomStore(label rawLabel: String, context: ModelContext) -> AddStoreResult {
-        let label = rawLabel.trimmingCharacters(in: .whitespacesAndNewlines)
+    static func addCustomStore(
+        label rawLabel: String,
+        iconSymbol: String = CustomStoreIconOptions.symbols[0].name,
+        colorHex: String? = nil,
+        context: ModelContext
+    ) -> AddStoreResult {
+        let label = StoreDetectionService.titleCaseStoreLabel(rawLabel)
         guard !label.isEmpty else { return .invalid }
 
         let id = slugify(label)
@@ -118,23 +130,26 @@ enum StoreService {
             return .duplicate
         }
 
+        let accent = colorHex ?? StoreBranding.colorHex(for: label)
         let count = (try? context.fetchCount(FetchDescriptor<GroceryStore>())) ?? 0
         let store = GroceryStore(
             id: id,
             label: label,
             domain: nil,
-            colorHex: StoreBranding.colorHex(for: label),
+            colorHex: accent,
+            iconSymbol: iconSymbol,
             isCustom: true,
             sortOrder: count
         )
         context.insert(store)
-        try? context.save()
+        PersistenceService.save(context: context, operation: "add custom store")
         return .added(
             StoreInfo(
                 id: store.id,
                 label: store.label,
                 domain: store.domain,
                 colorHex: store.colorHex,
+                iconSymbol: store.iconSymbol,
                 isCustom: true,
                 sortOrder: store.sortOrder
             )

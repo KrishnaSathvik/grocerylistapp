@@ -10,23 +10,29 @@ struct ImportedListItem: Equatable, Sendable, Identifiable {
     let id: UUID
     let name: String
     let quantityValue: Int?
+    let quantityText: String?
     let categoryId: String
     let storeId: String?
+    let notes: String?
     let isCompleted: Bool
 
     init(
         id: UUID = UUID(),
         name: String,
         quantityValue: Int?,
+        quantityText: String? = nil,
         categoryId: String,
         storeId: String?,
+        notes: String? = nil,
         isCompleted: Bool
     ) {
         self.id = id
         self.name = name
         self.quantityValue = quantityValue
+        self.quantityText = quantityText
         self.categoryId = categoryId
         self.storeId = storeId
+        self.notes = notes
         self.isCompleted = isCompleted
     }
 }
@@ -194,8 +200,10 @@ enum ListCodec {
                     guard let qty = entry.quantity, qty > 1 else { return nil }
                     return qty
                 }(),
+                quantityText: entry.quantityText,
                 categoryId: entry.categoryId ?? "misc",
                 storeId: entry.storeId,
+                notes: entry.notes,
                 isCompleted: entry.isCompleted
             )
         }

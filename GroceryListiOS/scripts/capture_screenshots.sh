@@ -5,7 +5,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/ScreenshotReport"
 APP="/tmp/GroceryListDerived/Build/Products/Debug-iphonesimulator/GroceryList.app"
-BUNDLE="com.grocerylist.app"
+BUNDLE="com.krishnasathvik.grocerylistapp"
 UDID="${SIMULATOR_UDID:-0DCFE83B-FC71-49BC-820A-126E3CB648BE}"
 DEVICE="${SIMULATOR_DEVICE:-iPhone 17 Pro}"
 

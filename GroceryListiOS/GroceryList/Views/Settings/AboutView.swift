@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AboutView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var showWebsite = false
 
     var body: some View {
         NavigationStack {
@@ -31,9 +32,11 @@ struct AboutView: View {
                     .padding(.top, 8)
 
                     VStack(spacing: 0) {
-                        featureRow("Offline-first")
+                        featureRow("Local-first")
                         SettingsDivider()
                         featureRow("No account required")
+                        SettingsDivider()
+                        featureRow("Smart natural input")
                         SettingsDivider()
                         featureRow("Share and import lists")
                     }
@@ -43,8 +46,23 @@ struct AboutView: View {
                         RoundedRectangle(cornerRadius: AppSpacing.cardCornerRadius, style: .continuous)
                             .stroke(AppColors.cardBorder, lineWidth: 1)
                     )
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
+
+                    if AppConfig.marketingPageURL != nil {
+                        Button {
+                            showWebsite = true
+                        } label: {
+                            HStack(spacing: 8) {
+                                Text("Visit our website")
+                                Image(systemName: "arrow.up.right")
+                                    .font(.caption.weight(.semibold))
+                            }
+                            .font(AppTypography.button)
+                            .foregroundStyle(AppColors.accentPrimary)
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
+                .adaptiveScreenContent()
                 .padding(.bottom, 32)
             }
             .background(AppColors.backgroundGrouped)
@@ -53,6 +71,12 @@ struct AboutView: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") { dismiss() }
+                }
+            }
+            .sheet(isPresented: $showWebsite) {
+                if let url = AppConfig.marketingPageURL {
+                    SafariView(url: url)
+                        .ignoresSafeArea()
                 }
             }
         }

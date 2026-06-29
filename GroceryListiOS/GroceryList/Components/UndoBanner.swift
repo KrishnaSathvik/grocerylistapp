@@ -30,7 +30,7 @@ struct UndoBanner: View {
         .background(AppColors.ink)
         .clipShape(Capsule())
         .shadow(color: .black.opacity(0.18), radius: 12, y: 4)
-        .padding(.horizontal, AppSpacing.screenHorizontal)
+        .adaptiveHorizontalPadding()
         .accessibilityElement(children: .combine)
     }
 }
@@ -55,7 +55,7 @@ struct ToastBanner: View {
             .background(AppColors.ink)
             .clipShape(Capsule())
             .shadow(color: .black.opacity(0.18), radius: 12, y: 4)
-            .padding(.horizontal, AppSpacing.screenHorizontal)
+            .adaptiveHorizontalPadding()
             .accessibilityLabel(message)
     }
 }

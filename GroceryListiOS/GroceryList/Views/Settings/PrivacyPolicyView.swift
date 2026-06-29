@@ -28,11 +28,6 @@ struct PrivacyPolicyView: View {
                     )
 
                     policySection(
-                        title: "Backup files",
-                        body: "Backup files contain your saved lists and app data. You control where backup files are saved and who receives them."
-                    )
-
-                    policySection(
                         title: "Feedback",
                         body: "If you send feedback by email, your message and optional diagnostics (app version, iOS version, device model) are sent only when you choose to send. Grocery list contents are not included by default."
                     )
@@ -63,7 +58,7 @@ struct PrivacyPolicyView: View {
                         .foregroundStyle(AppColors.inkSecondary)
                         .padding(.top, 8)
                 }
-                .padding(AppSpacing.screenHorizontal)
+                .adaptiveScreenContent()
                 .padding(.vertical, 16)
                 .padding(.bottom, 24)
             }

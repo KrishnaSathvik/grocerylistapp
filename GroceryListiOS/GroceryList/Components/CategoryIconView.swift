@@ -40,8 +40,13 @@ enum CategoryIconRendering {
         value.contains(".") || value.allSatisfy { $0.isASCII && ($0.isLetter || $0.isNumber || $0 == ".") }
     }
 
+    static func resolvedCategoryId(for categoryId: String) -> String {
+        GroceryCatalog.category(for: categoryId)?.id ?? categoryId
+    }
+
     static func resolvedAssetName(for categoryId: String) -> String? {
-        let primary = GroceryCatalog.categoryAssetName(for: categoryId)
+        let resolvedId = resolvedCategoryId(for: categoryId)
+        let primary = GroceryCatalog.categoryAssetName(for: resolvedId)
         if CatalogAssetAvailability.isUsable(primary) { return primary }
         if CatalogAssetAvailability.isUsable("category-misc") { return "category-misc" }
         return nil
@@ -52,17 +57,20 @@ enum CategoryIconRendering {
 struct CategoryIconView: View {
     let categoryId: String
     var containerSize: CGFloat = 44
-    var imageSize: CGFloat = 34
     var cornerRadius: CGFloat = 12
 
+    private var resolvedCategoryId: String {
+        CategoryIconRendering.resolvedCategoryId(for: categoryId)
+    }
+
     private var isCustom: Bool {
-        CategoryService.customCategories().contains { $0.id == categoryId }
+        CategoryService.customCategories().contains { $0.id == resolvedCategoryId }
     }
 
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                .fill(AppColors.categoryTint(for: categoryId))
+                .fill(AppColors.categoryTint(for: resolvedCategoryId))
                 .frame(width: containerSize, height: containerSize)
 
             if isCustom {
@@ -76,11 +84,12 @@ struct CategoryIconView: View {
 
     @ViewBuilder
     private var customIcon: some View {
-        let stored = CategoryService.emoji(for: categoryId)
+        let stored = CategoryService.emoji(for: resolvedCategoryId)
+        let accent = AppColors.colorHex(CategoryService.colorHex(for: resolvedCategoryId) ?? "#6B7D8E")
         if CategoryIconRendering.isSFSymbolName(stored) {
             Image(systemName: stored)
                 .font(.system(size: containerSize * 0.42, weight: .semibold))
-                .foregroundStyle(AppColors.ink.opacity(0.7))
+                .foregroundStyle(accent)
         } else {
             EmojiLabel(emoji: stored, size: containerSize * 0.55)
         }
@@ -88,10 +97,10 @@ struct CategoryIconView: View {
 
     @ViewBuilder
     private var catalogIcon: some View {
-        if let assetName = CategoryIconRendering.resolvedAssetName(for: categoryId) {
-            ProductThumbnailView(assetName: assetName, size: imageSize)
+        if let assetName = CategoryIconRendering.resolvedAssetName(for: resolvedCategoryId) {
+            ProductThumbnailView(assetName: assetName, size: containerSize, badgeFill: true)
         } else {
-            Image(systemName: AppIcons.categorySymbol(for: categoryId))
+            Image(systemName: AppIcons.categorySymbol(for: resolvedCategoryId))
                 .font(.system(size: containerSize * 0.42, weight: .semibold))
                 .foregroundStyle(AppColors.ink.opacity(0.65))
         }
@@ -138,10 +147,7 @@ struct CategoryIconPickerButton: View {
             Image(systemName: name)
                 .font(.system(size: 20, weight: .semibold))
         case .asset(let name):
-            Image(name)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 28, height: 28)
+            ProductThumbnailView(assetName: name, size: 44, badgeFill: true)
         }
     }
 }

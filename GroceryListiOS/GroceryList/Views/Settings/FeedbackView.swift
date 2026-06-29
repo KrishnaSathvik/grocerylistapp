@@ -5,7 +5,7 @@ struct FeedbackView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
 
-    @State private var feedbackType: FeedbackType = .bugReport
+    @State private var feedbackType: FeedbackType = .support
     @State private var message = ""
     @State private var includeDiagnostics = true
     @State private var showMailComposer = false
@@ -15,6 +15,16 @@ struct FeedbackView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Send feedback or get support by email.")
+                            .font(AppTypography.metadata)
+                            .foregroundStyle(AppColors.inkSecondary)
+                        Text(AppConfig.feedbackEmail)
+                            .font(AppTypography.itemTitle)
+                            .foregroundStyle(AppColors.ink)
+                            .textSelection(.enabled)
+                    }
+
                     VStack(alignment: .leading, spacing: 10) {
                         Text("What would you like to share?")
                             .font(AppTypography.metadata.weight(.semibold))
@@ -69,18 +79,18 @@ struct FeedbackView: View {
                         .foregroundStyle(AppColors.inkSecondary)
                         .accessibilityLabel("This opens your email app so you can review before sending")
 
-                    Button("Send Feedback") {
+                    Button("Send Email") {
                         sendFeedback()
                     }
                     .buttonStyle(PrimaryButtonStyle())
                     .disabled(message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                    .accessibilityLabel("Send feedback")
+                    .accessibilityLabel("Send feedback email")
                 }
-                .padding(AppSpacing.screenHorizontal)
+                .adaptiveScreenContent()
                 .padding(.vertical, 16)
             }
             .background(AppColors.backgroundGrouped)
-            .navigationTitle("Send Feedback")
+            .navigationTitle("Feedback & Support")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -167,7 +177,6 @@ private struct FeedbackFallbackSheet: View {
                         .padding(14)
                         .background(AppColors.backgroundPrimary)
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .padding(.horizontal, AppSpacing.screenHorizontal)
                 }
 
                 VStack(spacing: 10) {
@@ -184,9 +193,9 @@ private struct FeedbackFallbackSheet: View {
                     .font(AppTypography.button)
                     .foregroundStyle(AppColors.accentPrimary)
                 }
-                .padding(.horizontal, AppSpacing.screenHorizontal)
                 .padding(.bottom, 24)
             }
+            .adaptiveScreenContent()
             .background(AppColors.backgroundGrouped)
             .navigationTitle(subject)
             .navigationBarTitleDisplayMode(.inline)

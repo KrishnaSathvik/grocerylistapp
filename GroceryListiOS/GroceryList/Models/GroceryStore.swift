@@ -7,6 +7,7 @@ final class GroceryStore {
     var label: String
     var domain: String?
     var colorHex: String
+    var iconSymbol: String?
     var isCustom: Bool
     var sortOrder: Int
 
@@ -15,6 +16,7 @@ final class GroceryStore {
         label: String,
         domain: String? = nil,
         colorHex: String,
+        iconSymbol: String? = nil,
         isCustom: Bool = false,
         sortOrder: Int = 0
     ) {
@@ -22,6 +24,7 @@ final class GroceryStore {
         self.label = label
         self.domain = domain
         self.colorHex = colorHex
+        self.iconSymbol = iconSymbol
         self.isCustom = isCustom
         self.sortOrder = sortOrder
     }

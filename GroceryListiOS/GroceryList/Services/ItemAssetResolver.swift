@@ -79,6 +79,8 @@ enum ItemAssetResolver {
     private static func matchProduct(in normalizedName: String) -> GroceryCatalog.ProductEntry? {
         let name = normalizedName.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else { return nil }
+        let nameTokens = tokens(in: name)
+        guard !nameTokens.isEmpty else { return nil }
 
         var best: GroceryCatalog.ProductEntry?
         var bestLength = 0
@@ -86,7 +88,7 @@ enum ItemAssetResolver {
         for product in GroceryCatalog.products {
             for keyword in product.keywords {
                 let kw = keyword.lowercased()
-                guard name == kw || name.contains(kw) else { continue }
+                guard keywordMatches(nameTokens: nameTokens, keyword: kw) else { continue }
                 if kw.count > bestLength {
                     best = product
                     bestLength = kw.count
@@ -95,5 +97,30 @@ enum ItemAssetResolver {
         }
 
         return best
+    }
+
+    private static func keywordMatches(nameTokens: [String], keyword: String) -> Bool {
+        let keywordTokens = tokens(in: keyword)
+        guard !keywordTokens.isEmpty, keywordTokens.count <= nameTokens.count else { return false }
+
+        if keywordTokens == nameTokens {
+            return true
+        }
+
+        let maxStart = nameTokens.count - keywordTokens.count
+        for start in 0...maxStart {
+            let candidate = Array(nameTokens[start ..< start + keywordTokens.count])
+            if candidate == keywordTokens {
+                return true
+            }
+        }
+        return false
+    }
+
+    private static func tokens(in value: String) -> [String] {
+        value
+            .lowercased()
+            .split { !$0.isLetter && !$0.isNumber }
+            .map(String.init)
     }
 }

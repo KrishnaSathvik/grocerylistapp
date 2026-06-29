@@ -28,15 +28,15 @@
     "assetName": "product-milk-soy"
   },
   {
-    "keyword": "frozen veggies",
-    "assetName": "product-eggs-white"
-  },
-  {
     "keyword": "egg noodles",
     "assetName": "product-eggs-white"
   },
   {
-    "keyword": "deggi mirch",
+    "keyword": "egg whites",
+    "assetName": "product-eggs-white"
+  },
+  {
+    "keyword": "dozen eggs",
     "assetName": "product-eggs-white"
   },
   {
@@ -48,15 +48,15 @@
     "assetName": "product-eggs-brown"
   },
   {
-    "keyword": "butternut squash",
-    "assetName": "product-butter"
-  },
-  {
     "keyword": "unsalted butter",
     "assetName": "product-butter"
   },
   {
     "keyword": "salted butter",
+    "assetName": "product-butter"
+  },
+  {
+    "keyword": "margarine",
     "assetName": "product-butter"
   },
   {
@@ -180,11 +180,11 @@
     "assetName": "product-lemons"
   },
   {
-    "keyword": "lemonade",
+    "keyword": "lemons",
     "assetName": "product-lemons"
   },
   {
-    "keyword": "lemons",
+    "keyword": "lemon",
     "assetName": "product-lemons"
   },
   {
@@ -500,15 +500,167 @@
     "assetName": "product-diapers"
   },
   {
-    "keyword": "dog food",
+    "keyword": "dog kibble",
     "assetName": "product-dog-food"
   },
   {
-    "keyword": "pet food",
+    "keyword": "dog food",
     "assetName": "product-dog-food"
   },
   {
     "keyword": "kibble",
     "assetName": "product-dog-food"
+  },
+  {
+    "keyword": "fresh flowers",
+    "assetName": "product-flowers"
+  },
+  {
+    "keyword": "bouquets",
+    "assetName": "product-flowers"
+  },
+  {
+    "keyword": "flowers",
+    "assetName": "product-flowers"
+  },
+  {
+    "keyword": "frosted flakes",
+    "assetName": "product-cereal"
+  },
+  {
+    "keyword": "corn flakes",
+    "assetName": "product-cereal"
+  },
+  {
+    "keyword": "baby cereal",
+    "assetName": "product-cereal"
+  },
+  {
+    "keyword": "iceberg lettuce",
+    "assetName": "product-lettuce"
+  },
+  {
+    "keyword": "spring mix",
+    "assetName": "product-lettuce"
+  },
+  {
+    "keyword": "lettuce",
+    "assetName": "product-lettuce"
+  },
+  {
+    "keyword": "chicken soup",
+    "assetName": "product-soup"
+  },
+  {
+    "keyword": "canned soup",
+    "assetName": "product-soup"
+  },
+  {
+    "keyword": "tomato soup",
+    "assetName": "product-soup"
+  },
+  {
+    "keyword": "toothpaste",
+    "assetName": "product-toothpaste"
+  },
+  {
+    "keyword": "baby shampoo",
+    "assetName": "product-shampoo"
+  },
+  {
+    "keyword": "conditioner",
+    "assetName": "product-shampoo"
+  },
+  {
+    "keyword": "pet shampoo",
+    "assetName": "product-shampoo"
+  },
+  {
+    "keyword": "italian sausage",
+    "assetName": "product-sausage"
+  },
+  {
+    "keyword": "bratwurst",
+    "assetName": "product-sausage"
+  },
+  {
+    "keyword": "sausages",
+    "assetName": "product-sausage"
+  },
+  {
+    "keyword": "kitty food",
+    "assetName": "product-cat-food"
+  },
+  {
+    "keyword": "cat kibble",
+    "assetName": "product-cat-food"
+  },
+  {
+    "keyword": "cat food",
+    "assetName": "product-cat-food"
+  },
+  {
+    "keyword": "peanut butter",
+    "assetName": "product-peanut-butter"
+  },
+  {
+    "keyword": "almond butter",
+    "assetName": "product-peanut-butter"
+  },
+  {
+    "keyword": "granola bars",
+    "assetName": "product-granola-bars"
+  },
+  {
+    "keyword": "protein bars",
+    "assetName": "product-granola-bars"
+  },
+  {
+    "keyword": "granola bar",
+    "assetName": "product-granola-bars"
+  },
+  {
+    "keyword": "ground turkey",
+    "assetName": "product-ground-turkey"
+  },
+  {
+    "keyword": "turkey breast",
+    "assetName": "product-ground-turkey"
+  },
+  {
+    "keyword": "craft beer",
+    "assetName": "product-beer"
+  },
+  {
+    "keyword": "ginger ale",
+    "assetName": "product-beer"
+  },
+  {
+    "keyword": "root beer",
+    "assetName": "product-beer"
+  },
+  {
+    "keyword": "hummus",
+    "assetName": "product-hummus"
+  },
+  {
+    "keyword": "frozen vegetables",
+    "assetName": "product-frozen-vegetables"
+  },
+  {
+    "keyword": "frozen veggies",
+    "assetName": "product-frozen-vegetables"
+  },
+  {
+    "keyword": "frozen peas",
+    "assetName": "product-frozen-vegetables"
+  },
+  {
+    "keyword": "baby wipes",
+    "assetName": "product-baby-wipes"
+  },
+  {
+    "keyword": "wet wipes",
+    "assetName": "product-baby-wipes"
   }
 ]

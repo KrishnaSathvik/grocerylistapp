@@ -7,18 +7,26 @@ enum AppColors {
     static let backgroundGrouped = Color(light: "#F5F5F7", dark: "#000000")
     static let backgroundElevated = Color(light: "#FFFFFF", dark: "#1C1C1E")
     static let ink = Color(light: "#1A1F36", dark: "#F5F5F7")
-    static let inkSecondary = Color(light: "#6B7280", dark: "#98989D")
+    static let inkSecondary = Color(light: "#6B7280", dark: "#AEAEB2")
+    /// Chevrons, stepper glyphs, and other tertiary labels.
+    static let inkTertiary = Color(light: "#9CA3AF", dark: "#8E8E93")
     static let accentLink = Color(light: "#007AFF", dark: "#0A84FF")
-    /// Primary CTA — dark navy per design references.
+    /// Brand accent for icons, links, and tab tint.
     static let accentPrimary = Color(light: "#1A1F36", dark: "#F5F5F7")
+    /// Filled primary buttons — navy in both modes for readable white labels.
+    static let accentCTA = Color(hex: "#1A1F36")
+    static let accentCTAForeground = Color.white
     static let accentSuccess = Color(light: "#4A7C59", dark: "#5E9A6E")
     static let accentDestructive = Color(light: "#FF3B30", dark: "#FF453A")
-    static let filterSelected = Color(light: "#1A1F36", dark: "#F5F5F7")
+    static let filterSelected = Color(hex: "#1A1F36")
     static let filterUnselected = Color(light: "#ECECF0", dark: "#2C2C2E")
     static let addBarBackground = Color(light: "#FFFFFF", dark: "#1C1C1E")
     static let cardBorder = Color(light: "#E5E7EB", dark: "#38383A")
     static let cardShadow = Color.black.opacity(0.08)
     static let heroGradientTop = Color(light: "#E8F5EC", dark: "#142118")
+    /// Muted row surface for picked-up items.
+    static let completedRowBackground = Color(light: "#F3F4F6", dark: "#1C1C1E")
+    static let completedInk = Color(light: "#9CA3AF", dark: "#8E8E93")
 
     // MARK: - Category tints
 

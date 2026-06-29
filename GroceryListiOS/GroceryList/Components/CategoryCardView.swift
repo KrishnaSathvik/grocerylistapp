@@ -11,7 +11,6 @@ struct CategoryCardView: View {
             CategoryIconView(
                 categoryId: categoryId,
                 containerSize: 44,
-                imageSize: 34,
                 cornerRadius: 12
             )
 
@@ -51,7 +50,6 @@ struct CategorySectionHeader: View {
             CategoryIconView(
                 categoryId: categoryId,
                 containerSize: 36,
-                imageSize: 28,
                 cornerRadius: 10
             )
 

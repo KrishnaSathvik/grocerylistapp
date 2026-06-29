@@ -142,12 +142,29 @@ enum ListGroupingService {
         let itemGroups = groupByStore(items: items, includeCompleted: includeCompleted, storeOrder: storeOrder)
         let lookup = Dictionary(uniqueKeysWithValues: itemGroups.map { ($0.id, $0) })
 
-        var result = storeOrder.map { storeId in
-            lookup[storeId] ?? StoreGroup(id: storeId, label: storeLabels[storeId] ?? storeId.capitalized, items: [])
+        var result = storeOrder.map { storeId -> StoreGroup in
+            if let group = lookup[storeId] {
+                return StoreGroup(
+                    id: storeId,
+                    label: storeLabels[storeId] ?? group.label,
+                    items: group.items
+                )
+            }
+            return StoreGroup(
+                id: storeId,
+                label: storeLabels[storeId] ?? storeId.capitalized,
+                items: []
+            )
         }
 
         for (storeId, group) in lookup where !result.contains(where: { $0.id == storeId }) {
-            result.append(group)
+            result.append(
+                StoreGroup(
+                    id: storeId,
+                    label: storeLabels[storeId] ?? group.label,
+                    items: group.items
+                )
+            )
         }
 
         return result

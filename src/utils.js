@@ -1,15 +1,4 @@
-import { CAT_KEYWORDS } from "./data/categories";
-
-export function detectCategory(text) {
-  const lower = text.toLowerCase().trim();
-  let best = null, bestLen = 0;
-  for (const [cat, keywords] of Object.entries(CAT_KEYWORDS)) {
-    for (const kw of keywords) {
-      if ((lower === kw || lower.includes(kw)) && kw.length > bestLen) { best = cat; bestLen = kw.length; }
-    }
-  }
-  return best;
-}
+export { detectCategory } from "./detectCategory.js";
 
 export function parseQty(raw) {
   const t = raw.trim();

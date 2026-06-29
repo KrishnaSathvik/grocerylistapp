@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SettingsRow: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     let title: String
     var subtitle: String? = nil
     var value: String? = nil
@@ -48,7 +50,7 @@ struct SettingsRow: View {
         HStack(spacing: 14) {
             ZStack {
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(iconColor.opacity(0.14))
+                    .fill(iconColor.opacity(colorScheme == .dark ? 0.24 : 0.14))
                     .frame(width: 32, height: 32)
                 Image(systemName: icon)
                     .font(.system(size: 15, weight: .semibold))
@@ -59,11 +61,15 @@ struct SettingsRow: View {
                 Text(title)
                     .font(AppTypography.itemTitle)
                     .foregroundStyle(AppColors.ink)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.9)
                 if let subtitle {
                     Text(subtitle)
                         .font(AppTypography.caption)
                         .foregroundStyle(AppColors.inkSecondary)
-                        .lineLimit(2)
+                        .lineLimit(3)
+                        .minimumScaleFactor(0.9)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
 
@@ -72,21 +78,25 @@ struct SettingsRow: View {
             if isToggle {
                 Toggle("", isOn: $isOn)
                     .labelsHidden()
+                    .tint(AppColors.accentSuccess)
             } else {
                 if let value {
                     Text(value)
                         .font(AppTypography.metadata)
                         .foregroundStyle(AppColors.inkSecondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
                 }
                 if showsChevron {
                     Image(systemName: AppIcons.chevron)
                         .font(AppTypography.caption.weight(.semibold))
-                        .foregroundStyle(AppColors.inkSecondary.opacity(0.6))
+                        .foregroundStyle(AppColors.inkTertiary)
                 }
             }
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, subtitle == nil ? 12 : 14)
+        .padding(.vertical, subtitle == nil ? 14 : 16)
+        .frame(minHeight: AppSpacing.minTapTarget, alignment: .center)
     }
 }
 
@@ -99,7 +109,7 @@ struct SettingsCard<Content: View>: View {
             Text(title)
                 .appSectionLabel()
                 .padding(.horizontal, 4)
-                .padding(.bottom, 8)
+                .padding(.bottom, 10)
 
             VStack(spacing: 0) {
                 content
@@ -116,7 +126,9 @@ struct SettingsCard<Content: View>: View {
 
 struct SettingsDivider: View {
     var body: some View {
-        Divider()
+        Rectangle()
+            .fill(AppColors.cardBorder)
+            .frame(height: 1)
             .padding(.leading, 62)
     }
 }

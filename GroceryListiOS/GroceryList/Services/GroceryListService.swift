@@ -47,7 +47,7 @@ enum GroceryListService {
             tintHex: tint
         )
         context.insert(list)
-        try? context.save()
+        PersistenceService.save(context: context, operation: "create list")
         ActiveListResolver.setActive(list)
         return list
     }
@@ -69,7 +69,7 @@ enum GroceryListService {
         list.iconName = iconName
         list.tintHex = tintHex
         list.updatedAt = .now
-        try? context.save()
+        PersistenceService.save(context: context, operation: "update list")
     }
 
     static func duplicateList(_ source: GroceryList, context: ModelContext) -> GroceryList? {
@@ -111,7 +111,7 @@ enum GroceryListService {
             copy.items.append(newItem)
         }
 
-        try? context.save()
+        PersistenceService.save(context: context, operation: "duplicate list")
         return copy
     }
 
@@ -129,7 +129,7 @@ enum GroceryListService {
 
         let wasActive = ActiveListResolver.activeListId == list.id
         context.delete(list)
-        try? context.save()
+        PersistenceService.save(context: context, operation: "delete list")
 
         if wasActive, let fallback = lists.first {
             ActiveListResolver.setActive(fallback)

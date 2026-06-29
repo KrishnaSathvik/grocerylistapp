@@ -18,13 +18,28 @@ struct AppIconPickerView: View {
                     .foregroundStyle(AppColors.inkSecondary)
                     .padding(.horizontal, 4)
 
+                if !AppIconService.supportsAlternateIcons {
+                    Text("Icon changes apply on a physical iPhone. You can still preview all six options here.")
+                        .font(AppTypography.caption)
+                        .foregroundStyle(AppColors.inkSecondary)
+                        .padding(12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(AppColors.backgroundPrimary)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .stroke(AppColors.cardBorder, lineWidth: 1)
+                        )
+                        .padding(.horizontal, 4)
+                }
+
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(AppIconOption.all) { option in
                         iconCard(option)
                     }
                 }
             }
-            .padding(.horizontal, AppSpacing.screenHorizontal)
+            .adaptiveScreenContent()
             .padding(.vertical, 16)
             .padding(.bottom, 8)
         }

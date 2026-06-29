@@ -14,6 +14,7 @@ struct OnboardingFullScreenPage: View {
     let onContinue: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.colorScheme) private var colorScheme
     @State private var contentVisible = false
 
     private var isFinalPage: Bool {
@@ -27,7 +28,7 @@ struct OnboardingFullScreenPage: View {
 
             VStack(spacing: 0) {
                 topBar
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
+                    .adaptiveHorizontalPadding()
                     .padding(.top, 12)
 
                 Spacer(minLength: 0)
@@ -66,12 +67,19 @@ struct OnboardingFullScreenPage: View {
 
     private var scrimOverlay: some View {
         LinearGradient(
-            colors: [
-                Color.white.opacity(0.28),
-                Color.white.opacity(0.05),
-                Color.black.opacity(0.06),
-                Color.black.opacity(0.30),
-            ],
+            colors: colorScheme == .dark
+                ? [
+                    Color.black.opacity(0.42),
+                    Color.black.opacity(0.18),
+                    Color.black.opacity(0.22),
+                    Color.black.opacity(0.58),
+                ]
+                : [
+                    Color.white.opacity(0.28),
+                    Color.white.opacity(0.05),
+                    Color.black.opacity(0.06),
+                    Color.black.opacity(0.30),
+                ],
             startPoint: .top,
             endPoint: .bottom
         )
@@ -82,10 +90,14 @@ struct OnboardingFullScreenPage: View {
 
     private var topBar: some View {
         ZStack(alignment: .top) {
-            Text("Grocery List")
+            Text("Smart Grocery")
                 .font(OnboardingTheme.brandHeadline)
                 .foregroundStyle(AppColors.ink)
-                .shadow(color: .white.opacity(0.65), radius: 8, y: 2)
+                .shadow(
+                    color: colorScheme == .dark ? .black.opacity(0.45) : .white.opacity(0.65),
+                    radius: 8,
+                    y: 2
+                )
                 .lineLimit(1)
                 .frame(maxWidth: .infinity)
                 .padding(.top, 8)
@@ -128,7 +140,7 @@ struct OnboardingFullScreenPage: View {
 
             bottomControls
         }
-        .padding(.horizontal, AppSpacing.screenHorizontal)
+        .adaptiveHorizontalPadding()
         .padding(.top, 24)
         .padding(.bottom, 16)
         .safeAreaPadding(.bottom)
@@ -187,11 +199,11 @@ struct OnboardingFullScreenPage: View {
                     .font(.footnote.weight(.bold))
             }
             .font(AppTypography.button)
-            .foregroundStyle(.white)
+            .foregroundStyle(AppColors.accentCTAForeground)
             .padding(.horizontal, isFinalPage ? 16 : 20)
             .frame(height: 52)
-            .background(AppColors.accentPrimary, in: Capsule())
-            .shadow(color: AppColors.accentPrimary.opacity(0.28), radius: 10, y: 4)
+            .background(AppColors.accentCTA, in: Capsule())
+            .shadow(color: AppColors.accentCTA.opacity(0.28), radius: 10, y: 4)
         }
         .accessibilityLabel(isFinalPage ? "Start my list" : "Next onboarding page")
     }
@@ -199,10 +211,15 @@ struct OnboardingFullScreenPage: View {
     private var bottomPanelBackground: some View {
         ZStack {
             LinearGradient(
-                colors: [
-                    Color.white.opacity(0.55),
-                    Color.white.opacity(0.90),
-                ],
+                colors: colorScheme == .dark
+                    ? [
+                        Color.black.opacity(0.52),
+                        Color.black.opacity(0.92),
+                    ]
+                    : [
+                        Color.white.opacity(0.55),
+                        Color.white.opacity(0.90),
+                    ],
                 startPoint: .top,
                 endPoint: .bottom
             )

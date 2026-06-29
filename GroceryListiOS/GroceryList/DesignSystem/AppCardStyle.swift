@@ -60,17 +60,168 @@ struct TopLevelTabScreen<Content: View>: View {
                 TopLevelHeader(title: title, metadata: subtitle)
 
                 content()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
-            .frame(maxWidth: AppSpacing.maxContentWidth)
-            .frame(maxWidth: .infinity)
+            .adaptiveContentWidth(alignment: .top)
         }
         .background(AppScreenBackground())
         .tabBarSafePadding()
     }
 }
 
+// MARK: - Adaptive layout (iPhone + iPad)
+
+enum AdaptiveLayout {
+    static let phoneMaxContentWidth: CGFloat = 640
+    static let tabletMaxContentWidth: CGFloat = 704
+
+    static func maxContentWidth(for horizontalSizeClass: UserInterfaceSizeClass?) -> CGFloat {
+        horizontalSizeClass == .regular ? tabletMaxContentWidth : phoneMaxContentWidth
+    }
+
+    static func screenHorizontal(for horizontalSizeClass: UserInterfaceSizeClass?) -> CGFloat {
+        horizontalSizeClass == .regular ? 24 : AppSpacing.screenHorizontal
+    }
+}
+
+private struct AdaptiveContentWidthModifier: ViewModifier {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    var maxWidth: CGFloat?
+    var alignment: Alignment
+
+    func body(content: Content) -> some View {
+        let resolvedWidth = maxWidth ?? AdaptiveLayout.maxContentWidth(for: horizontalSizeClass)
+        content
+            .frame(maxWidth: resolvedWidth)
+            .frame(maxWidth: .infinity, alignment: alignment)
+    }
+}
+
+private struct AdaptiveScreenContentModifier: ViewModifier {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    var alignment: Alignment
+
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal, AdaptiveLayout.screenHorizontal(for: horizontalSizeClass))
+            .frame(maxWidth: AdaptiveLayout.maxContentWidth(for: horizontalSizeClass))
+            .frame(maxWidth: .infinity, alignment: alignment)
+    }
+}
+
+private struct AdaptiveHorizontalPaddingModifier: ViewModifier {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    var edges: Edge.Set
+
+    func body(content: Content) -> some View {
+        content.padding(edges, AdaptiveLayout.screenHorizontal(for: horizontalSizeClass))
+    }
+}
+
+extension View {
+    /// Centers content in a readable column on iPad and wide layouts.
+    func adaptiveContentWidth(maxWidth: CGFloat? = nil, alignment: Alignment = .center) -> some View {
+        modifier(AdaptiveContentWidthModifier(maxWidth: maxWidth, alignment: alignment))
+    }
+
+    /// Applies adaptive horizontal padding and max content width for full screens.
+    func adaptiveScreenContent(alignment: Alignment = .top) -> some View {
+        modifier(AdaptiveScreenContentModifier(alignment: alignment))
+    }
+
+    func adaptiveHorizontalPadding(_ edges: Edge.Set = .horizontal) -> some View {
+        modifier(AdaptiveHorizontalPaddingModifier(edges: edges))
+    }
+}
+
+/// Full-screen shell with centered readable content and optional bottom overlay.
+struct AdaptiveScreenShell<Content: View, BottomOverlay: View>: View {
+    @ViewBuilder var content: () -> Content
+    @ViewBuilder var bottomOverlay: () -> BottomOverlay
+
+    init(
+        @ViewBuilder content: @escaping () -> Content,
+        @ViewBuilder bottomOverlay: @escaping () -> BottomOverlay
+    ) {
+        self.content = content
+        self.bottomOverlay = bottomOverlay
+    }
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            AppScreenBackground()
+
+            content()
+                .adaptiveContentWidth(alignment: .top)
+                .frame(maxHeight: .infinity, alignment: .top)
+
+            bottomOverlay()
+                .adaptiveContentWidth(alignment: .center)
+        }
+    }
+}
+
+extension AdaptiveScreenShell where BottomOverlay == EmptyView {
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+        self.bottomOverlay = { EmptyView() }
+    }
+}
+
+/// Scrollable settings-style page with adaptive width.
+struct AdaptiveScrollScreen<Content: View>: View {
+    @ViewBuilder var content: () -> Content
+
+    var body: some View {
+        ScrollView {
+            content()
+                .adaptiveScreenContent(alignment: .top)
+                .padding(.vertical, 16)
+                .padding(.bottom, 8)
+        }
+        .background(AppColors.backgroundGrouped)
+    }
+}
+
 typealias TopLevelHeader = TabScreenHeader
 typealias PrimaryActionRow = TabPrimaryActionBar
+
+struct GroupedBrowseToolbar: View {
+    let title: String
+    let actionTitle: String
+    let action: () -> Void
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 12) {
+            Text(title)
+                .appSectionLabel()
+
+            Spacer(minLength: 8)
+
+            Button(action: action) {
+                Label(actionTitle, systemImage: "plus")
+                    .font(AppTypography.caption)
+                    .foregroundStyle(AppColors.ink)
+                    .labelStyle(.titleAndIcon)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(AppColors.backgroundPrimary)
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule()
+                            .stroke(AppColors.cardBorder, lineWidth: 1)
+                    )
+            }
+            .buttonStyle(.plain)
+            .frame(minHeight: 44)
+            .contentShape(Rectangle())
+            .accessibilityLabel(actionTitle)
+        }
+    }
+}
 
 struct GroupedItemsCard<Content: View>: View {
     @ViewBuilder let content: () -> Content
@@ -110,7 +261,7 @@ struct GroupedSummaryCard: View {
     let items: [GroceryItem]
 
     private let horizontalPadding: CGFloat = 14
-    private let iconSize: CGFloat = 34
+    private let iconSize: CGFloat = 44
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -153,18 +304,30 @@ struct GroupedSummaryCard: View {
 
     @ViewBuilder
     private var groupHeader: some View {
-        HStack(spacing: 12) {
+        HStack(alignment: .center, spacing: 12) {
             groupIcon
 
-            Text(groupTitle)
-                .font(AppTypography.cardTitle)
-                .foregroundStyle(AppColors.ink)
-                .lineLimit(1)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(groupTitle)
+                    .font(AppTypography.cardTitle)
+                    .foregroundStyle(AppColors.ink)
+                    .lineLimit(1)
+
+                Text(statusLabel)
+                    .font(AppTypography.metadata)
+                    .foregroundStyle(AppColors.inkSecondary)
+                    .lineLimit(1)
+
+                if itemCount > 0 {
+                    ProgressView(value: shoppingProgress)
+                        .tint(AppColors.accentSuccess)
+                }
+            }
 
             Spacer(minLength: 8)
 
-            Text(countLabel)
-                .font(AppTypography.metadata)
+            Image(systemName: AppIcons.chevron)
+                .font(.system(size: 14, weight: .semibold))
                 .foregroundStyle(AppColors.inkSecondary)
         }
     }
@@ -177,14 +340,13 @@ struct GroupedSummaryCard: View {
                 storeId: storeId,
                 displayLabel: label,
                 size: iconSize,
-                cornerRadius: 10
+                cornerRadius: 12
             )
         case .category(let categoryId, _):
             CategoryIconView(
                 categoryId: categoryId,
                 containerSize: iconSize,
-                imageSize: 26,
-                cornerRadius: 10
+                cornerRadius: 12
             )
         }
     }
@@ -198,6 +360,27 @@ struct GroupedSummaryCard: View {
 
     private var countLabel: String {
         "\(itemCount) item\(itemCount == 1 ? "" : "s")"
+    }
+
+    private var activeCount: Int {
+        items.filter { !$0.isCompleted }.count
+    }
+
+    private var completedCount: Int {
+        items.filter { $0.isCompleted }.count
+    }
+
+    private var shoppingProgress: Double {
+        guard !items.isEmpty else { return 0 }
+        return Double(completedCount) / Double(items.count)
+    }
+
+    private var statusLabel: String {
+        guard itemCount > 0 else { return "No items yet" }
+        if completedCount > 0 {
+            return "\(activeCount) to buy · \(completedCount) picked up"
+        }
+        return countLabel
     }
 }
 

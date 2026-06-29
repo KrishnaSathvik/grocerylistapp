@@ -49,6 +49,85 @@ struct ImageEmptyStateHero: View {
     }
 }
 
+// MARK: - Browse tab empty (matches List Detail layout)
+
+/// Pill action + centered illustration — Store/Categories tabs when the active list has no groups yet.
+struct BrowseTabEmptyState: View {
+    let actionTitle: String
+    let action: () -> Void
+    let imageName: String
+    let fallbackSystemImage: String
+    let title: String
+    let subtitle: String
+
+    var body: some View {
+        VStack(spacing: 0) {
+            BrowseTabCustomAddBar(title: actionTitle, action: action)
+                .padding(.horizontal, AppSpacing.screenHorizontal)
+                .padding(.bottom, 12)
+
+            ImageEmptyStateHero(
+                imageName: imageName,
+                fallbackSystemImage: fallbackSystemImage,
+                title: title,
+                subtitle: subtitle
+            )
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+    }
+}
+
+/// Quick-add-style pill that opens add-store / add-category instead of item entry.
+struct BrowseTabCustomAddBar: View {
+    let title: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 10) {
+                Image(systemName: "plus.circle.fill")
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundStyle(AppColors.accentPrimary)
+                    .accessibilityHidden(true)
+
+                Text(title)
+                    .font(AppTypography.bodyMedium)
+                    .foregroundStyle(AppColors.inkSecondary)
+
+                Spacer(minLength: 0)
+            }
+            .padding(.horizontal, 16)
+            .frame(height: AppSpacing.addBarHeight)
+            .background(AppColors.addBarBackground, in: Capsule())
+            .overlay(
+                Capsule()
+                    .stroke(AppColors.cardBorder, lineWidth: 1)
+            )
+            .shadow(color: AppColors.cardShadow.opacity(0.45), radius: 6, y: 2)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(title)
+    }
+}
+
+/// Centered illustration when the tab has no active list (no quick add).
+struct BrowseTabInactiveEmptyState: View {
+    let imageName: String
+    let fallbackSystemImage: String
+    let title: String
+    let subtitle: String
+
+    var body: some View {
+        ImageEmptyStateHero(
+            imageName: imageName,
+            fallbackSystemImage: fallbackSystemImage,
+            title: title,
+            subtitle: subtitle
+        )
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
 #Preview("List") {
     ImageEmptyStateHero(
         imageName: "empty_list_illustration",

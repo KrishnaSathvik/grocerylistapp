@@ -9,6 +9,7 @@ struct ItemRow: View {
     var isCompleted: Bool = false
     var isSelectionMode: Bool = false
     var isSelected: Bool = false
+    var showsEditButton: Bool = true
     var onToggle: () -> Void
     var onIncrement: () -> Void
     var onDecrement: () -> Void
@@ -17,7 +18,7 @@ struct ItemRow: View {
     var onSelectStore: (String?) -> Void = { _ in }
 
     private let thumbnailSize: CGFloat = 38
-    private let checkboxTouchSize: CGFloat = 32
+    private let checkboxTouchSize: CGFloat = AppSpacing.minTapTarget
     private let checkboxVisualSize: CGFloat = 22
 
     private var displayQuantity: Int {
@@ -36,34 +37,35 @@ struct ItemRow: View {
         ) != nil
     }
 
+    private var rowBackground: Color {
+        isCompleted ? AppColors.completedRowBackground : AppColors.backgroundPrimary
+    }
+
+    private var titleColor: Color {
+        isCompleted ? AppColors.completedInk : AppColors.ink
+    }
+
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             Button(action: onToggle) {
-                ZStack {
-                    Circle()
-                        .stroke(toggleColor, lineWidth: 1.5)
-                        .frame(width: checkboxVisualSize, height: checkboxVisualSize)
-                    if isCompleted || (isSelectionMode && isSelected) {
-                        Image(systemName: toggleIcon)
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundStyle(toggleColor)
-                    }
-                }
-                .frame(width: checkboxTouchSize, height: checkboxTouchSize)
-                .contentShape(Rectangle())
+                completionToggle
+                    .frame(width: checkboxTouchSize, height: checkboxTouchSize)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
             .accessibilityHidden(true)
 
             if showsThumbnail {
                 ItemThumbnailView(item: item, size: thumbnailSize)
+                    .opacity(isCompleted ? 0.72 : 1)
+                    .saturation(isCompleted ? 0.35 : 1)
             }
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.name)
                     .font(AppTypography.itemTitle)
-                    .foregroundStyle(AppColors.ink)
-                    .strikethrough(isCompleted)
+                    .foregroundStyle(titleColor)
+                    .strikethrough(isCompleted, color: titleColor)
                     .lineLimit(2)
                     .minimumScaleFactor(0.92)
 
@@ -73,6 +75,7 @@ struct ItemRow: View {
                         mode: metadataMode,
                         categories: categories,
                         stores: stores,
+                        isMuted: isCompleted,
                         onSelectCategory: onSelectCategory,
                         onSelectStore: onSelectStore
                     )
@@ -86,13 +89,13 @@ struct ItemRow: View {
         .frame(minHeight: AppSpacing.rowMinHeight)
         .padding(.horizontal, 14)
         .padding(.vertical, 13)
-        .background(AppColors.backgroundPrimary)
+        .background(rowBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(AppColors.cardBorder.opacity(0.55), lineWidth: 0.5)
+                .stroke(AppColors.cardBorder.opacity(isCompleted ? 0.35 : 0.55), lineWidth: 0.5)
         )
-        .shadow(color: AppColors.cardShadow.opacity(0.45), radius: 6, y: 2)
+        .shadow(color: AppColors.cardShadow.opacity(isCompleted ? 0.18 : 0.45), radius: isCompleted ? 3 : 6, y: isCompleted ? 1 : 2)
         .contentShape(Rectangle())
         .accessibilityElement(children: .contain)
         .accessibilityLabel(accessibilityText)
@@ -101,26 +104,57 @@ struct ItemRow: View {
     }
 
     @ViewBuilder
+    private var completionToggle: some View {
+        ZStack {
+            if isCompleted {
+                Circle()
+                    .fill(AppColors.accentSuccess)
+                    .frame(width: checkboxVisualSize, height: checkboxVisualSize)
+                Image(systemName: "checkmark")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(.white)
+            } else if isSelectionMode && isSelected {
+                Circle()
+                    .fill(AppColors.accentLink)
+                    .frame(width: checkboxVisualSize, height: checkboxVisualSize)
+                Image(systemName: "checkmark")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(.white)
+            } else {
+                Circle()
+                    .stroke(AppColors.inkSecondary.opacity(0.65), lineWidth: 1.5)
+                    .frame(width: checkboxVisualSize, height: checkboxVisualSize)
+            }
+        }
+    }
+
+    @ViewBuilder
     private var trailingControls: some View {
         HStack(spacing: 4) {
             if showsStepper {
                 QuantityStepper(
                     value: displayQuantity,
+                    isMuted: isCompleted,
                     onDecrement: onDecrement,
                     onIncrement: onIncrement
                 )
                 .fixedSize()
             }
 
-            if !isSelectionMode {
+            if !isSelectionMode, showsEditButton {
                 Button(action: onShowActions) {
                     Image(systemName: AppIcons.editItem)
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundStyle(AppColors.inkSecondary.opacity(0.75))
-                        .frame(width: 34, height: 34)
-                        .contentShape(Rectangle())
+                        .foregroundStyle(
+                            isCompleted
+                                ? AppColors.completedInk.opacity(0.75)
+                                : AppColors.inkSecondary.opacity(0.75)
+                        )
+                        .frame(width: 28, height: 28)
                 }
                 .buttonStyle(.plain)
+                .frame(width: AppSpacing.minTapTarget, height: AppSpacing.minTapTarget)
+                .contentShape(Rectangle())
                 .accessibilityLabel("Edit \(item.name)")
                 .accessibilityHint("Opens item details")
             }
@@ -143,20 +177,6 @@ struct ItemRow: View {
             }
         }
         return parts.joined(separator: ", ")
-    }
-
-    private var toggleIcon: String {
-        if isSelectionMode {
-            return isSelected ? AppIcons.checkmarkFilled : AppIcons.circle
-        }
-        return isCompleted ? AppIcons.checkmarkFilled : AppIcons.circle
-    }
-
-    private var toggleColor: Color {
-        if isSelectionMode && isSelected {
-            return AppColors.accentLink
-        }
-        return isCompleted ? AppColors.accentSuccess : AppColors.inkSecondary.opacity(0.65)
     }
 
     private var toggleAccessibilityLabel: String {
@@ -237,7 +257,13 @@ struct GroupedItemRow: View {
             return text
         }
         let value = max(item.quantityValue ?? 1, 1)
-        return value > 1 ? "×\(value)" : nil
+        return "\(value)"
+    }
+
+    private var detailLine: String? {
+        let parts = [quantityLabel, metadataLine].compactMap { $0 }
+        guard !parts.isEmpty else { return nil }
+        return parts.joined(separator: " · ")
     }
 
     var body: some View {
@@ -252,20 +278,14 @@ struct GroupedItemRow: View {
                     .foregroundStyle(AppColors.ink)
                     .lineLimit(2)
 
-                if let metadataLine {
-                    Text(metadataLine)
+                if let detailLine {
+                    Text(detailLine)
                         .font(AppTypography.metadata)
                         .foregroundStyle(AppColors.inkSecondary)
                         .lineLimit(1)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-
-            if let quantityLabel {
-                Text(quantityLabel)
-                    .font(AppTypography.metadata)
-                    .foregroundStyle(AppColors.inkSecondary.opacity(0.85))
-            }
         }
         .frame(minHeight: style == .nested ? 44 : AppSpacing.rowMinHeight, alignment: .center)
         .padding(.horizontal, style == .nested ? 0 : 14)
@@ -276,11 +296,11 @@ struct GroupedItemRow: View {
 
     private var accessibilityText: String {
         var parts = [item.name]
+        if let quantityLabel {
+            parts.append("Quantity \(quantityLabel)")
+        }
         if let metadataLine {
             parts.append(metadataLine)
-        }
-        if let quantityLabel {
-            parts.append(quantityLabel)
         }
         return parts.joined(separator: ", ")
     }

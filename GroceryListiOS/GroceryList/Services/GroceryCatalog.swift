@@ -35,7 +35,19 @@ enum GroceryCatalog {
     }
 
     static func category(for id: String) -> CategoryEntry? {
-        loadedCategories.first { $0.id == id }
+        let key = normalizedCategoryKey(id)
+        return loadedCategories.first {
+            normalizedCategoryKey($0.id) == key
+                || normalizedCategoryKey($0.displayName) == key
+        }
+    }
+
+    static func normalizedCategoryKey(_ value: String) -> String {
+        value
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+            .replacingOccurrences(of: "&", with: "and")
+            .filter { $0.isLetter || $0.isNumber }
     }
 
     static func product(for id: String) -> ProductEntry? {

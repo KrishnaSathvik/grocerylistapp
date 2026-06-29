@@ -2,9 +2,37 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
+const MARKETING_ROUTES = ["/home", "/privacy", "/support"];
+
+function marketingStaticPages() {
+  const rewriteMarketingRoute = (req) => {
+    const [pathname, query = ""] = (req.url ?? "").split("?");
+    for (const route of MARKETING_ROUTES) {
+      if (pathname === route || pathname === `${route}/`) {
+        req.url = `${route}/index.html${query ? `?${query}` : ""}`;
+        return;
+      }
+    }
+  };
+
+  const attachMiddleware = (server) => {
+    server.middlewares.use((req, _res, next) => {
+      rewriteMarketingRoute(req);
+      next();
+    });
+  };
+
+  return {
+    name: "marketing-static-pages",
+    configureServer: attachMiddleware,
+    configurePreviewServer: attachMiddleware,
+  };
+}
+
 export default defineConfig({
   plugins: [
     react(),
+    marketingStaticPages(),
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: [
@@ -47,7 +75,12 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,woff2}"],
-        navigateFallbackDenylist: [/^\/(favicon|icon|apple-touch-icon|og-image)/],
+        navigateFallbackDenylist: [
+          /^\/(favicon|icon|apple-touch-icon|og-image)/,
+          /^\/home(\/|$)/,
+          /^\/privacy(\/|$)/,
+          /^\/support(\/|$)/,
+        ],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

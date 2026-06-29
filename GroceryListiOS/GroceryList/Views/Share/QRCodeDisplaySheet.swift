@@ -35,13 +35,13 @@ struct QRCodeDisplaySheet: View {
                     UIPasteboard.general.string = code
                 }
                 .buttonStyle(PrimaryButtonStyle())
-                .padding(.horizontal, AppSpacing.screenHorizontal)
                 .accessibilityLabel("Copy shared list code")
 
                 Spacer()
             }
+            .adaptiveScreenContent()
             .padding(.top, 24)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(AppColors.backgroundGrouped)
             .navigationTitle("Share List")
             .navigationBarTitleDisplayMode(.inline)

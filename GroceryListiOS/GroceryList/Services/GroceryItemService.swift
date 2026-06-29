@@ -58,7 +58,9 @@ enum GroceryItemService {
     static func addItems(
         name rawName: String,
         to list: GroceryList,
-        context: ModelContext
+        context: ModelContext,
+        prefilledStoreId: String? = nil,
+        prefilledCategoryId: String? = nil
     ) -> [GroceryItem] {
         let trimmed = rawName.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return [] }
@@ -79,13 +81,24 @@ enum GroceryItemService {
                 storeId = StoreService.ensureCustomStore(label: customLabel, context: context)
             }
 
+            if let prefilledStoreId,
+               prefilledStoreId != "__unassigned__",
+               !prefilledStoreId.isEmpty {
+                storeId = prefilledStoreId
+            }
+
+            var categoryId = parsed.categoryId
+            if let prefilledCategoryId, !prefilledCategoryId.isEmpty {
+                categoryId = prefilledCategoryId
+            }
+
             let imageAsset = ProductImageCatalog.assetName(for: parsed.normalizedName)
             let item = GroceryItem(
                 name: parsed.name,
                 normalizedName: parsed.normalizedName,
                 quantityValue: parsed.quantityValue,
                 quantityText: parsed.quantityText,
-                categoryId: parsed.categoryId,
+                categoryId: categoryId,
                 storeId: storeId,
                 iconName: nil,
                 imageAssetName: imageAsset,
@@ -101,20 +114,22 @@ enum GroceryItemService {
         guard !created.isEmpty else { return [] }
 
         touchList(list)
-        try? context.save()
+        PersistenceService.save(context: context, operation: "add grocery items")
         return created
     }
 
-    static func toggleComplete(_ item: GroceryItem, context: ModelContext) {
+    @discardableResult
+    static func toggleComplete(_ item: GroceryItem, context: ModelContext) -> Bool {
         item.isCompleted.toggle()
         item.completedAt = item.isCompleted ? .now : nil
         if let list = item.list {
             touchList(list)
         }
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "toggle item completion")
     }
 
-    static func assignItems(_ items: [GroceryItem], to targetList: GroceryList, context: ModelContext) {
+    @discardableResult
+    static func assignItems(_ items: [GroceryItem], to targetList: GroceryList, context: ModelContext) -> Bool {
         let startOrder = (targetList.items.map(\.sortOrder).max() ?? -1) + 1
         for (offset, item) in items.enumerated() {
             if let sourceList = item.list, sourceList.id != targetList.id {
@@ -128,16 +143,17 @@ enum GroceryItemService {
             }
         }
         targetList.updatedAt = .now
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "assign items to list")
     }
 
     static func deleteItems(_ items: [GroceryItem], context: ModelContext) -> [DeletedItemSnapshot] {
         items.map { deleteItem($0, context: context) }
     }
 
-    static func updateQuantity(_ item: GroceryItem, value: Int?, context: ModelContext) {
+    @discardableResult
+    static func updateQuantity(_ item: GroceryItem, value: Int?, context: ModelContext) -> Bool {
         if item.quantityText != nil {
-            return
+            return true
         }
         if let value, value > 1 {
             item.quantityValue = value
@@ -147,12 +163,13 @@ enum GroceryItemService {
         if let list = item.list {
             touchList(list)
         }
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "update item quantity")
     }
 
-    static func updateName(_ item: GroceryItem, name rawName: String, context: ModelContext) {
+    @discardableResult
+    static func updateName(_ item: GroceryItem, name rawName: String, context: ModelContext) -> Bool {
         let trimmed = rawName.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
+        guard !trimmed.isEmpty else { return false }
 
         let learningRules = CategoryLearningService.fetchRules(context: context)
         let parsed = ItemInputParser.parse(trimmed, learningRules: learningRules)
@@ -167,16 +184,17 @@ enum GroceryItemService {
         if let list = item.list {
             touchList(list)
         }
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "update item name")
     }
 
+    @discardableResult
     static func updateItem(
         _ item: GroceryItem,
         draft: ItemEditDraft,
         context: ModelContext
-    ) {
+    ) -> Bool {
         let trimmed = draft.name.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
+        guard !trimmed.isEmpty else { return false }
 
         item.name = trimmed
         item.normalizedName = CategoryLearningService.normalize(trimmed)
@@ -207,14 +225,13 @@ enum GroceryItemService {
                 predicate: #Predicate<GroceryList> { $0.id == targetId }
             )
             if let target = try? context.fetch(descriptor).first {
-                assignItems([item], to: target, context: context)
-                return
+                return assignItems([item], to: target, context: context)
             }
         }
         if let list = item.list {
             touchList(list)
         }
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "update item")
     }
 
     @discardableResult
@@ -225,11 +242,12 @@ enum GroceryItemService {
             touchList(list)
         }
         context.delete(item)
-        try? context.save()
+        PersistenceService.save(context: context, operation: "delete item")
         return snapshot
     }
 
-    static func restoreItem(_ snapshot: DeletedItemSnapshot, to list: GroceryList, context: ModelContext) {
+    @discardableResult
+    static func restoreItem(_ snapshot: DeletedItemSnapshot, to list: GroceryList, context: ModelContext) -> Bool {
         let item = GroceryItem(
             id: snapshot.id,
             name: snapshot.name,
@@ -250,20 +268,22 @@ enum GroceryItemService {
         context.insert(item)
         list.items.append(item)
         touchList(list)
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "restore item")
     }
 
-    static func clearCompleted(in list: GroceryList, context: ModelContext) {
+    @discardableResult
+    static func clearCompleted(in list: GroceryList, context: ModelContext) -> Bool {
         let completed = list.items.filter { $0.isCompleted && !$0.isArchived }
         for item in completed {
             list.items.removeAll { $0.id == item.id }
             context.delete(item)
         }
         touchList(list)
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "clear completed items")
     }
 
-    static func duplicateItem(_ item: GroceryItem, in list: GroceryList, context: ModelContext) {
+    @discardableResult
+    static func duplicateItem(_ item: GroceryItem, in list: GroceryList, context: ModelContext) -> Bool {
         let sortOrder = (list.items.map(\.sortOrder).max() ?? -1) + 1
         let copy = GroceryItem(
             name: item.name,
@@ -282,10 +302,11 @@ enum GroceryItemService {
         context.insert(copy)
         list.items.append(copy)
         touchList(list)
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "duplicate item")
     }
 
-    static func updateCategory(_ item: GroceryItem, categoryId: String, context: ModelContext) {
+    @discardableResult
+    static func updateCategory(_ item: GroceryItem, categoryId: String, context: ModelContext) -> Bool {
         item.categoryId = categoryId
         CategoryLearningService.record(
             normalizedName: item.normalizedName,
@@ -295,18 +316,20 @@ enum GroceryItemService {
         if let list = item.list {
             touchList(list)
         }
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "update item category")
     }
 
-    static func updateStore(_ item: GroceryItem, storeId: String?, context: ModelContext) {
+    @discardableResult
+    static func updateStore(_ item: GroceryItem, storeId: String?, context: ModelContext) -> Bool {
         item.storeId = storeId
         if let list = item.list {
             touchList(list)
         }
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "update item store")
     }
 
-    static func moveItems(in list: GroceryList, from source: IndexSet, to destination: Int, activeOnly: Bool, context: ModelContext) {
+    @discardableResult
+    static func moveItems(in list: GroceryList, from source: IndexSet, to destination: Int, activeOnly: Bool, context: ModelContext) -> Bool {
         var items = list.items
             .filter { !$0.isArchived && (activeOnly ? !$0.isCompleted : $0.isCompleted) }
             .sorted { $0.sortOrder < $1.sortOrder }
@@ -317,6 +340,6 @@ enum GroceryItemService {
             item.sortOrder = index
         }
         touchList(list)
-        try? context.save()
+        return PersistenceService.save(context: context, operation: "move items")
     }
 }

@@ -14,9 +14,9 @@ struct TabHeaderActionButton: View {
                 .font(.system(size: 18, weight: .bold))
                 .foregroundStyle(.white)
                 .frame(width: 44, height: 44)
-                .background(AppColors.accentPrimary)
+                .background(AppColors.accentCTA)
                 .clipShape(Circle())
-                .shadow(color: AppColors.accentPrimary.opacity(0.25), radius: 8, y: 3)
+                .shadow(color: AppColors.accentCTA.opacity(0.25), radius: 8, y: 3)
         }
         .accessibilityLabel(accessibilityLabel)
     }
@@ -33,11 +33,16 @@ struct TabScreenHeader<Action: View>: View {
                 Text(title)
                     .font(AppTypography.largeScreenTitle)
                     .foregroundStyle(AppColors.ink)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
 
                 if let metadata {
                     Text(metadata)
                         .font(AppTypography.metadata)
                         .foregroundStyle(AppColors.inkSecondary)
+                        .lineLimit(3)
+                        .minimumScaleFactor(0.9)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
 
@@ -45,7 +50,7 @@ struct TabScreenHeader<Action: View>: View {
 
             action()
         }
-        .padding(.horizontal, AppSpacing.screenHorizontal)
+        .adaptiveHorizontalPadding()
         .safeAreaPadding(.top, AppSpacing.topHeaderTopInset)
         .padding(.bottom, AppSpacing.topHeaderBottomSpacing)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -60,30 +65,10 @@ extension TabScreenHeader where Action == EmptyView {
     }
 }
 
-// MARK: - Lists tab metadata
-
-enum MyListsHeaderMetadata {
-    static func subtitle(
-        listCount: Int,
-        totalItemsToBuy: Int,
-        totalPickedUp: Int
-    ) -> String {
-        if listCount == 0 {
-            return "Smart shopping, sorted for you"
-        }
-        let listLabel = listCount == 1 ? "list" : "lists"
-        var text = "\(listCount) \(listLabel) · \(totalItemsToBuy) to buy"
-        if totalPickedUp > 0 {
-            text += " · \(totalPickedUp) picked up"
-        }
-        return text
-    }
-}
-
 #Preview("Lists Header") {
     TopLevelHeader(
         title: "My Lists",
-        metadata: MyListsHeaderMetadata.subtitle(listCount: 2, totalItemsToBuy: 8, totalPickedUp: 3)
+        metadata: "Plan each grocery run and keep everything organized."
     )
     .background(AppScreenBackground())
 }
@@ -91,7 +76,7 @@ enum MyListsHeaderMetadata {
 #Preview("Store Header") {
     TopLevelHeader(
         title: "Store",
-        metadata: "Weekly Groceries · 2 stores"
+        metadata: "See what to buy from each store."
     ) {
         TabHeaderActionButton(systemName: AppIcons.add, accessibilityLabel: "Add item", action: {})
     }

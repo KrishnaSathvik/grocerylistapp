@@ -280,6 +280,8 @@ const ITEM_ICONS = {
   "puppy pad":"🐕","puppy pads":"🐕",
 };
 
+export { ITEM_ICONS };
+
 export function detectItemIcon(text) {
   const lower = text.toLowerCase().trim();
   if (ITEM_ICONS[lower]) return ITEM_ICONS[lower];

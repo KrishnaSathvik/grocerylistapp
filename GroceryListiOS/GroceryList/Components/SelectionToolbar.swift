@@ -19,7 +19,7 @@ struct SelectionToolbar: View {
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .shadow(color: AppColors.cardShadow, radius: 12, y: 4)
-        .padding(.horizontal, AppSpacing.screenHorizontal)
+        .adaptiveHorizontalPadding()
         .accessibilityLabel("\(selectedCount) selected")
     }
 

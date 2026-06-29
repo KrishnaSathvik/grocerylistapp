@@ -4,31 +4,31 @@ import SwiftUI
 enum AppTypography {
     // MARK: - Screen & navigation
 
-    static let largeScreenTitle = Font.system(size: 34, weight: .bold, design: .rounded)
-    static let screenTitle = Font.system(size: 30, weight: .bold, design: .rounded)
-    static let navTitle = Font.system(size: 17, weight: .semibold, design: .rounded)
+    static let largeScreenTitle = Font.system(.largeTitle, design: .rounded).weight(.bold)
+    static let screenTitle = Font.system(.title, design: .rounded).weight(.bold)
+    static let navTitle = Font.system(.headline, design: .rounded).weight(.semibold)
 
     // MARK: - Cards & empty states
 
-    static let cardTitle = Font.system(size: 17, weight: .semibold, design: .rounded)
-    static let emptyStateTitle = Font.system(size: 22, weight: .bold, design: .rounded)
+    static let cardTitle = Font.system(.headline, design: .rounded).weight(.semibold)
+    static let emptyStateTitle = Font.system(.title2, design: .rounded).weight(.bold)
 
     // MARK: - Body & list content
 
-    static let body = Font.system(size: 16, weight: .regular)
-    static let bodyMedium = Font.system(size: 16, weight: .medium)
-    static let itemTitle = Font.system(size: 16, weight: .semibold)
+    static let body = Font.body
+    static let bodyMedium = Font.body.weight(.medium)
+    static let itemTitle = Font.body.weight(.semibold)
 
     // MARK: - Supporting text
 
-    static let metadata = Font.system(size: 13, weight: .medium)
-    static let caption = Font.system(size: 12, weight: .medium)
-    static let sectionLabel = Font.system(size: 12, weight: .bold)
+    static let metadata = Font.footnote.weight(.medium)
+    static let caption = Font.caption.weight(.medium)
+    static let sectionLabel = Font.caption2.weight(.bold)
 
     // MARK: - Controls
 
-    static let button = Font.system(size: 16, weight: .semibold)
-    static let largeButton = Font.system(size: 17, weight: .semibold)
+    static let button = Font.body.weight(.semibold)
+    static let largeButton = Font.body.weight(.semibold)
     static let badge = Font.system(size: 11, weight: .bold)
     static let tiny = Font.system(size: 10, weight: .bold)
     static let tabLabel = Font.system(size: 10, weight: .medium)

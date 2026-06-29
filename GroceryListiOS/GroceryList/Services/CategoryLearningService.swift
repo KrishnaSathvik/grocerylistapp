@@ -37,7 +37,7 @@ enum CategoryLearningService {
                 )
             )
         }
-        try? context.save()
+        PersistenceService.save(context: context, operation: "record category learning")
     }
 
     static func learnedCategory(
@@ -74,6 +74,6 @@ enum CategoryLearningService {
         for rule in rules {
             context.delete(rule)
         }
-        try? context.save()
+        PersistenceService.save(context: context, operation: "reset category learning")
     }
 }
