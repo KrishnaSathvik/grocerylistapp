@@ -17,6 +17,10 @@ function marketingStaticPages() {
 
   const attachMiddleware = (server) => {
     server.middlewares.use((req, _res, next) => {
+      const [pathname] = (req.url ?? "").split("?");
+      if (pathname === "/app" || pathname === "/app/") {
+        req.url = `/index.html${req.url?.includes("?") ? req.url.slice(req.url.indexOf("?")) : ""}`;
+      }
       rewriteMarketingRoute(req);
       next();
     });
@@ -43,16 +47,16 @@ export default defineConfig({
         "android-chrome-512x512.png",
       ],
       manifest: {
-        name: "Grocery List",
+        name: "Groceries — Smart Lists",
         short_name: "Groceries",
         description:
-          "A modern notepad-style grocery list with smart categories, swipe-to-delete, quantity parsing, and dark mode.",
+          "Smart grocery lists with natural input, store and category views, sharing, and dark mode.",
         theme_color: "#faf8f4",
         background_color: "#faf8f4",
         display: "standalone",
         orientation: "portrait",
-        scope: "/",
-        start_url: "/",
+        scope: "/app/",
+        start_url: "/app",
         categories: ["productivity", "food", "utilities"],
         icons: [
           {

@@ -126,6 +126,14 @@ a:hover {
   font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+  .site-header .brand__name {
+    font-size: 14px;
+    max-width: 11rem;
+  }
 }
 
 .site-nav {

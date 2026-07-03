@@ -79,7 +79,7 @@ struct ImportSharedListView: View {
             if isScannerAvailable {
                 ImportOptionCard(
                     title: "Scan QR Code",
-                    subtitle: "Use your camera to scan a Grocery List code.",
+                    subtitle: "Use your camera to scan a Groceries — Smart Lists code.",
                     icon: AppIcons.qrCode,
                     tint: AppColors.accentSuccess,
                     isEnabled: true

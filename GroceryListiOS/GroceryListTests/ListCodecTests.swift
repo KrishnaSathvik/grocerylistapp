@@ -3,7 +3,7 @@ import XCTest
 
 final class ListCodecTests: XCTestCase {
     private let webFixtureBase64 = "W3sidCI6Im1pbGsiLCJxIjoyLCJjIjoiZGFpcnkiLCJzIjoiY29zdGNvIn0seyJ0IjoiZWdncyIsImMiOiJkYWlyeSIsImsiOjF9XQ=="
-    private let webFixtureURL = "https://grocerylistapp.vercel.app/#import=W3sidCI6Im1pbGsiLCJxIjoyLCJjIjoiZGFpcnkiLCJzIjoiY29zdGNvIn0seyJ0IjoiZWdncyIsImMiOiJkYWlyeSIsImsiOjF9XQ=="
+    private let webFixtureURL = "https://smartgrocerylists.app/app/#import=W3sidCI6Im1pbGsiLCJxIjoyLCJjIjoiZGFpcnkiLCJzIjoiY29zdGNvIn0seyJ0IjoiZWdncyIsImMiOiJkYWlyeSIsImsiOjF9XQ=="
 
     func testDecodeWebFixtureFromBase64() {
         let items = ListCodec.decode(webFixtureBase64)

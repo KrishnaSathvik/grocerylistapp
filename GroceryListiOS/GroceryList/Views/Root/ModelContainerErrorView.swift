@@ -22,7 +22,7 @@ struct ModelContainerErrorView: View {
                         .foregroundStyle(AppColors.ink)
                         .multilineTextAlignment(.center)
 
-                    Text("Grocery List couldn't open its local database. Your data may be corrupted. You can reset local storage and start fresh.")
+                    Text("Groceries — Smart Lists couldn't open its local database. Your data may be corrupted. You can reset local storage and start fresh.")
                         .font(AppTypography.metadata)
                         .foregroundStyle(AppColors.inkSecondary)
                         .multilineTextAlignment(.center)

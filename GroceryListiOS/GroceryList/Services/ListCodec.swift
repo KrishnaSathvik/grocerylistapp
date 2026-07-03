@@ -38,7 +38,7 @@ struct ImportedListItem: Equatable, Sendable, Identifiable {
 }
 
 enum ListCodec {
-    static let shareBaseURL = "https://grocerylistapp.vercel.app/"
+    static let shareBaseURL = "https://smartgrocerylists.app/app/"
     static let maxLinkItems = 50
     static let importFragmentPrefix = "#import="
     static let sharedPayloadPrefix = "GLIST1:"

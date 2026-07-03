@@ -73,7 +73,7 @@ export default function Onboarding({ onDone, importData, onImportAccept }) {
             position: "relative", zIndex: 1, flex: 1,
           }}>
             <div className="ob-page" style={{ textAlign: "center", padding: "0 8px", width: "100%" }}>
-              <img src="/logo.png" alt="Grocery List" className="ob-logo" />
+              <img src="/logo.png" alt="Groceries — Smart Lists" className="ob-logo" />
               <h2 className="ob-title">Welcome!</h2>
               <p className="ob-line" style={{ marginBottom: 16 }}>
                 Someone shared {importData.length} item{importData.length !== 1 ? "s" : ""} with you
@@ -227,7 +227,7 @@ export default function Onboarding({ onDone, importData, onImportAccept }) {
         }}>
           <div key={step} className="ob-page" style={{ textAlign: "center", padding: "0 8px" }}>
             {p.logo
-              ? <img src="/logo.png" alt="Grocery List" className="ob-logo" />
+              ? <img src="/logo.png" alt="Groceries — Smart Lists" className="ob-logo" />
               : <div className="ob-emoji">{p.emoji}</div>
             }
             <h2 className="ob-title">{p.title}</h2>

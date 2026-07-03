@@ -13,7 +13,7 @@ struct AppIconPickerView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                Text("Choose how Grocery List looks on your Home Screen.")
+                Text("Choose how Groceries — Smart Lists looks on your Home Screen.")
                     .font(AppTypography.metadata)
                     .foregroundStyle(AppColors.inkSecondary)
                     .padding(.horizontal, 4)

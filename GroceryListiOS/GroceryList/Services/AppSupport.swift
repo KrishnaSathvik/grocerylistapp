@@ -51,9 +51,9 @@ enum FeedbackType: String, CaseIterable, Identifiable {
     var emailSubject: String {
         switch self {
         case .support:
-            return "Grocery List Support"
+            return "Groceries — Smart Lists Support"
         default:
-            return "Grocery List Feedback — \(rawValue)"
+            return "Groceries — Smart Lists Feedback — \(rawValue)"
         }
     }
 }

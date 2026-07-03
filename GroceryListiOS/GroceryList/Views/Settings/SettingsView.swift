@@ -205,7 +205,7 @@ struct SettingsView: View {
                 showAbout = true
             } label: {
                 SettingsRow(
-                    title: "About Grocery List",
+                    title: "About Groceries — Smart Lists",
                     subtitle: "Version \(AppSupport.appVersion)",
                     icon: "info.circle",
                     iconColor: AppColors.inkSecondary

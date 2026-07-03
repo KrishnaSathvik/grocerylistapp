@@ -16,7 +16,7 @@ struct AboutView: View {
                             .accessibilityHidden(true)
 
                         VStack(spacing: 6) {
-                            Text("Grocery List")
+                            Text("Groceries — Smart Lists")
                                 .font(AppTypography.onboardingTitle)
                                 .foregroundStyle(AppColors.ink)
 

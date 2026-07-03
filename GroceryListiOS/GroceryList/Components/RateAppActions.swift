@@ -6,9 +6,9 @@ enum AppConfig {
     static let appStoreId: String? = "6785659442"
 
     static let feedbackEmail = "grocerylistapp.support@gmail.com"
-    static let marketingPageURL = URL(string: "https://grocerylistapp.vercel.app/home")
-    static let supportPageURL = URL(string: "https://grocerylistapp.vercel.app/support")
-    static let privacyPolicyURL = URL(string: "https://grocerylistapp.vercel.app/privacy")
+    static let marketingPageURL = URL(string: "https://smartgrocerylists.app/")
+    static let supportPageURL = URL(string: "https://smartgrocerylists.app/support")
+    static let privacyPolicyURL = URL(string: "https://smartgrocerylists.app/privacy")
 
     static var appStoreURL: URL? {
         guard let appStoreId, !appStoreId.isEmpty else { return nil }
@@ -19,7 +19,7 @@ enum AppConfig {
 struct RateAppButton: View {
     @Environment(\.requestReview) private var requestReview
 
-    var title: String = "Rate Grocery List"
+    var title: String = "Rate Groceries — Smart Lists"
     var icon: String = "star.fill"
     var iconColor: Color = AppColors.accentPrimary
     var subtitle: String? = nil
@@ -36,7 +36,7 @@ struct RateAppButton: View {
             )
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Rate Grocery List on the App Store")
+        .accessibilityLabel("Rate Groceries — Smart Lists on the App Store")
     }
 }
 
@@ -50,13 +50,13 @@ struct OpenAppStoreButton: View {
             } label: {
                 SettingsRow(
                     title: "Open App Store",
-                    subtitle: "View Grocery List on the App Store.",
+                    subtitle: "View Groceries — Smart Lists on the App Store.",
                     icon: "arrow.up.right.square",
                     iconColor: AppColors.colorHex("#8B6F8E")
                 )
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Open Grocery List on the App Store")
+            .accessibilityLabel("Open Groceries — Smart Lists on the App Store")
         }
     }
 }

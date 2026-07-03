@@ -7,7 +7,7 @@ enum ShareTextFormatter {
         let completed = items.filter(\.isCompleted).sorted { $0.sortOrder < $1.sortOrder }
 
         var lines: [String] = []
-        lines.append("Grocery List")
+        lines.append("Groceries — Smart Lists")
         lines.append(formattedDate)
         lines.append("")
 

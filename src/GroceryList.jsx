@@ -16,7 +16,7 @@ import ShareSheet from "./components/ShareSheet";
 import ImportModal from "./components/ImportModal";
 import QRModal from "./components/QRModal";
 
-const BASE_URL = "https://grocerylistapp.vercel.app/";
+const BASE_URL = "https://smartgrocerylists.app/app/";
 
 export default function GroceryList() {
   const [items, setItems] = useState(() => {
@@ -173,7 +173,7 @@ export default function GroceryList() {
   const shareAsText = async () => {
     setShowShareSheet(false);
     const unc = items.filter(i => !i.checked), chk = items.filter(i => i.checked);
-    let t = "🛒 Grocery List\n" + new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }) + "\n\n";
+    let t = "🛒 Groceries — Smart Lists\n" + new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }) + "\n\n";
     const storeMap = {};
     unc.forEach(i => { const k = i.store || "__none__"; if (!storeMap[k]) storeMap[k] = []; storeMap[k].push(i); });
     const hasStores = Object.keys(storeMap).some(k => k !== "__none__");
@@ -190,7 +190,7 @@ export default function GroceryList() {
     }
     if (chk.length) { t += "\n✓ Picked up:\n"; chk.forEach(i => { t += `  ✓ ${i.text}\n`; }); }
     t += `\n${unc.length} item${unc.length !== 1 ? "s" : ""} remaining`;
-    if (navigator.share) { try { await navigator.share({ title: "Grocery List", text: t }); return; } catch {} }
+    if (navigator.share) { try { await navigator.share({ title: "Groceries — Smart Lists", text: t }); return; } catch {} }
     try { await navigator.clipboard.writeText(t); setToast("Copied!"); setTimeout(() => setToast(null), 2200); } catch { setToast("Couldn't copy"); setTimeout(() => setToast(null), 2200); }
   };
 
@@ -206,7 +206,7 @@ export default function GroceryList() {
       return;
     }
     const url = `${BASE_URL}#import=${encoded}`;
-    if (navigator.share) { try { await navigator.share({ title: "Grocery List", url }); return; } catch {} }
+    if (navigator.share) { try { await navigator.share({ title: "Groceries — Smart Lists", url }); return; } catch {} }
     try { await navigator.clipboard.writeText(url); setToast("Link copied!"); setTimeout(() => setToast(null), 2200); } catch { setToast("Couldn't copy"); setTimeout(() => setToast(null), 2200); }
   };
 
