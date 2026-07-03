@@ -2,8 +2,8 @@ import StoreKit
 import SwiftUI
 
 enum AppConfig {
-    /// Set after the app is created in App Store Connect.
-    static let appStoreId: String? = nil
+    /// App Store ID for Groceries Smart Lists
+    static let appStoreId: String? = "6785659442"
 
     static let feedbackEmail = "grocerylistapp.support@gmail.com"
     static let marketingPageURL = URL(string: "https://grocerylistapp.vercel.app/home")
