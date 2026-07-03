@@ -130,8 +130,16 @@ enum ListCodec {
     }
 
     static func parseSharedList(from raw: String) -> ParsedSharedList? {
-        let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        var trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return nil }
+
+        if let importRange = trimmed.range(of: "Import code:", options: [.caseInsensitive, .backwards]) {
+            let codeOnly = trimmed[importRange.upperBound...]
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            if codeOnly.hasPrefix(sharedPayloadPrefix) {
+                trimmed = codeOnly
+            }
+        }
 
         if trimmed.hasPrefix(sharedPayloadPrefix) {
             return decodeSharedPayload(trimmed)
@@ -175,10 +183,12 @@ enum ListCodec {
     }
 
     static func sharePayloadText(for list: GroceryList) -> String? {
-        shareCode(for: list) ?? {
-            guard let url = shareURL(for: list.items.filter { !$0.isArchived }) else { return nil }
-            return url.absoluteString
-        }()
+        shareCode(for: list)
+    }
+
+    /// Legacy web URL import (`#import=` base64). Used only for deep links, not QR/share codes.
+    static func shareWebURL(for list: GroceryList) -> URL? {
+        shareURL(for: list.items.filter { !$0.isArchived })
     }
 
     private static func decodeSharedPayload(_ raw: String) -> ParsedSharedList? {

@@ -135,10 +135,10 @@ struct ShareActiveListView: View {
 
     @ViewBuilder
     private var actionCard: some View {
-        if let code = shareCode {
+        if shareCode != nil {
             VStack(spacing: 12) {
                 ShareLink(
-                    item: "\(shareText)\n\nImport code:\n\(code)",
+                    item: shareText,
                     subject: Text(list.name)
                 ) {
                     HStack(spacing: 8) {
@@ -147,16 +147,18 @@ struct ShareActiveListView: View {
                     }
                 }
                 .buttonStyle(PrimaryButtonStyle())
-                .accessibilityLabel("Share list")
+                .accessibilityLabel("Share list as text")
 
-                Button("Copy Code") {
-                    copyCode(code)
+                if let code = shareCode {
+                    Button("Copy Import Code") {
+                        copyCode(code)
+                    }
+                    .font(AppTypography.button)
+                    .foregroundStyle(AppColors.accentPrimary)
+                    .accessibilityLabel("Copy GLIST1 import code for QR or paste import")
                 }
-                .font(AppTypography.button)
-                .foregroundStyle(AppColors.accentPrimary)
-                .accessibilityLabel("Copy shared list code")
 
-                Text("Share through Messages, AirDrop, WhatsApp, or email.")
+                Text("Share the list as readable text. Use the QR code above or copy the import code to bring this list into the app.")
                     .font(AppTypography.caption)
                     .foregroundStyle(AppColors.inkSecondary)
                     .multilineTextAlignment(.center)

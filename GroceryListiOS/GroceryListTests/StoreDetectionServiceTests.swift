@@ -71,4 +71,24 @@ final class StoreDetectionServiceTests: XCTestCase {
     func testTitleCaseStoreLabel() {
         XCTAssertEqual(StoreDetectionService.titleCaseStoreLabel("indian store"), "Indian Store")
     }
+
+    func testDefaultStoreIdFromCostcoRun() {
+        XCTAssertEqual(
+            StoreDetectionService.defaultStoreId(forListName: "Costco Run", stores: stores),
+            "costco"
+        )
+    }
+
+    func testDefaultStoreIdFromWalmartList() {
+        XCTAssertEqual(
+            StoreDetectionService.defaultStoreId(forListName: "Walmart List", stores: stores),
+            "walmart"
+        )
+    }
+
+    func testDefaultStoreIdIgnoresGenericListNames() {
+        XCTAssertNil(
+            StoreDetectionService.defaultStoreId(forListName: "Weekly Groceries", stores: stores)
+        )
+    }
 }

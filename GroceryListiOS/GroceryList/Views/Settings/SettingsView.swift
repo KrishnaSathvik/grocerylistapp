@@ -150,6 +150,34 @@ struct SettingsView: View {
     private var customizationSection: some View {
         SettingsCard(title: "Customization") {
             NavigationLink {
+                ManageStoresView()
+            } label: {
+                SettingsRow(
+                    title: "Manage Stores",
+                    subtitle: "View default and custom stores.",
+                    icon: "storefront.fill",
+                    iconColor: AppColors.accentPrimary
+                )
+            }
+            .buttonStyle(.plain)
+
+            SettingsDivider()
+
+            NavigationLink {
+                ManageCategoriesView()
+            } label: {
+                SettingsRow(
+                    title: "Manage Categories",
+                    subtitle: "View default and custom categories.",
+                    icon: "square.grid.2x2.fill",
+                    iconColor: AppColors.colorHex("#C4883C")
+                )
+            }
+            .buttonStyle(.plain)
+
+            SettingsDivider()
+
+            NavigationLink {
                 AppIconPickerView()
             } label: {
                 SettingsRow(

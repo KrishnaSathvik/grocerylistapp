@@ -81,6 +81,13 @@ enum GroceryItemService {
                 storeId = StoreService.ensureCustomStore(label: customLabel, context: context)
             }
 
+            if storeId == nil {
+                storeId = StoreDetectionService.defaultStoreId(
+                    forListName: list.name,
+                    stores: stores
+                )
+            }
+
             if let prefilledStoreId,
                prefilledStoreId != "__unassigned__",
                !prefilledStoreId.isEmpty {

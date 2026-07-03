@@ -113,7 +113,7 @@ struct ImportSharedListView: View {
                     Text("Paste Shared Code")
                         .font(AppTypography.cardTitle)
                         .foregroundStyle(AppColors.ink)
-                    Text("Paste a code from Messages, WhatsApp, or email.")
+                    Text("Paste a GLIST1 import code from QR scan, Messages, or email.")
                         .font(AppTypography.metadata)
                         .foregroundStyle(AppColors.inkSecondary)
                 }

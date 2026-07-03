@@ -277,8 +277,8 @@ typealias PrimaryActionRow = TabPrimaryActionBar
 
 struct GroupedBrowseToolbar: View {
     let title: String
-    let actionTitle: String
-    let action: () -> Void
+    var actionTitle: String? = nil
+    var action: (() -> Void)? = nil
 
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
@@ -287,24 +287,26 @@ struct GroupedBrowseToolbar: View {
 
             Spacer(minLength: 8)
 
-            Button(action: action) {
-                Label(actionTitle, systemImage: "plus")
-                    .font(AppTypography.caption)
-                    .foregroundStyle(AppColors.ink)
-                    .labelStyle(.titleAndIcon)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .background(AppColors.backgroundPrimary)
-                    .clipShape(Capsule())
-                    .overlay(
-                        Capsule()
-                            .stroke(AppColors.cardBorder, lineWidth: 1)
-                    )
+            if let actionTitle, let action {
+                Button(action: action) {
+                    Label(actionTitle, systemImage: "plus")
+                        .font(AppTypography.caption)
+                        .foregroundStyle(AppColors.ink)
+                        .labelStyle(.titleAndIcon)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(AppColors.backgroundPrimary)
+                        .clipShape(Capsule())
+                        .overlay(
+                            Capsule()
+                                .stroke(AppColors.cardBorder, lineWidth: 1)
+                        )
+                }
+                .buttonStyle(.plain)
+                .frame(minHeight: 44)
+                .contentShape(Rectangle())
+                .accessibilityLabel(actionTitle)
             }
-            .buttonStyle(.plain)
-            .frame(minHeight: 44)
-            .contentShape(Rectangle())
-            .accessibilityLabel(actionTitle)
         }
     }
 }

@@ -54,6 +54,50 @@ enum StoreDetectionService {
         return StorePhrase(query: nil, cleanText: trimmed, isExplicit: false)
     }
 
+    /// Detects a default store from list names like "Costco Run" or "Walmart List".
+    static func defaultStoreId(forListName rawName: String, stores: [SeedData.StoreDefinition]) -> String? {
+        let normalized = normalizeStoreKey(rawName)
+        guard !normalized.isEmpty else { return nil }
+
+        let genericSuffixes: Set<String> = [
+            "run", "list", "trip", "shop", "shopping", "haul", "errand", "errands", "pickup", "order", "stop"
+        ]
+
+        let rankedStores = stores.sorted {
+            normalizeStoreKey($0.label).count > normalizeStoreKey($1.label).count
+        }
+
+        for store in rankedStores {
+            let storeKeys = [normalizeStoreKey(store.label), normalizeStoreKey(store.id)].filter { !$0.isEmpty }
+            for storeKey in storeKeys {
+                if normalized == storeKey {
+                    return store.id
+                }
+
+                if normalized.hasPrefix(storeKey + " ") {
+                    let remainder = String(normalized.dropFirst(storeKey.count + 1))
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                    let firstWord = remainder.split(separator: " ").first.map(String.init) ?? ""
+                    if remainder.isEmpty || genericSuffixes.contains(firstWord) || genericSuffixes.contains(remainder) {
+                        return store.id
+                    }
+                }
+
+                if normalized.hasSuffix(" " + storeKey) {
+                    let prefix = String(normalized.dropLast(storeKey.count + 1))
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                    let prefixWords = prefix.split(separator: " ")
+                    if prefixWords.count <= 2,
+                       genericSuffixes.contains(String(prefixWords.last ?? "")) || prefixWords.count == 1 {
+                        return store.id
+                    }
+                }
+            }
+        }
+
+        return nil
+    }
+
     static func resolveStoreId(
         query: String?,
         stores: [SeedData.StoreDefinition]

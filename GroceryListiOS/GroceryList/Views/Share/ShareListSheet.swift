@@ -186,12 +186,7 @@ struct ShareListSheet: View {
     }
 
     private func shareViaSystem() {
-        let text = ShareTextFormatter.format(list: list)
-        if let code = ListCodec.sharePayloadText(for: list) {
-            sharePayload = SharePayload(items: [text, code])
-        } else {
-            sharePayload = SharePayload(items: [text])
-        }
+        sharePayload = SharePayload(items: [ShareTextFormatter.format(list: list)])
     }
 
     private func showToast(_ message: String) {

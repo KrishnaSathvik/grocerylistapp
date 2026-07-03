@@ -9,8 +9,6 @@ struct CategoriesTabView: View {
     )
     private var lists: [GroceryList]
 
-    @State private var showAddCategorySheet = false
-
     private var activeList: GroceryList? {
         ActiveListResolver.resolve(from: lists)
     }
@@ -40,19 +38,15 @@ struct CategoriesTabView: View {
                         )
                     } else if groupsWithItems.isEmpty {
                         BrowseTabEmptyState(
-                            actionTitle: "Add custom category",
-                            action: { showAddCategorySheet = true },
                             imageName: "empty_list_illustration",
                             fallbackSystemImage: AppIcons.categories,
                             title: "No categories yet",
-                            subtitle: "Add a custom category above, or add items on your list and we'll organize them automatically."
+                            subtitle: "Add items on your list and we'll organize them automatically, or add custom categories in More → Manage Categories."
                         )
                     } else {
                         ScrollView {
                             VStack(alignment: .leading, spacing: AppSpacing.groupedSectionSpacing) {
-                                GroupedBrowseToolbar(title: "Categories", actionTitle: "Add Category") {
-                                    showAddCategorySheet = true
-                                }
+                                GroupedBrowseToolbar(title: "Categories")
 
                                 ForEach(groupsWithItems) { group in
                                     NavigationLink(
@@ -90,9 +84,6 @@ struct CategoriesTabView: View {
                         categoryLabel: route.label
                     )
                 }
-            }
-            .adaptiveSheet(isPresented: $showAddCategorySheet) {
-                AddCustomCategorySheet()
             }
         }
     }

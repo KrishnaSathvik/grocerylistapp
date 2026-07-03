@@ -31,7 +31,7 @@ struct QRCodeDisplaySheet: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 24)
 
-                Button("Copy Code") {
+                Button("Copy Import Code") {
                     UIPasteboard.general.string = code
                 }
                 .buttonStyle(PrimaryButtonStyle())

@@ -9,8 +9,6 @@ struct StoreTabView: View {
     )
     private var lists: [GroceryList]
 
-    @State private var showAddStoreSheet = false
-
     private var activeList: GroceryList? {
         ActiveListResolver.resolve(from: lists)
     }
@@ -53,19 +51,15 @@ struct StoreTabView: View {
                         )
                     } else if groupsWithItems.isEmpty {
                         BrowseTabEmptyState(
-                            actionTitle: "Add custom store",
-                            action: { showAddStoreSheet = true },
                             imageName: "empty_list_illustration",
                             fallbackSystemImage: AppIcons.store,
                             title: "No stores yet",
-                            subtitle: "Add a custom store above, or add items with a store on your list — like “milk from Costco”."
+                            subtitle: "Add items with a store on your list — like “milk from Costco” — or add custom stores in More → Manage Stores."
                         )
                     } else {
                         ScrollView {
                             VStack(alignment: .leading, spacing: AppSpacing.groupedSectionSpacing) {
-                                GroupedBrowseToolbar(title: "Stores", actionTitle: "Add Store") {
-                                    showAddStoreSheet = true
-                                }
+                                GroupedBrowseToolbar(title: "Stores")
 
                                 ForEach(groupsWithItems) { group in
                                     NavigationLink(
@@ -103,9 +97,6 @@ struct StoreTabView: View {
                         list: activeList
                     )
                 }
-            }
-            .adaptiveSheet(isPresented: $showAddStoreSheet) {
-                AddCustomStoreSheet()
             }
         }
     }

@@ -28,6 +28,7 @@
 		1F612A16C7EE1EEF1CE6579B /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200E05D28C8618272128D4BC /* CategoryCardView.swift */; };
 		2388EAF1EEDE9B16C755E5CE /* CategoryPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63B15D6DF236C0F47B1E53E /* CategoryPickerSheet.swift */; };
 		24B6BA596526E5806B49F274 /* AppIconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4CF9464CDFA0208C4BF821 /* AppIconPickerView.swift */; };
+		24C7E1A83F9D2B1100A1B2C3 /* ManageCatalogViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C7E1A73F9D2B1100A1B2C3 /* ManageCatalogViews.swift */; };
 		251CF4EE992AAFC2AE5C215E /* RateAppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8AD96C7725E4E947C632AD /* RateAppActions.swift */; };
 		2B18C6CB10155E598EBB03DA /* CategoryLearningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A76DC3081D85543A7BC83 /* CategoryLearningService.swift */; };
 		3062B68D87DB9B58A78D0D8A /* ItemThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F41DD220117AD99E471B47 /* ItemThumbnailView.swift */; };
@@ -269,6 +270,7 @@
 		AA6A1E1852BACA095B638F76 /* QuickAddBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddBar.swift; sourceTree = "<group>"; };
 		ACE010BD46C3A7811EEFC7CE /* SharedListImportPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedListImportPreview.swift; sourceTree = "<group>"; };
 		AD4CF9464CDFA0208C4BF821 /* AppIconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPickerView.swift; sourceTree = "<group>"; };
+		24C7E1A73F9D2B1100A1B2C3 /* ManageCatalogViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCatalogViews.swift; sourceTree = "<group>"; };
 		AF1FC0EB7FE14882C55BE8F7 /* CategoryDetectionCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetectionCatalogTests.swift; sourceTree = "<group>"; };
 		B1B5F67A377119DD12264249 /* SwipeToDeleteRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToDeleteRow.swift; sourceTree = "<group>"; };
 		B2756729C7D0C7BAB2A0B15B /* StoreBranding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreBranding.swift; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 			children = (
 				86F3F89CD7A9A25A07DFF4DA /* AboutView.swift */,
 				AD4CF9464CDFA0208C4BF821 /* AppIconPickerView.swift */,
+				24C7E1A73F9D2B1100A1B2C3 /* ManageCatalogViews.swift */,
 				DDC5F0AAD2C1F1CAEB359DD7 /* FeedbackView.swift */,
 				CC2515555C3B73AD4B67502F /* PrivacyPolicyView.swift */,
 				561BA14A7F148938446DF85E /* SettingsView.swift */,
@@ -868,6 +871,7 @@
 				BE1CA07BA57F661CEDE1E55C /* ModelContainerErrorView.swift in Sources */,
 				3479E957A40C6B356178E87E /* AboutView.swift in Sources */,
 				24B6BA596526E5806B49F274 /* AppIconPickerView.swift in Sources */,
+				24C7E1A83F9D2B1100A1B2C3 /* ManageCatalogViews.swift in Sources */,
 				F2CA3A111D55EC5AC7E3521F /* FeedbackView.swift in Sources */,
 				DD6B8FE8240844BA5EBA0D51 /* PrivacyPolicyView.swift in Sources */,
 				FDABFC325A4535680861EC10 /* SettingsView.swift in Sources */,
@@ -916,9 +920,10 @@
 		5EFE6D0A9526FE7701CFA3FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconSageBag AppIconNavyCart AppIconProduce AppIconCream AppIconDark";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 766WG2GGCA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Smart Grocery";
@@ -927,7 +932,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.krishnasathvik.grocerylistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -956,9 +961,10 @@
 		DBD8C4BBA396ED346071B078 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconSageBag AppIconNavyCart AppIconProduce AppIconCream AppIconDark";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 766WG2GGCA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Smart Grocery";
@@ -967,7 +973,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.krishnasathvik.grocerylistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
