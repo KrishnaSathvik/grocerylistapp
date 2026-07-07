@@ -1,28 +1,50 @@
+import AVFoundation
 import SwiftUI
+import UIKit
 import VisionKit
 
 struct QRScannerScreen: View {
     @Environment(\.dismiss) private var dismiss
     let onScan: (String) -> Void
 
-    private var isScannerAvailable: Bool {
-        DataScannerViewController.isSupported && DataScannerViewController.isAvailable
+    @State private var state: QRScannerLoadState = .loading
+
+    private enum QRScannerLoadState: Equatable {
+        case loading
+        case ready
+        case permissionDenied
+        case unavailable(String)
     }
 
     var body: some View {
         NavigationStack {
             Group {
-                if isScannerAvailable {
+                switch state {
+                case .loading:
+                    ProgressView("Preparing camera…")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                case .ready:
                     QRScannerRepresentable { value in
                         onScan(value)
                         dismiss()
                     }
                     .ignoresSafeArea()
-                } else {
-                    EmptyStateView(
+                case .permissionDenied:
+                    scannerUnavailableView(
+                        title: "Camera access needed",
+                        message: "Allow camera access in Settings to scan QR codes, or paste a share link instead."
+                    ) {
+                        Button("Open Settings") {
+                            if let url = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(url)
+                            }
+                        }
+                        .buttonStyle(PrimaryButtonStyle())
+                    }
+                case .unavailable(let message):
+                    scannerUnavailableView(
                         title: "Camera unavailable",
-                        message: "Camera scanning isn't available here. Paste a shared list instead.",
-                        systemImage: AppIcons.qrCode
+                        message: message
                     )
                 }
             }
@@ -33,6 +55,58 @@ struct QRScannerScreen: View {
                     Button("Cancel") { dismiss() }
                 }
             }
+            .task {
+                await prepareScanner()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func scannerUnavailableView<Actions: View>(
+        title: String,
+        message: String,
+        @ViewBuilder actions: () -> Actions = { EmptyView() }
+    ) -> some View {
+        VStack(spacing: 16) {
+            EmptyStateView(
+                title: title,
+                message: message,
+                systemImage: AppIcons.qrCode
+            )
+            actions()
+                .adaptiveScreenContent()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private func prepareScanner() async {
+        guard DataScannerViewController.isSupported else {
+            state = .unavailable("QR scanning isn't supported on this device. Paste a share link instead.")
+            return
+        }
+
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        switch status {
+        case .authorized:
+            break
+        case .notDetermined:
+            let granted = await AVCaptureDevice.requestAccess(for: .video)
+            guard granted else {
+                state = .permissionDenied
+                return
+            }
+        case .denied, .restricted:
+            state = .permissionDenied
+            return
+        @unknown default:
+            state = .permissionDenied
+            return
+        }
+
+        if DataScannerViewController.isAvailable {
+            state = .ready
+        } else {
+            state = .unavailable("Camera scanning isn't available here. Paste a share link instead.")
         }
     }
 }

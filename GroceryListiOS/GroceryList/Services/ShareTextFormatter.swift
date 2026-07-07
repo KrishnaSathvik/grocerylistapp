@@ -68,22 +68,65 @@ enum ShareTextFormatter {
         return lines.joined(separator: "\n")
     }
 
-    /// Grocery checklist only — for clipboard copy (no date, footer, or App Store pitch).
+    /// Grocery checklist for clipboard copy — grouped by store when items have stores.
     static func formatPlainList(list: GroceryList, context: ModelContext) -> String {
+        let stores = StoreService.allStores(context: context)
+        let storeLabels = Dictionary(uniqueKeysWithValues: stores.map { ($0.id, $0.label) })
+        let storeOrder = stores.map(\.id)
+        return formatPlainList(
+            list: list,
+            storeLabels: storeLabels,
+            storeOrder: storeOrder
+        )
+    }
+
+    static func formatPlainList(
+        list: GroceryList,
+        storeLabels: [String: String] = [:],
+        storeOrder: [String] = SeedData.loadStoreDefinitions().map(\.id)
+    ) -> String {
         let items = list.items.filter { !$0.isArchived }
         let active = items.filter { !$0.isCompleted }.sorted { $0.sortOrder < $1.sortOrder }
         let completed = items.filter(\.isCompleted).sorted { $0.sortOrder < $1.sortOrder }
 
         var lines: [String] = [list.name, ""]
-        for item in active {
-            lines.append("\(checkbox(for: item)) \(quantityPrefix(for: item))\(item.name)")
+
+        let storeGroups = Dictionary(grouping: active) { $0.storeId ?? "__none__" }
+        let hasStores = storeGroups.keys.contains { $0 != "__none__" }
+
+        if hasStores {
+            for storeId in orderedStoreKeys(from: storeGroups, storeOrder: storeOrder) where storeId != "__none__" {
+                lines.append("\(storeLabel(for: storeId, storeLabels: storeLabels)):")
+                for item in storeGroups[storeId] ?? [] {
+                    lines.append("  \(checkbox(for: item)) \(quantityPrefix(for: item))\(item.name)")
+                }
+                lines.append("")
+            }
+            if let unassigned = storeGroups["__none__"], !unassigned.isEmpty {
+                lines.append("Other:")
+                for item in unassigned {
+                    lines.append("  \(checkbox(for: item)) \(quantityPrefix(for: item))\(item.name)")
+                }
+                lines.append("")
+            }
+        } else {
+            for item in active {
+                lines.append("\(checkbox(for: item)) \(quantityPrefix(for: item))\(item.name)")
+            }
         }
+
         if !completed.isEmpty {
-            lines.append("")
+            if let last = lines.last, !last.isEmpty {
+                lines.append("")
+            }
             lines.append("Picked up:")
             for item in completed {
                 lines.append("  ☑ \(item.name)")
             }
+        }
+
+        while lines.last == "" {
+            lines.removeLast()
         }
         return lines.joined(separator: "\n")
     }

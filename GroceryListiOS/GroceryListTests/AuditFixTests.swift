@@ -65,6 +65,25 @@ final class ShareTextFormatterTests: XCTestCase {
     }
 
     @MainActor
+    func testFormatPlainListIncludesStoreSections() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Weekly")
+        context.insert(list)
+        let eggs = GroceryItem(name: "eggs", categoryId: "dairy", storeId: "costco", list: list)
+        let chicken = GroceryItem(name: "chicken", categoryId: "meat", storeId: "walmart", list: list)
+        context.insert(eggs)
+        context.insert(chicken)
+        list.items = [eggs, chicken]
+
+        let text = ShareTextFormatter.formatPlainList(list: list, context: context)
+        XCTAssertTrue(text.contains("Costco:"))
+        XCTAssertTrue(text.contains("Walmart:"))
+        XCTAssertTrue(text.contains("☐ eggs"))
+        XCTAssertTrue(text.contains("☐ chicken"))
+    }
+
+    @MainActor
     func testFormatForMessagesIsListOnly() throws {
         let container = try ModelContainerSetup.makeContainer(inMemory: true)
         let context = container.mainContext

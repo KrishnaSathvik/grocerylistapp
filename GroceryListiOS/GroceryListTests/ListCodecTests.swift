@@ -171,6 +171,27 @@ final class ListCodecTests: XCTestCase {
         XCTAssertEqual(parsed?.items[1].quantityText, "2 lb")
     }
 
+    func testParsePlainTextListPreservesStoreSections() {
+        let text = """
+        Weekly Groceries
+
+        Costco:
+          ☐ eggs
+          ☐ buttermilk
+        Walmart:
+          ☐ chicken
+        """
+
+        let parsed = PlainTextListParser.parse(text)
+        XCTAssertEqual(parsed?.listName, "Weekly Groceries")
+        XCTAssertEqual(parsed?.items.count, 3)
+        XCTAssertEqual(parsed?.items[0].name, "eggs")
+        XCTAssertEqual(parsed?.items[0].storeId, "costco")
+        XCTAssertEqual(parsed?.items[1].storeId, "costco")
+        XCTAssertEqual(parsed?.items[2].name, "chicken")
+        XCTAssertEqual(parsed?.items[2].storeId, "walmart")
+    }
+
     @MainActor
     func testShareCodeImportPreservesTextQuantityAndNotes() throws {
         let list = GroceryList(name: "Pantry Run")

@@ -36,11 +36,7 @@ struct SharedListImportPreview: View {
                             if index > 0 {
                                 Divider().padding(.leading, 16)
                             }
-                            Text(item.name)
-                                .font(AppTypography.itemTitle)
-                                .foregroundStyle(AppColors.ink)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 12)
+                            ImportedItemPreviewRow(item: item)
                         }
 
                         if parsed.items.count > previewItems.count {

@@ -73,6 +73,7 @@
 		6829122E90E8B96D3D5FE079 /* QuantityStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67822805A02FA22DA8336C30 /* QuantityStepper.swift */; };
 		683625895DADAABB8E9A5659 /* CategoryDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D0B3A1F856B1DA3C4F309F /* CategoryDetectionService.swift */; };
 		691935F0B12E3CCBBE3CCC32 /* AppSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BD23B44F7B2D6B380E538 /* AppSupport.swift */; };
+		I1M2P0R3T4P5R6E7V8I9E0W2 /* ImportedItemPreviewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = I1M2P0R3T4P5R6E7V8I9E0W1 /* ImportedItemPreviewRow.swift */; };
 		69756DFA77F3D009C00C5379 /* ItemAssetResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4ED8ECDB957F1CB4D5831A /* ItemAssetResolver.swift */; };
 		6A684A64331072740C1B116D /* StarterChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E805B6C96C0644FEA1E999 /* StarterChip.swift */; };
 		6E8AE03B09E87CA90D5F5956 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893EC0E390603064F78C801F /* AppColors.swift */; };
@@ -256,6 +257,7 @@
 		86F3F89CD7A9A25A07DFF4DA /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		89297178BBB784A42BDB1647 /* CategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailView.swift; sourceTree = "<group>"; };
 		893EC0E390603064F78C801F /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		I1M2P0R3T4P5R6E7V8I9E0W1 /* ImportedItemPreviewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedItemPreviewRow.swift; sourceTree = "<group>"; };
 		8A954F7F977EDD9FDF082A01 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		8DD9BC698B9448B333AEFCA3 /* GroceryIllustrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryIllustrations.swift; sourceTree = "<group>"; };
 		907910521AC7E2F4EF0891A6 /* CatalogBadgeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogBadgeImage.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				CB38A5CD06B26CC5AC1F4C6C /* FilterPillBar.swift */,
 				8DD9BC698B9448B333AEFCA3 /* GroceryIllustrations.swift */,
 				734A5CD509D6501567F950BB /* ItemEmojiView.swift */,
+				I1M2P0R3T4P5R6E7V8I9E0W1 /* ImportedItemPreviewRow.swift */,
 				9B3643A01BFD77DBC3C2CF23 /* ItemMetadataChips.swift */,
 				6C5275792C7F3C21FF100364 /* ItemRow.swift */,
 				42F41DD220117AD99E471B47 /* ItemThumbnailView.swift */,
@@ -787,6 +790,7 @@
 				06CA23FCEBFDFA33124449DF /* FilterPillBar.swift in Sources */,
 				363B02B19B1A3EB93757F06E /* GroceryIllustrations.swift in Sources */,
 				C3C36F505997165C848E8D12 /* ItemEmojiView.swift in Sources */,
+				I1M2P0R3T4P5R6E7V8I9E0W2 /* ImportedItemPreviewRow.swift in Sources */,
 				0DF851548F445DA63EAC8BFC /* ItemMetadataChips.swift in Sources */,
 				CAA9CB8108A90585891877BF /* ItemRow.swift in Sources */,
 				3062B68D87DB9B58A78D0D8A /* ItemThumbnailView.swift in Sources */,
@@ -938,10 +942,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GroceryList/GroceryList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 766WG2GGCA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Smart Grocery";
+				INFOPLIST_KEY_CFBundleDisplayName = "Smart Groceries";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR codes to import shared grocery lists.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -980,10 +985,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GroceryList/GroceryList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 766WG2GGCA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Smart Grocery";
+				INFOPLIST_KEY_CFBundleDisplayName = "Smart Groceries";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR codes to import shared grocery lists.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

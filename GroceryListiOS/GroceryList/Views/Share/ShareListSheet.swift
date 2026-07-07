@@ -167,7 +167,7 @@ struct ShareListSheet: View {
 
             ShareOptionRow(
                 title: "Copy as Text",
-                subtitle: "Just the grocery list — not importable.",
+                subtitle: "Readable checklist with stores — paste in Import.",
                 icon: AppIcons.clipboard,
                 tint: AppColors.accentPrimary
             ) {

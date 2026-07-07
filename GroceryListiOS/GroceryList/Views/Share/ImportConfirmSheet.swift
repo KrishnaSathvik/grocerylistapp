@@ -35,27 +35,7 @@ struct ImportConfirmSheet: View {
                             if index > 0 {
                                 Divider().padding(.leading, 16)
                             }
-                            HStack(spacing: 12) {
-                                Image(systemName: AppIcons.categorySymbol(for: item.categoryId))
-                                    .font(.system(size: 14, weight: .semibold))
-                                    .foregroundStyle(AppColors.accentSuccess)
-                                    .frame(width: 32, height: 32)
-                                    .background(AppColors.categoryTint(for: item.categoryId))
-                                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(item.name)
-                                        .font(AppTypography.itemTitle)
-                                        .foregroundStyle(AppColors.ink)
-                                        .lineLimit(1)
-                                    Text(SeedData.categoryLabel(for: item.categoryId))
-                                        .font(AppTypography.metadata)
-                                        .foregroundStyle(AppColors.inkSecondary)
-                                }
-                                Spacer()
-                            }
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
+                            ImportedItemPreviewRow(item: item)
                         }
 
                         if items.count > previewItems.count {

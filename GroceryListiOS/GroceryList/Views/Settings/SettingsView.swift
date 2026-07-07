@@ -109,7 +109,7 @@ struct SettingsView: View {
             } label: {
                 SettingsRow(
                     title: "Import a Shared List",
-                    subtitle: "Scan a QR code or paste a share link.",
+                    subtitle: "Scan a QR code or paste copied list text.",
                     icon: "square.and.arrow.down",
                     iconColor: AppColors.accentSuccess
                 )

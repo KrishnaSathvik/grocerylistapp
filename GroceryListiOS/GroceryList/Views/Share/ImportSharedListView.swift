@@ -14,8 +14,8 @@ struct ImportSharedListView: View {
     @State private var successMessage: String?
     @State private var isImporting = false
 
-    private var isScannerAvailable: Bool {
-        DataScannerViewController.isSupported && DataScannerViewController.isAvailable
+    private var isScannerSupported: Bool {
+        DataScannerViewController.isSupported
     }
 
     private var trimmedSharedText: String {
@@ -25,7 +25,7 @@ struct ImportSharedListView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                if isScannerAvailable {
+                if isScannerSupported {
                     Button {
                         showScanner = true
                     } label: {
@@ -38,14 +38,14 @@ struct ImportSharedListView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
-                    if isScannerAvailable {
-                        Text("or paste a link or list")
+                    if isScannerSupported {
+                        Text("or paste a copied list")
                             .font(AppTypography.metadata)
                             .foregroundStyle(AppColors.inkSecondary)
                             .frame(maxWidth: .infinity)
                     }
 
-                    TextField("Share link or grocery list", text: $sharedText, axis: .vertical)
+                    TextField("Pasted grocery list", text: $sharedText, axis: .vertical)
                         .lineLimit(3...8)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
@@ -58,10 +58,10 @@ struct ImportSharedListView: View {
                             RoundedRectangle(cornerRadius: 12, style: .continuous)
                                 .stroke(AppColors.cardBorder, lineWidth: 1)
                         )
-                        .accessibilityLabel("Share link or grocery list")
+                        .accessibilityLabel("Pasted grocery list")
 
                     Button {
-                        handleImportRaw(sharedText)
+                        handlePastedListText(sharedText)
                     } label: {
                         HStack(spacing: 8) {
                             if isImporting {
@@ -100,7 +100,7 @@ struct ImportSharedListView: View {
         }
         .sheet(isPresented: $showScanner) {
             QRScannerScreen { value in
-                handleImportRaw(value)
+                handleScannedCode(value)
             }
         }
         .sheet(item: $pendingImport) { parsed in
@@ -152,33 +152,67 @@ struct ImportSharedListView: View {
             return
         }
         sharedText = clipboard
-        handleImportRaw(clipboard)
+        handlePastedListText(clipboard)
     }
 
-    private func handleImportRaw(_ raw: String) {
+    private func handleScannedCode(_ raw: String) {
         isImporting = true
         Task {
-            let parsed: ParsedSharedList?
-            if let shortId = ListCodec.extractShortShareId(from: raw) {
-                parsed = await ShareLinkService.fetchSharedList(id: shortId)
-            } else if let linkParsed = ListCodec.parseSharedList(from: raw) {
-                parsed = linkParsed
-            } else {
-                parsed = PlainTextListParser.parse(raw)
-            }
-
+            let parsed = await parseShareLink(raw)
             isImporting = false
-            guard let parsed, !parsed.items.isEmpty else {
+            presentParsedList(parsed, raw: raw, expectingPlainText: false)
+        }
+    }
+
+    private func handlePastedListText(_ raw: String) {
+        let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        if isShareLink(trimmed) {
+            statusMessage = "Share links open automatically when you tap them. Paste a list copied with Copy as Text."
+            return
+        }
+
+        isImporting = true
+        Task {
+            let parsed = PlainTextListParser.parse(trimmed)
+            isImporting = false
+            presentParsedList(parsed, raw: trimmed, expectingPlainText: true)
+        }
+    }
+
+    private func isShareLink(_ raw: String) -> Bool {
+        raw.contains("smartgrocerylists.app")
+            || raw.hasPrefix("GLIST1:")
+            || ListCodec.extractShortShareId(from: raw) != nil
+    }
+
+    private func parseShareLink(_ raw: String) async -> ParsedSharedList? {
+        if let shortId = ListCodec.extractShortShareId(from: raw) {
+            return await ShareLinkService.fetchSharedList(id: shortId)
+        }
+        return ListCodec.parseSharedList(from: raw)
+    }
+
+    private func presentParsedList(
+        _ parsed: ParsedSharedList?,
+        raw: String,
+        expectingPlainText: Bool
+    ) {
+        guard let parsed, !parsed.items.isEmpty else {
+            if expectingPlainText {
                 if raw.contains("☐") || raw.contains("[ ]") || raw.contains("[") {
                     statusMessage = "Couldn't read any grocery items from that text."
                 } else {
-                    statusMessage = "Paste a share link or a grocery list copied from this app."
+                    statusMessage = "Paste a grocery list copied with Copy as Text."
                 }
-                return
+            } else {
+                statusMessage = "Couldn't import that QR code or share link."
             }
-            pendingImport = parsed
-            HapticsService.selection()
+            return
         }
+        pendingImport = parsed
+        HapticsService.selection()
     }
 
     private func importList(_ parsed: ParsedSharedList) {
