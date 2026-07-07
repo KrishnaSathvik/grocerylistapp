@@ -871,6 +871,15 @@
   font-weight: 600;
   color: #9ca3af;
   line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+.demo-import-field--sample {
+  min-height: 132px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #1a1f36;
+  line-height: 1.4;
 }
 
 .demo-primary-btn {

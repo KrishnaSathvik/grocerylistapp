@@ -563,7 +563,7 @@
                                   </div>
                                   <div class="demo-share-option__text">
                                     <div class="demo-share-option__title">Copy as Text</div>
-                                    <div class="demo-share-option__subtitle">Just the grocery list — not importable.</div>
+                                    <div class="demo-share-option__subtitle">Readable checklist with stores — paste in Import.</div>
                                   </div>
                                   <span class="demo-share-option__chevron" aria-hidden="true">›</span>
                                 </div>
@@ -580,25 +580,30 @@
                           </div>
                           <div class="demo-share-body">
                             <div class="demo-import-stack">
+                              <button class="demo-primary-btn" type="button">
+                                <svg class="demo-primary-btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                                  <rect x="14" y="14" width="3" height="3" />
+                                </svg>
+                                Scan QR Code
+                              </button>
+
                               <div class="demo-app-card demo-import-paste-stack">
+                                <p class="demo-import-or">or paste a copied list</p>
+
+                                <div class="demo-import-field demo-import-field--sample" aria-hidden="true">Walmart:
+☐ Eggs (2)
+☐ Spinach
+
+Costco:
+☐ Milk</div>
+
                                 <button class="demo-primary-btn" type="button">
-                                  <svg class="demo-primary-btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <rect x="3" y="3" width="7" height="7" rx="1" />
-                                    <rect x="14" y="3" width="7" height="7" rx="1" />
-                                    <rect x="3" y="14" width="7" height="7" rx="1" />
-                                    <rect x="14" y="14" width="3" height="3" />
-                                  </svg>
-                                  Scan QR Code
+                                  Import List
                                 </button>
 
-                                <p class="demo-import-or">or paste a shared link</p>
-
-                                <div class="demo-import-field" aria-hidden="true">
-                                  Paste shared-list link
-                                </div>
-                                <button class="demo-primary-btn demo-primary-btn--disabled" type="button" disabled>
-                                  Import Shared List
-                                </button>
                                 <button class="demo-text-btn" type="button">Paste from Clipboard</button>
                               </div>
                             </div>
