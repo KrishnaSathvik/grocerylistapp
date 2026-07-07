@@ -205,4 +205,22 @@ final class ListCodecTests: XCTestCase {
         XCTAssertEqual(imported.storeId, "costco")
         XCTAssertFalse(imported.isCompleted)
     }
+
+    func testShareMessageUsesNaturalSenderVoice() {
+        XCTAssertEqual(
+            ShareLinkService.shareMessage(for: "Weekly Groceries"),
+            "Here's my grocery list — Weekly Groceries"
+        )
+        XCTAssertFalse(
+            ShareLinkService.shareMessage(for: "Weekly Groceries").contains("was shared with you")
+        )
+    }
+
+    func testShareActivityItemsIncludeURLSeparately() {
+        let url = URL(string: "https://smartgrocerylists.app/s/AbC123")!
+        let items = ShareLinkService.shareActivityItems(for: "Weekly Groceries", url: url)
+        XCTAssertEqual(items.count, 2)
+        XCTAssertEqual(items[0] as? String, "Here's my grocery list — Weekly Groceries")
+        XCTAssertEqual(items[1] as? URL, url)
+    }
 }

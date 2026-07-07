@@ -195,7 +195,7 @@ struct ShareListSheet: View {
                 return
             }
             linkSharePayload = SharePayload(
-                items: [ShareLinkService.shareMessage(for: list.name, url: url)]
+                items: ShareLinkService.shareActivityItems(for: list.name, url: url)
             )
         }
     }

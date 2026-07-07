@@ -47,13 +47,15 @@ struct MyListsView: View {
             ) {
                 ScrollView {
                     VStack(spacing: 0) {
-                        PrimaryActionRow(
-                            title: "New List",
-                            systemImage: "plus.circle.fill"
-                        ) {
-                            sheetMode = .create
+                        if !lists.isEmpty {
+                            PrimaryActionRow(
+                                title: "New List",
+                                systemImage: "plus.circle.fill"
+                            ) {
+                                sheetMode = .create
+                            }
+                            .adaptiveHorizontalPadding()
                         }
-                        .adaptiveHorizontalPadding()
 
                         if lists.isEmpty {
                             MyListsEmptyState(onCreateList: { sheetMode = .create })

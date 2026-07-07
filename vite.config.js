@@ -57,6 +57,7 @@ export default defineConfig({
     react(),
     marketingStaticPages(),
     VitePWA({
+      scope: "/app/",
       registerType: "autoUpdate",
       includeAssets: [
         "favicon.ico",
@@ -98,6 +99,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,woff2}"],
+        navigateFallback: "app/index.html",
         navigateFallbackDenylist: [
           /^\/(favicon|icon|apple-touch-icon|og-image)/,
           /^\/$/,

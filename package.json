@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/finalize-dist.mjs",
     "preview": "vite preview",
     "export-seed-data": "node scripts/export-seed-data.mjs",
     "export-ios-catalog": "node scripts/export-ios-catalog.mjs",

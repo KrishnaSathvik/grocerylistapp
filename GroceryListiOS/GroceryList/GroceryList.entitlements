@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-  Not wired into CODE_SIGN_ENTITLEMENTS until Associated Domains is enabled on the
-  App ID in Apple Developer (Certificates, Identifiers & Profiles) and Xcode
-  Signing & Capabilities adds this capability. Using it before that causes SIGKILL at launch.
--->
 <plist version="1.0">
 <dict>
 	<key>com.apple.developer.associated-domains</key>

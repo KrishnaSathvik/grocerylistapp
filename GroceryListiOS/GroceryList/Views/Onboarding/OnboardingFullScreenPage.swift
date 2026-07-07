@@ -28,7 +28,7 @@ struct OnboardingFullScreenPage: View {
             VStack(spacing: 0) {
                 topBar
                     .adaptiveHorizontalPadding()
-                    .padding(.top, 12)
+                    .safeAreaPadding(.top, AppSpacing.topHeaderTopInset)
 
                 Spacer(minLength: 0)
 
@@ -86,19 +86,21 @@ struct OnboardingFullScreenPage: View {
                 Text("Groceries")
                     .font(OnboardingTheme.brandHeadline)
                     .foregroundStyle(AppColors.ink)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
                 Text("Smart Lists")
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
                     .foregroundStyle(AppColors.inkSecondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
             }
             .shadow(
                 color: colorScheme == .dark ? .black.opacity(0.45) : .white.opacity(0.65),
                 radius: 8,
                 y: 2
             )
-                .lineLimit(1)
-                .frame(maxWidth: .infinity)
-                .padding(.top, 8)
-                .accessibilityAddTraits(.isHeader)
+            .frame(maxWidth: .infinity)
+            .accessibilityAddTraits(.isHeader)
 
             HStack {
                 Spacer()

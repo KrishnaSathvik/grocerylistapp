@@ -108,13 +108,14 @@ enum ShareLinkService {
         }
     }
 
-    static func shareMessage(for listName: String, url: URL) -> String {
-        """
-        "\(listName)" was shared with you.
+    static func shareMessage(for listName: String) -> String {
+        let trimmed = listName.trimmingCharacters(in: .whitespacesAndNewlines)
+        let name = trimmed.isEmpty ? "Grocery list" : trimmed
+        return "Here's my grocery list — \(name)"
+    }
 
-        Open or import the list:
-        \(url.absoluteString)
-        """
+    static func shareActivityItems(for listName: String, url: URL) -> [Any] {
+        [shareMessage(for: listName), url]
     }
 
     private static func buildPayload(for list: GroceryList) -> SharePayload? {

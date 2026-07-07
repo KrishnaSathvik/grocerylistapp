@@ -2,8 +2,6 @@ import Foundation
 import SwiftData
 
 enum SeedData {
-    static let defaultListName = "Weekly Groceries"
-
     struct CategoryDefinition: Codable {
         let id: String
         let label: String
@@ -29,7 +27,6 @@ enum SeedData {
 
     static func bootstrapIfNeeded(context: ModelContext) {
         seedStoresIfNeeded(context: context)
-        seedDefaultListIfNeeded(context: context)
     }
 
     static func loadCategories() -> CategorySeedFile? {
@@ -110,20 +107,5 @@ enum SeedData {
                 )
             )
         }
-    }
-
-    private static func seedDefaultListIfNeeded(context: ModelContext) {
-        let descriptor = FetchDescriptor<GroceryList>()
-        let existingCount = (try? context.fetchCount(descriptor)) ?? 0
-        guard existingCount == 0 else { return }
-
-        let list = GroceryList(
-            name: defaultListName,
-            sortOrder: 0,
-            iconName: "cart.fill",
-            tintHex: "#4A7C59"
-        )
-        context.insert(list)
-        AppSettings.activeListId = list.id.uuidString
     }
 }

@@ -162,14 +162,11 @@ enum GroceryListService {
         return list
     }
 
-    static func ensureMinimumList(context: ModelContext) -> GroceryList {
+    static func firstAvailableList(context: ModelContext) -> GroceryList? {
         let descriptor = FetchDescriptor<GroceryList>(
             predicate: #Predicate { !$0.isArchived },
             sortBy: [SortDescriptor(\GroceryList.sortOrder)]
         )
-        if let existing = try? context.fetch(descriptor).first {
-            return existing
-        }
-        return createList(name: SeedData.defaultListName, context: context)!
+        return try? context.fetch(descriptor).first
     }
 }

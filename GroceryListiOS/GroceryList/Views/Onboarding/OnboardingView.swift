@@ -28,7 +28,6 @@ struct OnboardingView: View {
             }
         )
         .id(page)
-        .ignoresSafeArea()
     }
 
     private func advance(by delta: Int) {
