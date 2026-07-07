@@ -2,7 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-const MARKETING_ROUTES = ["/home", "/privacy", "/support"];
+const MARKETING_ROUTES = ["/privacy", "/support"];
+const SHARE_ROUTE = /^\/s\/[^/]+\/?$/;
 
 function marketingStaticPages() {
   const rewriteMarketingRoute = (req) => {
@@ -13,13 +14,31 @@ function marketingStaticPages() {
         return;
       }
     }
+
+    if (SHARE_ROUTE.test(pathname)) {
+      req.url = `/s/index.html${query ? `?${query}` : ""}`;
+    }
   };
 
   const attachMiddleware = (server) => {
-    server.middlewares.use((req, _res, next) => {
-      const [pathname] = (req.url ?? "").split("?");
+    server.middlewares.use((req, res, next) => {
+      const [pathname, query = ""] = (req.url ?? "").split("?");
+
+      if (pathname === "/home" || pathname === "/home/") {
+        res.statusCode = 301;
+        res.setHeader("Location", `/${query ? `?${query}` : ""}`);
+        res.end();
+        return;
+      }
+
+      if (pathname === "/" || pathname === "") {
+        req.url = `/home/index.html${query ? `?${query}` : ""}`;
+        next();
+        return;
+      }
+
       if (pathname === "/app" || pathname === "/app/") {
-        req.url = `/index.html${req.url?.includes("?") ? req.url.slice(req.url.indexOf("?")) : ""}`;
+        req.url = `/index.html${query ? `?${query}` : ""}`;
       }
       rewriteMarketingRoute(req);
       next();
@@ -81,7 +100,7 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,woff2}"],
         navigateFallbackDenylist: [
           /^\/(favicon|icon|apple-touch-icon|og-image)/,
-          /^\/home(\/|$)/,
+          /^\/$/,
           /^\/privacy(\/|$)/,
           /^\/support(\/|$)/,
         ],

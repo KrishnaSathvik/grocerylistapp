@@ -16,7 +16,28 @@
       property="og:description"
       content="For support, feedback, or privacy questions, contact us at grocerylistapp.support@gmail.com"
     />
+    <meta property="og:image" content="https://smartgrocerylists.app/og-image.png?v=8" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Groceries — Smart Lists" />
+    <meta
+      property="og:image:alt"
+      content="Groceries — Smart Lists, a simple grocery list app for iPhone"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://smartgrocerylists.app/og-image.png?v=8" />
+    <meta name="twitter:title" content="Support — Groceries — Smart Lists" />
+    <meta
+      name="twitter:description"
+      content="Get help with Groceries — Smart Lists for iOS."
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Groceries — Smart Lists, a simple grocery list app for iPhone"
+    />
+    <meta name="theme-color" content="#EEF4EE" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=7" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,18 +47,19 @@
     <link rel="stylesheet" href="/marketing/marketing.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="brand" href="/home">
+        <a class="brand" href="/">
           <img class="brand__icon" src="/marketing/images/app-icon.png" alt="" width="36" height="36" />
           <span class="brand__name">Groceries — Smart Lists</span>
         </a>
       </div>
     </header>
 
-    <main class="policy-page">
+    <main id="main-content" class="policy-page">
       <div class="container" style="max-width: 720px">
-        <a class="policy-back" href="/home">← Back to Groceries — Smart Lists</a>
+        <a class="policy-back" href="/">← Back to Groceries — Smart Lists</a>
 
         <header class="policy-page__header">
           <h1 class="policy-page__title">Support</h1>
@@ -52,7 +74,10 @@
           <p class="support-email">
             <a href="mailto:grocerylistapp.support@gmail.com">grocerylistapp.support@gmail.com</a>
           </p>
-          <a class="btn btn--primary support-email-btn" href="mailto:grocerylistapp.support@gmail.com?subject=Groceries%20Smart%20Lists%20Support">
+          <a
+            class="btn btn--primary support-email-btn"
+            href="mailto:grocerylistapp.support@gmail.com?subject=Groceries%20%E2%80%94%20Smart%20Lists%20Support&body=What%20happened%3A%0A%0ASteps%20to%20reproduce%3A%0A%0AWhat%20you%20expected%3A%0A%0A"
+          >
             Email support
           </a>
         </article>
@@ -60,15 +85,50 @@
         <article class="policy-section">
           <h2>Send feedback from the app</h2>
           <p>
-            Open <strong>More → Send Feedback</strong> in Groceries to compose a message with optional app diagnostics (version, iOS version, device model). Grocery list contents are not included by default.
+            Open <strong>More → Send Feedback</strong> to compose an email.
+            The draft may include basic diagnostics such as the app version,
+            iOS version, and device model to help us troubleshoot. You can review
+            and edit the email before sending it. Grocery-list contents are not
+            included automatically.
           </p>
         </article>
 
         <article class="policy-section">
           <h2>Common questions</h2>
-          <p><strong>Do I need an account?</strong> No. Groceries works without sign-up. Your lists stay on your device.</p>
-          <p><strong>How do I share a list?</strong> Open your list, tap Share, and send a QR code or text. The other person imports their own copy.</p>
-          <p><strong>Is my data private?</strong> Yes. Lists are stored locally unless you choose to share or back them up. Read our <a href="/privacy">privacy policy</a> for details.</p>
+
+          <p>
+            <strong>Do I need an account?</strong>
+            No. Groceries works without sign-up. Your lists are stored locally on
+            your device.
+          </p>
+
+          <p>
+            <strong>How do I share a list?</strong>
+            Open the list and tap the share icon in the header. Use
+            <strong>Send Link</strong> or <strong>Show QR Code</strong> so someone
+            can import their own editable copy. Use <strong>Copy as Text</strong>
+            when you only want to send a readable checklist.
+          </p>
+
+          <p>
+            <strong>How do I import a list?</strong>
+            Go to <strong>More → Import a List</strong>. Scan a shared-list QR code
+            or paste a Groceries shared-list link.
+          </p>
+
+          <p>
+            <strong>Can a plain-text checklist be imported?</strong>
+            No. A list shared with <strong>Copy as Text</strong> is only a readable
+            checklist. To create an importable copy, the sender must use
+            <strong>Send Link</strong> or <strong>Show QR Code</strong>.
+          </p>
+
+          <p>
+            <strong>Is my data private?</strong>
+            Yes. Your everyday grocery data stays on your device unless you
+            intentionally create a share link or QR code. Read our
+            <a href="/privacy">privacy policy</a> for details.
+          </p>
         </article>
 
         <article class="policy-section">
@@ -82,12 +142,12 @@
 
     <footer class="site-footer">
       <div class="container site-footer__inner">
-        <a class="brand brand--footer" href="/home">
+        <a class="brand brand--footer" href="/">
           <img class="brand__icon" src="/marketing/images/app-icon.png" alt="" width="32" height="32" />
           <span class="brand__name">Groceries — Smart Lists</span>
         </a>
         <nav class="site-footer__links" aria-label="Footer">
-          <a href="/support">Support</a>
+          <a href="/support" aria-current="page">Support</a>
           <a href="/privacy">Privacy Policy</a>
         </nav>
         <p class="site-footer__copy">© 2026 Groceries — Smart Lists</p>

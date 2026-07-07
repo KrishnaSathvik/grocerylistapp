@@ -116,6 +116,20 @@ export default function Onboarding({ onDone, importData, onImportAccept }) {
 
           {/* Action buttons */}
           <div style={{ textAlign: "center", paddingBottom: 8, position: "relative", zIndex: 1 }}>
+            <a
+              href="https://apps.apple.com/app/id6785659442"
+              style={{
+                display: "inline-block",
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 13,
+                fontWeight: 600,
+                color: "#4a7c59",
+                textDecoration: "none",
+                marginBottom: 14,
+              }}
+            >
+              Get the iOS app for the full experience →
+            </a>
             <button
               onClick={() => exit("add")}
               className="ob-btn"

@@ -3,16 +3,26 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "redirects": [
-    { "source": "/", "destination": "/home", "permanent": true }
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/home/", "destination": "/", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/api/share", "destination": "/api/share/index.js" },
+    { "source": "/api/share/:id", "destination": "/api/share/[id].js" },
+    { "source": "/s/:id", "destination": "/s/index.html" },
     { "source": "/app", "destination": "/index.html" },
-    { "source": "/home", "destination": "/home/index.html" },
+    { "source": "/", "destination": "/home/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
     { "source": "/support", "destination": "/support/index.html" },
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/((?!api/|\\.well-known/).*)", "destination": "/" }
   ],
   "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" }
+      ]
+    },
     {
       "source": "/assets/(.*)",
       "headers": [

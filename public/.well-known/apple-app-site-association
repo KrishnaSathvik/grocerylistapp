@@ -1,0 +1,27 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["766WG2GGCA.com.krishnasathvik.grocerylistapp"],
+        "components": [
+          {
+            "/": "/s/*"
+          },
+          {
+            "/": "/app",
+            "?": {
+              "import": "?*"
+            }
+          },
+          {
+            "/": "/app/",
+            "?": {
+              "import": "?*"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

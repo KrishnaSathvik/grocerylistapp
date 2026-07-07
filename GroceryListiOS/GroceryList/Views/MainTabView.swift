@@ -13,7 +13,7 @@ struct MainTabView: View {
 
             StoreTabView()
                 .tabItem {
-                    Label("Store", systemImage: AppIcons.store)
+                    Label("Stores", systemImage: AppIcons.store)
                 }
                 .tag(1)
 

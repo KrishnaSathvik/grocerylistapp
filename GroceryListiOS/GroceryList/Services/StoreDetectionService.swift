@@ -106,11 +106,19 @@ enum StoreDetectionService {
 
         let normalizedQuery = normalizeStoreKey(query)
 
+        if let aliasMatch = StoreAliasService.resolveStoreId(query: query, stores: stores) {
+            return aliasMatch
+        }
+
         if let exact = stores.first(where: { normalizeStoreKey($0.id) == normalizedQuery }) {
             return exact.id
         }
         if let labelMatch = stores.first(where: { normalizeStoreKey($0.label) == normalizedQuery }) {
             return labelMatch.id
+        }
+
+        if normalizedQuery.count <= 3 {
+            return nil
         }
 
         let ranked = stores.compactMap { store -> (String, Int)? in
@@ -134,13 +142,7 @@ enum StoreDetectionService {
     }
 
     static func normalizeStoreKey(_ value: String) -> String {
-        value
-            .lowercased()
-            .replacingOccurrences(of: "'", with: "")
-            .replacingOccurrences(of: ".", with: "")
-            .replacingOccurrences(of: "-", with: " ")
-            .split(whereSeparator: \.isWhitespace)
-            .joined(separator: " ")
+        StoreAliasService.normalizeKey(value)
     }
 
     // MARK: - Private
@@ -188,6 +190,10 @@ enum StoreDetectionService {
         _ raw: String,
         stores: [SeedData.StoreDefinition]
     ) -> BareStoreMatch? {
+        if let aliasMatch = StoreAliasService.findTrailingAlias(in: raw, stores: stores) {
+            return BareStoreMatch(cleanText: aliasMatch.cleanText, storeName: aliasMatch.storeName)
+        }
+
         let sortedStores = stores.sorted {
             normalizeStoreKey($0.label).count > normalizeStoreKey($1.label).count
         }

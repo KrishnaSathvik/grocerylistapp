@@ -76,6 +76,9 @@
 		708AC2F51D296ECBDB6A5C11 /* SettingsSubpageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D9DA1A34826358143A64E /* SettingsSubpageStyle.swift */; };
 		73776CD00F308D720348F682 /* OnboardingTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F30DE4F3DD105A52E8B15B /* OnboardingTheme.swift */; };
 		77627B56C988729F114CAC75 /* StoreDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF95B706B008D71C4EEFDCE /* StoreDetectionService.swift */; };
+		1A2B3C4D5E6F708192A3B4C5 /* StoreAliasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C4D5E6F708192A3B4C5D6 /* StoreAliasService.swift */; };
+		5E6F708192A3B4C5D6E7F809 /* PlainTextListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F708192A3B4C5D6E7F8091A /* PlainTextListParser.swift */; };
+		3C4D5E6F708192A3B4C5D6E7 /* ShareLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E6F708192A3B4C5D6E7F8 /* ShareLinkService.swift */; };
 		7A20761B7B51B675950957A5 /* ListGroupingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99DCBBA83C2B5635BF8244 /* ListGroupingService.swift */; };
 		7DD73759F1285CA4BEB71496 /* AssignToListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B84F638F74FDE3E98D6314 /* AssignToListSheet.swift */; };
 		7F541BB7BBCE1C0E2C548264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3685E330EC5277A9DD5661C6 /* Assets.xcassets */; };
@@ -303,6 +306,9 @@
 		ECEFB32991CF20FE4DCB5249 /* CategoryLearningServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLearningServiceTests.swift; sourceTree = "<group>"; };
 		ED5686EEDA35854D0971245B /* ListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardView.swift; sourceTree = "<group>"; };
 		EDF95B706B008D71C4EEFDCE /* StoreDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetectionService.swift; sourceTree = "<group>"; };
+		2B3C4D5E6F708192A3B4C5D6 /* StoreAliasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAliasService.swift; sourceTree = "<group>"; };
+		6F708192A3B4C5D6E7F8091A /* PlainTextListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextListParser.swift; sourceTree = "<group>"; };
+		4D5E6F708192A3B4C5D6E7F8 /* ShareLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkService.swift; sourceTree = "<group>"; };
 		F2ECB6A4AF00D8F37ADBDDE3 /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 		F4229D70470CFC24C0F5F397 /* ListCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCodec.swift; sourceTree = "<group>"; };
 		F42B0AE8C91C4E20D73E469A /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
@@ -572,8 +578,11 @@
 				EA67928B034FF17B1DBACD04 /* ProductImageCatalog.swift */,
 				DDB36360837B965A6594F3A1 /* QRCodeGenerator.swift */,
 				0DCA46A529F96ADD8ADE879E /* QuantityParserService.swift */,
+				6F708192A3B4C5D6E7F8091A /* PlainTextListParser.swift */,
 				74039C6BFAE889248413A990 /* ShareTextFormatter.swift */,
+				4D5E6F708192A3B4C5D6E7F8 /* ShareLinkService.swift */,
 				B2756729C7D0C7BAB2A0B15B /* StoreBranding.swift */,
+				2B3C4D5E6F708192A3B4C5D6 /* StoreAliasService.swift */,
 				EDF95B706B008D71C4EEFDCE /* StoreDetectionService.swift */,
 				8A954F7F977EDD9FDF082A01 /* StoreService.swift */,
 			);
@@ -842,8 +851,11 @@
 				85868518A2412F266576B997 /* ProductImageCatalog.swift in Sources */,
 				F79302ECEC66B0579290110A /* QRCodeGenerator.swift in Sources */,
 				B71AB6874497A4A767699761 /* QuantityParserService.swift in Sources */,
+				5E6F708192A3B4C5D6E7F809 /* PlainTextListParser.swift in Sources */,
 				C6AFFD01C367F9B00B5987E3 /* ShareTextFormatter.swift in Sources */,
+				3C4D5E6F708192A3B4C5D6E7 /* ShareLinkService.swift in Sources */,
 				B023003120951354B78907E8 /* StoreBranding.swift in Sources */,
+				1A2B3C4D5E6F708192A3B4C5 /* StoreAliasService.swift in Sources */,
 				77627B56C988729F114CAC75 /* StoreDetectionService.swift in Sources */,
 				887AF4B8CFBEEE520A0E8A85 /* StoreService.swift in Sources */,
 				1D2FB2EBA60D37B36B7F5518 /* FocusedShoppingViewModel.swift in Sources */,

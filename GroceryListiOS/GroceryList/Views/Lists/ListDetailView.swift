@@ -25,7 +25,6 @@ struct ListDetailView: View {
     @State private var showRenameSheet = false
     @State private var showClearCompletedAlert = false
     @State private var showDeleteListAlert = false
-    @State private var showCantDeleteLastListAlert = false
 
     init(list: GroceryList, viewModel: ListDetailViewModel, onSwitchList: ((UUID) -> Void)? = nil) {
         self.list = list
@@ -55,13 +54,7 @@ struct ListDetailView: View {
                             HapticsService.selection()
                         },
                         onClearCompleted: { showClearCompletedAlert = true },
-                        onDeleteList: {
-                            if allLists.count > 1 {
-                                showDeleteListAlert = true
-                            } else {
-                                showCantDeleteLastListAlert = true
-                            }
-                        }
+                        onDeleteList: { showDeleteListAlert = true }
                     )
 
                     VStack(alignment: .leading, spacing: 6) {
@@ -200,11 +193,6 @@ struct ListDetailView: View {
         } message: {
             Text("This will permanently delete \"\(list.name)\" and all its items.")
         }
-        .alert("Can't Delete List", isPresented: $showCantDeleteLastListAlert) {
-            Button("OK", role: .cancel) {}
-        } message: {
-            Text("You need at least one list. Create another list before deleting this one.")
-        }
     }
 
     private var activeItems: [GroceryItem] {
@@ -226,7 +214,6 @@ struct ListDetailView: View {
     }
 
     private func deleteList() {
-        guard allLists.count > 1 else { return }
         _ = GroceryListService.deleteList(list, context: modelContext)
         HapticsService.selection()
         dismiss()

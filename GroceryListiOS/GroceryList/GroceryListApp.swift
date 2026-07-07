@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct GroceryListApp: App {
     @State private var containerState = ContainerState()
+    @State private var importCoordinator = ImportCoordinator()
 
     init() {
         AppAppearance.configure()
@@ -15,7 +16,7 @@ struct GroceryListApp: App {
                 switch containerState.phase {
                 case .ready(let container):
                     AppRootView()
-                        .environment(ImportCoordinator())
+                        .environment(importCoordinator)
                         .onAppear {
                             SeedData.bootstrapIfNeeded(context: container.mainContext)
                             PersistenceService.save(

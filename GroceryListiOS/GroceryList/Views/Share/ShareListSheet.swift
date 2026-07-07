@@ -3,105 +3,59 @@ import UIKit
 
 struct ShareListSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
 
     let list: GroceryList
-    @State private var sharePayload: SharePayload?
+    @State private var linkSharePayload: SharePayload?
     @State private var showQR = false
     @State private var toastMessage: String?
+    @State private var shortShareURL: URL?
+    @State private var isCreatingLink = false
 
     private var shareItems: [GroceryItem] {
         list.items.filter { !$0.isArchived }
     }
 
-    private var previewText: String {
-        ShareTextFormatter.format(list: list)
+    private var itemCountText: String {
+        "\(shareItems.count) item\(shareItems.count == 1 ? "" : "s")"
     }
 
-    private var previewLines: [String] {
-        let active = shareItems.filter { !$0.isCompleted }.sorted { $0.sortOrder < $1.sortOrder }
-        return active.prefix(5).map { item in
-            let prefix = ShareTextFormatter.previewLine(for: item)
-            return prefix
-        }
+    private var isEmpty: Bool {
+        shareItems.isEmpty
     }
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    summaryCard
-
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Share As")
-                            .font(AppTypography.metadata.weight(.semibold))
-                            .foregroundStyle(AppColors.inkSecondary)
-
-                        HStack(spacing: 12) {
-                            shareActionCard(title: "Copy as\nText", icon: AppIcons.clipboard, tint: AppColors.accentPrimary, action: copyText)
-                            shareActionCard(title: "Show QR\nCode", icon: AppIcons.qrCode, tint: AppColors.accentSuccess, action: showQRCode)
-                            shareActionCard(title: "More", icon: AppIcons.more, tint: AppColors.colorHex("#8B6F8E"), action: shareViaSystem)
-                        }
+                VStack(alignment: .leading, spacing: 16) {
+                    if isEmpty {
+                        emptyState
+                    } else {
+                        listSummaryCard
+                        shareActionsCard
+                        moreOptionsCard
                     }
-
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Share Preview")
-                            .font(AppTypography.metadata.weight(.semibold))
-                            .foregroundStyle(AppColors.inkSecondary)
-
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(list.name)
-                                .font(AppTypography.itemTitle)
-                                .foregroundStyle(AppColors.ink)
-                            Divider()
-                            ForEach(Array(previewLines.enumerated()), id: \.offset) { _, line in
-                                Text("• \(line)")
-                                    .font(AppTypography.metadata)
-                                    .foregroundStyle(AppColors.ink)
-                            }
-                            let remaining = max(0, shareItems.filter { !$0.isCompleted }.count - 5)
-                            if remaining > 0 {
-                                Text("… and \(remaining) more item\(remaining == 1 ? "" : "s")")
-                                    .font(AppTypography.metadata)
-                                    .foregroundStyle(AppColors.inkSecondary)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .appCard()
-                    }
-
-                    Button {
-                        shareViaSystem()
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image(systemName: AppIcons.share)
-                            Text("Share with Others")
-                        }
-                    }
-                    .buttonStyle(PrimaryButtonStyle())
                 }
+                .padding(.vertical, 16)
+                .padding(.bottom, 8)
                 .adaptiveScreenContent()
-                .padding(.bottom, 24)
             }
             .background(AppColors.backgroundGrouped)
-            .navigationTitle("Share List")
+            .navigationTitle(list.name)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                    }
+                    Button("Done") { dismiss() }
                 }
             }
             .sheet(isPresented: $showQR) {
-                if let code = ListCodec.sharePayloadText(for: list) {
-                    QRCodeDisplaySheet(code: code, listName: list.name)
+                if let link = qrLink {
+                    QRCodeDisplaySheet(code: link, listName: list.name)
                 }
             }
-            .sheet(item: $sharePayload) { payload in
+            .sheet(item: $linkSharePayload) { payload in
                 ActivityShareSheet(items: payload.items) {
-                    sharePayload = nil
+                    linkSharePayload = nil
                 }
             }
             .overlay(alignment: .bottom) {
@@ -116,77 +70,148 @@ struct ShareListSheet: View {
                         .padding(.bottom, 24)
                 }
             }
+            .task {
+                shortShareURL = await ShareLinkService.createShortLink(for: list, context: modelContext)
+            }
         }
-        .presentationDetents([.large])
+        .adaptiveSheetPresentation(.page)
     }
 
-    private var summaryCard: some View {
-        HStack(spacing: 14) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(AppColors.colorHex(list.tintHex).opacity(0.16))
-                    .frame(width: 56, height: 56)
-                Image(systemName: list.iconName)
-                    .font(.system(size: 26, weight: .semibold))
-                    .foregroundStyle(AppColors.colorHex(list.tintHex))
+    private var qrLink: String? {
+        shortShareURL?.absoluteString ?? ListCodec.shareLinkString(for: list)
+    }
+
+    private var emptyState: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "tray")
+                .font(.system(size: 44))
+                .foregroundStyle(AppColors.inkSecondary)
+            Text("Nothing to share yet")
+                .font(AppTypography.itemTitle)
+                .foregroundStyle(AppColors.ink)
+            Text("Add items before sharing this list.")
+                .font(AppTypography.metadata)
+                .foregroundStyle(AppColors.inkSecondary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 40)
+    }
+
+    private var listSummaryCard: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .top, spacing: 12) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(AppColors.colorHex(list.tintHex).opacity(0.14))
+                        .frame(width: 38, height: 38)
+                    Image(systemName: list.iconName)
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundStyle(AppColors.colorHex(list.tintHex))
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(list.name)
+                        .font(AppTypography.cardTitle)
+                        .foregroundStyle(AppColors.ink)
+                        .lineLimit(2)
+
+                    Text(itemCountText)
+                        .font(AppTypography.metadata)
+                        .foregroundStyle(AppColors.inkSecondary)
+                }
+
+                Spacer(minLength: 0)
             }
-            VStack(alignment: .leading, spacing: 4) {
-                Text("LIST NAME")
-                    .font(.system(size: 11, weight: .semibold))
-                    .foregroundStyle(AppColors.inkSecondary)
-                Text(list.name)
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundStyle(AppColors.ink)
-                Text("\(list.activeItemCount) items")
-                    .font(AppTypography.metadata)
-                    .foregroundStyle(AppColors.inkSecondary)
-            }
-            Spacer(minLength: 0)
+
+            Text("They can import their own editable copy.")
+                .font(AppTypography.caption)
+                .foregroundStyle(AppColors.inkSecondary)
         }
         .appCard()
     }
 
-    private func shareActionCard(title: String, icon: String, tint: Color, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            VStack(spacing: 10) {
-                Image(systemName: icon)
-                    .font(.system(size: 24))
-                    .foregroundStyle(tint)
-                    .frame(width: 48, height: 48)
-                    .background(tint.opacity(0.12))
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                Text(title)
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundStyle(AppColors.ink)
-                    .multilineTextAlignment(.center)
+    private var shareActionsCard: some View {
+        VStack(spacing: 12) {
+            Button {
+                shareListLink()
+            } label: {
+                HStack(spacing: 8) {
+                    if isCreatingLink {
+                        ProgressView()
+                            .tint(.white)
+                    } else {
+                        Image(systemName: AppIcons.share)
+                    }
+                    Text("Send Link")
+                }
             }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 14)
-            .background(AppColors.backgroundPrimary)
-            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(AppColors.cardBorder, lineWidth: 1)
-            )
+            .buttonStyle(PrimaryButtonStyle())
+            .disabled(isCreatingLink)
         }
-        .buttonStyle(.plain)
+        .appCard()
     }
 
-    private func copyText() {
-        UIPasteboard.general.string = previewText
-        showToast("Copied!")
+    private var moreOptionsCard: some View {
+        VStack(spacing: 0) {
+            ShareOptionRow(
+                title: "Show QR Code",
+                subtitle: "Same link, scannable.",
+                icon: AppIcons.qrCode,
+                tint: AppColors.accentSuccess
+            ) {
+                showQRCode()
+            }
+
+            SettingsDivider()
+
+            ShareOptionRow(
+                title: "Copy as Text",
+                subtitle: "Just the grocery list — not importable.",
+                icon: AppIcons.clipboard,
+                tint: AppColors.accentPrimary
+            ) {
+                copyAsText()
+            }
+        }
+        .appCard(padding: 0)
+    }
+
+    private func shareListLink() {
+        guard !shareItems.isEmpty else { return }
+        isCreatingLink = true
+        Task {
+            let url: URL?
+            if let cached = shortShareURL {
+                url = cached
+            } else {
+                let created = await ShareLinkService.createShortLink(for: list, context: modelContext)
+                shortShareURL = created
+                url = created
+            }
+            isCreatingLink = false
+            guard let url else {
+                showToast("List too large to share")
+                return
+            }
+            linkSharePayload = SharePayload(
+                items: [ShareLinkService.shareMessage(for: list.name, url: url)]
+            )
+        }
     }
 
     private func showQRCode() {
-        guard ListCodec.sharePayloadText(for: list) != nil else {
+        guard qrLink != nil else {
             showToast("List too large to share")
             return
         }
         showQR = true
     }
 
-    private func shareViaSystem() {
-        sharePayload = SharePayload(items: [ShareTextFormatter.format(list: list)])
+    private func copyAsText() {
+        UIPasteboard.general.string = GroceryListShareBuilder.copyText(for: list, context: modelContext)
+        showToast("Copied!")
+        HapticsService.selection()
     }
 
     private func showToast(_ message: String) {
@@ -197,6 +222,50 @@ struct ShareListSheet: View {
                 toastMessage = nil
             }
         }
+    }
+}
+
+private struct ShareOptionRow: View {
+    let title: String
+    let subtitle: String
+    let icon: String
+    let tint: Color
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 14) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(tint.opacity(0.14))
+                        .frame(width: 44, height: 44)
+                    Image(systemName: icon)
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundStyle(tint)
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(title)
+                        .font(AppTypography.cardTitle)
+                        .foregroundStyle(AppColors.ink)
+                    Text(subtitle)
+                        .font(AppTypography.metadata)
+                        .foregroundStyle(AppColors.inkSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                Spacer(minLength: 0)
+
+                Image(systemName: AppIcons.chevron)
+                    .font(AppTypography.caption.weight(.semibold))
+                    .foregroundStyle(AppColors.inkSecondary.opacity(0.6))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+        }
+        .buttonStyle(.plain)
     }
 }
 

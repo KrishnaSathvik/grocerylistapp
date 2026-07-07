@@ -3,20 +3,18 @@ import SwiftData
 import UIKit
 
 struct ShareActiveListView: View {
+    @Environment(\.modelContext) private var modelContext
+
     let list: GroceryList
 
-    @State private var toastMessage: String?
+    @State private var sharePayload: SharePayload?
 
     private var shareItems: [GroceryItem] {
         list.items.filter { !$0.isArchived }
     }
 
     private var shareCode: String? {
-        ListCodec.sharePayloadText(for: list)
-    }
-
-    private var shareText: String {
-        ShareTextFormatter.format(list: list)
+        ListCodec.shareLinkString(for: list)
     }
 
     private var itemCountText: String {
@@ -45,20 +43,12 @@ struct ShareActiveListView: View {
         .background(AppColors.backgroundGrouped)
         .navigationTitle("Share Active List")
         .navigationBarTitleDisplayMode(.inline)
-        .overlay(alignment: .bottom) {
-            if let toastMessage {
-                Text(toastMessage)
-                    .font(AppTypography.metadata.weight(.semibold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(AppColors.ink.opacity(0.92))
-                    .clipShape(Capsule())
-                    .padding(.bottom, 24)
-                    .accessibilityLabel(toastMessage)
+        .settingsSubpageStyle()
+        .sheet(item: $sharePayload) { payload in
+            ActivityShareSheet(items: payload.items) {
+                sharePayload = nil
             }
         }
-        .settingsSubpageStyle()
     }
 
     private var emptyState: some View {
@@ -121,10 +111,10 @@ struct ShareActiveListView: View {
                     .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     .accessibilityLabel("QR code for \(list.name)")
-                    .accessibilityHint("Scan on another iPhone to import this list")
+                    .accessibilityHint("Scan to open the list in Groceries or import in a browser")
             }
 
-            Text("Scan this code on another iPhone to import the list.")
+            Text("Scan to import in the app, or open in Safari if they don't have it yet.")
                 .font(AppTypography.metadata)
                 .foregroundStyle(AppColors.inkSecondary)
                 .multilineTextAlignment(.center)
@@ -137,28 +127,20 @@ struct ShareActiveListView: View {
     private var actionCard: some View {
         if shareCode != nil {
             VStack(spacing: 12) {
-                ShareLink(
-                    item: shareText,
-                    subject: Text(list.name)
-                ) {
+                Button {
+                    sharePayload = SharePayload(
+                        items: GroceryListShareBuilder.activityItems(for: list, context: modelContext)
+                    )
+                } label: {
                     HStack(spacing: 8) {
                         Image(systemName: "square.and.arrow.up")
                         Text("Share List")
                     }
                 }
                 .buttonStyle(PrimaryButtonStyle())
-                .accessibilityLabel("Share list as text")
+                .accessibilityLabel("Share list as text with import link")
 
-                if let code = shareCode {
-                    Button("Copy Import Code") {
-                        copyCode(code)
-                    }
-                    .font(AppTypography.button)
-                    .foregroundStyle(AppColors.accentPrimary)
-                    .accessibilityLabel("Copy GLIST1 import code for QR or paste import")
-                }
-
-                Text("Share the list as readable text. Use the QR code above or copy the import code to bring this list into the app.")
+                Text("Sends a readable list by text. Use the QR code above so they can import into the app.")
                     .font(AppTypography.caption)
                     .foregroundStyle(AppColors.inkSecondary)
                     .multilineTextAlignment(.center)
@@ -167,22 +149,11 @@ struct ShareActiveListView: View {
             .appCard()
         }
     }
+}
 
-    private func copyCode(_ code: String) {
-        UIPasteboard.general.string = code
-        showToast("Code copied")
-        HapticsService.selection()
-    }
-
-    private func showToast(_ message: String) {
-        toastMessage = message
-        Task {
-            try? await Task.sleep(for: .seconds(2))
-            if toastMessage == message {
-                toastMessage = nil
-            }
-        }
-    }
+private struct SharePayload: Identifiable {
+    let id = UUID()
+    let items: [Any]
 }
 
 #Preview {

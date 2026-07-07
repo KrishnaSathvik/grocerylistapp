@@ -38,8 +38,13 @@ struct ImportedListItem: Equatable, Sendable, Identifiable {
 }
 
 enum ListCodec {
-    static let shareBaseURL = "https://smartgrocerylists.app/app/"
+    static let shareHost = "smartgrocerylists.app"
+    static let sharePath = "/app"
+    static let shortSharePathPrefix = "/s/"
+    /// Legacy hash URLs still accepted on import.
+    static let shareBaseURL = "https://\(shareHost)\(sharePath)/"
     static let maxLinkItems = 50
+    static let importQueryKey = "import"
     static let importFragmentPrefix = "#import="
     static let sharedPayloadPrefix = "GLIST1:"
 
@@ -122,7 +127,47 @@ enum ListCodec {
 
     static func shareURL(for items: [GroceryItem]) -> URL? {
         guard let encoded = encode(items: items) else { return nil }
-        return URL(string: "\(shareBaseURL)\(importFragmentPrefix)\(encoded)")
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = shareHost
+        components.path = sharePath
+        components.queryItems = [URLQueryItem(name: importQueryKey, value: encoded)]
+        return components.url
+    }
+
+    static func shareLinkURL(for list: GroceryList) -> URL? {
+        shareURL(for: list.items.filter { !$0.isArchived })
+    }
+
+    static func shareLinkString(for list: GroceryList) -> String? {
+        shareLinkURL(for: list)?.absoluteString
+    }
+
+    static func shortShareURL(for id: String) -> URL? {
+        let trimmed = id.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+        return URL(string: "https://\(shareHost)\(shortSharePathPrefix)\(trimmed)")
+    }
+
+    static func extractShortShareId(from raw: String) -> String? {
+        let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+
+        if let url = URL(string: trimmed), let host = url.host?.lowercased(), host.contains(shareHost) {
+            let path = url.path
+            if path.hasPrefix(shortSharePathPrefix) {
+                let id = String(path.dropFirst(shortSharePathPrefix.count))
+                return id.isEmpty ? nil : id
+            }
+        }
+
+        guard let range = trimmed.range(of: shortSharePathPrefix) else { return nil }
+        let suffix = trimmed[range.upperBound...]
+        let id = suffix
+            .split(whereSeparator: { $0.isWhitespace || $0 == "?" || $0 == "#" || $0 == "/" })
+            .first
+            .map(String.init) ?? ""
+        return id.isEmpty ? nil : id
     }
 
     static func parseImportPayload(from raw: String) -> [ImportedListItem]? {
@@ -130,23 +175,75 @@ enum ListCodec {
     }
 
     static func parseSharedList(from raw: String) -> ParsedSharedList? {
-        var trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return nil }
 
-        if let importRange = trimmed.range(of: "Import code:", options: [.caseInsensitive, .backwards]) {
-            let codeOnly = trimmed[importRange.upperBound...]
-                .trimmingCharacters(in: .whitespacesAndNewlines)
-            if codeOnly.hasPrefix(sharedPayloadPrefix) {
-                trimmed = codeOnly
-            }
+        if let embedded = embeddedSharePayload(in: trimmed) {
+            return embedded
         }
 
         if trimmed.hasPrefix(sharedPayloadPrefix) {
             return decodeSharedPayload(trimmed)
         }
 
-        guard let items = decode(trimmed), !items.isEmpty else { return nil }
+        if let payload = extractPayload(from: trimmed),
+           let items = decode(payload),
+           !items.isEmpty {
+            return ParsedSharedList(listName: nil, items: items)
+        }
+
+        guard let items = decode(trimmed), !items.isEmpty else {
+            return PlainTextListParser.parse(trimmed)
+        }
         return ParsedSharedList(listName: nil, items: items)
+    }
+
+    /// Finds import payloads hidden inside a pasted message, link, or legacy code.
+    private static func embeddedSharePayload(in raw: String) -> ParsedSharedList? {
+        if let glistRange = raw.range(of: sharedPayloadPrefix) {
+            let suffix = String(raw[glistRange.lowerBound...])
+            let token = suffix
+                .split(whereSeparator: \.isWhitespace)
+                .first
+                .map(String.init) ?? suffix
+            if let parsed = decodeSharedPayload(token.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                return parsed
+            }
+        }
+
+        if let url = firstShareURL(in: raw),
+           let payload = extractPayload(from: url),
+           let items = decode(payload),
+           !items.isEmpty {
+            return ParsedSharedList(listName: nil, items: items)
+        }
+
+        if let importRange = raw.range(of: "Import code:", options: [.caseInsensitive, .backwards]) {
+            let codeOnly = raw[importRange.upperBound...]
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            if codeOnly.hasPrefix(sharedPayloadPrefix),
+               let parsed = decodeSharedPayload(codeOnly) {
+                return parsed
+            }
+        }
+
+        return nil
+    }
+
+    private static func firstShareURL(in text: String) -> String? {
+        for prefix in ["https://\(shareHost)", "http://\(shareHost)"] {
+            guard let range = text.range(of: prefix) else { continue }
+            let suffix = text[range.lowerBound...]
+            let token = suffix
+                .split(whereSeparator: \.isWhitespace)
+                .first
+                .map(String.init) ?? String(suffix)
+            let cleaned = token.trimmingCharacters(in: CharacterSet(charactersIn: ".,);]\"'"))
+            if cleaned.contains(shareHost) {
+                return cleaned
+            }
+        }
+        return nil
     }
 
     static func shareCode(for list: GroceryList) -> String? {
@@ -182,13 +279,14 @@ enum ListCodec {
         return "\(sharedPayloadPrefix)\(base64URLEncode(compressed))"
     }
 
+    /// Public share link encoded in QR codes and universal links.
     static func sharePayloadText(for list: GroceryList) -> String? {
-        shareCode(for: list)
+        shareLinkString(for: list)
     }
 
-    /// Legacy web URL import (`#import=` base64). Used only for deep links, not QR/share codes.
-    static func shareWebURL(for list: GroceryList) -> URL? {
-        shareURL(for: list.items.filter { !$0.isArchived })
+    /// Rich paste-only payload with list name, notes, and quantity text.
+    static func sharePasteCode(for list: GroceryList) -> String? {
+        shareCode(for: list)
     }
 
     private static func decodeSharedPayload(_ raw: String) -> ParsedSharedList? {
@@ -250,9 +348,22 @@ enum ListCodec {
             let parts = raw.components(separatedBy: importFragmentPrefix)
             return parts.last?.trimmingCharacters(in: .whitespacesAndNewlines)
         }
-        if let url = URL(string: raw), let fragment = url.fragment, fragment.hasPrefix("import=") {
-            return String(fragment.dropFirst("import=".count))
+
+        guard let components = URLComponents(string: raw) else { return nil }
+
+        if let queryValue = components.queryItems?
+            .first(where: { $0.name == importQueryKey })?
+            .value?
+            .trimmingCharacters(in: .whitespacesAndNewlines),
+           !queryValue.isEmpty {
+            return queryValue
         }
+
+        if let fragment = components.fragment, fragment.hasPrefix("import=") {
+            return String(fragment.dropFirst("import=".count))
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+
         return nil
     }
 }

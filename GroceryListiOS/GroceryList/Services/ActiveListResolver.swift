@@ -15,6 +15,10 @@ enum ActiveListResolver {
         AppSettings.activeListId = list.id.uuidString
     }
 
+    static func clearActive() {
+        AppSettings.activeListId = nil
+    }
+
     static var activeListId: UUID? {
         guard let idString = AppSettings.activeListId else { return nil }
         return UUID(uuidString: idString)

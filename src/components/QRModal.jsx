@@ -43,7 +43,7 @@ export default function QRModal({ url, onClose }) {
           Scan to import
         </p>
         <p style={{ fontSize: 12, color: "var(--ink-muted)", fontFamily: "'DM Sans', sans-serif", marginBottom: 16 }}>
-          Open on another device to add this list
+          Opens in Groceries or Safari to import this list
         </p>
 
         <div style={{

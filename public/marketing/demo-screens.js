@@ -1,6 +1,12 @@
 (function () {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function setPanelState(panel, active) {
+    panel.classList.toggle("is-active", active);
+    panel.hidden = !active;
+    panel.inert = !active;
+  }
+
   function typeText(element, text, onComplete) {
     if (!element) return;
     element.classList.remove("is-placeholder", "is-typing");
@@ -49,10 +55,12 @@
     thumb.alt = "";
     thumb.width = 38;
     thumb.height = 38;
+    thumb.loading = "lazy";
+    thumb.decoding = "async";
 
     const main = el("div", "demo-item-main");
     main.appendChild(el("div", "demo-item-name", "Eggs"));
-    main.appendChild(el("div", "demo-item-meta", "Dairy · Walmart"));
+    main.appendChild(el("div", "demo-item-meta", "Dairy & Eggs · Walmart"));
 
     const stepper = el("div", "demo-stepper");
     stepper.appendChild(el("span", "demo-stepper__btn", "−"));
@@ -133,7 +141,7 @@
 
     const show = (id) => {
       panels.forEach((panel) => {
-        panel.classList.toggle("is-active", panel.dataset.demoScreen === id);
+        setPanelState(panel, panel.dataset.demoScreen === id);
       });
       tabs.forEach((tab) => {
         const tabId = tab.dataset.demoTab;
@@ -142,11 +150,19 @@
           (id === "store" && tabId === "store") ||
           (id === "categories" && tabId === "categories");
         tab.classList.toggle("demo-tab--active", isActive);
+        tab.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
       if (tabBar) {
         tabBar.classList.toggle("demo-tabs--hidden", id === "list");
       }
     };
+
+    panels.forEach((panel) => {
+      setPanelState(panel, panel.classList.contains("is-active"));
+    });
+    tabs.forEach((tab) => {
+      tab.setAttribute("aria-pressed", tab.classList.contains("demo-tab--active") ? "true" : "false");
+    });
 
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => show(tab.dataset.demoTab));
@@ -171,9 +187,13 @@
 
     const show = (id) => {
       panels.forEach((panel) => {
-        panel.classList.toggle("is-active", panel.dataset.demoShareScreen === id);
+        setPanelState(panel, panel.dataset.demoShareScreen === id);
       });
     };
+
+    panels.forEach((panel) => {
+      setPanelState(panel, panel.classList.contains("is-active"));
+    });
 
     if (!prefersReducedMotion) {
       setInterval(() => {

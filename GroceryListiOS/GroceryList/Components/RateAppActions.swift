@@ -14,6 +14,9 @@ enum AppConfig {
         guard let appStoreId, !appStoreId.isEmpty else { return nil }
         return URL(string: "https://apps.apple.com/app/id\(appStoreId)")
     }
+
+    /// Canonical App Store link used in shared list footers.
+    static let appStoreShareURLString = "https://apps.apple.com/us/app/groceries-smart-lists/id6785659442"
 }
 
 struct RateAppButton: View {

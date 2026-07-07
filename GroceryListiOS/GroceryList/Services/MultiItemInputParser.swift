@@ -121,12 +121,7 @@ enum MultiItemInputParser {
     }
 
     private static func protectedStorePhrases(stores: [SeedData.StoreDefinition]) -> [String] {
-        var phrases = Set<String>()
-        for store in stores {
-            phrases.insert(store.label)
-            phrases.insert(store.id.replacingOccurrences(of: "-", with: " "))
-        }
-        return phrases.sorted { $0.count > $1.count }
+        StoreAliasService.protectedPhrases(for: stores)
     }
 
     // MARK: - Segment parsing

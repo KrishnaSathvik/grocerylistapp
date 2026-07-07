@@ -31,17 +31,17 @@ struct CategoriesTabView: View {
                 Group {
                     if activeList == nil {
                         BrowseTabInactiveEmptyState(
-                            imageName: "empty_list_illustration",
+                            imageName: "empty_categories_illustration",
                             fallbackSystemImage: AppIcons.categories,
                             title: "No active list",
                             subtitle: "Create a list on the Lists tab to browse by category."
                         )
                     } else if groupsWithItems.isEmpty {
                         BrowseTabEmptyState(
-                            imageName: "empty_list_illustration",
+                            imageName: "empty_categories_illustration",
                             fallbackSystemImage: AppIcons.categories,
-                            title: "No categories yet",
-                            subtitle: "Add items on your list and we'll organize them automatically, or add custom categories in More → Manage Categories."
+                            title: "No categorized items yet",
+                            subtitle: "Add items to a list and we'll organize them into categories automatically."
                         )
                     } else {
                         ScrollView {

@@ -5,12 +5,14 @@ import VisionKit
 
 struct ImportSharedListView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
 
     @State private var showScanner = false
     @State private var sharedText = ""
     @State private var pendingImport: ParsedSharedList?
     @State private var statusMessage: String?
     @State private var successMessage: String?
+    @State private var isImporting = false
 
     private var isScannerAvailable: Bool {
         DataScannerViewController.isSupported && DataScannerViewController.isAvailable
@@ -22,23 +24,80 @@ struct ImportSharedListView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Bring in a grocery list someone shared with you.")
-                    .font(AppTypography.metadata)
-                    .foregroundStyle(AppColors.inkSecondary)
-                    .padding(.horizontal, 4)
+            VStack(alignment: .leading, spacing: 20) {
+                if isScannerAvailable {
+                    Button {
+                        showScanner = true
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: AppIcons.qrCode)
+                            Text("Scan QR Code")
+                        }
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
+                }
 
-                scanOption
-                pasteCard
+                VStack(alignment: .leading, spacing: 12) {
+                    if isScannerAvailable {
+                        Text("or paste a link or list")
+                            .font(AppTypography.metadata)
+                            .foregroundStyle(AppColors.inkSecondary)
+                            .frame(maxWidth: .infinity)
+                    }
+
+                    TextField("Share link or grocery list", text: $sharedText, axis: .vertical)
+                        .lineLimit(3...8)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .font(AppTypography.itemTitle)
+                        .padding(14)
+                        .frame(maxWidth: .infinity, minHeight: 52, alignment: .topLeading)
+                        .background(AppColors.backgroundGrouped)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .stroke(AppColors.cardBorder, lineWidth: 1)
+                        )
+                        .accessibilityLabel("Share link or grocery list")
+
+                    Button {
+                        handleImportRaw(sharedText)
+                    } label: {
+                        HStack(spacing: 8) {
+                            if isImporting {
+                                ProgressView()
+                                    .tint(.white)
+                            }
+                            Text("Import List")
+                        }
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
+                    .disabled(trimmedSharedText.isEmpty || isImporting)
+                    .opacity(trimmedSharedText.isEmpty || isImporting ? 0.48 : 1)
+
+                    if hasClipboardContent {
+                        Button("Paste from Clipboard") {
+                            pasteFromClipboard()
+                        }
+                        .font(AppTypography.button)
+                        .foregroundStyle(AppColors.accentPrimary)
+                        .frame(maxWidth: .infinity)
+                    }
+                }
+                .appCard()
             }
             .padding(.vertical, 16)
             .padding(.bottom, 8)
             .adaptiveScreenContent()
         }
         .background(AppColors.backgroundGrouped)
-        .navigationTitle("Import Shared List")
+        .navigationTitle("Import a List")
         .navigationBarTitleDisplayMode(.inline)
-        .settingsSubpageStyle()
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Close") { dismiss() }
+            }
+        }
         .sheet(isPresented: $showScanner) {
             QRScannerScreen { value in
                 handleImportRaw(value)
@@ -56,7 +115,7 @@ struct ImportSharedListView: View {
                 }
             )
         }
-        .alert("Import Shared List", isPresented: Binding(
+        .alert("Import a List", isPresented: Binding(
             get: { statusMessage != nil },
             set: { if !$0 { statusMessage = nil } }
         )) {
@@ -68,102 +127,58 @@ struct ImportSharedListView: View {
             get: { successMessage != nil },
             set: { if !$0 { successMessage = nil } }
         )) {
-            Button("OK", role: .cancel) { successMessage = nil }
+            Button("OK", role: .cancel) {
+                successMessage = nil
+                dismiss()
+            }
         } message: {
             Text(successMessage ?? "")
         }
     }
 
-    private var scanOption: some View {
-        Group {
-            if isScannerAvailable {
-                ImportOptionCard(
-                    title: "Scan QR Code",
-                    subtitle: "Use your camera to scan a Groceries — Smart Lists code.",
-                    icon: AppIcons.qrCode,
-                    tint: AppColors.accentSuccess,
-                    isEnabled: true
-                ) {
-                    showScanner = true
-                }
-            } else {
-                ImportOptionCard(
-                    title: "Scan QR Code",
-                    subtitle: "QR scanning is available on a real device.",
-                    icon: AppIcons.qrCode,
-                    tint: AppColors.inkSecondary,
-                    isEnabled: false,
-                    action: {}
-                )
-            }
+    private var hasClipboardContent: Bool {
+        guard let clipboard = UIPasteboard.general.string?
+            .trimmingCharacters(in: .whitespacesAndNewlines),
+              !clipboard.isEmpty else {
+            return false
         }
+        return true
     }
 
-    private var pasteCard: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(spacing: 12) {
-                Image(systemName: AppIcons.clipboard)
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundStyle(AppColors.accentPrimary)
-                    .frame(width: 42, height: 42)
-                    .background(AppColors.accentPrimary.opacity(0.12))
-                    .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
-
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("Paste Shared Code")
-                        .font(AppTypography.cardTitle)
-                        .foregroundStyle(AppColors.ink)
-                    Text("Paste a GLIST1 import code from QR scan, Messages, or email.")
-                        .font(AppTypography.metadata)
-                        .foregroundStyle(AppColors.inkSecondary)
-                }
-            }
-
-            TextField("Paste shared code here", text: $sharedText, axis: .vertical)
-                .lineLimit(4...8)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-                .font(AppTypography.itemTitle)
-                .padding(14)
-                .frame(maxWidth: .infinity, minHeight: 112, alignment: .topLeading)
-                .background(AppColors.backgroundGrouped)
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .stroke(AppColors.cardBorder, lineWidth: 1)
-                )
-                .accessibilityLabel("Shared list code")
-
-            HStack(spacing: 12) {
-                Button("Paste from Clipboard") {
-                    if let clipboard = UIPasteboard.general.string {
-                        sharedText = clipboard
-                    }
-                }
-                .font(AppTypography.button)
-                .foregroundStyle(AppColors.accentPrimary)
-
-                Spacer(minLength: 0)
-            }
-
-            Button("Import List") {
-                handleImportRaw(sharedText)
-            }
-            .buttonStyle(PrimaryButtonStyle())
-            .disabled(trimmedSharedText.isEmpty)
-            .opacity(trimmedSharedText.isEmpty ? 0.48 : 1)
-            .accessibilityLabel("Import shared list")
+    private func pasteFromClipboard() {
+        guard let clipboard = UIPasteboard.general.string,
+              !clipboard.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            statusMessage = "Nothing to paste from your clipboard."
+            return
         }
-        .appCard()
+        sharedText = clipboard
+        handleImportRaw(clipboard)
     }
 
     private func handleImportRaw(_ raw: String) {
-        guard let parsed = ListCodec.parseSharedList(from: raw), !parsed.items.isEmpty else {
-            statusMessage = "This shared list code doesn’t look valid."
-            return
+        isImporting = true
+        Task {
+            let parsed: ParsedSharedList?
+            if let shortId = ListCodec.extractShortShareId(from: raw) {
+                parsed = await ShareLinkService.fetchSharedList(id: shortId)
+            } else if let linkParsed = ListCodec.parseSharedList(from: raw) {
+                parsed = linkParsed
+            } else {
+                parsed = PlainTextListParser.parse(raw)
+            }
+
+            isImporting = false
+            guard let parsed, !parsed.items.isEmpty else {
+                if raw.contains("☐") || raw.contains("[ ]") || raw.contains("[") {
+                    statusMessage = "Couldn't read any grocery items from that text."
+                } else {
+                    statusMessage = "Paste a share link or a grocery list copied from this app."
+                }
+                return
+            }
+            pendingImport = parsed
+            HapticsService.selection()
         }
-        pendingImport = parsed
-        HapticsService.selection()
     }
 
     private func importList(_ parsed: ParsedSharedList) {
@@ -179,52 +194,6 @@ struct ImportSharedListView: View {
         sharedText = ""
         successMessage = "Imported \(list.name)"
         HapticsService.importSuccess()
-    }
-}
-
-private struct ImportOptionCard: View {
-    let title: String
-    let subtitle: String
-    let icon: String
-    let tint: Color
-    let isEnabled: Bool
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 14) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(tint.opacity(isEnabled ? 0.14 : 0.09))
-                        .frame(width: 44, height: 44)
-                    Image(systemName: icon)
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundStyle(tint)
-                }
-
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(title)
-                        .font(AppTypography.cardTitle)
-                        .foregroundStyle(AppColors.ink)
-                    Text(subtitle)
-                        .font(AppTypography.metadata)
-                        .foregroundStyle(AppColors.inkSecondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-
-                Spacer(minLength: 0)
-
-                if isEnabled {
-                    Image(systemName: AppIcons.chevron)
-                        .font(AppTypography.caption.weight(.semibold))
-                        .foregroundStyle(AppColors.inkSecondary.opacity(0.6))
-                }
-            }
-            .appCard(padding: 14)
-            .opacity(isEnabled ? 1 : 0.72)
-        }
-        .buttonStyle(.plain)
-        .disabled(!isEnabled)
     }
 }
 

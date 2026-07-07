@@ -9,42 +9,38 @@ struct OnboardingView: View {
     private let pages = OnboardingTheme.pages
 
     var body: some View {
-        TabView(selection: $page) {
-            ForEach(pages.indices, id: \.self) { index in
-                OnboardingFullScreenPage(
-                    imageName: pages[index].imageName,
-                    title: pages[index].title,
-                    subtitle: pages[index].subtitle,
-                    isActive: page == index,
-                    pageIndex: index,
-                    pageCount: pages.count,
-                    showBack: index > 0,
-                    continueLabel: index == pages.count - 1 ? "Start my list" : "Next",
-                    onSkip: finish,
-                    onBack: { advance(by: -1) },
-                    onContinue: {
-                        if index == pages.count - 1 {
-                            finish()
-                        } else {
-                            advance(by: 1)
-                        }
-                    }
-                )
-                .tag(index)
+        OnboardingFullScreenPage(
+            imageName: pages[page].imageName,
+            title: pages[page].title,
+            subtitle: pages[page].subtitle,
+            pageIndex: page,
+            pageCount: pages.count,
+            showBack: page > 0,
+            continueLabel: page == pages.count - 1 ? "Start my list" : "Next",
+            onSkip: finish,
+            onBack: { advance(by: -1) },
+            onContinue: {
+                if page == pages.count - 1 {
+                    finish()
+                } else {
+                    advance(by: 1)
+                }
             }
-        }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .animation(reduceMotion ? nil : OnboardingTheme.pageSpring, value: page)
+        )
+        .id(page)
         .ignoresSafeArea()
     }
 
     private func advance(by delta: Int) {
         HapticsService.navigation()
+        let nextPage = page + delta
+        guard pages.indices.contains(nextPage) else { return }
+
         if reduceMotion {
-            page += delta
+            page = nextPage
         } else {
             withAnimation(OnboardingTheme.pageSpring) {
-                page += delta
+                page = nextPage
             }
         }
     }

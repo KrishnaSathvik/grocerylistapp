@@ -195,7 +195,7 @@ struct MyListsView: View {
             Label("Duplicate", systemImage: "doc.on.doc")
         }
         Button {
-            UIPasteboard.general.string = ShareTextFormatter.format(list: list)
+            UIPasteboard.general.string = GroceryListShareBuilder.copyText(for: list, context: modelContext)
         } label: {
             Label("Copy as Text", systemImage: AppIcons.clipboard)
         }

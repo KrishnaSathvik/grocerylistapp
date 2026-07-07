@@ -68,6 +68,27 @@ final class StoreDetectionServiceTests: XCTestCase {
         XCTAssertNil(StoreDetectionService.resolveStoreId(query: nil, stores: stores))
     }
 
+    func testResolveHEBAlias() {
+        let extendedStores = stores + [.init(id: "heb", label: "H-E-B", domain: "heb.com", color: "#ee1c2e")]
+        XCTAssertEqual(StoreDetectionService.resolveStoreId(query: "heb", stores: extendedStores), "heb")
+        XCTAssertEqual(StoreDetectionService.resolveStoreId(query: "h e b", stores: extendedStores), "heb")
+    }
+
+    func testParseBarePanAsiaAlias() {
+        let extendedStores = stores + [.init(id: "panasia", label: "Pan Asia Supermarket", domain: "panasia.com", color: "#c62828")]
+        let phrase = StoreDetectionService.parseStorePhrase("chicken pan asia", stores: extendedStores)
+        XCTAssertEqual(phrase.cleanText, "chicken")
+        XCTAssertEqual(phrase.query, "Pan Asia")
+        XCTAssertEqual(StoreDetectionService.resolveStoreId(query: phrase.query, stores: extendedStores), "panasia")
+    }
+
+    func testParseBareSamsClubAlias() {
+        let extendedStores = stores + [.init(id: "samsclub", label: "Sam's Club", domain: "samsclub.com", color: "#0060a9")]
+        let phrase = StoreDetectionService.parseStorePhrase("paper towels sams club", stores: extendedStores)
+        XCTAssertEqual(phrase.cleanText, "paper towels")
+        XCTAssertEqual(StoreDetectionService.resolveStoreId(query: "sams", stores: extendedStores), "samsclub")
+    }
+
     func testTitleCaseStoreLabel() {
         XCTAssertEqual(StoreDetectionService.titleCaseStoreLabel("indian store"), "Indian Store")
     }

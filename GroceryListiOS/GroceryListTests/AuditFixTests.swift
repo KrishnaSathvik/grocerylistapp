@@ -23,6 +23,104 @@ final class ShareTextFormatterTests: XCTestCase {
         let text = ShareTextFormatter.format(list: list)
         XCTAssertTrue(text.contains("2 lb rice"))
     }
+
+    @MainActor
+    func testFormatUsesCustomStoreLabel() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        _ = StoreService.addCustomStore(label: "Local Market", context: context)
+        guard let storeId = StoreService.storeId(forLabel: "Local Market", context: context) else {
+            XCTFail("Expected custom store")
+            return
+        }
+
+        let list = GroceryList(name: "Test")
+        context.insert(list)
+        let item = GroceryItem(name: "bread", categoryId: "bakery", storeId: storeId, list: list)
+        context.insert(item)
+        list.items = [item]
+
+        let text = ShareTextFormatter.format(list: list, context: context)
+        XCTAssertTrue(text.contains("Local Market:"))
+        XCTAssertFalse(text.contains("local-market:"))
+    }
+
+    @MainActor
+    func testFormatPlainListIsGroceryOnly() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Weekly")
+        context.insert(list)
+        let item = GroceryItem(name: "milk", categoryId: "dairy", list: list)
+        context.insert(item)
+        list.items = [item]
+
+        let text = ShareTextFormatter.formatPlainList(list: list, context: context)
+        XCTAssertTrue(text.hasPrefix("Weekly\n"))
+        XCTAssertTrue(text.contains("☐ milk"))
+        XCTAssertFalse(text.contains("App Store"))
+        XCTAssertFalse(text.contains("apps.apple.com"))
+        XCTAssertFalse(text.contains("smartgrocerylists.app"))
+        XCTAssertFalse(text.contains("remaining"))
+    }
+
+    @MainActor
+    func testFormatForMessagesIsListOnly() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Weekly")
+        context.insert(list)
+        let item = GroceryItem(name: "milk", categoryId: "dairy", list: list)
+        context.insert(item)
+        list.items = [item]
+
+        let text = ShareTextFormatter.formatForMessages(list: list, context: context)
+        XCTAssertFalse(text.contains("Weekly"))
+        XCTAssertFalse(text.contains("GLIST1"))
+        XCTAssertFalse(text.contains("smartgrocerylists.app"))
+        XCTAssertTrue(text.contains("☐ milk"))
+        XCTAssertTrue(text.contains("App Store"))
+        XCTAssertTrue(text.contains("apps.apple.com"))
+    }
+
+    @MainActor
+    func testFormatForSharingIncludesImportLinkAndAppStore() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Weekly")
+        context.insert(list)
+        let item = GroceryItem(name: "milk", categoryId: "dairy", list: list)
+        context.insert(item)
+        list.items = [item]
+
+        let text = ShareTextFormatter.formatForSharing(
+            list: list,
+            context: context,
+            includeListTitle: true,
+            includeURLsInBody: true,
+            includeBrandHeader: true
+        )
+        XCTAssertTrue(text.hasPrefix("Weekly\n"))
+        XCTAssertTrue(text.contains("smartgrocerylists.app"))
+    }
+
+    @MainActor
+    func testShareItemSourceIsListOnly() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Weekly Groceries")
+        context.insert(list)
+        let item = GroceryItem(name: "eggs", categoryId: "dairy", storeId: "costco", list: list)
+        context.insert(item)
+        list.items = [item]
+
+        let source = GroceryListShareItemSource(list: list, context: context)
+        XCTAssertFalse(source.bodyText.contains("Weekly Groceries"))
+        XCTAssertTrue(source.bodyText.contains("☐ eggs"))
+        XCTAssertFalse(source.bodyText.contains("GLIST1"))
+        XCTAssertFalse(source.bodyText.contains("smartgrocerylists.app"))
+        XCTAssertTrue(source.bodyText.contains("apps.apple.com"))
+    }
 }
 
 final class AppSettingsCategoryOrderTests: XCTestCase {
@@ -67,6 +165,30 @@ final class GroceryItemServiceQuantityTextTests: XCTestCase {
         XCTAssertEqual(item.quantityText, "2 lb")
         XCTAssertNil(item.quantityValue)
         XCTAssertEqual(item.categoryId, "asian")
+    }
+
+    @MainActor
+    func testUpdateItemReDetectsCategoryWhenNameFixed() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Test")
+        context.insert(list)
+
+        let item = GroceryItem(
+            name: "salomn",
+            normalizedName: "salomn",
+            categoryId: "misc",
+            list: list
+        )
+        context.insert(item)
+        list.items.append(item)
+
+        var draft = ItemEditDraft(item: item)
+        draft.name = "Salmon"
+        GroceryItemService.updateItem(item, draft: draft, context: context)
+
+        XCTAssertEqual(item.name, "Salmon")
+        XCTAssertEqual(item.categoryId, "seafood")
     }
 }
 

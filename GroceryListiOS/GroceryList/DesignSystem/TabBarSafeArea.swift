@@ -1,7 +1,7 @@
 import SwiftUI
 
 private enum TabBarLayout {
-    static let phoneExtraBottomPadding: CGFloat = 72
+    static let phoneExtraBottomPadding: CGFloat = 88
     static let tabletExtraBottomPadding: CGFloat = 12
 }
 

@@ -52,22 +52,12 @@ struct ManageStoresView: View {
 
     private func storeRow(_ store: StoreService.StoreInfo) -> some View {
         HStack(spacing: 14) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(AppColors.colorHex(store.colorHex).opacity(0.16))
-                    .frame(width: 40, height: 40)
-                if let domain = store.domain, !domain.isEmpty {
-                    StoreLogoView(storeId: store.id, size: 22)
-                } else if let symbol = store.iconSymbol {
-                    Image(systemName: symbol)
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundStyle(AppColors.colorHex(store.colorHex))
-                } else {
-                    Image(systemName: "storefront.fill")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundStyle(AppColors.colorHex(store.colorHex))
-                }
-            }
+            StoreLogoView(
+                storeId: store.id,
+                displayLabel: store.label,
+                size: 40,
+                cornerRadius: 10
+            )
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(store.label)
@@ -136,12 +126,11 @@ struct ManageCategoriesView: View {
 
     private func categoryRow(_ category: CategoryService.CategoryInfo) -> some View {
         HStack(spacing: 14) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(AppColors.colorHex(category.color).opacity(0.16))
-                    .frame(width: 40, height: 40)
-                CategoryIconView(categoryId: category.id, containerSize: 22)
-            }
+            CategoryIconView(
+                categoryId: category.id,
+                containerSize: 40,
+                cornerRadius: 10
+            )
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(category.label)

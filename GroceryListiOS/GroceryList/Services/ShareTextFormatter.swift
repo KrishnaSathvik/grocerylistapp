@@ -1,13 +1,33 @@
 import Foundation
+import SwiftData
 
 enum ShareTextFormatter {
-    static func format(list: GroceryList) -> String {
+    static func format(list: GroceryList, context: ModelContext, includeBrandHeader: Bool = true) -> String {
+        let stores = StoreService.allStores(context: context)
+        let storeLabels = Dictionary(uniqueKeysWithValues: stores.map { ($0.id, $0.label) })
+        let storeOrder = stores.map(\.id)
+        return format(
+            list: list,
+            storeLabels: storeLabels,
+            storeOrder: storeOrder,
+            includeBrandHeader: includeBrandHeader
+        )
+    }
+
+    static func format(
+        list: GroceryList,
+        storeLabels: [String: String] = [:],
+        storeOrder: [String] = SeedData.loadStoreDefinitions().map(\.id),
+        includeBrandHeader: Bool = true
+    ) -> String {
         let items = list.items.filter { !$0.isArchived }
         let active = items.filter { !$0.isCompleted }.sorted { $0.sortOrder < $1.sortOrder }
         let completed = items.filter(\.isCompleted).sorted { $0.sortOrder < $1.sortOrder }
 
         var lines: [String] = []
-        lines.append("Groceries — Smart Lists")
+        if includeBrandHeader {
+            lines.append("Groceries — Smart Lists")
+        }
         lines.append(formattedDate)
         lines.append("")
 
@@ -15,8 +35,8 @@ enum ShareTextFormatter {
         let hasStores = storeGroups.keys.contains { $0 != "__none__" }
 
         if hasStores {
-            for storeId in orderedStoreKeys(from: storeGroups) where storeId != "__none__" {
-                lines.append("\(SeedData.storeLabel(for: storeId)):")
+            for storeId in orderedStoreKeys(from: storeGroups, storeOrder: storeOrder) where storeId != "__none__" {
+                lines.append("\(storeLabel(for: storeId, storeLabels: storeLabels)):")
                 for item in storeGroups[storeId] ?? [] {
                     lines.append("  \(checkbox(for: item)) \(quantityPrefix(for: item))\(item.name)")
                 }
@@ -46,6 +66,70 @@ enum ShareTextFormatter {
         lines.append("")
         lines.append("\(active.count) item\(active.count == 1 ? "" : "s") remaining")
         return lines.joined(separator: "\n")
+    }
+
+    /// Grocery checklist only — for clipboard copy (no date, footer, or App Store pitch).
+    static func formatPlainList(list: GroceryList, context: ModelContext) -> String {
+        let items = list.items.filter { !$0.isArchived }
+        let active = items.filter { !$0.isCompleted }.sorted { $0.sortOrder < $1.sortOrder }
+        let completed = items.filter(\.isCompleted).sorted { $0.sortOrder < $1.sortOrder }
+
+        var lines: [String] = [list.name, ""]
+        for item in active {
+            lines.append("\(checkbox(for: item)) \(quantityPrefix(for: item))\(item.name)")
+        }
+        if !completed.isEmpty {
+            lines.append("")
+            lines.append("Picked up:")
+            for item in completed {
+                lines.append("  ☑ \(item.name)")
+            }
+        }
+        return lines.joined(separator: "\n")
+    }
+
+    /// Clean list for Messages — subject carries the list name; short App Store line at the end.
+    static func formatForMessages(list: GroceryList, context: ModelContext) -> String {
+        let listBody = format(list: list, context: context, includeBrandHeader: false)
+        return """
+        \(listBody)
+
+        —
+        Don't have the app? Get Groceries — Smart Lists on the App Store:
+        \(AppConfig.appStoreShareURLString)
+        """
+    }
+
+    /// Same readable list for copy/share; no import codes or app pitches in the message.
+    static func formatForSharing(
+        list: GroceryList,
+        context: ModelContext,
+        includeListTitle: Bool = false,
+        includeURLsInBody: Bool = false,
+        includeBrandHeader: Bool = false
+    ) -> String {
+        if !includeListTitle && !includeURLsInBody && !includeBrandHeader {
+            return formatForMessages(list: list, context: context)
+        }
+
+        var sections: [String] = []
+        if includeListTitle {
+            sections.append(list.name)
+        }
+        sections.append(
+            format(
+                list: list,
+                context: context,
+                includeBrandHeader: includeBrandHeader
+            )
+        )
+
+        if includeURLsInBody, let importLink = ListCodec.shareLinkString(for: list) {
+            sections.append("")
+            sections.append(importLink)
+        }
+
+        return sections.joined(separator: "\n")
     }
 
     static func previewLine(for item: GroceryItem) -> String {
@@ -79,6 +163,10 @@ enum ShareTextFormatter {
         return lines.joined(separator: "\n")
     }
 
+    private static func storeLabel(for storeId: String, storeLabels: [String: String]) -> String {
+        storeLabels[storeId] ?? SeedData.storeLabel(for: storeId)
+    }
+
     private static var formattedDate: String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US")
@@ -87,7 +175,7 @@ enum ShareTextFormatter {
     }
 
     private static func checkbox(for item: GroceryItem) -> String {
-        "[ ]"
+        "☐"
     }
 
     private static func quantityPrefix(for item: GroceryItem) -> String {
@@ -100,9 +188,11 @@ enum ShareTextFormatter {
         return ""
     }
 
-    private static func orderedStoreKeys(from groups: [String: [GroceryItem]]) -> [String] {
-        let seedOrder = SeedData.loadStoreDefinitions().map(\.id)
-        var keys = seedOrder.filter { groups[$0] != nil }
+    private static func orderedStoreKeys(
+        from groups: [String: [GroceryItem]],
+        storeOrder: [String]
+    ) -> [String] {
+        var keys = storeOrder.filter { groups[$0] != nil }
         if groups["__none__"] != nil {
             keys.append("__none__")
         }

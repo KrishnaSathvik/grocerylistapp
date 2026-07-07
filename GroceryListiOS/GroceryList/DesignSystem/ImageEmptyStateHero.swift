@@ -53,8 +53,10 @@ struct ImageEmptyStateHero: View {
 
 /// Pill action + centered illustration — Store/Categories tabs when the active list has no groups yet.
 struct BrowseTabEmptyState: View {
-    var actionTitle: String? = nil
-    var action: (() -> Void)? = nil
+    var primaryActionTitle: String? = nil
+    var primaryAction: (() -> Void)? = nil
+    var secondaryActionTitle: String? = nil
+    var secondaryAction: (() -> Void)? = nil
     let imageName: String
     let fallbackSystemImage: String
     let title: String
@@ -62,10 +64,17 @@ struct BrowseTabEmptyState: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            if let actionTitle, let action {
-                BrowseTabCustomAddBar(title: actionTitle, action: action)
-                    .padding(.horizontal, AppSpacing.screenHorizontal)
-                    .padding(.bottom, 12)
+            if primaryActionTitle != nil || secondaryActionTitle != nil {
+                VStack(spacing: 10) {
+                    if let primaryActionTitle, let primaryAction {
+                        BrowseTabCustomAddBar(title: primaryActionTitle, action: primaryAction)
+                    }
+                    if let secondaryActionTitle, let secondaryAction {
+                        BrowseTabCustomAddBar(title: secondaryActionTitle, action: secondaryAction)
+                    }
+                }
+                .padding(.horizontal, AppSpacing.screenHorizontal)
+                .padding(.bottom, 12)
             }
 
             ImageEmptyStateHero(

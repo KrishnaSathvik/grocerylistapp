@@ -30,7 +30,9 @@ struct AppRootView: View {
         }
         .preferredColorScheme(colorScheme)
         .onOpenURL { url in
-            _ = importCoordinator.load(from: url.absoluteString)
+            Task {
+                _ = await importCoordinator.loadAsync(from: url.absoluteString)
+            }
         }
         .sheet(isPresented: importSheetPresented) {
             if let items = importCoordinator.pendingItems {

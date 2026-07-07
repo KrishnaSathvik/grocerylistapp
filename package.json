@@ -12,6 +12,7 @@
     "export-ios-catalog": "node scripts/export-ios-catalog.mjs",
     "verify-category-detection": "node scripts/verify-category-detection.mjs",
     "verify-product-resolution": "node scripts/verify-product-resolution.mjs",
+    "generate-og-image": "python3 scripts/generate-og-image.py",
     "ios:process-product-sources": "python3 GroceryListiOS/scripts/process-product-sources.py",
     "ios:download-store-logos": "python3 GroceryListiOS/scripts/download-store-logos.py",
     "ios:reprocess-store-logos": "python3 GroceryListiOS/scripts/download-store-logos.py --reprocess-only",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
+    "@vercel/kv": "^3.0.0",
     "qrcode-generator": "^2.0.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

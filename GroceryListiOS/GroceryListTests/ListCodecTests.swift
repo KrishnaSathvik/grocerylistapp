@@ -60,14 +60,56 @@ final class ListCodecTests: XCTestCase {
         XCTAssertNil(ListCodec.encode(items: items))
     }
 
-    func testShareURLUsesWebBaseAndFragment() {
+    func testShareURLUsesWebBaseAndQueryParam() {
         let items = [GroceryItem(name: "milk", categoryId: "dairy")]
         guard let url = ListCodec.shareURL(for: items) else {
             XCTFail("Expected share URL")
             return
         }
-        XCTAssertTrue(url.absoluteString.hasPrefix(ListCodec.shareBaseURL))
-        XCTAssertTrue(url.absoluteString.contains("#import="))
+        XCTAssertEqual(url.host, ListCodec.shareHost)
+        XCTAssertEqual(url.path, ListCodec.sharePath)
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        XCTAssertNotNil(components?.queryItems?.first(where: { $0.name == ListCodec.importQueryKey })?.value)
+    }
+
+    func testDecodeWebFixtureFromQueryURL() {
+        let url = "https://smartgrocerylists.app/app?import=\(webFixtureBase64)"
+        let items = ListCodec.parseImportPayload(from: url)
+        XCTAssertEqual(items?.count, 2)
+        XCTAssertEqual(items?.first?.name, "milk")
+    }
+
+    func testParseSharedListFindsURLInsidePastedMessage() {
+        let message = """
+        Weekly Groceries
+        Tuesday, July 7
+
+        Walmart:
+          ☐ milk
+
+        https://smartgrocerylists.app/app?import=\(webFixtureBase64)
+        """
+        let parsed = ListCodec.parseSharedList(from: message)
+        XCTAssertEqual(parsed?.items.count, 2)
+        XCTAssertEqual(parsed?.items.first?.name, "milk")
+    }
+
+    func testSharePayloadTextUsesShareLink() {
+        let list = GroceryList(name: "Weekly Groceries")
+        list.items = [
+            GroceryItem(name: "milk", quantityValue: 2, categoryId: "dairy", storeId: "walmart"),
+        ]
+
+        guard let payload = ListCodec.sharePayloadText(for: list) else {
+            XCTFail("Expected share payload")
+            return
+        }
+
+        XCTAssertTrue(payload.hasPrefix("https://"))
+        XCTAssertTrue(payload.contains("import="))
+        let parsed = ListCodec.parseImportPayload(from: payload)
+        XCTAssertEqual(parsed?.first?.name, "milk")
+        XCTAssertEqual(parsed?.first?.storeId, "walmart")
     }
 
     func testShareCodeRoundTrip() {
@@ -94,25 +136,39 @@ final class ListCodecTests: XCTestCase {
         XCTAssertEqual(parsed.items.first?.name, "milk")
     }
 
-    func testSharePayloadTextUsesValidImportPayload() {
-        let list = GroceryList(name: "Weekly Groceries")
-        list.items = [
-            GroceryItem(name: "milk", quantityValue: 2, categoryId: "dairy", storeId: "walmart"),
-        ]
-
-        guard let payload = ListCodec.sharePayloadText(for: list) else {
-            XCTFail("Expected share payload")
-            return
-        }
-
-        let parsed = ListCodec.parseSharedList(from: payload)
-        XCTAssertEqual(parsed?.listName, "Weekly Groceries")
-        XCTAssertEqual(parsed?.items.first?.name, "milk")
-        XCTAssertEqual(parsed?.items.first?.storeId, "walmart")
-    }
-
     func testInvalidSharedListTextReturnsNil() {
         XCTAssertNil(ListCodec.parseSharedList(from: "this is not a shared list code"))
+    }
+
+    func testParsePlainTextListWithBracketCheckboxes() {
+        let text = """
+        Weekly Groceries
+        [ ] milk
+        [ ] eggs
+        [ ] butter
+        [ ] chicken
+        """
+
+        let parsed = ListCodec.parseSharedList(from: text)
+        XCTAssertEqual(parsed?.listName, "Weekly Groceries")
+        XCTAssertEqual(parsed?.items.map(\.name), ["milk", "eggs", "butter", "chicken"])
+    }
+
+    func testParsePlainTextListFromCopyAsTextFormat() {
+        let text = """
+        Weekly Groceries
+
+        ☐ milk
+        ☐ 2 lb rice
+        ☐ eggs
+        """
+
+        let parsed = PlainTextListParser.parse(text)
+        XCTAssertEqual(parsed?.listName, "Weekly Groceries")
+        XCTAssertEqual(parsed?.items.count, 3)
+        XCTAssertEqual(parsed?.items.first?.name, "milk")
+        XCTAssertEqual(parsed?.items[1].name, "rice")
+        XCTAssertEqual(parsed?.items[1].quantityText, "2 lb")
     }
 
     @MainActor

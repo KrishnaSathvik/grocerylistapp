@@ -19,7 +19,7 @@ enum CategoryLearningService {
         context: ModelContext
     ) {
         let key = normalize(normalizedName)
-        guard !key.isEmpty else { return }
+        guard !key.isEmpty, categoryId != "misc" else { return }
 
         let descriptor = FetchDescriptor<CategoryLearningRule>(
             predicate: #Predicate { $0.normalizedItemName == key }
@@ -47,7 +47,9 @@ enum CategoryLearningService {
         let normalized = normalize(text)
         guard !normalized.isEmpty else { return nil }
 
-        if let exact = rules.first(where: { $0.normalizedItemName == normalized }) {
+        if let exact = rules.first(where: {
+            $0.normalizedItemName == normalized && $0.categoryId != "misc"
+        }) {
             return exact.categoryId
         }
 
@@ -55,6 +57,7 @@ enum CategoryLearningService {
         var bestLength = 0
 
         for rule in rules {
+            guard rule.categoryId != "misc" else { continue }
             let learnedName = rule.normalizedItemName
             guard !learnedName.isEmpty else { continue }
 

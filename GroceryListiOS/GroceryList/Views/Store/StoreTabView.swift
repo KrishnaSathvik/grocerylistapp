@@ -38,23 +38,23 @@ struct StoreTabView: View {
     var body: some View {
         NavigationStack {
             TopLevelTabScreen(
-                title: "Store",
+                title: "Stores",
                 subtitle: "See what to buy from each store."
             ) {
                 Group {
                     if activeList == nil {
                         BrowseTabInactiveEmptyState(
-                            imageName: "empty_list_illustration",
+                            imageName: "empty_store_illustration",
                             fallbackSystemImage: AppIcons.store,
                             title: "No active list",
                             subtitle: "Create a list on the Lists tab to shop by store."
                         )
                     } else if groupsWithItems.isEmpty {
                         BrowseTabEmptyState(
-                            imageName: "empty_list_illustration",
+                            imageName: "empty_store_illustration",
                             fallbackSystemImage: AppIcons.store,
-                            title: "No stores yet",
-                            subtitle: "Add items with a store on your list — like “milk from Costco” — or add custom stores in More → Manage Stores."
+                            title: "No store items yet",
+                            subtitle: "Add a store while entering an item, such as “milk from Costco.” Your items will appear here automatically."
                         )
                     } else {
                         ScrollView {

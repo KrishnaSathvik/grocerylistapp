@@ -2,23 +2,14 @@ import SwiftUI
 import SwiftData
 
 struct SettingsView: View {
-    @Query(
-        filter: #Predicate<GroceryList> { !$0.isArchived },
-        sort: [SortDescriptor(\GroceryList.sortOrder), SortDescriptor(\GroceryList.name)]
-    )
-    private var lists: [GroceryList]
-
     @AppStorage(AppSettings.Keys.enableHaptics) private var enableHaptics = true
     @AppStorage(AppSettings.Keys.preferredColorScheme) private var colorSchemeRaw = AppColorSchemePreference.system.rawValue
 
     @State private var showAbout = false
     @State private var showFeedback = false
+    @State private var showImportSheet = false
     @State private var showPrivacyPolicySafari = false
     @State private var statusMessage: String?
-
-    private var activeList: GroceryList? {
-        ActiveListResolver.resolve(from: lists)
-    }
 
     private var colorSchemePreference: Binding<AppColorSchemePreference> {
         Binding(
@@ -56,7 +47,7 @@ struct SettingsView: View {
                     }
                     .adaptiveHorizontalPadding()
                     .padding(.top, 4)
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 40)
                 }
             }
             .navigationBarHidden(true)
@@ -65,6 +56,11 @@ struct SettingsView: View {
             }
             .adaptiveSheet(isPresented: $showFeedback) {
                 FeedbackView()
+            }
+            .adaptiveSheet(isPresented: $showImportSheet) {
+                NavigationStack {
+                    ImportSharedListView()
+                }
             }
             .sheet(isPresented: $showPrivacyPolicySafari) {
                 if let url = AppConfig.privacyPolicyURL {
@@ -108,37 +104,12 @@ struct SettingsView: View {
 
     private var sharingSection: some View {
         SettingsCard(title: "Sharing") {
-            if let list = activeList {
-                NavigationLink {
-                    ShareActiveListView(list: list)
-                } label: {
-                    SettingsRow(
-                        title: "Share Active List",
-                        subtitle: "Show a QR code for your current list.",
-                        icon: "qrcode.viewfinder",
-                        iconColor: AppColors.accentPrimary
-                    )
-                }
-                .buttonStyle(.plain)
-            } else {
-                SettingsRow(
-                    title: "Share Active List",
-                    subtitle: "Create a list first to share it.",
-                    icon: "qrcode.viewfinder",
-                    iconColor: AppColors.inkSecondary,
-                    showsChevron: false
-                )
-                .opacity(0.55)
-            }
-
-            SettingsDivider()
-
-            NavigationLink {
-                ImportSharedListView()
+            Button {
+                showImportSheet = true
             } label: {
                 SettingsRow(
-                    title: "Import Shared List",
-                    subtitle: "Scan a QR code or paste shared text.",
+                    title: "Import a Shared List",
+                    subtitle: "Scan a QR code or paste a share link.",
                     icon: "square.and.arrow.down",
                     iconColor: AppColors.accentSuccess
                 )

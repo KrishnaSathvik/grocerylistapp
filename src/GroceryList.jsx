@@ -3,7 +3,7 @@ import { detectItemIcon } from "./itemIcons";
 import { CATEGORIES } from "./data/categories";
 import { DEFAULT_STORES, storeFavicon } from "./data/stores";
 import { getItemEmoji } from "./data/itemEmojis";
-import { detectCategory, parseQty, encodeList, decodeList } from "./utils";
+import { detectCategory, parseQty, encodeList, decodeList, buildShareURL, extractImportPayload, APP_STORE_URL } from "./utils";
 import { notepadStyles } from "./notepadStyles";
 
 import Header from "./components/Header";
@@ -15,8 +15,6 @@ import Onboarding from "./components/Onboarding";
 import ShareSheet from "./components/ShareSheet";
 import ImportModal from "./components/ImportModal";
 import QRModal from "./components/QRModal";
-
-const BASE_URL = "https://smartgrocerylists.app/app/";
 
 export default function GroceryList() {
   const [items, setItems] = useState(() => {
@@ -52,19 +50,16 @@ export default function GroceryList() {
   useEffect(() => { try { localStorage.setItem("grocery-items", JSON.stringify(items)); } catch {} }, [items]);
   useEffect(() => { try { localStorage.setItem("grocery-stores", JSON.stringify(customStores)); } catch {} }, [customStores]);
 
-  // Check for import hash on mount
+  // Check for import link on mount (?import= or legacy #import=)
   useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash.startsWith("#import=")) return;
-    const encoded = hash.slice(8);
+    const encoded = extractImportPayload(window.location.search, window.location.hash);
+    if (!encoded) return;
     const decoded = decodeList(encoded);
     if (decoded && decoded.length > 0) {
-      // Assign icons to imported items
       decoded.forEach(item => { item.icon = detectItemIcon(item.text); });
       setImportData(decoded);
     }
-    // Clear hash without triggering navigation
-    history.replaceState(null, "", window.location.pathname + window.location.search);
+    history.replaceState(null, "", window.location.pathname);
   }, []);
 
   // Parse @store from input
@@ -190,6 +185,11 @@ export default function GroceryList() {
     }
     if (chk.length) { t += "\n✓ Picked up:\n"; chk.forEach(i => { t += `  ✓ ${i.text}\n`; }); }
     t += `\n${unc.length} item${unc.length !== 1 ? "s" : ""} remaining`;
+    const importLink = buildShareURL(items);
+    if (importLink) {
+      t += `\n\nImport this list:\n${importLink}`;
+    }
+    t += `\n\nGet Groceries — Smart Lists:\n${APP_STORE_URL}`;
     if (navigator.share) { try { await navigator.share({ title: "Groceries — Smart Lists", text: t }); return; } catch {} }
     try { await navigator.clipboard.writeText(t); setToast("Copied!"); setTimeout(() => setToast(null), 2200); } catch { setToast("Couldn't copy"); setTimeout(() => setToast(null), 2200); }
   };
@@ -197,15 +197,13 @@ export default function GroceryList() {
   // Share: as link
   const shareAsLink = async () => {
     setShowShareSheet(false);
-    const encoded = encodeList(items);
-    if (!encoded) {
-      // List too large, fall back to text
+    const url = buildShareURL(items);
+    if (!url) {
       setToast("List too large for link — copied as text instead");
       setTimeout(() => setToast(null), 2800);
       shareAsText();
       return;
     }
-    const url = `${BASE_URL}#import=${encoded}`;
     if (navigator.share) { try { await navigator.share({ title: "Groceries — Smart Lists", url }); return; } catch {} }
     try { await navigator.clipboard.writeText(url); setToast("Link copied!"); setTimeout(() => setToast(null), 2200); } catch { setToast("Couldn't copy"); setTimeout(() => setToast(null), 2200); }
   };
@@ -213,13 +211,13 @@ export default function GroceryList() {
   // Share: show QR
   const shareAsQR = () => {
     setShowShareSheet(false);
-    const encoded = encodeList(items);
-    if (!encoded) {
+    const url = buildShareURL(items);
+    if (!url) {
       setToast("List too large for QR code");
       setTimeout(() => setToast(null), 2200);
       return;
     }
-    setQrUrl(`${BASE_URL}#import=${encoded}`);
+    setQrUrl(url);
     setShowQR(true);
   };
 

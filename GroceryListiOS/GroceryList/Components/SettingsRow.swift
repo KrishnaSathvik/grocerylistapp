@@ -96,7 +96,8 @@ struct SettingsRow: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, subtitle == nil ? 14 : 16)
-        .frame(minHeight: AppSpacing.minTapTarget, alignment: .center)
+        .frame(maxWidth: .infinity, minHeight: AppSpacing.minTapTarget, alignment: .leading)
+        .contentShape(Rectangle())
     }
 }
 

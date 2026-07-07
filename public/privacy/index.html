@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy — Groceries — Smart Lists</title>
+    <title>Privacy Policy | Groceries — Smart Lists</title>
     <meta
       name="description"
       content="How Groceries handles your data. Local-first, no account required, no selling of personal data."
@@ -16,7 +16,23 @@
       property="og:description"
       content="Groceries is local-first. Your lists stay on your device unless you choose to share them."
     />
+    <meta property="og:image" content="https://smartgrocerylists.app/og-image.png?v=8" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Groceries — Smart Lists" />
+    <meta
+      property="og:image:alt"
+      content="Groceries — Smart Lists, a simple grocery list app for iPhone"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://smartgrocerylists.app/og-image.png?v=8" />
+    <meta
+      name="twitter:image:alt"
+      content="Groceries — Smart Lists, a simple grocery list app for iPhone"
+    />
+    <meta name="theme-color" content="#EEF4EE" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=7" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,22 +42,23 @@
     <link rel="stylesheet" href="/marketing/marketing.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="brand" href="/home">
+        <a class="brand" href="/">
           <img class="brand__icon" src="/marketing/images/app-icon.png" alt="" width="36" height="36" />
           <span class="brand__name">Groceries — Smart Lists</span>
         </a>
       </div>
     </header>
 
-    <main class="policy-page">
+    <main id="main-content" class="policy-page">
       <div class="container" style="max-width: 720px">
-        <a class="policy-back" href="/home">← Back to Groceries — Smart Lists</a>
+        <a class="policy-back" href="/">← Back to Groceries — Smart Lists</a>
 
         <header class="policy-page__header">
           <h1 class="policy-page__title">Privacy Policy</h1>
-          <p class="policy-page__updated">Last updated: July 2026</p>
+          <p class="policy-page__updated">Last updated: July 7, 2026</p>
         </header>
 
         <article class="policy-section">
@@ -80,7 +97,29 @@
         <article class="policy-section">
           <h2>Shared lists</h2>
           <p>
-            Lists are only shared when you choose to share them — for example, by generating a QR code or shared text. The exported data contains the list information you choose to export.
+            Lists are only shared when you choose to share them — for example, by sending a link, showing a QR code, or copying the list as plain text.
+          </p>
+          <p>
+            <strong>Share links and QR codes.</strong> When you choose Send Link or
+            Show QR Code, the app uploads a copy of the selected list to the service
+            used to provide sharing. This includes the list name, item names,
+            quantities, category identifiers, store identifiers, optional item notes,
+            whether each item is marked complete, a creation timestamp, and a randomly
+            generated share identifier.
+          </p>
+          <p>
+            This information is used only to create the shared list and allow a
+            recipient to preview or import their own copy. It is not used for
+            advertising, marketing, user profiling, or tracking.
+          </p>
+          <p>
+            Shared-list data is automatically deleted 90 days after the share link
+            is created.
+          </p>
+          <p>
+            <strong>Copy as Text.</strong> This copies a readable grocery checklist
+            to your device clipboard. It does not upload the list to our servers and
+            does not create an importable shared-list link.
           </p>
           <p>
             When someone imports a shared list, they receive their own copy on their device. Sharing is user-initiated and under your control.
@@ -88,12 +127,90 @@
         </article>
 
         <article class="policy-section">
-          <h2>Data storage</h2>
+          <h2>Your choices and data deletion</h2>
+
           <p>
-            Your grocery data remains on your device. The app does not sync your lists to our servers.
+            You can delete individual lists and items from within the app. You can
+            remove all locally stored app data by deleting the app from your device.
           </p>
+
           <p>
-            If you use device backup services (such as iCloud Backup), your app data may be included in those backups according to Apple's policies and your device settings.
+            Shared-list data is automatically deleted after 90 days. To request
+            earlier deletion of a shared list, email
+            <a href="mailto:grocerylistapp.support@gmail.com">
+              grocerylistapp.support@gmail.com
+            </a>
+            and include the shared-list URL or share identifier.
+          </p>
+
+          <p>
+            Because the app does not require an account, we may not be able to
+            identify a shared list without its share URL or identifier.
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2>Data storage and retention</h2>
+
+          <p>
+            Grocery lists, items, stores, categories, preferences, and other
+            everyday app data are stored locally on your device.
+          </p>
+
+          <p>
+            The app does not upload your full local database or continuously sync
+            your lists to our servers. Data is transmitted to the sharing service
+            only when you intentionally create a share link or QR code.
+          </p>
+
+          <p>
+            Shared-list data is retained for 90 days and then automatically deleted.
+          </p>
+
+          <p>
+            If you use device backup services such as iCloud Backup, local app data
+            may be included in those backups according to Apple's policies and your
+            device settings.
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2>Service providers</h2>
+
+          <p>
+            We use Vercel to host the website, sharing API, and shared-list storage
+            infrastructure. Vercel processes shared-list data only to operate and
+            secure this functionality on our behalf.
+          </p>
+
+          <p>
+            Service providers that process data for the app are required to protect
+            it consistently with this privacy policy and applicable requirements.
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2>Advertising, tracking, and sale of data</h2>
+
+          <p>
+            We do not sell personal information or grocery-list data.
+          </p>
+
+          <p>
+            The app does not contain third-party advertising and does not use
+            shared-list data for targeted advertising, marketing, or cross-app
+            tracking.
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2>Data security</h2>
+
+          <p>
+            We use reasonable technical and organizational safeguards intended to
+            protect shared-list data against unauthorized access, alteration, or
+            disclosure. However, no storage or transmission method can be guaranteed
+            to be completely secure.
           </p>
         </article>
 
@@ -106,7 +223,7 @@
             Apple and the App Store may collect information according to their own privacy policies. We encourage you to review Apple's privacy documentation for details about platform-level data collection.
           </p>
           <p>
-            The Groceries website (including this privacy page) may be hosted on a third-party platform. Basic server logs from the hosting provider may include standard technical information such as IP addresses and access times.
+            The Groceries website (including this privacy page) is hosted on Vercel. Basic server logs from the hosting provider may include standard technical information such as IP addresses and access times.
           </p>
         </article>
 
@@ -119,8 +236,15 @@
 
         <article class="policy-section">
           <h2>Changes to this policy</h2>
+
           <p>
-            We may update this privacy policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. Continued use of the app after changes means you agree to the updated policy.
+            We may update this privacy policy as the app or its data practices
+            change. When we do, we will revise the “Last updated” date on this page.
+          </p>
+
+          <p>
+            If a change materially affects how data is collected or used, we will
+            provide additional notice or request consent when required.
           </p>
         </article>
 
@@ -141,7 +265,7 @@
 
     <footer class="site-footer">
       <div class="container site-footer__inner">
-        <a class="brand brand--footer" href="/home">
+        <a class="brand brand--footer" href="/">
           <img class="brand__icon" src="/marketing/images/app-icon.png" alt="" width="32" height="32" />
           <span class="brand__name">Groceries — Smart Lists</span>
         </a>

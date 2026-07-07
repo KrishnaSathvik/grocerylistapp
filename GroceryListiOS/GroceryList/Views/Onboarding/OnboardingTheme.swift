@@ -20,22 +20,22 @@ enum OnboardingTheme {
     static let pages: [Page] = [
         Page(
             title: "Shop smarter",
-            subtitle: "Type groceries in any order. We sort them into the right categories automatically.",
+            subtitle: "Add groceries in any order. We'll sort them automatically.",
             imageName: "onboarding_shop_smarter"
         ),
         Page(
             title: "Add naturally",
-            subtitle: "Type “2 eggs from Walmart” and we’ll detect the item, quantity, category, and store.",
+            subtitle: "Type the way you talk — we'll detect the item, quantity, category, and store.",
             imageName: "onboarding_add_naturally"
         ),
         Page(
             title: "Every view you need",
-            subtitle: "Switch between Lists, Store, and Categories without reorganizing anything.",
+            subtitle: "Browse the same groceries by list, store, or category.",
             imageName: "onboarding_every_view"
         ),
         Page(
             title: "Share anywhere",
-            subtitle: "Send lists to family or import them back. Works offline — no account required.",
+            subtitle: "Send a list by link or QR code and import it in seconds.",
             imageName: "onboarding_share_anywhere"
         ),
     ]

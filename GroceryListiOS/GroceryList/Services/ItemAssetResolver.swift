@@ -84,19 +84,34 @@ enum ItemAssetResolver {
 
         var best: GroceryCatalog.ProductEntry?
         var bestLength = 0
+        var bestDistance = Int.max
 
         for product in GroceryCatalog.products {
             for keyword in product.keywords {
                 let kw = keyword.lowercased()
-                guard keywordMatches(nameTokens: nameTokens, keyword: kw) else { continue }
-                if kw.count > bestLength {
+                if keywordMatches(nameTokens: nameTokens, keyword: kw) {
+                    if kw.count > bestLength {
+                        best = product
+                        bestLength = kw.count
+                        bestDistance = 0
+                    }
+                    continue
+                }
+
+                guard let distance = fuzzyPhraseDistance(nameTokens: nameTokens, keyword: kw) else { continue }
+                if kw.count > bestLength || (kw.count == bestLength && distance < bestDistance) {
                     best = product
                     bestLength = kw.count
+                    bestDistance = distance
                 }
             }
         }
 
         return best
+    }
+
+    private static func fuzzyPhraseDistance(nameTokens: [String], keyword: String) -> Int? {
+        CategoryDetectionService.productFuzzyPhraseDistance(nameTokens: nameTokens, keyword: keyword)
     }
 
     private static func keywordMatches(nameTokens: [String], keyword: String) -> Bool {

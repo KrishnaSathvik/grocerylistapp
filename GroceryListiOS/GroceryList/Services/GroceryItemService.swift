@@ -203,6 +203,13 @@ enum GroceryItemService {
         let trimmed = draft.name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return false }
 
+        let previousNormalized = item.normalizedName
+        let learningRules = CategoryLearningService.fetchRules(context: context)
+        let detectedCategory = CategoryDetectionService.detectCategory(
+            for: trimmed,
+            learningRules: learningRules
+        )
+
         item.name = trimmed
         item.normalizedName = CategoryLearningService.normalize(trimmed)
         if draft.hasTextQuantity {
@@ -215,17 +222,23 @@ enum GroceryItemService {
             item.quantityValue = nil
             item.quantityText = nil
         }
-        item.categoryId = draft.categoryId
+        var categoryId = draft.categoryId
+        if item.normalizedName != previousNormalized, !draft.categoryManuallySelected, detectedCategory != "misc" {
+            categoryId = detectedCategory
+        }
+        item.categoryId = categoryId
         item.storeId = draft.storeId
         let notes = draft.notes.trimmingCharacters(in: .whitespacesAndNewlines)
         item.notes = notes.isEmpty ? nil : notes
         item.imageAssetName = ProductImageCatalog.assetName(for: item.normalizedName)
         item.iconName = nil
-        CategoryLearningService.record(
-            normalizedName: item.normalizedName,
-            categoryId: draft.categoryId,
-            context: context
-        )
+        if draft.categoryManuallySelected || categoryId != "misc" {
+            CategoryLearningService.record(
+                normalizedName: item.normalizedName,
+                categoryId: categoryId,
+                context: context
+            )
+        }
         if let listId = draft.listId, listId != item.list?.id {
             let targetId = listId
             let descriptor = FetchDescriptor<GroceryList>(

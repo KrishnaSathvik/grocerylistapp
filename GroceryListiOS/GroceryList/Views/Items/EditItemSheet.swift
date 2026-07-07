@@ -109,9 +109,18 @@ struct EditItemSheet: View {
                     .disabled(trimmedName.isEmpty)
                 }
             }
+            .onChange(of: draft.name) { _, newValue in
+                applyDetectedCategory(for: newValue)
+            }
             .fullScreenCover(isPresented: $showCategoryPicker) {
                 CategoryPickerSheet(
-                    selectedCategoryId: $draft.categoryId,
+                    selectedCategoryId: Binding(
+                        get: { draft.categoryId },
+                        set: { newValue in
+                            draft.categoryId = newValue
+                            draft.categoryManuallySelected = true
+                        }
+                    ),
                     itemName: draft.name
                 )
             }
@@ -321,6 +330,22 @@ struct EditItemSheet: View {
     private func duplicateItem() {
         onDuplicate()
         dismiss()
+    }
+
+    private func applyDetectedCategory(for rawName: String) {
+        guard !draft.categoryManuallySelected else { return }
+
+        let trimmed = rawName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        let rules = CategoryLearningService.fetchRules(context: modelContext)
+        let detected = CategoryDetectionService.detectCategory(
+            for: trimmed,
+            learningRules: rules
+        )
+        if detected != "misc" || draft.categoryId == "misc" {
+            draft.categoryId = detected
+        }
     }
 }
 

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared Grocery List — Groceries — Smart Lists</title>
+    <meta name="description" content="Preview and import a shared grocery list in Groceries — Smart Lists." />
+    <link rel="canonical" href="https://smartgrocerylists.app/s/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Groceries — Smart Lists" />
+    <meta property="og:title" content="Groceries — Smart Lists" />
+    <meta property="og:description" content="A grocery list was shared with you. Open in the app to import your own copy." />
+    <meta property="og:image" content="https://smartgrocerylists.app/og-image.png?v=8" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://smartgrocerylists.app/s/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Groceries — Smart Lists" />
+    <meta name="twitter:description" content="A grocery list was shared with you. Open in the app to import your own copy." />
+    <meta name="twitter:image" content="https://smartgrocerylists.app/og-image.png?v=8" />
+    <meta name="apple-itunes-app" content="app-id=6785659442, app-argument=https://smartgrocerylists.app" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f7fb;
+        --card: #ffffff;
+        --ink: #1a1d26;
+        --muted: #5c6475;
+        --accent: #2f6fed;
+        --border: rgba(26, 29, 38, 0.08);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1117;
+          --card: #171a22;
+          --ink: #f4f6fb;
+          --muted: #a2a9b8;
+          --border: rgba(255, 255, 255, 0.08);
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "DM Sans", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .wrap {
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 32px 20px 48px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .brand img { width: 40px; height: 40px; border-radius: 10px; }
+      .brand span { font-weight: 700; font-size: 1.05rem; }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.75rem;
+        line-height: 1.2;
+      }
+      .meta { color: var(--muted); margin: 0 0 20px; }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px;
+      }
+      li {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      li:last-child { border-bottom: 0; }
+      .actions {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid var(--border);
+      }
+      .status, .error {
+        color: var(--muted);
+        text-align: center;
+        padding: 48px 0;
+      }
+      .error { color: #c62828; }
+      .footnote {
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="brand">
+        <img src="/marketing/images/app-icon.png" alt="" width="40" height="40" />
+        <span>Groceries — Smart Lists</span>
+      </div>
+
+      <div id="content" class="card">
+        <p id="status" class="status">Loading shared list…</p>
+      </div>
+    </div>
+
+    <script>
+      const APP_STORE_URL = "https://apps.apple.com/app/id6785659442";
+
+      function shareIdFromPath() {
+        const parts = window.location.pathname.split("/").filter(Boolean);
+        const sIndex = parts.indexOf("s");
+        if (sIndex >= 0 && parts[sIndex + 1]) return parts[sIndex + 1];
+        return parts[parts.length - 1] || "";
+      }
+
+      function clearContent(root) {
+        while (root.firstChild) root.removeChild(root.firstChild);
+      }
+
+      function renderError(root, message) {
+        clearContent(root);
+        const p = document.createElement("p");
+        p.className = "error";
+        p.textContent = message;
+        root.appendChild(p);
+      }
+
+      function renderList(root, payload, shareId) {
+        clearContent(root);
+        const items = Array.isArray(payload.items) ? payload.items : [];
+        const remaining = items.filter((item) => !item.completed);
+        const preview = remaining.slice(0, 8);
+        const more = Math.max(0, remaining.length - preview.length);
+        const openURL = `https://smartgrocerylists.app/s/${shareId}`;
+
+        const title = document.createElement("h1");
+        title.textContent = payload.name || "Shared List";
+        root.appendChild(title);
+
+        const meta = document.createElement("p");
+        meta.className = "meta";
+        meta.textContent = `${remaining.length} item${remaining.length === 1 ? "" : "s"} shared with you`;
+        root.appendChild(meta);
+
+        const list = document.createElement("ul");
+        preview.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = `☐ ${item.name || ""}`;
+          list.appendChild(li);
+        });
+        if (more > 0) {
+          const li = document.createElement("li");
+          li.textContent = `… and ${more} more`;
+          list.appendChild(li);
+        }
+        root.appendChild(list);
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const appStore = document.createElement("a");
+        appStore.className = "btn btn-primary";
+        appStore.href = APP_STORE_URL;
+        appStore.textContent = "Download on the App Store";
+        actions.appendChild(appStore);
+
+        const openApp = document.createElement("a");
+        openApp.className = "btn btn-secondary";
+        openApp.href = openURL;
+        openApp.textContent = "Open Shared List in App";
+        actions.appendChild(openApp);
+
+        root.appendChild(actions);
+
+        const footnote = document.createElement("p");
+        footnote.className = "footnote";
+        footnote.textContent = 'Already installed? Tap "Open Shared List in App" to import your own copy.';
+        root.appendChild(footnote);
+      }
+
+      async function loadShare() {
+        const root = document.getElementById("content");
+        const shareId = shareIdFromPath();
+        if (!shareId) {
+          renderError(root, "This sharing link is missing a list id.");
+          return;
+        }
+
+        try {
+          const response = await fetch(`/api/share/${encodeURIComponent(shareId)}`);
+          if (!response.ok) {
+            renderError(root, "This shared list was not found or has expired.");
+            return;
+          }
+          const payload = await response.json();
+          renderList(root, payload, shareId);
+        } catch {
+          renderError(root, "Couldn't load this shared list right now.");
+        }
+      }
+
+      loadShare();
+    </script>
+  </body>
+</html>

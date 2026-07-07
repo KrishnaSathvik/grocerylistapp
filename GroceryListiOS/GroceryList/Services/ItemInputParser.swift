@@ -68,20 +68,31 @@ enum ItemInputParser {
         learningRules: [CategoryLearningRule] = [],
         stores: [SeedData.StoreDefinition]? = nil
     ) -> ParsedItemInput {
-        let segment = segmentText(itemText: itemText, storePhrase: storePhrase)
-        return parse(segment, learningRules: learningRules, stores: stores)
-    }
-
-    private static func segmentText(
-        itemText: String,
-        storePhrase: StoreDetectionService.StorePhrase
-    ) -> String {
+        let storeList = stores ?? SeedData.loadStoreDefinitions()
         let trimmedItem = itemText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard storePhrase.hasStore, let query = storePhrase.query else { return trimmedItem }
+        let storeId = StoreDetectionService.resolveStoreId(query: storePhrase.query, stores: storeList)
+        let customStoreLabel: String? = {
+            guard storeId == nil, storePhrase.isExplicit, let query = storePhrase.query else { return nil }
+            let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty else { return nil }
+            return StoreDetectionService.titleCaseStoreLabel(trimmed)
+        }()
 
-        if storePhrase.isExplicit {
-            return "\(trimmedItem) from \(query)"
-        }
-        return "\(trimmedItem) \(query)"
+        let quantity = QuantityParserService.parse(trimmedItem)
+        let categoryId = CategoryDetectionService.detectCategory(
+            for: quantity.itemText,
+            learningRules: learningRules
+        )
+        let normalized = CategoryLearningService.normalize(quantity.itemText)
+
+        return ParsedItemInput(
+            name: quantity.itemText,
+            normalizedName: normalized,
+            quantityValue: quantity.quantityValue,
+            quantityText: quantity.quantityText,
+            categoryId: categoryId,
+            storeId: storeId,
+            customStoreLabel: customStoreLabel
+        )
     }
 }

@@ -29,6 +29,15 @@ struct ListDetailHeader: View {
 
                 Spacer(minLength: 0)
 
+                Button(action: onShareList) {
+                    Image(systemName: AppIcons.share)
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundStyle(AppColors.ink)
+                        .frame(width: 44, height: 44)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Share list")
+
                 Button {
                     showListOptions = true
                 } label: {
@@ -39,7 +48,7 @@ struct ListDetailHeader: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("List options")
-                .accessibilityHint("Share, rename, delete, or manage completed items")
+                .accessibilityHint("Rename, delete, or manage completed items")
             }
 
             Menu {
@@ -67,10 +76,6 @@ struct ListDetailHeader: View {
             ListOptionsSheet(
                 showCompletedItems: showCompletedItems,
                 canClearCompleted: canClearCompleted,
-                onShare: {
-                    showListOptions = false
-                    onShareList()
-                },
                 onRename: {
                     showListOptions = false
                     onRenameList()
@@ -97,7 +102,6 @@ private struct ListOptionsSheet: View {
 
     let showCompletedItems: Bool
     let canClearCompleted: Bool
-    let onShare: () -> Void
     let onRename: () -> Void
     let onToggleCompletedVisibility: () -> Void
     let onClearCompleted: () -> Void
@@ -107,11 +111,6 @@ private struct ListOptionsSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 0) {
-                    optionRow(
-                        title: "Share list",
-                        systemImage: AppIcons.share,
-                        action: onShare
-                    )
                     optionRow(
                         title: "Rename list",
                         systemImage: "pencil",
@@ -157,7 +156,7 @@ private struct ListOptionsSheet: View {
     }
 
     private var listOptionsSheetHeight: CGFloat {
-        var rows: CGFloat = 4 // share, rename, completed visibility, delete
+        var rows: CGFloat = 3 // rename, completed visibility, delete
         if canClearCompleted { rows += 1 }
         return 56 + (rows * 52) + 24 // nav bar + rows + padding
     }

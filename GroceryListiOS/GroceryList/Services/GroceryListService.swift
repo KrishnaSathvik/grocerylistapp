@@ -115,27 +115,23 @@ enum GroceryListService {
         return copy
     }
 
-    static func deleteList(_ list: GroceryList, context: ModelContext) -> GroceryList? {
-        let descriptor = FetchDescriptor<GroceryList>(
-            predicate: #Predicate { !$0.isArchived },
-            sortBy: [SortDescriptor(\GroceryList.sortOrder), SortDescriptor(\GroceryList.name)]
-        )
-        var lists = (try? context.fetch(descriptor)) ?? []
-        lists.removeAll { $0.id == list.id }
-
-        guard !lists.isEmpty else {
-            return nil
-        }
-
+    @discardableResult
+    static func deleteList(_ list: GroceryList, context: ModelContext) -> Bool {
         let wasActive = ActiveListResolver.activeListId == list.id
         context.delete(list)
         PersistenceService.save(context: context, operation: "delete list")
 
-        if wasActive, let fallback = lists.first {
+        let descriptor = FetchDescriptor<GroceryList>(
+            predicate: #Predicate { !$0.isArchived },
+            sortBy: [SortDescriptor(\GroceryList.sortOrder), SortDescriptor(\GroceryList.name)]
+        )
+        let remaining = (try? context.fetch(descriptor)) ?? []
+        if let fallback = remaining.first, wasActive {
             ActiveListResolver.setActive(fallback)
-            return fallback
+        } else if remaining.isEmpty {
+            ActiveListResolver.clearActive()
         }
-        return nil
+        return true
     }
 
     static func uniqueListName(_ baseName: String, existing lists: [GroceryList]) -> String {

@@ -81,9 +81,15 @@
 
 .demo-list-header {
   display: grid;
-  grid-template-columns: 40px 1fr 40px;
+  grid-template-columns: 40px 1fr auto;
   align-items: center;
   padding: 2px 0 8px;
+}
+
+.demo-list-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .demo-list-header__btn {
@@ -171,14 +177,11 @@
 
 .demo-add-bar__submit {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #1a1f36;
   color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,7 +270,7 @@
   grid-template-columns: 30px 36px minmax(0, 1fr) auto;
   align-items: center;
   column-gap: 8px;
-  min-height: 72px;
+  min-height: 76px;
   padding: 10px 10px 10px 8px;
   background: #fff;
   border-radius: 14px;
@@ -357,8 +360,8 @@
 .demo-stepper {
   display: flex;
   align-items: center;
-  width: 68px;
-  height: 26px;
+  width: 88px;
+  height: 28px;
   padding: 0 2px;
   background: rgba(236, 236, 240, 0.55);
   border: 0.5px solid rgba(229, 231, 235, 0.45);
@@ -561,7 +564,7 @@
   flex-shrink: 0;
 }
 
-/* Share — matches ShareActiveListView + ImportSharedListView */
+/* Share — matches ShareListSheet + ImportSharedListView */
 
 .phone-demo__screen--share {
   background: #f5f5f7;
@@ -606,13 +609,21 @@
   flex-shrink: 0;
 }
 
-.demo-ios-nav__back {
+.demo-ios-nav__back,
+.demo-ios-nav__action {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
+  min-width: 44px;
   height: 44px;
   color: #1a1f36;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.demo-ios-nav__action {
+  justify-content: flex-start;
+  padding-left: 4px;
 }
 
 .demo-ios-nav__title {
@@ -747,6 +758,7 @@
   font-weight: 600;
   color: #1a1f36;
   cursor: default;
+  align-self: center;
 }
 
 .demo-text-btn--left {
@@ -850,7 +862,7 @@
 }
 
 .demo-import-field {
-  min-height: 112px;
+  min-height: 72px;
   padding: 14px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
@@ -887,6 +899,226 @@
 
 .demo-primary-btn__icon {
   flex-shrink: 0;
+}
+
+/* ShareListSheet demo */
+
+.demo-share-sheet-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.demo-share-summary-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.demo-share-summary-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(26, 31, 54, 0.12);
+  color: #1a1f36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.demo-share-summary-card__name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1f36;
+  line-height: 1.2;
+}
+
+.demo-share-summary-card__count {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.demo-share-summary-card__note {
+  margin: 8px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1.35;
+}
+
+.demo-share-send-card {
+  padding: 16px;
+}
+
+.demo-share-options-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.demo-share-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+}
+
+.demo-share-option-divider {
+  height: 1px;
+  margin-left: 74px;
+  background: #e5e7eb;
+}
+
+.demo-share-option__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.demo-share-option__icon--green {
+  background: rgba(74, 124, 89, 0.14);
+  color: #4a7c59;
+}
+
+.demo-share-option__icon--navy {
+  background: rgba(26, 31, 54, 0.12);
+  color: #1a1f36;
+}
+
+.demo-share-option__text {
+  min-width: 0;
+  flex: 1;
+}
+
+.demo-share-option__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1f36;
+  line-height: 1.2;
+}
+
+.demo-share-option__subtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+.demo-share-option__chevron {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.demo-import-or {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+}
+
+.demo-import-paste-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-share-section__title {
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.demo-share-as-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.demo-share-as-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 6px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+}
+
+.demo-share-as-tile__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-share-as-tile__icon--navy {
+  background: rgba(26, 31, 54, 0.12);
+  color: #1a1f36;
+}
+
+.demo-share-as-tile__icon--green {
+  background: rgba(74, 124, 89, 0.14);
+  color: #4a7c59;
+}
+
+.demo-share-as-tile__icon--purple {
+  background: rgba(139, 111, 142, 0.14);
+  color: #8b6f8e;
+}
+
+.demo-share-as-tile__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1f36;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.demo-share-preview-card__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1f36;
+}
+
+.demo-share-preview-card__divider {
+  height: 1px;
+  margin: 8px 0;
+  background: #e5e7eb;
+}
+
+.demo-share-preview-card__line {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1f36;
+  line-height: 1.45;
+}
+
+.demo-share-preview-card__more {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.demo-list-header__btn--more {
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: -0.08em;
 }
 
 /* Tab bar */

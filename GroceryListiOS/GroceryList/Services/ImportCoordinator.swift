@@ -8,8 +8,23 @@ final class ImportCoordinator {
     var statusMessage: String?
 
     func load(from raw: String) -> Bool {
-        guard let parsed = ListCodec.parseSharedList(from: raw), !parsed.items.isEmpty else {
-            statusMessage = "Couldn't read that shared list."
+        if ListCodec.extractShortShareId(from: raw) != nil {
+            return false
+        }
+        return loadResolved(ListCodec.parseSharedList(from: raw))
+    }
+
+    func loadAsync(from raw: String) async -> Bool {
+        if let shortId = ListCodec.extractShortShareId(from: raw),
+           let parsed = await ShareLinkService.fetchSharedList(id: shortId) {
+            return loadResolved(parsed)
+        }
+        return load(from: raw)
+    }
+
+    private func loadResolved(_ parsed: ParsedSharedList?) -> Bool {
+        guard let parsed, !parsed.items.isEmpty else {
+            statusMessage = "This doesn't look like a Groceries — Smart Lists sharing link."
             return false
         }
         pendingItems = parsed.items

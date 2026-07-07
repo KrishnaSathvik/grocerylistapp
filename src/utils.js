@@ -17,6 +17,43 @@ export function parseQty(raw) {
 
 const MAX_LINK_ITEMS = 50;
 
+export const APP_STORE_URL = "https://apps.apple.com/app/id6785659442";
+export const SHARE_BASE_URL = "https://smartgrocerylists.app/app";
+export const SHORT_SHARE_BASE_URL = "https://smartgrocerylists.app/s";
+
+export function extractShortShareId(raw) {
+  const text = String(raw || "").trim();
+  if (!text) return null;
+  try {
+    const url = new URL(text);
+    const match = url.pathname.match(/\/s\/([^/?#]+)/);
+    if (match?.[1]) return match[1];
+  } catch {
+    // not a full URL
+  }
+  const match = text.match(/\/s\/([^/?#\s]+)/);
+  return match?.[1] || null;
+}
+
+export async function fetchSharedListById(id) {
+  const response = await fetch(`https://smartgrocerylists.app/api/share/${encodeURIComponent(id)}`);
+  if (!response.ok) return null;
+  const payload = await response.json();
+  if (!payload?.items?.length) return null;
+  return {
+    listName: payload.name || "Imported List",
+    items: payload.items.map((item) => ({
+      id: Date.now() + Math.random(),
+      text: item.name || "",
+      qty: item.quantity || 1,
+      category: item.categoryId || "misc",
+      checked: !!item.completed,
+      store: item.storeId || null,
+      icon: null,
+    })),
+  };
+}
+
 export function encodeList(items) {
   if (items.length > MAX_LINK_ITEMS) return null;
   const slim = items.map(({ text, qty, category, checked, store }) => {
@@ -45,4 +82,18 @@ export function decodeList(encoded) {
       icon: null,
     }));
   } catch { return null; }
+}
+
+export function buildShareURL(items) {
+  const encoded = encodeList(items);
+  if (!encoded) return null;
+  return `${SHARE_BASE_URL}?import=${encodeURIComponent(encoded)}`;
+}
+
+export function extractImportPayload(search, hash) {
+  const params = new URLSearchParams(search);
+  const queryValue = params.get("import");
+  if (queryValue) return queryValue;
+  if (hash.startsWith("#import=")) return hash.slice(8);
+  return null;
 }

@@ -8,6 +8,7 @@ struct ItemEditDraft: Equatable {
     var storeId: String?
     var listId: UUID?
     var notes: String
+    var categoryManuallySelected: Bool = false
 
     var hasTextQuantity: Bool {
         guard let quantityText, !quantityText.isEmpty else { return false }

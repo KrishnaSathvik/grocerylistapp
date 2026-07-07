@@ -4,7 +4,6 @@ struct OnboardingFullScreenPage: View {
     let imageName: String
     let title: String
     let subtitle: String
-    let isActive: Bool
     let pageIndex: Int
     let pageCount: Int
     let showBack: Bool
@@ -37,15 +36,8 @@ struct OnboardingFullScreenPage: View {
             }
         }
         .ignoresSafeArea(edges: .bottom)
-        .onChange(of: isActive) { _, active in
-            if active {
-                revealContent()
-            } else {
-                contentVisible = false
-            }
-        }
         .onAppear {
-            if isActive { revealContent() }
+            revealContent()
         }
     }
 
@@ -90,14 +82,19 @@ struct OnboardingFullScreenPage: View {
 
     private var topBar: some View {
         ZStack(alignment: .top) {
-            Text("Smart Grocery")
-                .font(OnboardingTheme.brandHeadline)
-                .foregroundStyle(AppColors.ink)
-                .shadow(
-                    color: colorScheme == .dark ? .black.opacity(0.45) : .white.opacity(0.65),
-                    radius: 8,
-                    y: 2
-                )
+            VStack(spacing: 0) {
+                Text("Groceries")
+                    .font(OnboardingTheme.brandHeadline)
+                    .foregroundStyle(AppColors.ink)
+                Text("Smart Lists")
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .foregroundStyle(AppColors.inkSecondary)
+            }
+            .shadow(
+                color: colorScheme == .dark ? .black.opacity(0.45) : .white.opacity(0.65),
+                radius: 8,
+                y: 2
+            )
                 .lineLimit(1)
                 .frame(maxWidth: .infinity)
                 .padding(.top, 8)
@@ -148,6 +145,7 @@ struct OnboardingFullScreenPage: View {
         .background(bottomPanelBackground)
         .opacity(contentVisible ? 1 : 0)
         .offset(y: contentVisible ? 0 : 20)
+        .allowsHitTesting(contentVisible)
         .animation(reduceMotion ? nil : OnboardingTheme.heroSpring, value: contentVisible)
     }
 
@@ -182,6 +180,7 @@ struct OnboardingFullScreenPage: View {
                             .stroke(AppColors.cardBorder.opacity(0.5), lineWidth: 0.5)
                     )
             }
+            .buttonStyle(.plain)
             .accessibilityLabel("Previous onboarding page")
         } else {
             Color.clear
@@ -205,6 +204,7 @@ struct OnboardingFullScreenPage: View {
             .background(AppColors.accentCTA, in: Capsule())
             .shadow(color: AppColors.accentCTA.opacity(0.28), radius: 10, y: 4)
         }
+        .buttonStyle(.plain)
         .accessibilityLabel(isFinalPage ? "Start my list" : "Next onboarding page")
     }
 
@@ -255,7 +255,6 @@ struct OnboardingFullScreenPage: View {
         imageName: "onboarding_shop_smarter",
         title: "Shop smarter",
         subtitle: "Type groceries in any order. We sort them into the right categories automatically.",
-        isActive: true,
         pageIndex: 0,
         pageCount: 4,
         showBack: false,
