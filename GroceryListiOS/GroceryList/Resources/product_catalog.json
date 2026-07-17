@@ -6,9 +6,6 @@
     "categoryId": "dairy",
     "keywords": [
       "lactose free milk",
-      "evaporated milk",
-      "condensed milk",
-      "coconut milk",
       "whole milk",
       "buttermilk",
       "badam milk",
@@ -47,12 +44,40 @@
     ]
   },
   {
+    "id": "milk-coconut",
+    "displayName": "Coconut Milk",
+    "assetName": "product-milk-coconut",
+    "categoryId": "pantry",
+    "keywords": [
+      "lite coconut milk",
+      "coconut milk"
+    ]
+  },
+  {
+    "id": "milk-condensed",
+    "displayName": "Condensed Milk",
+    "assetName": "product-milk-condensed",
+    "categoryId": "pantry",
+    "keywords": [
+      "sweetened condensed milk",
+      "condensed milk"
+    ]
+  },
+  {
+    "id": "milk-evaporated",
+    "displayName": "Evaporated Milk",
+    "assetName": "product-milk-evaporated",
+    "categoryId": "pantry",
+    "keywords": [
+      "evaporated milk"
+    ]
+  },
+  {
     "id": "eggs-white",
     "displayName": "Eggs",
     "assetName": "product-eggs-white",
     "categoryId": "dairy",
     "keywords": [
-      "egg noodles",
       "egg whites",
       "dozen eggs",
       "eggs",
@@ -71,6 +96,16 @@
     ]
   },
   {
+    "id": "egg-noodles",
+    "displayName": "Egg Noodles",
+    "assetName": "product-egg-noodles",
+    "categoryId": "pantry",
+    "keywords": [
+      "egg noodles",
+      "egg noodle"
+    ]
+  },
+  {
     "id": "butter",
     "displayName": "Butter",
     "assetName": "product-butter",
@@ -80,7 +115,16 @@
       "salted butter",
       "margarine",
       "butter",
-      "makhan",
+      "makhan"
+    ]
+  },
+  {
+    "id": "ghee",
+    "displayName": "Ghee",
+    "assetName": "product-ghee",
+    "categoryId": "dairy",
+    "keywords": [
+      "clarified butter",
       "ghee"
     ]
   },
@@ -92,17 +136,41 @@
     "keywords": [
       "shredded cheese",
       "cheese crackers",
-      "cottage cheese",
       "sliced cheese",
       "string cheese",
-      "paneer masala",
-      "cream cheese",
       "cheese puffs",
       "goat cheese",
       "mozzarella",
       "parmesan",
       "cheddar",
-      "cheese",
+      "cheese"
+    ]
+  },
+  {
+    "id": "cream-cheese",
+    "displayName": "Cream Cheese",
+    "assetName": "product-cream-cheese",
+    "categoryId": "dairy",
+    "keywords": [
+      "cream cheese"
+    ]
+  },
+  {
+    "id": "cottage-cheese",
+    "displayName": "Cottage Cheese",
+    "assetName": "product-cottage-cheese",
+    "categoryId": "dairy",
+    "keywords": [
+      "cottage cheese"
+    ]
+  },
+  {
+    "id": "paneer",
+    "displayName": "Paneer",
+    "assetName": "product-paneer",
+    "categoryId": "dairy",
+    "keywords": [
+      "paneer masala",
       "paneer"
     ]
   },
@@ -125,10 +193,17 @@
     "assetName": "product-bananas",
     "categoryId": "produce",
     "keywords": [
-      "banana bread",
-      "raw banana",
       "bananas",
       "banana"
+    ]
+  },
+  {
+    "id": "banana-bread",
+    "displayName": "Banana Bread",
+    "assetName": "product-banana-bread",
+    "categoryId": "bakery",
+    "keywords": [
+      "banana bread"
     ]
   },
   {
@@ -137,13 +212,30 @@
     "assetName": "product-apples",
     "categoryId": "produce",
     "keywords": [
-      "apple cider vinegar",
       "custard apple",
       "green apple",
-      "apple juice",
       "wood apple",
       "apples",
       "apple"
+    ]
+  },
+  {
+    "id": "apple-juice",
+    "displayName": "Apple Juice",
+    "assetName": "product-apple-juice",
+    "categoryId": "drinks",
+    "keywords": [
+      "apple juice"
+    ]
+  },
+  {
+    "id": "apple-cider-vinegar",
+    "displayName": "Apple Cider Vinegar",
+    "assetName": "product-apple-cider-vinegar",
+    "categoryId": "condiments",
+    "keywords": [
+      "apple cider vinegar",
+      "acv"
     ]
   },
   {
@@ -152,15 +244,40 @@
     "assetName": "product-tomatoes",
     "categoryId": "produce",
     "keywords": [
-      "crushed tomatoes",
-      "canned tomatoes",
-      "diced tomatoes",
       "cherry tomato",
       "grape tomato",
-      "tomato paste",
-      "tomato sauce",
       "tomatoes",
       "tomato"
+    ]
+  },
+  {
+    "id": "tomato-sauce",
+    "displayName": "Tomato Sauce",
+    "assetName": "product-tomato-sauce",
+    "categoryId": "condiments",
+    "keywords": [
+      "tomato sauce",
+      "marinara"
+    ]
+  },
+  {
+    "id": "tomato-paste",
+    "displayName": "Tomato Paste",
+    "assetName": "product-tomato-paste",
+    "categoryId": "condiments",
+    "keywords": [
+      "tomato paste"
+    ]
+  },
+  {
+    "id": "canned-tomatoes",
+    "displayName": "Canned Tomatoes",
+    "assetName": "product-canned-tomatoes",
+    "categoryId": "pantry",
+    "keywords": [
+      "crushed tomatoes",
+      "canned tomatoes",
+      "diced tomatoes"
     ]
   },
   {
@@ -169,14 +286,33 @@
     "assetName": "product-onions",
     "categoryId": "produce",
     "keywords": [
-      "spring onion",
-      "onion powder",
-      "green onion",
       "red onion",
-      "scallion",
-      "shallot",
       "onions",
       "onion"
+    ]
+  },
+  {
+    "id": "green-onions",
+    "displayName": "Green Onions",
+    "assetName": "product-green-onions",
+    "categoryId": "produce",
+    "keywords": [
+      "spring onions",
+      "green onions",
+      "spring onion",
+      "green onion",
+      "scallions",
+      "scallion"
+    ]
+  },
+  {
+    "id": "shallots",
+    "displayName": "Shallots",
+    "assetName": "product-shallots",
+    "categoryId": "produce",
+    "keywords": [
+      "shallots",
+      "shallot"
     ]
   },
   {
@@ -185,12 +321,22 @@
     "assetName": "product-potatoes",
     "categoryId": "produce",
     "keywords": [
-      "sweet potatoes",
-      "sweet potato",
       "potato salad",
       "potatoes",
       "potato",
       "aloo"
+    ]
+  },
+  {
+    "id": "sweet-potatoes",
+    "displayName": "Sweet Potatoes",
+    "assetName": "product-sweet-potatoes",
+    "categoryId": "produce",
+    "keywords": [
+      "sweet potatoes",
+      "sweet potato",
+      "yams",
+      "yam"
     ]
   },
   {
@@ -220,9 +366,17 @@
     "assetName": "product-avocados",
     "categoryId": "produce",
     "keywords": [
-      "avocado oil",
       "avocados",
       "avocado"
+    ]
+  },
+  {
+    "id": "avocado-oil",
+    "displayName": "Avocado Oil",
+    "assetName": "product-avocado-oil",
+    "categoryId": "condiments",
+    "keywords": [
+      "avocado oil"
     ]
   },
   {
@@ -233,9 +387,443 @@
     "keywords": [
       "lemon pickle",
       "lemons",
-      "lemon",
+      "lemon"
+    ]
+  },
+  {
+    "id": "limes",
+    "displayName": "Limes",
+    "assetName": "product-limes",
+    "categoryId": "produce",
+    "keywords": [
       "limes",
       "lime"
+    ]
+  },
+  {
+    "id": "lettuce",
+    "displayName": "Lettuce",
+    "assetName": "product-lettuce",
+    "categoryId": "produce",
+    "keywords": [
+      "iceberg lettuce",
+      "spring mix",
+      "lettuce",
+      "romaine"
+    ]
+  },
+  {
+    "id": "oranges",
+    "displayName": "Oranges",
+    "assetName": "product-oranges",
+    "categoryId": "produce",
+    "keywords": [
+      "clementines",
+      "clementine",
+      "tangerines",
+      "mandarins",
+      "tangerine",
+      "mandarin",
+      "oranges",
+      "orange"
+    ]
+  },
+  {
+    "id": "grapes",
+    "displayName": "Grapes",
+    "assetName": "product-grapes",
+    "categoryId": "produce",
+    "keywords": [
+      "grapes",
+      "grape"
+    ]
+  },
+  {
+    "id": "strawberries",
+    "displayName": "Strawberries",
+    "assetName": "product-strawberries",
+    "categoryId": "produce",
+    "keywords": [
+      "strawberries",
+      "strawberry"
+    ]
+  },
+  {
+    "id": "blueberries",
+    "displayName": "Blueberries",
+    "assetName": "product-blueberries",
+    "categoryId": "produce",
+    "keywords": [
+      "blueberry muffin",
+      "blueberries",
+      "blueberry"
+    ]
+  },
+  {
+    "id": "watermelon",
+    "displayName": "Watermelon",
+    "assetName": "product-watermelon",
+    "categoryId": "produce",
+    "keywords": [
+      "watermelon",
+      "tarbooz"
+    ]
+  },
+  {
+    "id": "melon",
+    "displayName": "Melon",
+    "assetName": "product-melon",
+    "categoryId": "produce",
+    "keywords": [
+      "cantaloupe",
+      "honeydew",
+      "melon"
+    ]
+  },
+  {
+    "id": "cherries",
+    "displayName": "Cherries",
+    "assetName": "product-cherries",
+    "categoryId": "produce",
+    "keywords": [
+      "cherries",
+      "cherry"
+    ]
+  },
+  {
+    "id": "peaches",
+    "displayName": "Peaches",
+    "assetName": "product-peaches",
+    "categoryId": "produce",
+    "keywords": [
+      "nectarines",
+      "nectarine",
+      "peaches",
+      "peach"
+    ]
+  },
+  {
+    "id": "pears",
+    "displayName": "Pears",
+    "assetName": "product-pears",
+    "categoryId": "produce",
+    "keywords": [
+      "pears",
+      "pear"
+    ]
+  },
+  {
+    "id": "pineapple",
+    "displayName": "Pineapple",
+    "assetName": "product-pineapple",
+    "categoryId": "produce",
+    "keywords": [
+      "pineapples",
+      "pineapple"
+    ]
+  },
+  {
+    "id": "mangoes",
+    "displayName": "Mangoes",
+    "assetName": "product-mangoes",
+    "categoryId": "produce",
+    "keywords": [
+      "mango pickle",
+      "dried mango",
+      "mango lassi",
+      "aam panna",
+      "mangoes",
+      "mango",
+      "aam"
+    ]
+  },
+  {
+    "id": "kiwi",
+    "displayName": "Kiwi",
+    "assetName": "product-kiwi",
+    "categoryId": "produce",
+    "keywords": [
+      "kiwifruit",
+      "kiwis",
+      "kiwi"
+    ]
+  },
+  {
+    "id": "coconut",
+    "displayName": "Coconut",
+    "assetName": "product-coconut",
+    "categoryId": "produce",
+    "keywords": [
+      "coconut flour",
+      "coconut oil",
+      "coconuts",
+      "coconut",
+      "nariyal"
+    ]
+  },
+  {
+    "id": "pomegranate",
+    "displayName": "Pomegranate",
+    "assetName": "product-pomegranate",
+    "categoryId": "produce",
+    "keywords": [
+      "pomegranates",
+      "pomegranate",
+      "anaar"
+    ]
+  },
+  {
+    "id": "papaya",
+    "displayName": "Papaya",
+    "assetName": "product-papaya",
+    "categoryId": "produce",
+    "keywords": [
+      "papayas",
+      "papaya"
+    ]
+  },
+  {
+    "id": "carrots",
+    "displayName": "Carrots",
+    "assetName": "product-carrots",
+    "categoryId": "produce",
+    "keywords": [
+      "carrots",
+      "carrot"
+    ]
+  },
+  {
+    "id": "corn",
+    "displayName": "Corn",
+    "assetName": "product-corn",
+    "categoryId": "produce",
+    "keywords": [
+      "corn on the cob",
+      "canned corn",
+      "bhutta",
+      "corn"
+    ]
+  },
+  {
+    "id": "broccoli",
+    "displayName": "Broccoli",
+    "assetName": "product-broccoli",
+    "categoryId": "produce",
+    "keywords": [
+      "broccoli"
+    ]
+  },
+  {
+    "id": "cauliflower",
+    "displayName": "Cauliflower",
+    "assetName": "product-cauliflower",
+    "categoryId": "produce",
+    "keywords": [
+      "cauliflower",
+      "gobi"
+    ]
+  },
+  {
+    "id": "cucumbers",
+    "displayName": "Cucumbers",
+    "assetName": "product-cucumbers",
+    "categoryId": "produce",
+    "keywords": [
+      "cucumbers",
+      "cucumber"
+    ]
+  },
+  {
+    "id": "zucchini",
+    "displayName": "Zucchini",
+    "assetName": "product-zucchini",
+    "categoryId": "produce",
+    "keywords": [
+      "courgettes",
+      "courgette",
+      "zucchini"
+    ]
+  },
+  {
+    "id": "bell-peppers",
+    "displayName": "Bell Peppers",
+    "assetName": "product-bell-peppers",
+    "categoryId": "produce",
+    "keywords": [
+      "bell peppers",
+      "shimla mirch",
+      "bell pepper",
+      "capsicum"
+    ]
+  },
+  {
+    "id": "hot-peppers",
+    "displayName": "Hot Peppers",
+    "assetName": "product-hot-peppers",
+    "categoryId": "produce",
+    "keywords": [
+      "chilli pepper",
+      "green chilli",
+      "chili pepper",
+      "green chili",
+      "hot peppers",
+      "hari mirch",
+      "hot pepper",
+      "jalapeno",
+      "jalapeño",
+      "habanero",
+      "serrano"
+    ]
+  },
+  {
+    "id": "eggplant",
+    "displayName": "Eggplant",
+    "assetName": "product-eggplant",
+    "categoryId": "produce",
+    "keywords": [
+      "aubergine",
+      "eggplant",
+      "baingan"
+    ]
+  },
+  {
+    "id": "mushrooms",
+    "displayName": "Mushrooms",
+    "assetName": "product-mushrooms",
+    "categoryId": "produce",
+    "keywords": [
+      "oyster mushroom",
+      "portobello",
+      "mushrooms",
+      "mushroom",
+      "shiitake",
+      "cremini"
+    ]
+  },
+  {
+    "id": "garlic",
+    "displayName": "Garlic",
+    "assetName": "product-garlic",
+    "categoryId": "produce",
+    "keywords": [
+      "garlic bread",
+      "garlic"
+    ]
+  },
+  {
+    "id": "ginger",
+    "displayName": "Ginger",
+    "assetName": "product-ginger",
+    "categoryId": "produce",
+    "keywords": [
+      "ginger"
+    ]
+  },
+  {
+    "id": "green-beans",
+    "displayName": "Green Beans",
+    "assetName": "product-green-beans",
+    "categoryId": "produce",
+    "keywords": [
+      "string beans",
+      "green beans",
+      "green bean"
+    ]
+  },
+  {
+    "id": "cabbage",
+    "displayName": "Cabbage",
+    "assetName": "product-cabbage",
+    "categoryId": "produce",
+    "keywords": [
+      "cabbage"
+    ]
+  },
+  {
+    "id": "celery",
+    "displayName": "Celery",
+    "assetName": "product-celery",
+    "categoryId": "produce",
+    "keywords": [
+      "celery"
+    ]
+  },
+  {
+    "id": "radishes",
+    "displayName": "Radishes",
+    "assetName": "product-radishes",
+    "categoryId": "produce",
+    "keywords": [
+      "radishes",
+      "radish",
+      "muli"
+    ]
+  },
+  {
+    "id": "asparagus",
+    "displayName": "Asparagus",
+    "assetName": "product-asparagus",
+    "categoryId": "produce",
+    "keywords": [
+      "asparagus"
+    ]
+  },
+  {
+    "id": "green-peas",
+    "displayName": "Green Peas",
+    "assetName": "product-green-peas",
+    "categoryId": "produce",
+    "keywords": [
+      "green peas",
+      "snap peas",
+      "snow peas",
+      "matar",
+      "peas",
+      "pea"
+    ]
+  },
+  {
+    "id": "okra",
+    "displayName": "Okra",
+    "assetName": "product-okra",
+    "categoryId": "produce",
+    "keywords": [
+      "bhindi",
+      "okra"
+    ]
+  },
+  {
+    "id": "pumpkin",
+    "displayName": "Pumpkin",
+    "assetName": "product-pumpkin",
+    "categoryId": "produce",
+    "keywords": [
+      "pumpkin seeds",
+      "pumpkin",
+      "kaddu"
+    ]
+  },
+  {
+    "id": "plantains",
+    "displayName": "Plantains",
+    "assetName": "product-plantains",
+    "categoryId": "produce",
+    "keywords": [
+      "kaccha kela",
+      "raw banana",
+      "plantains",
+      "plantain"
+    ]
+  },
+  {
+    "id": "bottle-gourd",
+    "displayName": "Bottle Gourd",
+    "assetName": "product-bottle-gourd",
+    "categoryId": "produce",
+    "keywords": [
+      "bottle gourd",
+      "lauki",
+      "ghia"
     ]
   },
   {
@@ -246,7 +834,6 @@
     "keywords": [
       "whole wheat bread",
       "multigrain bread",
-      "garlic bread",
       "white bread",
       "wheat bread",
       "bread rolls",
@@ -287,15 +874,39 @@
     "assetName": "product-naan",
     "categoryId": "bakery",
     "keywords": [
-      "frozen paratha",
       "garlic naan",
       "frozen naan",
-      "pita bread",
+      "naan"
+    ]
+  },
+  {
+    "id": "roti",
+    "displayName": "Roti",
+    "assetName": "product-roti",
+    "categoryId": "bakery",
+    "keywords": [
       "flatbread",
       "chapati",
-      "paratha",
-      "naan",
-      "roti",
+      "roti"
+    ]
+  },
+  {
+    "id": "paratha",
+    "displayName": "Paratha",
+    "assetName": "product-paratha",
+    "categoryId": "bakery",
+    "keywords": [
+      "frozen paratha",
+      "paratha"
+    ]
+  },
+  {
+    "id": "pita",
+    "displayName": "Pita",
+    "assetName": "product-pita",
+    "categoryId": "bakery",
+    "keywords": [
+      "pita bread",
       "pita"
     ]
   },
@@ -305,23 +916,68 @@
     "assetName": "product-chicken-breast",
     "categoryId": "meat",
     "keywords": [
-      "rotisserie chicken",
-      "chicken drumsticks",
       "chicken tenders",
       "chicken breast",
-      "chicken thighs",
+      "frozen chicken",
       "chicken tender",
       "sliced chicken",
-      "frozen chicken",
       "chicken masala",
-      "chicken thigh",
-      "chicken wings",
       "whole chicken",
-      "chicken broth",
-      "chicken stock",
-      "chicken legs",
       "chicken",
       "murgh"
+    ]
+  },
+  {
+    "id": "chicken-thighs",
+    "displayName": "Chicken Thighs",
+    "assetName": "product-chicken-thighs",
+    "categoryId": "meat",
+    "keywords": [
+      "chicken thighs",
+      "chicken thigh"
+    ]
+  },
+  {
+    "id": "chicken-wings",
+    "displayName": "Chicken Wings",
+    "assetName": "product-chicken-wings",
+    "categoryId": "meat",
+    "keywords": [
+      "chicken wings",
+      "chicken wing",
+      "chicken legs"
+    ]
+  },
+  {
+    "id": "chicken-drumsticks",
+    "displayName": "Chicken Drumsticks",
+    "assetName": "product-chicken-drumsticks",
+    "categoryId": "meat",
+    "keywords": [
+      "chicken drumsticks",
+      "chicken drumstick",
+      "drumstick chicken"
+    ]
+  },
+  {
+    "id": "rotisserie-chicken",
+    "displayName": "Rotisserie Chicken",
+    "assetName": "product-rotisserie-chicken",
+    "categoryId": "meat",
+    "keywords": [
+      "rotisserie chicken",
+      "rotisserie"
+    ]
+  },
+  {
+    "id": "chicken-broth",
+    "displayName": "Chicken Broth",
+    "assetName": "product-chicken-broth",
+    "categoryId": "pantry",
+    "keywords": [
+      "chicken broth",
+      "chicken stock",
+      "bone broth"
     ]
   },
   {
@@ -342,7 +998,6 @@
     "keywords": [
       "flank steak",
       "steak sauce",
-      "tuna steak",
       "sirloin",
       "ribeye",
       "steak"
@@ -374,6 +1029,38 @@
     ]
   },
   {
+    "id": "sausage",
+    "displayName": "Sausage",
+    "assetName": "product-sausage",
+    "categoryId": "meat",
+    "keywords": [
+      "italian sausage",
+      "bratwurst",
+      "sausages",
+      "kielbasa",
+      "sausage"
+    ]
+  },
+  {
+    "id": "ground-turkey",
+    "displayName": "Ground Turkey",
+    "assetName": "product-ground-turkey",
+    "categoryId": "meat",
+    "keywords": [
+      "ground turkey"
+    ]
+  },
+  {
+    "id": "turkey-breast",
+    "displayName": "Turkey Breast",
+    "assetName": "product-turkey-breast",
+    "categoryId": "meat",
+    "keywords": [
+      "turkey breast",
+      "sliced turkey"
+    ]
+  },
+  {
     "id": "salmon",
     "displayName": "Salmon",
     "assetName": "product-salmon",
@@ -398,6 +1085,17 @@
     ]
   },
   {
+    "id": "tuna-steak",
+    "displayName": "Tuna Steak",
+    "assetName": "product-tuna-steak",
+    "categoryId": "seafood",
+    "keywords": [
+      "tuna fillet",
+      "tuna steak",
+      "ahi tuna"
+    ]
+  },
+  {
     "id": "rice-basmati",
     "displayName": "Basmati Rice",
     "assetName": "product-rice-basmati",
@@ -415,15 +1113,41 @@
     "keywords": [
       "flattened rice",
       "jasmine rice",
-      "rice noodles",
-      "rice vinegar",
       "puffed rice",
       "white rice",
       "brown rice",
-      "rice cakes",
-      "rice cake",
       "chawal",
       "rice"
+    ]
+  },
+  {
+    "id": "rice-noodles",
+    "displayName": "Rice Noodles",
+    "assetName": "product-rice-noodles",
+    "categoryId": "pantry",
+    "keywords": [
+      "vermicelli rice",
+      "rice noodles",
+      "rice noodle"
+    ]
+  },
+  {
+    "id": "rice-vinegar",
+    "displayName": "Rice Vinegar",
+    "assetName": "product-rice-vinegar",
+    "categoryId": "condiments",
+    "keywords": [
+      "rice vinegar"
+    ]
+  },
+  {
+    "id": "rice-cakes",
+    "displayName": "Rice Cakes",
+    "assetName": "product-rice-cakes",
+    "categoryId": "snacks",
+    "keywords": [
+      "rice cakes",
+      "rice cake"
     ]
   },
   {
@@ -434,13 +1158,23 @@
     "keywords": [
       "spaghetti squash",
       "macaroni salad",
-      "pasta sauce",
       "fettuccine",
       "spaghetti",
       "macaroni",
       "linguine",
       "pasta",
       "penne"
+    ]
+  },
+  {
+    "id": "pasta-sauce",
+    "displayName": "Pasta Sauce",
+    "assetName": "product-pasta-sauce",
+    "categoryId": "condiments",
+    "keywords": [
+      "spaghetti sauce",
+      "pasta sauce",
+      "pizza sauce"
     ]
   },
   {
@@ -453,7 +1187,6 @@
       "all purpose flour",
       "whole wheat flour",
       "singhara flour",
-      "coconut flour",
       "almond flour",
       "bread flour",
       "jowar flour",
@@ -465,6 +1198,50 @@
       "flour",
       "maida",
       "atta"
+    ]
+  },
+  {
+    "id": "cereal",
+    "displayName": "Cereal",
+    "assetName": "product-cereal",
+    "categoryId": "pantry",
+    "keywords": [
+      "frosted flakes",
+      "corn flakes",
+      "baby cereal",
+      "cheerios",
+      "oatmeal",
+      "cereal"
+    ]
+  },
+  {
+    "id": "soup",
+    "displayName": "Soup",
+    "assetName": "product-soup",
+    "categoryId": "pantry",
+    "keywords": [
+      "chicken soup",
+      "canned soup",
+      "tomato soup",
+      "soup"
+    ]
+  },
+  {
+    "id": "peanut-butter",
+    "displayName": "Peanut Butter",
+    "assetName": "product-peanut-butter",
+    "categoryId": "pantry",
+    "keywords": [
+      "peanut butter"
+    ]
+  },
+  {
+    "id": "almond-butter",
+    "displayName": "Almond Butter",
+    "assetName": "product-almond-butter",
+    "categoryId": "pantry",
+    "keywords": [
+      "almond butter"
     ]
   },
   {
@@ -496,17 +1273,35 @@
     ]
   },
   {
+    "id": "hummus",
+    "displayName": "Hummus",
+    "assetName": "product-hummus",
+    "categoryId": "deli",
+    "keywords": [
+      "hummus"
+    ]
+  },
+  {
     "id": "coffee",
     "displayName": "Coffee",
     "assetName": "product-coffee",
     "categoryId": "drinks",
     "keywords": [
       "instant coffee",
-      "coffee creamer",
       "ground coffee",
       "coffee beans",
       "espresso",
       "coffee"
+    ]
+  },
+  {
+    "id": "coffee-creamer",
+    "displayName": "Coffee Creamer",
+    "assetName": "product-coffee-creamer",
+    "categoryId": "drinks",
+    "keywords": [
+      "coffee creamer",
+      "creamer"
     ]
   },
   {
@@ -536,9 +1331,18 @@
       "sparkling water",
       "bottled water",
       "mineral water",
-      "coconut water",
       "tonic water",
       "water"
+    ]
+  },
+  {
+    "id": "coconut-water",
+    "displayName": "Coconut Water",
+    "assetName": "product-coconut-water",
+    "categoryId": "drinks",
+    "keywords": [
+      "coconut water",
+      "nariyal pani"
     ]
   },
   {
@@ -547,12 +1351,67 @@
     "assetName": "product-orange-juice",
     "categoryId": "drinks",
     "keywords": [
-      "cranberry juice",
-      "orange juice",
-      "grape juice",
+      "orange juice"
+    ]
+  },
+  {
+    "id": "cranberry-juice",
+    "displayName": "Cranberry Juice",
+    "assetName": "product-cranberry-juice",
+    "categoryId": "drinks",
+    "keywords": [
+      "cranberry juice"
+    ]
+  },
+  {
+    "id": "grape-juice",
+    "displayName": "Grape Juice",
+    "assetName": "product-grape-juice",
+    "categoryId": "drinks",
+    "keywords": [
+      "grape juice"
+    ]
+  },
+  {
+    "id": "juice-boxes",
+    "displayName": "Juice Boxes",
+    "assetName": "product-juice-boxes",
+    "categoryId": "drinks",
+    "keywords": [
       "juice boxes",
-      "juice box",
-      "juice"
+      "juice box"
+    ]
+  },
+  {
+    "id": "beer",
+    "displayName": "Beer",
+    "assetName": "product-beer",
+    "categoryId": "drinks",
+    "keywords": [
+      "craft beer",
+      "pale ale",
+      "lager",
+      "stout",
+      "beer",
+      "ipa"
+    ]
+  },
+  {
+    "id": "root-beer",
+    "displayName": "Root Beer",
+    "assetName": "product-root-beer",
+    "categoryId": "drinks",
+    "keywords": [
+      "root beer"
+    ]
+  },
+  {
+    "id": "ginger-ale",
+    "displayName": "Ginger Ale",
+    "assetName": "product-ginger-ale",
+    "categoryId": "drinks",
+    "keywords": [
+      "ginger ale"
     ]
   },
   {
@@ -576,9 +1435,29 @@
     "categoryId": "frozen",
     "keywords": [
       "frozen pizza",
-      "pizza rolls",
-      "pizza sauce",
       "pizza"
+    ]
+  },
+  {
+    "id": "pizza-rolls",
+    "displayName": "Pizza Rolls",
+    "assetName": "product-pizza-rolls",
+    "categoryId": "frozen",
+    "keywords": [
+      "pizza rolls",
+      "pizza roll"
+    ]
+  },
+  {
+    "id": "frozen-vegetables",
+    "displayName": "Frozen Vegetables",
+    "assetName": "product-frozen-vegetables",
+    "categoryId": "frozen",
+    "keywords": [
+      "frozen vegetables",
+      "frozen veggies",
+      "frozen peas",
+      "frozen corn"
     ]
   },
   {
@@ -593,6 +1472,20 @@
       "corn chips",
       "pita chips",
       "chips"
+    ]
+  },
+  {
+    "id": "granola-bars",
+    "displayName": "Granola Bars",
+    "assetName": "product-granola-bars",
+    "categoryId": "snacks",
+    "keywords": [
+      "granola bars",
+      "protein bars",
+      "granola bar",
+      "cereal bars",
+      "protein bar",
+      "cereal bar"
     ]
   },
   {
@@ -627,78 +1520,17 @@
     ]
   },
   {
-    "id": "diapers",
-    "displayName": "Diapers",
-    "assetName": "product-diapers",
-    "categoryId": "baby",
+    "id": "disinfecting-wipes",
+    "displayName": "Disinfecting Wipes",
+    "assetName": "product-disinfecting-wipes",
+    "categoryId": "household",
     "keywords": [
-      "diaper cream",
-      "pull-ups",
-      "diapers",
-      "diaper",
-      "nappy"
-    ]
-  },
-  {
-    "id": "dog-food",
-    "displayName": "Dog Food",
-    "assetName": "product-dog-food",
-    "categoryId": "pet",
-    "keywords": [
-      "dog kibble",
-      "dog food",
-      "kibble"
-    ]
-  },
-  {
-    "id": "flowers",
-    "displayName": "Flowers",
-    "assetName": "product-flowers",
-    "categoryId": "floral",
-    "keywords": [
-      "fresh flowers",
-      "bouquets",
-      "flowers",
-      "bouquet",
-      "flower"
-    ]
-  },
-  {
-    "id": "cereal",
-    "displayName": "Cereal",
-    "assetName": "product-cereal",
-    "categoryId": "pantry",
-    "keywords": [
-      "frosted flakes",
-      "corn flakes",
-      "baby cereal",
-      "cheerios",
-      "oatmeal",
-      "cereal"
-    ]
-  },
-  {
-    "id": "lettuce",
-    "displayName": "Lettuce",
-    "assetName": "product-lettuce",
-    "categoryId": "produce",
-    "keywords": [
-      "iceberg lettuce",
-      "spring mix",
-      "lettuce",
-      "romaine"
-    ]
-  },
-  {
-    "id": "soup",
-    "displayName": "Soup",
-    "assetName": "product-soup",
-    "categoryId": "pantry",
-    "keywords": [
-      "chicken soup",
-      "canned soup",
-      "tomato soup",
-      "soup"
+      "disinfecting wipes",
+      "disinfectant wipes",
+      "cleaning wipes",
+      "clorox wipes",
+      "lysol wipes",
+      "wet wipes"
     ]
   },
   {
@@ -717,22 +1549,60 @@
     "categoryId": "health",
     "keywords": [
       "baby shampoo",
-      "conditioner",
-      "pet shampoo",
       "shampoo"
     ]
   },
   {
-    "id": "sausage",
-    "displayName": "Sausage",
-    "assetName": "product-sausage",
-    "categoryId": "meat",
+    "id": "conditioner",
+    "displayName": "Conditioner",
+    "assetName": "product-conditioner",
+    "categoryId": "health",
     "keywords": [
-      "italian sausage",
-      "bratwurst",
-      "sausages",
-      "kielbasa",
-      "sausage"
+      "hair conditioner",
+      "conditioner"
+    ]
+  },
+  {
+    "id": "diapers",
+    "displayName": "Diapers",
+    "assetName": "product-diapers",
+    "categoryId": "baby",
+    "keywords": [
+      "pull-ups",
+      "diapers",
+      "diaper",
+      "nappy"
+    ]
+  },
+  {
+    "id": "diaper-cream",
+    "displayName": "Diaper Cream",
+    "assetName": "product-diaper-cream",
+    "categoryId": "baby",
+    "keywords": [
+      "diaper rash cream",
+      "diaper cream",
+      "rash cream"
+    ]
+  },
+  {
+    "id": "baby-wipes",
+    "displayName": "Baby Wipes",
+    "assetName": "product-baby-wipes",
+    "categoryId": "baby",
+    "keywords": [
+      "baby wipes"
+    ]
+  },
+  {
+    "id": "dog-food",
+    "displayName": "Dog Food",
+    "assetName": "product-dog-food",
+    "categoryId": "pet",
+    "keywords": [
+      "dog kibble",
+      "dog food",
+      "kibble"
     ]
   },
   {
@@ -747,84 +1617,27 @@
     ]
   },
   {
-    "id": "peanut-butter",
-    "displayName": "Peanut Butter",
-    "assetName": "product-peanut-butter",
-    "categoryId": "pantry",
+    "id": "pet-shampoo",
+    "displayName": "Pet Shampoo",
+    "assetName": "product-pet-shampoo",
+    "categoryId": "pet",
     "keywords": [
-      "peanut butter",
-      "almond butter"
+      "pet shampoo",
+      "dog shampoo",
+      "cat shampoo"
     ]
   },
   {
-    "id": "granola-bars",
-    "displayName": "Granola Bars",
-    "assetName": "product-granola-bars",
-    "categoryId": "snacks",
+    "id": "flowers",
+    "displayName": "Flowers",
+    "assetName": "product-flowers",
+    "categoryId": "floral",
     "keywords": [
-      "granola bars",
-      "protein bars",
-      "granola bar",
-      "cereal bars",
-      "protein bar",
-      "cereal bar"
-    ]
-  },
-  {
-    "id": "ground-turkey",
-    "displayName": "Ground Turkey",
-    "assetName": "product-ground-turkey",
-    "categoryId": "meat",
-    "keywords": [
-      "ground turkey",
-      "turkey breast"
-    ]
-  },
-  {
-    "id": "beer",
-    "displayName": "Beer",
-    "assetName": "product-beer",
-    "categoryId": "drinks",
-    "keywords": [
-      "craft beer",
-      "ginger ale",
-      "root beer",
-      "lager",
-      "stout",
-      "beer",
-      "ipa",
-      "ale"
-    ]
-  },
-  {
-    "id": "hummus",
-    "displayName": "Hummus",
-    "assetName": "product-hummus",
-    "categoryId": "deli",
-    "keywords": [
-      "hummus"
-    ]
-  },
-  {
-    "id": "frozen-vegetables",
-    "displayName": "Frozen Vegetables",
-    "assetName": "product-frozen-vegetables",
-    "categoryId": "frozen",
-    "keywords": [
-      "frozen vegetables",
-      "frozen veggies",
-      "frozen peas",
-      "frozen corn"
-    ]
-  },
-  {
-    "id": "baby-wipes",
-    "displayName": "Baby Wipes",
-    "assetName": "product-baby-wipes",
-    "categoryId": "baby",
-    "keywords": [
-      "baby wipes",
-      "wet wipes"
+      "fresh flowers",
+      "bouquets",
+      "flowers",
+      "bouquet",
+      "flower"
     ]
   }
 ]

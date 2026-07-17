@@ -231,6 +231,9 @@ final class V1PolishProductFallbackTests: XCTestCase {
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "flour"), "product-flour")
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "olive oil"), "product-olive-oil")
         XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "gochujang"), "product-gochujang")
+        // Exact "flour" must not lose to fuzzy "flowers"
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "flour"), "product-flowers")
+        XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "flowers"), "product-flowers")
     }
 
     func testBundledDrinksAndSeafoodProductsUseProductAssets() {
@@ -274,6 +277,196 @@ final class V1PolishProductFallbackTests: XCTestCase {
         }
         XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "disinfecting wipes"), "product-baby-wipes")
         XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "eggplant"), "product-eggs-white")
+    }
+
+    func testSpecificProductBatchResolves() {
+        let cases: [(String, String)] = [
+            ("coconut milk", "product-milk-coconut"),
+            ("sweetened condensed milk", "product-milk-condensed"),
+            ("egg noodles", "product-egg-noodles"),
+            ("paneer", "product-paneer"),
+            ("apple cider vinegar", "product-apple-cider-vinegar"),
+            ("tomato sauce", "product-tomato-sauce"),
+            ("green onions", "product-green-onions"),
+            ("sweet potatoes", "product-sweet-potatoes"),
+            ("lime", "product-limes"),
+            ("roti", "product-roti"),
+            ("paratha", "product-paratha"),
+            ("pita bread", "product-pita"),
+            ("rotisserie chicken", "product-rotisserie-chicken"),
+            ("chicken broth", "product-chicken-broth"),
+            ("chicken drumsticks", "product-chicken-drumsticks"),
+            ("rice noodles", "product-rice-noodles"),
+            ("rice vinegar", "product-rice-vinegar"),
+            ("pasta sauce", "product-pasta-sauce"),
+            ("coconut water", "product-coconut-water"),
+            ("cranberry juice", "product-cranberry-juice"),
+            ("root beer", "product-root-beer"),
+            ("ginger ale", "product-ginger-ale"),
+            ("pizza rolls", "product-pizza-rolls"),
+            ("conditioner", "product-conditioner"),
+            ("diaper cream", "product-diaper-cream"),
+            ("disinfecting wipes", "product-disinfecting-wipes"),
+        ]
+        for (item, asset) in cases {
+            XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: item), asset, item)
+        }
+    }
+
+    func testPhaseB1EssentialProduceResolves() {
+        let cases: [(String, String)] = [
+            ("oranges", "product-oranges"),
+            ("mandarin", "product-oranges"),
+            ("grapes", "product-grapes"),
+            ("strawberries", "product-strawberries"),
+            ("blueberries", "product-blueberries"),
+            ("watermelon", "product-watermelon"),
+            ("cantaloupe", "product-melon"),
+            ("cherries", "product-cherries"),
+            ("peach", "product-peaches"),
+            ("nectarine", "product-peaches"),
+            ("pear", "product-pears"),
+            ("pineapple", "product-pineapple"),
+            ("mango", "product-mangoes"),
+            ("aam", "product-mangoes"),
+            ("kiwi", "product-kiwi"),
+            ("coconut", "product-coconut"),
+            ("pomegranate", "product-pomegranate"),
+            ("anaar", "product-pomegranate"),
+            ("papaya", "product-papaya"),
+            ("carrots", "product-carrots"),
+            ("sweet potatoes", "product-sweet-potatoes"),
+            ("corn on the cob", "product-corn"),
+            ("broccoli", "product-broccoli"),
+            ("cauliflower", "product-cauliflower"),
+            ("gobi", "product-cauliflower"),
+            ("cucumber", "product-cucumbers"),
+            ("zucchini", "product-zucchini"),
+            ("bell pepper", "product-bell-peppers"),
+            ("capsicum", "product-bell-peppers"),
+            ("jalapeno", "product-hot-peppers"),
+            ("green chili", "product-hot-peppers"),
+            ("eggplant", "product-eggplant"),
+            ("baingan", "product-eggplant"),
+            ("mushrooms", "product-mushrooms"),
+            ("garlic", "product-garlic"),
+            ("ginger", "product-ginger"),
+            ("green beans", "product-green-beans"),
+            ("cabbage", "product-cabbage"),
+            ("celery", "product-celery"),
+            ("radishes", "product-radishes"),
+            ("asparagus", "product-asparagus"),
+            ("green peas", "product-green-peas"),
+            ("matar", "product-green-peas"),
+            ("okra", "product-okra"),
+            ("bhindi", "product-okra"),
+            ("pumpkin", "product-pumpkin"),
+            ("plantain", "product-plantains"),
+            ("raw banana", "product-plantains"),
+            ("bottle gourd", "product-bottle-gourd"),
+            ("lauki", "product-bottle-gourd"),
+        ]
+        for (item, asset) in cases {
+            XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: item), asset, item)
+        }
+        XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "corn flakes"), "product-cereal")
+        XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "banana bread"), "product-banana-bread")
+        XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "coconut milk"), "product-milk-coconut")
+        XCTAssertEqual(ItemAssetResolver.bundledAssetName(itemName: "ginger ale"), "product-ginger-ale")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "onion powder"), "product-onions")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "garlic powder"), "product-garlic")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "eggplant"), "product-eggs-white")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "chicken drumsticks"), "product-chicken-wings")
+    }
+
+    func testSpecificProductsDoNotReuseBroadAssets() {
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "egg noodles"), "product-eggs-white")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "coconut milk"), "product-milk-whole")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "apple cider vinegar"), "product-apples")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "tomato sauce"), "product-tomatoes")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "tuna steak"), "product-steak")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "rice noodles"), "product-rice-white")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "root beer"), "product-beer")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "chicken broth"), "product-chicken-breast")
+        XCTAssertNotEqual(ItemAssetResolver.bundledAssetName(itemName: "disinfecting wipes"), "product-baby-wipes")
+    }
+
+    func testResolverPrefersCurrentNameOverStaleStoredAsset() {
+        let resolution = ItemAssetResolver.resolve(
+            itemName: "coconut milk",
+            storedAssetName: "product-milk-whole"
+        )
+        XCTAssertEqual(resolution.assetName, "product-milk-coconut")
+        XCTAssertEqual(resolution.productId, "milk-coconut")
+    }
+}
+
+final class V1PolishImageAssetMigrationTests: XCTestCase {
+    @MainActor
+    func testReconcileUpdatesStaleCachedProductAssets() throws {
+        let container = try ModelContainerSetup.makeContainer(inMemory: true)
+        let context = container.mainContext
+        let list = GroceryList(name: "Migration")
+        context.insert(list)
+
+        let staleCases: [(String, String, String)] = [
+            ("coconut milk", "product-milk-whole", "product-milk-coconut"),
+            ("egg noodles", "product-eggs-white", "product-egg-noodles"),
+            ("apple cider vinegar", "product-apples", "product-apple-cider-vinegar"),
+            ("root beer", "product-beer", "product-root-beer"),
+            ("mango", "category-produce", "product-mangoes"),
+            ("cucumber", "category-produce", "product-cucumbers"),
+            ("broccoli", "category-produce", "product-broccoli"),
+            ("okra", "category-produce", "product-okra"),
+            ("lauki", "category-produce", "product-bottle-gourd"),
+        ]
+
+        var items: [GroceryItem] = []
+        for (offset, entry) in staleCases.enumerated() {
+            let item = GroceryItem(
+                name: entry.0,
+                normalizedName: entry.0,
+                categoryId: "misc",
+                imageAssetName: entry.1,
+                sortOrder: offset,
+                list: list
+            )
+            context.insert(item)
+            items.append(item)
+        }
+        list.items = items
+
+        let quantityBefore = items.map(\.quantityValue)
+        let categoryBefore = items.map(\.categoryId)
+        let storeBefore = items.map(\.storeId)
+        let completedBefore = items.map(\.isCompleted)
+        let notesBefore = items.map(\.notes)
+        let createdBefore = items.map(\.createdAt)
+        let sortBefore = items.map(\.sortOrder)
+
+        let updated = GroceryItemService.reconcileImageAssets(in: list, context: context)
+        XCTAssertEqual(updated, staleCases.count)
+
+        for (index, entry) in staleCases.enumerated() {
+            XCTAssertEqual(items[index].imageAssetName, entry.2, entry.0)
+            XCTAssertEqual(
+                ItemAssetResolver.bundledAssetName(
+                    itemName: items[index].name,
+                    storedAssetName: items[index].imageAssetName
+                ),
+                entry.2,
+                entry.0
+            )
+        }
+
+        XCTAssertEqual(items.map(\.quantityValue), quantityBefore)
+        XCTAssertEqual(items.map(\.categoryId), categoryBefore)
+        XCTAssertEqual(items.map(\.storeId), storeBefore)
+        XCTAssertEqual(items.map(\.isCompleted), completedBefore)
+        XCTAssertEqual(items.map(\.notes), notesBefore)
+        XCTAssertEqual(items.map(\.createdAt), createdBefore)
+        XCTAssertEqual(items.map(\.sortOrder), sortBefore)
+        XCTAssertEqual(items.map(\.list?.id), Array(repeating: list.id, count: items.count))
     }
 }
 

@@ -39,8 +39,13 @@ final class StoreDetectionServiceTests: XCTestCase {
     func testParseStorePhraseBareKnownStore() {
         let phrase = StoreDetectionService.parseStorePhrase("eggs 12 walmart", stores: stores)
         XCTAssertEqual(phrase.cleanText, "eggs 12")
-        XCTAssertEqual(phrase.query, "walmart")
+        // Bare/alias matches may surface the store display label; resolution is case-insensitive.
+        XCTAssertEqual(phrase.query?.lowercased(), "walmart")
         XCTAssertFalse(phrase.isExplicit)
+        XCTAssertEqual(
+            StoreDetectionService.resolveStoreId(query: phrase.query, stores: stores),
+            "walmart"
+        )
     }
 
     func testResolveExactStoreId() {

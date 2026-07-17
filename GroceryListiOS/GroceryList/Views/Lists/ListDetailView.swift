@@ -129,6 +129,7 @@ struct ListDetailView: View {
         .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: viewModel.isSelectionMode)
         .onAppear {
             ActiveListResolver.setActive(list)
+            GroceryItemService.reconcileImageAssets(in: list, context: modelContext)
         }
         .toolbar(.hidden, for: .navigationBar)
         .adaptiveSheet(isPresented: $showShareSheet) {

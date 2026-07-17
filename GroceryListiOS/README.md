@@ -331,9 +331,13 @@ Configured at launch in `GroceryListApp.init()`:
 
 ### Product imagery priority
 
-1. Per-item saved override (`imageAssetName` on `GroceryItem`)
-2. Keyword match → bundled product photo (`ProductImageCatalog` / `product_catalog.json`)
+1. Keyword match from the **current item name** → bundled product photo (`ItemAssetResolver` / `product_catalog.json`)
+2. Cached `imageAssetName` on `GroceryItem` only when the current name has no product match (auto-cache; there is no manual image picker)
 3. Category illustration asset (`category-*` in Assets.xcassets)
+
+Opening a list runs `GroceryItemService.reconcileImageAssets` so stale cached assets pick up newer specific products.
+
+See `PRODUCT_ASSET_TRACKER.md` for live counts. Distinguish **catalog coverage** (canonical records) from **overall grocery coverage** (still incomplete beyond Phase B1 produce). Powdered forms such as `onion powder` do not resolve to fresh produce.
 
 ---
 
@@ -425,8 +429,11 @@ Run unit tests in Xcode: **Product → Test** (⌘U)
 | `scripts/normalize-catalog-assets.py` | Category + product normalization (0.88 fill; width-zoom for tall bottles) |
 | `scripts/normalize-category-assets.py` | Category-only wrapper for the script above |
 | `../scripts/export-seed-data.mjs` | Export web seed → iOS JSON |
-| `../scripts/export-ios-catalog.mjs` | Export full product catalog |
-| `../scripts/generate-product-assets.py` | Product image generation |
+| `../scripts/export-ios-catalog.mjs` | Export full product catalog + prompts |
+| `../scripts/verify-product-resolution.mjs` | Assert name → product asset mappings |
+| `../scripts/audit-product-assets.py` | Duplicate / fill / imageset audit |
+| `../scripts/install-generated-product-assets.py` | Install staged 1024×1024 product art |
+| `../scripts/generate-product-assets.py` | **Obsolete** 80×80 placeholders — do not use for production art |
 
 Asset catalogs include category icons, product photos, onboarding illustrations, empty-state art, and alternate app icon previews.
 

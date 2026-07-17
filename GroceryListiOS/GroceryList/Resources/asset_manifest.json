@@ -142,7 +142,7 @@
     "categoryId": "dairy",
     "displayName": "Milk",
     "priority": 2,
-    "prompt": "milk, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "White milk carton with blue accent stripe and milk-drop icon, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-milk-oat",
@@ -151,7 +151,7 @@
     "categoryId": "drinks",
     "displayName": "Oat Milk",
     "priority": 2,
-    "prompt": "oat milk, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Warm tan oat milk carton with large oat stalk graphics, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-milk-almond",
@@ -160,7 +160,7 @@
     "categoryId": "drinks",
     "displayName": "Almond Milk",
     "priority": 2,
-    "prompt": "almond milk, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Cream almond milk carton with almond graphics, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-milk-soy",
@@ -169,7 +169,34 @@
     "categoryId": "drinks",
     "displayName": "Soy Milk",
     "priority": 2,
-    "prompt": "soy milk, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Light green soy milk carton with soy pod graphics, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-milk-coconut",
+    "type": "product",
+    "productId": "milk-coconut",
+    "categoryId": "pantry",
+    "displayName": "Coconut Milk",
+    "priority": 2,
+    "prompt": "Unbranded white coconut milk can beside one opened coconut half, clearly non-dairy, single grocery product composition, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-milk-condensed",
+    "type": "product",
+    "productId": "milk-condensed",
+    "categoryId": "pantry",
+    "displayName": "Condensed Milk",
+    "priority": 2,
+    "prompt": "Small unbranded metal can of sweetened condensed milk with a spoon showing thick pale cream, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-milk-evaporated",
+    "type": "product",
+    "productId": "milk-evaporated",
+    "categoryId": "pantry",
+    "displayName": "Evaporated Milk",
+    "priority": 2,
+    "prompt": "Small unbranded metal can of evaporated milk with a small pouring cup of light milk, visually distinct from condensed milk, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-eggs-white",
@@ -178,7 +205,7 @@
     "categoryId": "dairy",
     "displayName": "Eggs",
     "priority": 2,
-    "prompt": "eggs, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Top-down grey egg carton with six visible white eggs, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-eggs-brown",
@@ -187,7 +214,16 @@
     "categoryId": "dairy",
     "displayName": "Brown Eggs",
     "priority": 2,
-    "prompt": "brown eggs, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Top-down egg carton with brown eggs, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-egg-noodles",
+    "type": "product",
+    "productId": "egg-noodles",
+    "categoryId": "pantry",
+    "displayName": "Egg Noodles",
+    "priority": 2,
+    "prompt": "Bundle of dry curled yellow egg noodles, clearly noodles and not eggs, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-butter",
@@ -196,7 +232,16 @@
     "categoryId": "dairy",
     "displayName": "Butter",
     "priority": 2,
-    "prompt": "butter, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Stick of yellow butter with partial paper wrapper, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-ghee",
+    "type": "product",
+    "productId": "ghee",
+    "categoryId": "dairy",
+    "displayName": "Ghee",
+    "priority": 2,
+    "prompt": "Clear glass jar filled with rich golden clarified butter and a small spoon, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-cheese",
@@ -205,7 +250,34 @@
     "categoryId": "dairy",
     "displayName": "Cheese",
     "priority": 2,
-    "prompt": "cheese, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Wedge of yellow cheddar cheese, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-cream-cheese",
+    "type": "product",
+    "productId": "cream-cheese",
+    "categoryId": "dairy",
+    "displayName": "Cream Cheese",
+    "priority": 2,
+    "prompt": "Opened unbranded cream cheese tub with smooth white spread and a small spreading knife, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-cottage-cheese",
+    "type": "product",
+    "productId": "cottage-cheese",
+    "categoryId": "dairy",
+    "displayName": "Cottage Cheese",
+    "priority": 2,
+    "prompt": "Small open unbranded tub containing visible white cottage-cheese curds, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-paneer",
+    "type": "product",
+    "productId": "paneer",
+    "categoryId": "dairy",
+    "displayName": "Paneer",
+    "priority": 2,
+    "prompt": "Fresh white paneer block with several neat cubes, no plate or text, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-yogurt",
@@ -214,7 +286,7 @@
     "categoryId": "dairy",
     "displayName": "Yogurt",
     "priority": 2,
-    "prompt": "yogurt, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Photorealistic grocery cutout of a pastel blue single-serve yogurt cup with peeled foil lid, smooth white yogurt topped with a visible strawberry fruit swirl and one fresh strawberry half, clearly smooth yogurt not lumpy cottage cheese, isolated transparent background, centered, soft studio contact shadow, no text, no brand, no plate"
   },
   {
     "assetName": "product-bananas",
@@ -223,7 +295,16 @@
     "categoryId": "produce",
     "displayName": "Bananas",
     "priority": 2,
-    "prompt": "bananas, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Bunch of yellow bananas, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-banana-bread",
+    "type": "product",
+    "productId": "banana-bread",
+    "categoryId": "bakery",
+    "displayName": "Banana Bread",
+    "priority": 2,
+    "prompt": "Sliced loaf of banana bread showing moist crumb and banana cue, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-apples",
@@ -232,7 +313,25 @@
     "categoryId": "produce",
     "displayName": "Apples",
     "priority": 2,
-    "prompt": "apples, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Two fresh red apples, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-apple-juice",
+    "type": "product",
+    "productId": "apple-juice",
+    "categoryId": "drinks",
+    "displayName": "Apple Juice",
+    "priority": 3,
+    "prompt": "Unbranded clear bottle of amber apple juice with a small apple cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-apple-cider-vinegar",
+    "type": "product",
+    "productId": "apple-cider-vinegar",
+    "categoryId": "condiments",
+    "displayName": "Apple Cider Vinegar",
+    "priority": 3,
+    "prompt": "Amber glass vinegar bottle with a small apple visual cue, no readable label, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-tomatoes",
@@ -240,8 +339,35 @@
     "productId": "tomatoes",
     "categoryId": "produce",
     "displayName": "Tomatoes",
-    "priority": 2,
-    "prompt": "tomatoes, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "priority": 3,
+    "prompt": "Cluster of ripe red tomatoes on the vine, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-tomato-sauce",
+    "type": "product",
+    "productId": "tomato-sauce",
+    "categoryId": "condiments",
+    "displayName": "Tomato Sauce",
+    "priority": 3,
+    "prompt": "Unbranded glass jar filled with smooth red tomato sauce and a tomato-and-basil visual cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-tomato-paste",
+    "type": "product",
+    "productId": "tomato-paste",
+    "categoryId": "condiments",
+    "displayName": "Tomato Paste",
+    "priority": 3,
+    "prompt": "Small unbranded tomato-paste can with dense dark-red paste visible on a spoon, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-canned-tomatoes",
+    "type": "product",
+    "productId": "canned-tomatoes",
+    "categoryId": "pantry",
+    "displayName": "Canned Tomatoes",
+    "priority": 3,
+    "prompt": "Open unbranded metal can with diced red tomatoes visibly inside, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-onions",
@@ -249,8 +375,26 @@
     "productId": "onions",
     "categoryId": "produce",
     "displayName": "Onions",
-    "priority": 2,
-    "prompt": "onions, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "priority": 3,
+    "prompt": "Two whole yellow onions with papery skins, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-green-onions",
+    "type": "product",
+    "productId": "green-onions",
+    "categoryId": "produce",
+    "displayName": "Green Onions",
+    "priority": 3,
+    "prompt": "Bunch of fresh green onions with white bulbs and long green stalks, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-shallots",
+    "type": "product",
+    "productId": "shallots",
+    "categoryId": "produce",
+    "displayName": "Shallots",
+    "priority": 3,
+    "prompt": "Cluster of reddish-brown shallots, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-potatoes",
@@ -258,8 +402,17 @@
     "productId": "potatoes",
     "categoryId": "produce",
     "displayName": "Potatoes",
-    "priority": 2,
-    "prompt": "potatoes, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "priority": 3,
+    "prompt": "Three russet potatoes, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-sweet-potatoes",
+    "type": "product",
+    "productId": "sweet-potatoes",
+    "categoryId": "produce",
+    "displayName": "Sweet Potatoes",
+    "priority": 3,
+    "prompt": "Two orange-fleshed sweet potatoes with copper skin, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-cilantro",
@@ -267,8 +420,8 @@
     "productId": "cilantro",
     "categoryId": "produce",
     "displayName": "Cilantro",
-    "priority": 2,
-    "prompt": "cilantro, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "priority": 3,
+    "prompt": "Bundle of feathery cilantro leaves with tied stems, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-spinach",
@@ -276,8 +429,8 @@
     "productId": "spinach",
     "categoryId": "produce",
     "displayName": "Spinach",
-    "priority": 2,
-    "prompt": "spinach, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "priority": 3,
+    "prompt": "Pile of dark broad crinkled spinach leaves, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-avocados",
@@ -285,8 +438,17 @@
     "productId": "avocados",
     "categoryId": "produce",
     "displayName": "Avocados",
-    "priority": 2,
-    "prompt": "avocados, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "priority": 3,
+    "prompt": "Whole avocado beside a halved avocado showing green flesh and pit, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-avocado-oil",
+    "type": "product",
+    "productId": "avocado-oil",
+    "categoryId": "condiments",
+    "displayName": "Avocado Oil",
+    "priority": 3,
+    "prompt": "Tall clear bottle of golden-green avocado oil with a small avocado cue, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-lemons",
@@ -294,296 +456,17 @@
     "productId": "lemons",
     "categoryId": "produce",
     "displayName": "Lemons",
-    "priority": 2,
-    "prompt": "lemons, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-bread-loaf",
-    "type": "product",
-    "productId": "bread-loaf",
-    "categoryId": "bakery",
-    "displayName": "Bread",
-    "priority": 2,
-    "prompt": "bread, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-bagels",
-    "type": "product",
-    "productId": "bagels",
-    "categoryId": "bakery",
-    "displayName": "Bagels",
-    "priority": 2,
-    "prompt": "bagels, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-tortillas",
-    "type": "product",
-    "productId": "tortillas",
-    "categoryId": "bakery",
-    "displayName": "Tortillas",
     "priority": 3,
-    "prompt": "tortillas, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Two bright yellow lemons, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
-    "assetName": "product-naan",
+    "assetName": "product-limes",
     "type": "product",
-    "productId": "naan",
-    "categoryId": "bakery",
-    "displayName": "Naan",
+    "productId": "limes",
+    "categoryId": "produce",
+    "displayName": "Limes",
     "priority": 3,
-    "prompt": "naan, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-chicken-breast",
-    "type": "product",
-    "productId": "chicken-breast",
-    "categoryId": "meat",
-    "displayName": "Chicken",
-    "priority": 3,
-    "prompt": "chicken, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-ground-beef",
-    "type": "product",
-    "productId": "ground-beef",
-    "categoryId": "meat",
-    "displayName": "Ground Beef",
-    "priority": 3,
-    "prompt": "ground beef, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-steak",
-    "type": "product",
-    "productId": "steak",
-    "categoryId": "meat",
-    "displayName": "Steak",
-    "priority": 3,
-    "prompt": "steak, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-bacon",
-    "type": "product",
-    "productId": "bacon",
-    "categoryId": "meat",
-    "displayName": "Bacon",
-    "priority": 3,
-    "prompt": "bacon, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-pork",
-    "type": "product",
-    "productId": "pork",
-    "categoryId": "meat",
-    "displayName": "Pork",
-    "priority": 3,
-    "prompt": "pork, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-salmon",
-    "type": "product",
-    "productId": "salmon",
-    "categoryId": "seafood",
-    "displayName": "Salmon",
-    "priority": 3,
-    "prompt": "salmon, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-shrimp",
-    "type": "product",
-    "productId": "shrimp",
-    "categoryId": "seafood",
-    "displayName": "Shrimp",
-    "priority": 3,
-    "prompt": "shrimp, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-rice-basmati",
-    "type": "product",
-    "productId": "rice-basmati",
-    "categoryId": "pantry",
-    "displayName": "Basmati Rice",
-    "priority": 3,
-    "prompt": "basmati rice, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-rice-white",
-    "type": "product",
-    "productId": "rice-white",
-    "categoryId": "pantry",
-    "displayName": "Rice",
-    "priority": 3,
-    "prompt": "rice, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-pasta",
-    "type": "product",
-    "productId": "pasta",
-    "categoryId": "pantry",
-    "displayName": "Pasta",
-    "priority": 3,
-    "prompt": "pasta, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-flour",
-    "type": "product",
-    "productId": "flour",
-    "categoryId": "pantry",
-    "displayName": "Flour",
-    "priority": 3,
-    "prompt": "flour, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-olive-oil",
-    "type": "product",
-    "productId": "olive-oil",
-    "categoryId": "condiments",
-    "displayName": "Olive Oil",
-    "priority": 3,
-    "prompt": "olive oil, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-gochujang",
-    "type": "product",
-    "productId": "gochujang",
-    "categoryId": "condiments",
-    "displayName": "Gochujang",
-    "priority": 3,
-    "prompt": "gochujang, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-kimchi",
-    "type": "product",
-    "productId": "kimchi",
-    "categoryId": "deli",
-    "displayName": "Kimchi",
-    "priority": 3,
-    "prompt": "kimchi, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-coffee",
-    "type": "product",
-    "productId": "coffee",
-    "categoryId": "drinks",
-    "displayName": "Coffee",
-    "priority": 3,
-    "prompt": "coffee, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-tea",
-    "type": "product",
-    "productId": "tea",
-    "categoryId": "drinks",
-    "displayName": "Tea",
-    "priority": 3,
-    "prompt": "tea, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-water",
-    "type": "product",
-    "productId": "water",
-    "categoryId": "drinks",
-    "displayName": "Water",
-    "priority": 3,
-    "prompt": "water, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-orange-juice",
-    "type": "product",
-    "productId": "orange-juice",
-    "categoryId": "drinks",
-    "displayName": "Orange Juice",
-    "priority": 3,
-    "prompt": "orange juice, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-ice-cream",
-    "type": "product",
-    "productId": "ice-cream",
-    "categoryId": "frozen",
-    "displayName": "Ice Cream",
-    "priority": 3,
-    "prompt": "ice cream, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-frozen-pizza",
-    "type": "product",
-    "productId": "frozen-pizza",
-    "categoryId": "frozen",
-    "displayName": "Frozen Pizza",
-    "priority": 3,
-    "prompt": "frozen pizza, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-chips",
-    "type": "product",
-    "productId": "chips",
-    "categoryId": "snacks",
-    "displayName": "Chips",
-    "priority": 3,
-    "prompt": "chips, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-paper-towels",
-    "type": "product",
-    "productId": "paper-towels",
-    "categoryId": "household",
-    "displayName": "Paper Towels",
-    "priority": 3,
-    "prompt": "paper towels, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-toilet-paper",
-    "type": "product",
-    "productId": "toilet-paper",
-    "categoryId": "household",
-    "displayName": "Toilet Paper",
-    "priority": 3,
-    "prompt": "toilet paper, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-dish-soap",
-    "type": "product",
-    "productId": "dish-soap",
-    "categoryId": "household",
-    "displayName": "Dish Soap",
-    "priority": 3,
-    "prompt": "dish soap, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-diapers",
-    "type": "product",
-    "productId": "diapers",
-    "categoryId": "baby",
-    "displayName": "Diapers",
-    "priority": 3,
-    "prompt": "diapers, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-dog-food",
-    "type": "product",
-    "productId": "dog-food",
-    "categoryId": "pet",
-    "displayName": "Dog Food",
-    "priority": 3,
-    "prompt": "dog food, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-flowers",
-    "type": "product",
-    "productId": "flowers",
-    "categoryId": "floral",
-    "displayName": "Flowers",
-    "priority": 3,
-    "prompt": "flowers, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-cereal",
-    "type": "product",
-    "productId": "cereal",
-    "categoryId": "pantry",
-    "displayName": "Cereal",
-    "priority": 3,
-    "prompt": "cereal, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Two bright green limes, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-lettuce",
@@ -592,34 +475,493 @@
     "categoryId": "produce",
     "displayName": "Lettuce",
     "priority": 3,
-    "prompt": "lettuce, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Fresh green head of lettuce, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
-    "assetName": "product-soup",
+    "assetName": "product-oranges",
     "type": "product",
-    "productId": "soup",
+    "productId": "oranges",
+    "categoryId": "produce",
+    "displayName": "Oranges",
+    "priority": 3,
+    "prompt": "Photorealistic grocery catalog cutout of two whole ripe oranges and one clean half showing juicy segments, bright orange peel texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand"
+  },
+  {
+    "assetName": "product-grapes",
+    "type": "product",
+    "productId": "grapes",
+    "categoryId": "produce",
+    "displayName": "Grapes",
+    "priority": 3,
+    "prompt": "Photorealistic compact bunch of fresh green grapes with natural bloom, grocery catalog cutout, centered on transparent background, soft contact shadow, no plate, no text, no brand"
+  },
+  {
+    "assetName": "product-strawberries",
+    "type": "product",
+    "productId": "strawberries",
+    "categoryId": "produce",
+    "displayName": "Strawberries",
+    "priority": 3,
+    "prompt": "Photorealistic three ripe red strawberries with green tops, one cleanly sliced to show interior, grocery catalog cutout, centered transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-blueberries",
+    "type": "product",
+    "productId": "blueberries",
+    "categoryId": "produce",
+    "displayName": "Blueberries",
+    "priority": 3,
+    "prompt": "Photorealistic compact cluster of fresh blueberries with dusty bloom, grocery catalog cutout, centered transparent background, soft contact shadow, no bowl, no text"
+  },
+  {
+    "assetName": "product-watermelon",
+    "type": "product",
+    "productId": "watermelon",
+    "categoryId": "produce",
+    "displayName": "Watermelon",
+    "priority": 3,
+    "prompt": "Photorealistic watermelon wedge with red flesh and black seeds beside a partial whole green-striped melon, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-melon",
+    "type": "product",
+    "productId": "melon",
+    "categoryId": "produce",
+    "displayName": "Melon",
+    "priority": 3,
+    "prompt": "Photorealistic cantaloupe-style melon: one whole netted melon and one half showing orange flesh, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-cherries",
+    "type": "product",
+    "productId": "cherries",
+    "categoryId": "produce",
+    "displayName": "Cherries",
+    "priority": 3,
+    "prompt": "Photorealistic small cluster of bright red cherries with green stems, grocery catalog cutout, centered transparent background, soft contact shadow, no bowl, no text"
+  },
+  {
+    "assetName": "product-peaches",
+    "type": "product",
+    "productId": "peaches",
+    "categoryId": "produce",
+    "displayName": "Peaches",
+    "priority": 3,
+    "prompt": "Photorealistic two whole fuzzy peaches and one half showing yellow-orange flesh and pit, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-pears",
+    "type": "product",
+    "productId": "pears",
+    "categoryId": "produce",
+    "displayName": "Pears",
+    "priority": 3,
+    "prompt": "Photorealistic two ripe green-yellow pears with natural speckles, grocery catalog cutout, centered transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-pineapple",
+    "type": "product",
+    "productId": "pineapple",
+    "categoryId": "produce",
+    "displayName": "Pineapple",
+    "priority": 3,
+    "prompt": "Photorealistic whole ripe pineapple with spiky green crown and textured golden skin, grocery catalog cutout, centered transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-mangoes",
+    "type": "product",
+    "productId": "mangoes",
+    "categoryId": "produce",
+    "displayName": "Mangoes",
+    "priority": 3,
+    "prompt": "Photorealistic grocery catalog cutout of one whole ripe mango and one clean half showing bright orange flesh and seed, accurate natural texture, centered on transparent background, soft studio contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-kiwi",
+    "type": "product",
+    "productId": "kiwi",
+    "categoryId": "produce",
+    "displayName": "Kiwi",
+    "priority": 3,
+    "prompt": "Photorealistic two whole brown fuzzy kiwis and one sliced half showing bright green flesh and black seeds, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-coconut",
+    "type": "product",
+    "productId": "coconut",
+    "categoryId": "produce",
+    "displayName": "Coconut",
+    "priority": 3,
+    "prompt": "Photorealistic whole brown hairy coconut beside one opened coconut half with white meat and water cavity, grocery catalog cutout, transparent background, soft contact shadow, no text, no brand"
+  },
+  {
+    "assetName": "product-pomegranate",
+    "type": "product",
+    "productId": "pomegranate",
+    "categoryId": "produce",
+    "displayName": "Pomegranate",
+    "priority": 3,
+    "prompt": "Photorealistic whole red pomegranate and one broken-open half showing jewel-like arils, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-papaya",
+    "type": "product",
+    "productId": "papaya",
+    "categoryId": "produce",
+    "displayName": "Papaya",
+    "priority": 3,
+    "prompt": "Photorealistic whole orange papaya and one half showing salmon flesh with black seeds, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-carrots",
+    "type": "product",
+    "productId": "carrots",
+    "categoryId": "produce",
+    "displayName": "Carrots",
+    "priority": 3,
+    "prompt": "Photorealistic compact bunch of three fresh orange carrots with short green tops, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-corn",
+    "type": "product",
+    "productId": "corn",
+    "categoryId": "produce",
+    "displayName": "Corn",
+    "priority": 3,
+    "prompt": "Photorealistic two ears of sweet corn, one partly husked showing yellow kernels, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-broccoli",
+    "type": "product",
+    "productId": "broccoli",
+    "categoryId": "produce",
+    "displayName": "Broccoli",
+    "priority": 3,
+    "prompt": "Photorealistic fresh broccoli crown with short natural stalk and detailed green florets, grocery catalog cutout, transparent background, soft studio shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-cauliflower",
+    "type": "product",
+    "productId": "cauliflower",
+    "categoryId": "produce",
+    "displayName": "Cauliflower",
+    "priority": 3,
+    "prompt": "Photorealistic whole white cauliflower head with tight florets and pale green leaves, clearly distinct from broccoli, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-cucumbers",
+    "type": "product",
+    "productId": "cucumbers",
+    "categoryId": "produce",
+    "displayName": "Cucumbers",
+    "priority": 3,
+    "prompt": "Photorealistic two fresh dark-green cucumbers, one sliced at the end to show pale interior, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-zucchini",
+    "type": "product",
+    "productId": "zucchini",
+    "categoryId": "produce",
+    "displayName": "Zucchini",
+    "priority": 3,
+    "prompt": "Photorealistic two medium dark-green zucchini with visible stems, shorter and thicker than cucumber, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-bell-peppers",
+    "type": "product",
+    "productId": "bell-peppers",
+    "categoryId": "produce",
+    "displayName": "Bell Peppers",
+    "priority": 3,
+    "prompt": "Photorealistic grouping of red, yellow, and green whole bell peppers, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-hot-peppers",
+    "type": "product",
+    "productId": "hot-peppers",
+    "categoryId": "produce",
+    "displayName": "Hot Peppers",
+    "priority": 3,
+    "prompt": "Photorealistic compact cluster of green and red hot chili peppers, slender and pointed, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-eggplant",
+    "type": "product",
+    "productId": "eggplant",
+    "categoryId": "produce",
+    "displayName": "Eggplant",
+    "priority": 3,
+    "prompt": "Photorealistic one large glossy purple eggplant with green calyx, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-mushrooms",
+    "type": "product",
+    "productId": "mushrooms",
+    "categoryId": "produce",
+    "displayName": "Mushrooms",
+    "priority": 3,
+    "prompt": "Photorealistic compact cluster of common white button and brown cremini mushrooms, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-garlic",
+    "type": "product",
+    "productId": "garlic",
+    "categoryId": "produce",
+    "displayName": "Garlic",
+    "priority": 3,
+    "prompt": "Photorealistic whole garlic bulb with papery skin beside several peeled cloves, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-ginger",
+    "type": "product",
+    "productId": "ginger",
+    "categoryId": "produce",
+    "displayName": "Ginger",
+    "priority": 3,
+    "prompt": "Photorealistic compact fresh knobby ginger root with tan skin, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-green-beans",
+    "type": "product",
+    "productId": "green-beans",
+    "categoryId": "produce",
+    "displayName": "Green Beans",
+    "priority": 3,
+    "prompt": "Photorealistic compact tied bundle of fresh green beans, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-cabbage",
+    "type": "product",
+    "productId": "cabbage",
+    "categoryId": "produce",
+    "displayName": "Cabbage",
+    "priority": 3,
+    "prompt": "Photorealistic whole green cabbage head with tight leaves, optionally showing a clean cut face, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-celery",
+    "type": "product",
+    "productId": "celery",
+    "categoryId": "produce",
+    "displayName": "Celery",
+    "priority": 3,
+    "prompt": "Photorealistic compact celery bunch with pale green ribs and leafy tops, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-radishes",
+    "type": "product",
+    "productId": "radishes",
+    "categoryId": "produce",
+    "displayName": "Radishes",
+    "priority": 3,
+    "prompt": "Photorealistic tied bunch of bright red radishes with short green tops, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-asparagus",
+    "type": "product",
+    "productId": "asparagus",
+    "categoryId": "produce",
+    "displayName": "Asparagus",
+    "priority": 3,
+    "prompt": "Photorealistic tied bundle of fresh green asparagus spears, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-green-peas",
+    "type": "product",
+    "productId": "green-peas",
+    "categoryId": "produce",
+    "displayName": "Green Peas",
+    "priority": 3,
+    "prompt": "Photorealistic several green pea pods with one opened to show round peas inside, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-okra",
+    "type": "product",
+    "productId": "okra",
+    "categoryId": "produce",
+    "displayName": "Okra",
+    "priority": 3,
+    "prompt": "Photorealistic compact grouping of fresh green okra pods with one cut piece showing seeds, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-pumpkin",
+    "type": "product",
+    "productId": "pumpkin",
+    "categoryId": "produce",
+    "displayName": "Pumpkin",
+    "priority": 3,
+    "prompt": "Photorealistic small round orange grocery pumpkin with short stem, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-plantains",
+    "type": "product",
+    "productId": "plantains",
+    "categoryId": "produce",
+    "displayName": "Plantains",
+    "priority": 3,
+    "prompt": "Photorealistic small bunch of green cooking plantains, clearly greener and larger than ripe dessert bananas, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-bottle-gourd",
+    "type": "product",
+    "productId": "bottle-gourd",
+    "categoryId": "produce",
+    "displayName": "Bottle Gourd",
+    "priority": 3,
+    "prompt": "Photorealistic one pale green bottle gourd with characteristic bulbous shape, clearly distinct from cucumber, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text"
+  },
+  {
+    "assetName": "product-bread-loaf",
+    "type": "product",
+    "productId": "bread-loaf",
+    "categoryId": "bakery",
+    "displayName": "Bread",
+    "priority": 3,
+    "prompt": "Sliced sandwich bread loaf, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-bagels",
+    "type": "product",
+    "productId": "bagels",
+    "categoryId": "bakery",
+    "displayName": "Bagels",
+    "priority": 3,
+    "prompt": "Stack of plain bagels, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-tortillas",
+    "type": "product",
+    "productId": "tortillas",
+    "categoryId": "bakery",
+    "displayName": "Tortillas",
+    "priority": 3,
+    "prompt": "Stack of flour tortillas, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-naan",
+    "type": "product",
+    "productId": "naan",
+    "categoryId": "bakery",
+    "displayName": "Naan",
+    "priority": 3,
+    "prompt": "Warm bubbled naan flatbread, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-roti",
+    "type": "product",
+    "productId": "roti",
+    "categoryId": "bakery",
+    "displayName": "Roti",
+    "priority": 3,
+    "prompt": "Round thin whole-wheat roti flatbread, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-paratha",
+    "type": "product",
+    "productId": "paratha",
+    "categoryId": "bakery",
+    "displayName": "Paratha",
+    "priority": 3,
+    "prompt": "Flaky layered golden-brown paratha, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-pita",
+    "type": "product",
+    "productId": "pita",
+    "categoryId": "bakery",
+    "displayName": "Pita",
+    "priority": 3,
+    "prompt": "Round pita bread pocket slightly open, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-chicken-breast",
+    "type": "product",
+    "productId": "chicken-breast",
+    "categoryId": "meat",
+    "displayName": "Chicken",
+    "priority": 3,
+    "prompt": "Raw chicken breast fillets, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-chicken-thighs",
+    "type": "product",
+    "productId": "chicken-thighs",
+    "categoryId": "meat",
+    "displayName": "Chicken Thighs",
+    "priority": 3,
+    "prompt": "Raw chicken thighs with skin, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-chicken-wings",
+    "type": "product",
+    "productId": "chicken-wings",
+    "categoryId": "meat",
+    "displayName": "Chicken Wings",
+    "priority": 3,
+    "prompt": "Raw chicken wings clustered together, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-chicken-drumsticks",
+    "type": "product",
+    "productId": "chicken-drumsticks",
+    "categoryId": "meat",
+    "displayName": "Chicken Drumsticks",
+    "priority": 3,
+    "prompt": "Photorealistic raw chicken drumsticks clustered together showing skin and bone end, grocery catalog cutout, transparent background, soft contact shadow, no plate, no text, no brand"
+  },
+  {
+    "assetName": "product-rotisserie-chicken",
+    "type": "product",
+    "productId": "rotisserie-chicken",
+    "categoryId": "meat",
+    "displayName": "Rotisserie Chicken",
+    "priority": 3,
+    "prompt": "Whole cooked golden-brown rotisserie chicken in a simple clear deli tray, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-chicken-broth",
+    "type": "product",
+    "productId": "chicken-broth",
     "categoryId": "pantry",
-    "displayName": "Soup",
+    "displayName": "Chicken Broth",
     "priority": 3,
-    "prompt": "soup, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Unbranded broth carton with a small bowl of clear golden chicken broth, no readable text, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
-    "assetName": "product-toothpaste",
+    "assetName": "product-ground-beef",
     "type": "product",
-    "productId": "toothpaste",
-    "categoryId": "health",
-    "displayName": "Toothpaste",
+    "productId": "ground-beef",
+    "categoryId": "meat",
+    "displayName": "Ground Beef",
     "priority": 3,
-    "prompt": "toothpaste, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Portion of raw ground beef, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
-    "assetName": "product-shampoo",
+    "assetName": "product-steak",
     "type": "product",
-    "productId": "shampoo",
-    "categoryId": "health",
-    "displayName": "Shampoo",
+    "productId": "steak",
+    "categoryId": "meat",
+    "displayName": "Steak",
     "priority": 3,
-    "prompt": "shampoo, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Raw beef steak cut, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-bacon",
+    "type": "product",
+    "productId": "bacon",
+    "categoryId": "meat",
+    "displayName": "Bacon",
+    "priority": 3,
+    "prompt": "Strips of raw bacon, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-pork",
+    "type": "product",
+    "productId": "pork",
+    "categoryId": "meat",
+    "displayName": "Pork",
+    "priority": 3,
+    "prompt": "Raw pork chops, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-sausage",
@@ -628,34 +970,7 @@
     "categoryId": "meat",
     "displayName": "Sausage",
     "priority": 3,
-    "prompt": "sausage, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-cat-food",
-    "type": "product",
-    "productId": "cat-food",
-    "categoryId": "pet",
-    "displayName": "Cat Food",
-    "priority": 3,
-    "prompt": "cat food, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-peanut-butter",
-    "type": "product",
-    "productId": "peanut-butter",
-    "categoryId": "pantry",
-    "displayName": "Peanut Butter",
-    "priority": 3,
-    "prompt": "peanut butter, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
-  },
-  {
-    "assetName": "product-granola-bars",
-    "type": "product",
-    "productId": "granola-bars",
-    "categoryId": "snacks",
-    "displayName": "Granola Bars",
-    "priority": 3,
-    "prompt": "granola bars, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Linked raw sausages, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-ground-turkey",
@@ -664,16 +979,178 @@
     "categoryId": "meat",
     "displayName": "Ground Turkey",
     "priority": 3,
-    "prompt": "ground turkey, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Portion of raw ground turkey meat, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
-    "assetName": "product-beer",
+    "assetName": "product-turkey-breast",
     "type": "product",
-    "productId": "beer",
-    "categoryId": "drinks",
-    "displayName": "Beer",
+    "productId": "turkey-breast",
+    "categoryId": "meat",
+    "displayName": "Turkey Breast",
     "priority": 3,
-    "prompt": "beer, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Sliced roasted turkey breast deli cuts, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-salmon",
+    "type": "product",
+    "productId": "salmon",
+    "categoryId": "seafood",
+    "displayName": "Salmon",
+    "priority": 3,
+    "prompt": "Raw salmon fillet, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-shrimp",
+    "type": "product",
+    "productId": "shrimp",
+    "categoryId": "seafood",
+    "displayName": "Shrimp",
+    "priority": 3,
+    "prompt": "Raw shrimp clustered, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-tuna-steak",
+    "type": "product",
+    "productId": "tuna-steak",
+    "categoryId": "seafood",
+    "displayName": "Tuna Steak",
+    "priority": 3,
+    "prompt": "Raw tuna steak showing deep red flesh, clearly fish not beef, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-rice-basmati",
+    "type": "product",
+    "productId": "rice-basmati",
+    "categoryId": "pantry",
+    "displayName": "Basmati Rice",
+    "priority": 3,
+    "prompt": "Bag of long-grain basmati rice, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-rice-white",
+    "type": "product",
+    "productId": "rice-white",
+    "categoryId": "pantry",
+    "displayName": "Rice",
+    "priority": 3,
+    "prompt": "Clear plastic bag of white rice grains, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-rice-noodles",
+    "type": "product",
+    "productId": "rice-noodles",
+    "categoryId": "pantry",
+    "displayName": "Rice Noodles",
+    "priority": 3,
+    "prompt": "Bundle of thin dry white translucent rice noodles, clearly different from rice grains, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-rice-vinegar",
+    "type": "product",
+    "productId": "rice-vinegar",
+    "categoryId": "condiments",
+    "displayName": "Rice Vinegar",
+    "priority": 3,
+    "prompt": "Clear bottle of pale rice vinegar with a small rice cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-rice-cakes",
+    "type": "product",
+    "productId": "rice-cakes",
+    "categoryId": "snacks",
+    "displayName": "Rice Cakes",
+    "priority": 3,
+    "prompt": "Stack of round puffed rice cakes, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-pasta",
+    "type": "product",
+    "productId": "pasta",
+    "categoryId": "pantry",
+    "displayName": "Pasta",
+    "priority": 3,
+    "prompt": "Nest of dry spaghetti pasta, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-pasta-sauce",
+    "type": "product",
+    "productId": "pasta-sauce",
+    "categoryId": "condiments",
+    "displayName": "Pasta Sauce",
+    "priority": 3,
+    "prompt": "Unbranded glass jar of red pasta sauce with basil and a small pasta cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-flour",
+    "type": "product",
+    "productId": "flour",
+    "categoryId": "pantry",
+    "displayName": "Flour",
+    "priority": 3,
+    "prompt": "White paper flour bag with a scoop of flour, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-cereal",
+    "type": "product",
+    "productId": "cereal",
+    "categoryId": "pantry",
+    "displayName": "Cereal",
+    "priority": 3,
+    "prompt": "Bowl of breakfast cereal with flakes, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-soup",
+    "type": "product",
+    "productId": "soup",
+    "categoryId": "pantry",
+    "displayName": "Soup",
+    "priority": 3,
+    "prompt": "Open can of soup with steam cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-peanut-butter",
+    "type": "product",
+    "productId": "peanut-butter",
+    "categoryId": "pantry",
+    "displayName": "Peanut Butter",
+    "priority": 3,
+    "prompt": "Open jar of peanut butter with a knife, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-almond-butter",
+    "type": "product",
+    "productId": "almond-butter",
+    "categoryId": "pantry",
+    "displayName": "Almond Butter",
+    "priority": 3,
+    "prompt": "Open jar of almond butter with visible almond pieces and whole almonds beside it, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-olive-oil",
+    "type": "product",
+    "productId": "olive-oil",
+    "categoryId": "condiments",
+    "displayName": "Olive Oil",
+    "priority": 3,
+    "prompt": "Green glass bottle of olive oil, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-gochujang",
+    "type": "product",
+    "productId": "gochujang",
+    "categoryId": "condiments",
+    "displayName": "Gochujang",
+    "priority": 3,
+    "prompt": "Squat red Korean paste tub with chili cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-kimchi",
+    "type": "product",
+    "productId": "kimchi",
+    "categoryId": "deli",
+    "displayName": "Kimchi",
+    "priority": 3,
+    "prompt": "Bowl of red kimchi, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-hummus",
@@ -682,7 +1159,142 @@
     "categoryId": "deli",
     "displayName": "Hummus",
     "priority": 3,
-    "prompt": "hummus, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Bowl of hummus with olive oil swirl, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-coffee",
+    "type": "product",
+    "productId": "coffee",
+    "categoryId": "drinks",
+    "displayName": "Coffee",
+    "priority": 3,
+    "prompt": "Bag of coffee beans with a coffee cup cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-coffee-creamer",
+    "type": "product",
+    "productId": "coffee-creamer",
+    "categoryId": "drinks",
+    "displayName": "Coffee Creamer",
+    "priority": 3,
+    "prompt": "Small unbranded creamer bottle beside a coffee cup with lightened coffee, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-tea",
+    "type": "product",
+    "productId": "tea",
+    "categoryId": "drinks",
+    "displayName": "Tea",
+    "priority": 3,
+    "prompt": "Box of tea bags with loose tea leaves, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-water",
+    "type": "product",
+    "productId": "water",
+    "categoryId": "drinks",
+    "displayName": "Water",
+    "priority": 3,
+    "prompt": "Clear plastic water bottle, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-coconut-water",
+    "type": "product",
+    "productId": "coconut-water",
+    "categoryId": "drinks",
+    "displayName": "Coconut Water",
+    "priority": 3,
+    "prompt": "Clear bottle of coconut water with a coconut half cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-orange-juice",
+    "type": "product",
+    "productId": "orange-juice",
+    "categoryId": "drinks",
+    "displayName": "Orange Juice",
+    "priority": 3,
+    "prompt": "Orange juice carton with orange cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-cranberry-juice",
+    "type": "product",
+    "productId": "cranberry-juice",
+    "categoryId": "drinks",
+    "displayName": "Cranberry Juice",
+    "priority": 3,
+    "prompt": "Bottle of deep red cranberry juice with cranberry cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-grape-juice",
+    "type": "product",
+    "productId": "grape-juice",
+    "categoryId": "drinks",
+    "displayName": "Grape Juice",
+    "priority": 3,
+    "prompt": "Bottle of purple grape juice with grape cluster cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-juice-boxes",
+    "type": "product",
+    "productId": "juice-boxes",
+    "categoryId": "drinks",
+    "displayName": "Juice Boxes",
+    "priority": 3,
+    "prompt": "Two small unbranded juice boxes with straws, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-beer",
+    "type": "product",
+    "productId": "beer",
+    "categoryId": "drinks",
+    "displayName": "Beer",
+    "priority": 3,
+    "prompt": "Amber glass beer bottle with condensation, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-root-beer",
+    "type": "product",
+    "productId": "root-beer",
+    "categoryId": "drinks",
+    "displayName": "Root Beer",
+    "priority": 3,
+    "prompt": "Unbranded dark root-beer soda bottle and small frothy soda mug, clearly a soft drink and not alcoholic beer, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-ginger-ale",
+    "type": "product",
+    "productId": "ginger-ale",
+    "categoryId": "drinks",
+    "displayName": "Ginger Ale",
+    "priority": 3,
+    "prompt": "Unbranded pale-gold soda can with fresh ginger root visual cue, clearly a soft drink, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-ice-cream",
+    "type": "product",
+    "productId": "ice-cream",
+    "categoryId": "frozen",
+    "displayName": "Ice Cream",
+    "priority": 3,
+    "prompt": "Ice cream scoop in a bowl, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-frozen-pizza",
+    "type": "product",
+    "productId": "frozen-pizza",
+    "categoryId": "frozen",
+    "displayName": "Frozen Pizza",
+    "priority": 3,
+    "prompt": "Frozen pizza in an open box, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-pizza-rolls",
+    "type": "product",
+    "productId": "pizza-rolls",
+    "categoryId": "frozen",
+    "displayName": "Pizza Rolls",
+    "priority": 3,
+    "prompt": "Plate of golden pizza rolls / pizza bites showing melted cheese, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-frozen-vegetables",
@@ -691,7 +1303,106 @@
     "categoryId": "frozen",
     "displayName": "Frozen Vegetables",
     "priority": 3,
-    "prompt": "frozen vegetables, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Bag of mixed frozen vegetables, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-chips",
+    "type": "product",
+    "productId": "chips",
+    "categoryId": "snacks",
+    "displayName": "Chips",
+    "priority": 3,
+    "prompt": "Open bag of potato chips with chips spilling, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-granola-bars",
+    "type": "product",
+    "productId": "granola-bars",
+    "categoryId": "snacks",
+    "displayName": "Granola Bars",
+    "priority": 3,
+    "prompt": "Stack of granola bars, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-paper-towels",
+    "type": "product",
+    "productId": "paper-towels",
+    "categoryId": "household",
+    "displayName": "Paper Towels",
+    "priority": 3,
+    "prompt": "Roll of paper towels, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-toilet-paper",
+    "type": "product",
+    "productId": "toilet-paper",
+    "categoryId": "household",
+    "displayName": "Toilet Paper",
+    "priority": 3,
+    "prompt": "Roll of toilet paper, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-dish-soap",
+    "type": "product",
+    "productId": "dish-soap",
+    "categoryId": "household",
+    "displayName": "Dish Soap",
+    "priority": 3,
+    "prompt": "Bottle of dish soap with sponge cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-disinfecting-wipes",
+    "type": "product",
+    "productId": "disinfecting-wipes",
+    "categoryId": "household",
+    "displayName": "Disinfecting Wipes",
+    "priority": 3,
+    "prompt": "Tub of disinfecting cleaning wipes with a wipe partially pulled out, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-toothpaste",
+    "type": "product",
+    "productId": "toothpaste",
+    "categoryId": "health",
+    "displayName": "Toothpaste",
+    "priority": 3,
+    "prompt": "Toothpaste tube with toothbrush cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-shampoo",
+    "type": "product",
+    "productId": "shampoo",
+    "categoryId": "health",
+    "displayName": "Shampoo",
+    "priority": 3,
+    "prompt": "Bottle of shampoo, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-conditioner",
+    "type": "product",
+    "productId": "conditioner",
+    "categoryId": "health",
+    "displayName": "Conditioner",
+    "priority": 3,
+    "prompt": "Bottle of hair conditioner visually distinct from shampoo, soft pastel bottle, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-diapers",
+    "type": "product",
+    "productId": "diapers",
+    "categoryId": "baby",
+    "displayName": "Diapers",
+    "priority": 3,
+    "prompt": "Stack of folded baby diapers, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-diaper-cream",
+    "type": "product",
+    "productId": "diaper-cream",
+    "categoryId": "baby",
+    "displayName": "Diaper Cream",
+    "priority": 3,
+    "prompt": "Tube of diaper rash cream with a soft baby-care cue, soft 3D grocery illustration, transparent background, no text, no brand"
   },
   {
     "assetName": "product-baby-wipes",
@@ -700,6 +1411,42 @@
     "categoryId": "baby",
     "displayName": "Baby Wipes",
     "priority": 3,
-    "prompt": "baby wipes, single grocery product, soft 3D realistic illustration, transparent background, centered, no text, no brand"
+    "prompt": "Package of baby wipes, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-dog-food",
+    "type": "product",
+    "productId": "dog-food",
+    "categoryId": "pet",
+    "displayName": "Dog Food",
+    "priority": 3,
+    "prompt": "Brown dog food bag with bone icon and kibble bowl, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-cat-food",
+    "type": "product",
+    "productId": "cat-food",
+    "categoryId": "pet",
+    "displayName": "Cat Food",
+    "priority": 3,
+    "prompt": "Cat food bag with fish cue and kibble bowl, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-pet-shampoo",
+    "type": "product",
+    "productId": "pet-shampoo",
+    "categoryId": "pet",
+    "displayName": "Pet Shampoo",
+    "priority": 3,
+    "prompt": "Bottle of pet shampoo with a small paw-print cue, soft 3D grocery illustration, transparent background, no text, no brand"
+  },
+  {
+    "assetName": "product-flowers",
+    "type": "product",
+    "productId": "flowers",
+    "categoryId": "floral",
+    "displayName": "Flowers",
+    "priority": 3,
+    "prompt": "Fresh flower bouquet with roses and tulips, soft 3D grocery illustration, transparent background, no text, no brand"
   }
 ]

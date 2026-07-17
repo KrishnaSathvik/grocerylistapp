@@ -12,6 +12,8 @@
     "export-ios-catalog": "node scripts/export-ios-catalog.mjs",
     "verify-category-detection": "node scripts/verify-category-detection.mjs",
     "verify-product-resolution": "node scripts/verify-product-resolution.mjs",
+    "audit-product-assets": "python3 scripts/audit-product-assets.py",
+    "write-product-mapping-audit": "node scripts/write-product-mapping-audit.mjs",
     "generate-og-image": "python3 scripts/generate-og-image.py",
     "generate-favicons": "python3 scripts/generate-favicons.py",
     "generate-app-preview": "cd remotion-demo && npm run render",

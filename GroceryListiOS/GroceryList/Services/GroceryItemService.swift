@@ -362,4 +362,34 @@ enum GroceryItemService {
         touchList(list)
         return PersistenceService.save(context: context, operation: "move items")
     }
+
+    /// Recomputes auto-assigned `imageAssetName` from the current item name.
+    /// Safe because there is no manual image-picker UI — stored values are a cache.
+    @discardableResult
+    static func reconcileImageAssets(in list: GroceryList, context: ModelContext) -> Int {
+        var updated = 0
+        for item in list.items where !item.isArchived {
+            let resolved = ItemAssetResolver.productAssetName(for: item.normalizedName)
+            if resolved != item.imageAssetName {
+                item.imageAssetName = resolved
+                updated += 1
+            }
+        }
+        guard updated > 0 else { return 0 }
+        touchList(list)
+        PersistenceService.save(context: context, operation: "reconcile item image assets")
+        return updated
+    }
+
+    /// Recomputes a single item's cached product image from its current name.
+    @discardableResult
+    static func reconcileImageAsset(_ item: GroceryItem, context: ModelContext) -> Bool {
+        let resolved = ItemAssetResolver.productAssetName(for: item.normalizedName)
+        guard resolved != item.imageAssetName else { return true }
+        item.imageAssetName = resolved
+        if let list = item.list {
+            touchList(list)
+        }
+        return PersistenceService.save(context: context, operation: "reconcile item image asset")
+    }
 }

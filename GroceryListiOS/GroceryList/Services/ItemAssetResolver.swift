@@ -15,6 +15,10 @@ enum ItemAssetResolver {
     }
 
     /// Full resolution pipeline for display and persistence hints.
+    ///
+    /// Prefers a match from the current item name. `storedAssetName` is treated as a
+    /// cached auto-resolution (there is no manual image-picker UI), so it is used only
+    /// when the current name has no product match.
     static func resolve(
         itemName: String,
         categoryId: String? = nil,
@@ -22,19 +26,19 @@ enum ItemAssetResolver {
     ) -> Resolution {
         let normalized = CategoryLearningService.normalize(itemName)
 
-        if let stored = storedAssetName,
-           let product = GroceryCatalog.products.first(where: { $0.assetName == stored }) {
+        if let product = matchProduct(in: normalized) {
             return Resolution(
-                assetName: stored,
+                assetName: product.assetName,
                 kind: .product,
                 categoryId: product.categoryId,
                 productId: product.id
             )
         }
 
-        if let product = matchProduct(in: normalized) {
+        if let stored = storedAssetName,
+           let product = GroceryCatalog.products.first(where: { $0.assetName == stored }) {
             return Resolution(
-                assetName: product.assetName,
+                assetName: stored,
                 kind: .product,
                 categoryId: product.categoryId,
                 productId: product.id
@@ -76,11 +80,15 @@ enum ItemAssetResolver {
 
     // MARK: - Private
 
+    /// Fresh-produce roots must not absorb powdered/spice forms (onion powder → onions).
+    private static let produceFormBlockTokens: Set<String> = ["powder", "seasoning", "spice", "extract"]
+
     private static func matchProduct(in normalizedName: String) -> GroceryCatalog.ProductEntry? {
         let name = normalizedName.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else { return nil }
         let nameTokens = tokens(in: name)
         guard !nameTokens.isEmpty else { return nil }
+        let nameHasProduceFormBlock = nameTokens.contains(where: { produceFormBlockTokens.contains($0) })
 
         var best: GroceryCatalog.ProductEntry?
         var bestLength = 0
@@ -89,8 +97,15 @@ enum ItemAssetResolver {
         for product in GroceryCatalog.products {
             for keyword in product.keywords {
                 let kw = keyword.lowercased()
+                let keywordTokens = tokens(in: kw)
+                if nameHasProduceFormBlock,
+                   product.categoryId == "produce",
+                   !keywordTokens.contains(where: { produceFormBlockTokens.contains($0) }) {
+                    continue
+                }
                 if keywordMatches(nameTokens: nameTokens, keyword: kw) {
-                    if kw.count > bestLength {
+                    // Exact phrase matches always beat fuzzy hits, even if shorter.
+                    if bestDistance > 0 || kw.count > bestLength {
                         best = product
                         bestLength = kw.count
                         bestDistance = 0
@@ -98,6 +113,9 @@ enum ItemAssetResolver {
                     continue
                 }
 
+                // Never let a fuzzy keyword override an exact product match
+                // (e.g. "flour" must not lose to fuzzy "flowers").
+                guard bestDistance > 0 else { continue }
                 guard let distance = fuzzyPhraseDistance(nameTokens: nameTokens, keyword: kw) else { continue }
                 if kw.count > bestLength || (kw.count == bestLength && distance < bestDistance) {
                     best = product

@@ -4,3 +4,10 @@ dist
 *.local
 .DS_Store
 docs
+.venv-assets/
+__pycache__/
+*.pyc
+GroceryListiOS/DesignReferences/asset-audit/staged-new-batch/
+GroceryListiOS/DesignReferences/asset-audit/staged-b1/
+*.png.bak
+**/xcuserdata/

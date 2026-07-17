@@ -2,7 +2,20 @@
 
 Source of truth for names: `GroceryList/Resources/asset_manifest.json`
 
-Style: 1024×1024 transparent PNG, photorealistic single product, no text/brands.
+Style: 1024×1024 transparent PNG, photorealistic grocery cutouts, no text/brands.
+
+---
+
+## Coverage framing (read this first)
+
+| Metric | Meaning | Count (2026-07-17 Phase B1) |
+|--------|---------|----------------------------:|
+| **Catalog coverage** | Canonical product records in `product_catalog.json` | **146** |
+| **Asset completion** | Current catalog records with usable bundled PNGs | **146 / 146** |
+| **Phase B1 requested expansion** | Essential produce IDs from the B1 list | **40 / 40** (+ `chicken-drumsticks` correction) |
+| **Overall grocery coverage** | Still incomplete beyond the catalog — herbs, many pantry/household items, and brands remain for later phases | **Incomplete** |
+
+Do **not** describe the catalog as globally “complete” just because every current record has an asset.
 
 ---
 
@@ -10,156 +23,112 @@ Style: 1024×1024 transparent PNG, photorealistic single product, no text/brands
 
 | | Count |
 |---|------:|
-| Categories | **16 / 16** complete |
-| Products | **48 / 48** complete |
-| Remaining | **0** |
-| Pass 2 remakes | **5 / 5** done (2026-06-29) |
-| Pass 3 improves | **13 / 13** done (2026-06-29) |
+| Categories | **17 / 17** complete |
+| Canonical products | **146** |
+| Finished product PNGs | **146** |
+| Awaiting generation | **0** (within current catalog) |
+| Exact duplicate PNG groups | **0** |
+| Near-duplicate ahash pairs | **7** (reviewed — see audit) |
 
-**Catalog coverage:** Every entry in `asset_manifest.json` has a bundled imageset in `Assets.xcassets`.
+Counts derived from `asset_manifest.json` + `Assets.xcassets` (not guessed).
 
-**Quality audit:** All 64 assets **Keep** after Pass 3. See `DesignReferences/asset-audit/ASSET_QUALITY_AUDIT.md`.
-
----
-
-## Pass 2 — Quality remakes (5/5 done)
-
-Regenerated 2026-06-29 for thumbnail readability at 44pt. Style refs: `product-eggs-brown`, `product-kimchi`, `product-bananas`.
-
-| Asset | Test items | Result |
-|-------|------------|--------|
-| `product-eggs-white` | `eggs`, `white eggs` | Top-down grey carton, 6 visible white eggs |
-| `product-milk-whole` | `milk`, `whole milk` | White carton, blue stripe + milk-drop icon, blue cap |
-| `product-yogurt` | `yogurt` | Cup with peeled foil lid, visible yogurt inside |
-| `product-gochujang` | `gochujang` | Squat red Korean paste tub + chili cue |
-| `product-dog-food` | `dog food` | Brown bag with bone icon + kibble bowl |
-
-Comparison grids: `DesignReferences/asset-audit/pass2-old-vs-new-44pt.png`, `pass2-old-vs-new-56pt.png`.  
-Old assets backed up in `DesignReferences/asset-audit/pass2-old/`.
+**Quality audit:** `PRODUCT_ASSET_AUDIT.md` and contact sheets under `DesignReferences/asset-audit/`.
 
 ---
 
-## Pass 3 — Quality improves (13/13 done)
+## Phase A — completed (collision repair + tooling)
 
-Improved 2026-06-29 for thumbnail readability and variant distinctness. Simplified busy categories to 2–3 anchor items.
+Resolver architecture, longer-alias precedence, stale `imageAssetName` reconciliation, export/prompt/audit/normalize tooling, and specific-product splits for milk/egg/apple/rice/beer/etc.
 
-| Asset | Fix |
-|-------|-----|
-| `category-drinks` | 3 items: water, OJ, coffee cup |
-| `category-dairy` | 3 items: milk carton, cheese, eggs — nothing clipped |
-| `category-frozen` | 2 items: pizza + ice cream |
-| `category-snacks` | 3 items: chips bag, popcorn, cookie |
-| `category-pantry` | 3 items: pasta jar, rice bag, red can — more color |
-| `category-misc` | Shopping basket + bag — distinct from pantry |
-| `product-milk-oat` | Warm tan carton, large oat stalk graphics |
-| `product-milk-soy` | Light green carton, large soy pod graphics |
-| `product-cilantro` | Feathery leaves, tied stems |
-| `product-spinach` | Dark broad crinkled leaves, no tie |
-| `product-rice-white` | Clean clear plastic rice bag |
-| `product-flour` | White paper bag + scoop (not burlap sack) |
-| `product-frozen-pizza` | Pizza in box, no frost/shrink-wrap noise |
-
-Comparison grids: `DesignReferences/asset-audit/pass3-old-vs-new-44pt.png`, `pass3-old-vs-new-56pt.png`.  
-Old assets backed up in `DesignReferences/asset-audit/pass3-old/`.  
-Processing script: `scripts/process-pass3-assets.py`.
-
-**User replacements (2026-06-29):** Six category assets swapped for user-provided art via `scripts/install-user-category-assets.py`. Previous Pass 3 versions backed up in `DesignReferences/asset-audit/user-categories-old/`.
+**Before Phase A expansion:** 48 canonical products
+**After Phase A:** 108 canonical products
 
 ---
 
-## Done — Final batch (10)
+## Phase B1 — Essential produce (2026-07-17)
 
-| # | Asset name | Display name | Test item |
-|---|------------|--------------|-----------|
-| 1 | `product-yogurt` | Yogurt | `yogurt` |
-| 2 | `product-kimchi` | Kimchi | `kimchi` |
-| 3 | `product-ice-cream` | Ice Cream | `ice cream` |
-| 4 | `product-frozen-pizza` | Frozen Pizza | `frozen pizza` |
-| 5 | `product-chips` | Chips | `chips` |
-| 6 | `product-paper-towels` | Paper Towels | `paper towels` |
-| 7 | `product-toilet-paper` | Toilet Paper | `toilet paper` |
-| 8 | `product-dish-soap` | Dish Soap | `dish soap` |
-| 9 | `product-diapers` | Diapers | `diapers` |
-| 10 | `product-dog-food` | Dog Food | `dog food` |
+Solves the most visible issue: common fruits/vegetables no longer fall back to `category-produce`.
 
----
+### Fruits added
 
-## Batch history
+`oranges`, `grapes`, `strawberries`, `blueberries`, `watermelon`, `melon`, `cherries`, `peaches`, `pears`, `pineapple`, `mangoes`, `kiwi`, `coconut`, `pomegranate`, `papaya`
 
-| Batch | Theme | Count | Status |
-|-------|--------|------:|--------|
-| 1 | Produce | 8 | done |
-| 2 | Dairy | 8 | done |
-| 3 | Produce finish + bakery | 5 | done |
-| 4 | Meat | 5 | done |
-| 5 | Pantry + condiments | 6 | done |
-| 6 | Drinks + seafood | 6 | done |
-| 7 | Final (yogurt, kimchi, frozen, snacks, household, baby, pet) | 10 | done |
-| 8 | Pass 2 quality remakes (5 Regenerate assets) | 5 | done |
-| 9 | Pass 3 quality improves (13 Improve assets) | 13 | done |
+### Vegetables added / covered
 
----
+`carrots`, `corn`, `broccoli`, `cauliflower`, `cucumbers`, `zucchini`, `bell-peppers`, `hot-peppers`, `eggplant`, `mushrooms`, `garlic`, `ginger`, `green-beans`, `cabbage`, `celery`, `radishes`, `asparagus`, `green-peas`, `okra`, `pumpkin`, `plantains`, `bottle-gourd`
 
-## Categories (16/16) — all bundled
+Already present from Phase A (kept): `sweet-potatoes`, `green-onions`
 
-| Asset | Category id |
-|-------|-------------|
-| `category-produce` | produce |
-| `category-dairy` | dairy |
-| `category-meat` | meat |
-| `category-seafood` | seafood |
-| `category-bakery` | bakery |
-| `category-deli` | deli |
-| `category-frozen` | frozen |
-| `category-pantry` | pantry |
-| `category-snacks` | snacks |
-| `category-condiments` | condiments |
-| `category-drinks` | drinks |
-| `category-household` | household |
-| `category-health` | health |
-| `category-baby` | baby |
-| `category-pet` | pet |
-| `category-misc` | misc |
+### Mapping correction in this phase
 
-No additional categories needed — matches web app `CATEGORIES` (16 ids).
+`chicken drumsticks` → `product-chicken-drumsticks` (no longer `product-chicken-wings`). Generic vegetable term `drumstick` / moringa is not mapped to chicken.
+
+### Near-duplicate review (before adding B1 art)
+
+| Pair | Decision |
+|------|----------|
+| oat milk vs conditioner | **Keep both** — false positive; carton+oats vs lavender hair bottle are distinct at 44pt |
+| cottage cheese vs yogurt | **Replaced yogurt** — ramekin with strawberry swirl (was foil tub too similar to cottage cheese) |
+| egg noodles vs rice noodles | **Keep both** — yellow vs white bundles remain distinguishable at 44pt |
+| water vs orange juice | **Keep both** — clear vs opaque orange liquid |
+| oat milk / shampoo / conditioner / pasta | **Keep** — silhouette ahash noise; colors/forms differ |
+| toothpaste vs diaper cream | **Keep** — both tubes; acceptable for now |
+
+### Produce still on category fallback (examples)
+
+Herbs/greens/Indian produce not in B1: basil, mint, kale, bok choy, bitter gourd, ridge gourd, taro, etc. Unknown typed names still use category illustrations by design.
 
 ---
 
-## Products (48/48) — all bundled
-
-See `product_catalog.json` for full list. Resolver maps ~700 web aliases → these 48 canonical products → category fallback only when no product keyword matches.
-
----
-
-## What is NOT covered (by design)
-
-| Gap | Behavior |
-|-----|----------|
-| Items with no product keyword match | Shows **category** illustration (e.g. unknown → `category-misc`) |
-| ~650+ web `ITEM_ICONS` aliases without a canonical product | Category fallback via keyword detection |
-| New grocery items not in catalog | `category-misc` or detected category |
-
-**Future expansion (optional, not required for v1):**
-- Add more canonical products to `CANONICAL_PRODUCTS` in `scripts/export-ios-catalog.mjs`, regenerate JSON, create matching assets
-- Health category has no dedicated products yet (shampoo, toothpaste, etc.) — uses `category-health` fallback
-- Deli only has `product-kimchi` — other deli items use `category-deli`
-
----
-
-## Non-catalog assets (keep)
-
-| Asset | Purpose |
-|-------|---------|
-| `onboarding_shop_smarter` etc. (4) | Onboarding heroes |
-| `empty_list_illustration` etc. (3) | Empty states |
-| `AppIcon`, `AccentColor` | App chrome |
-
----
-
-## Verify after changes
+## Commands
 
 ```bash
 node scripts/export-ios-catalog.mjs
-# Run simulator with sample items from each category
-xcodebuild test -only-testing:GroceryListTests/V1PolishProductFallbackTests
+node scripts/verify-product-resolution.mjs
+python3 scripts/audit-product-assets.py
+python3 GroceryListiOS/scripts/normalize-catalog-assets.py --only product
+node scripts/write-product-mapping-audit.mjs
+
+# Install staged generated art
+.venv-assets/bin/python scripts/install-generated-product-assets.py \
+  --src GroceryListiOS/DesignReferences/asset-audit/staged-b1 \
+  --only mangoes,cucumbers,broccoli
+
+xcodebuild test -scheme GroceryList -destination 'platform=iOS Simulator,name=iPhone 16'
 ```
+
+### Image-generation notes
+
+- Product-specific prompts: `PRODUCT_IMAGE_PROMPTS.json` + `asset_manifest.json` `prompt` fields
+- Do **not** use root `scripts/generate-product-assets.py` for final art (obsolete 80×80 placeholders)
+
+---
+
+## Existing-item remapping
+
+No manual image-picker UI. `GroceryItem.imageAssetName` is a cached auto-resolution.
+
+- `ItemAssetResolver` prefers a match from the **current item name**
+- Powdered forms (`onion powder`, `garlic powder`) do not match fresh produce roots
+- `GroceryItemService.reconcileImageAssets` refreshes stale caches when a list appears
+
+---
+
+## Simulator review (Phase B1)
+
+Interactive review completed on iPhone 17 Pro Simulator. Screenshots + notes:
+
+`DesignReferences/asset-audit/b1-simulator-review/`
+
+- Main list light/dark: produce thumbnails correct and distinct
+- Stores/Categories nested rows: product thumbs intentionally omitted by UI design
+- Accessibility-large: assets OK; title hyphenation is a pre-existing layout pressure
+- Re-run: `GroceryListiOS/scripts/review-b1-produce-simulator.sh`
+
+---
+
+## Next phases (not started)
+
+1. **B2:** herbs, greens, Indian produce (~25–30)
+2. **B3:** remaining pantry, snacks, household, baby, pet
+3. **B4:** branded entries + approved branded artwork (separate design/legal pass)

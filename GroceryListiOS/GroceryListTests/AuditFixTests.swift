@@ -276,7 +276,7 @@ final class CategoryLearningResetTests: XCTestCase {
     func testResetAllClearsRules() throws {
         let container = try ModelContainerSetup.makeContainer(inMemory: true)
         let context = container.mainContext
-        CategoryLearningService.record(normalizedName: "widget", categoryId: "misc", context: context)
+        CategoryLearningService.record(normalizedName: "widget", categoryId: "dairy", context: context)
         XCTAssertFalse(CategoryLearningService.fetchRules(context: context).isEmpty)
 
         CategoryLearningService.resetAll(context: context)
