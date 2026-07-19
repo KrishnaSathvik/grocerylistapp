@@ -81,7 +81,10 @@ enum ItemAssetResolver {
     // MARK: - Private
 
     /// Fresh-produce roots must not absorb powdered/spice forms (onion powder → onions).
-    private static let produceFormBlockTokens: Set<String> = ["powder", "seasoning", "spice", "extract"]
+    private static let produceFormBlockTokens: Set<String> = [
+        "powder", "seasoning", "spice", "extract", "seeds", "seed", "mix", "sauce", "paste",
+        "chutney", "pesto", "chips",
+    ]
 
     private static func matchProduct(in normalizedName: String) -> GroceryCatalog.ProductEntry? {
         let name = normalizedName.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)

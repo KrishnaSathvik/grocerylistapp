@@ -39,10 +39,11 @@ struct AllItemsListContent: View {
                 }
                 .deleteDisabled(true)
             } header: {
-                HStack {
+                HStack(alignment: .firstTextBaseline) {
                     Text("To Get (\(activeItems.count))")
                         .appSectionLabel()
-                    Spacer()
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 0)
                 }
                 .textCase(nil)
             }

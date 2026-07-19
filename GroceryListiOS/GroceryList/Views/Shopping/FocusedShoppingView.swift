@@ -76,6 +76,7 @@ struct FocusedShoppingView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     @Bindable var list: GroceryList
     let mode: FocusedShoppingMode
@@ -208,26 +209,28 @@ struct FocusedShoppingView: View {
                 focusedIcon
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(mode.title)
-                        .font(AppTypography.screenTitle)
+                    Text(EssentialText.attributed(mode.title))
+                        .font(
+                            DynamicTypeLayout.usesCompactScreenTitle(dynamicTypeSize)
+                                ? AppTypography.accessibilityScreenTitle
+                                : AppTypography.screenTitle
+                        )
                         .foregroundStyle(AppColors.ink)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.85)
+                        .essentialTextLayout(dynamicTypeSize: dynamicTypeSize, regularLineLimit: 2)
 
                     Text(statusLine)
                         .font(AppTypography.metadata)
                         .foregroundStyle(AppColors.inkSecondary)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.9)
+                        .lineLimit(DynamicTypeLayout.usesAccessibilityLayout(dynamicTypeSize) ? nil : 2)
+                        .fixedSize(horizontal: false, vertical: true)
 
                     Text(mode.groupingSubtitle)
                         .font(AppTypography.caption)
                         .foregroundStyle(AppColors.inkSecondary.opacity(0.85))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.85)
+                        .lineLimit(DynamicTypeLayout.usesAccessibilityLayout(dynamicTypeSize) ? 3 : 1)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-
-                Spacer(minLength: 0)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
 
             if remainingCount + pickedUpCount > 0 {

@@ -12,7 +12,7 @@ struct PrivacyPolicyView: View {
                         Text("Privacy Policy")
                             .font(AppTypography.onboardingTitle)
                             .foregroundStyle(AppColors.ink)
-                        Text("Last updated: June 2026")
+                        Text("Last updated: July 2026")
                             .font(AppTypography.caption)
                             .foregroundStyle(AppColors.inkSecondary)
                     }
@@ -20,6 +20,11 @@ struct PrivacyPolicyView: View {
                     policySection(
                         title: "Your data stays on your device",
                         body: "Grocery lists, items, stores, and preferences are stored locally on your iPhone. No account is required."
+                    )
+
+                    policySection(
+                        title: "Camera access",
+                        body: "Camera access is used only to scan QR codes when you import a shared list. The app does not take photos or record video for upload. You can deny camera permission and still import by pasting text or opening a share link."
                     )
 
                     policySection(

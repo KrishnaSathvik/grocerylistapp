@@ -1,0 +1,7 @@
+device=iPhone 17
+udid=37411883-BCD3-48D9-8694-C5508FD535F2
+slug=iphone17
+captured_at=2026-07-18T01:30:34Z
+/Users/krishnasathvikmantripragada/grocery-list-app/GroceryListiOS/DesignReferences/dynamic-type-review/iphone17-size-large-light-list-detail.png
+  pixelWidth: 1206
+  pixelHeight: 2622

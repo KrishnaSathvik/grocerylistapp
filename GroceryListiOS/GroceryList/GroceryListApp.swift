@@ -19,7 +19,10 @@ struct GroceryListApp: App {
                         .environment(importCoordinator)
                         .onAppear {
                             SeedData.bootstrapIfNeeded(context: container.mainContext)
+                            #if DEBUG
                             ProduceReviewSeed.seedIfRequested(context: container.mainContext)
+                            FinalCatalogReviewSeed.seedIfRequested(context: container.mainContext)
+                            #endif
                             PersistenceService.save(
                                 context: container.mainContext,
                                 operation: "bootstrap seed data"

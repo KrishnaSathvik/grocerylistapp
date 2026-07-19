@@ -9,5 +9,6 @@ __pycache__/
 *.pyc
 GroceryListiOS/DesignReferences/asset-audit/staged-new-batch/
 GroceryListiOS/DesignReferences/asset-audit/staged-b1/
+GroceryListiOS/DesignReferences/asset-audit/staged-b2/
 *.png.bak
 **/xcuserdata/

@@ -1,0 +1,7 @@
+device=iPhone 17
+udid=37411883-BCD3-48D9-8694-C5508FD535F2
+slug=regate4-iphone17
+captured_at=2026-07-18T03:27:49Z
+/Users/krishnasathvikmantripragada/grocery-list-app/GroceryListiOS/DesignReferences/dynamic-type-review/regate4-iphone17-size-large-light-list-detail.png
+  pixelWidth: 1206
+  pixelHeight: 2622

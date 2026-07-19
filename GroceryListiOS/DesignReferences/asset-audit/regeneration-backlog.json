@@ -1,0 +1,861 @@
+{
+  "count": 107,
+  "items": [
+    {
+      "productId": "milk-whole",
+      "assetName": "product-milk-whole",
+      "displayName": "Milk",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of white milk carton with blue accent stripe and milk-drop icon, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "milk-oat",
+      "assetName": "product-milk-oat",
+      "displayName": "Oat Milk",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of warm tan oat milk carton with large oat stalk graphics, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "milk-almond",
+      "assetName": "product-milk-almond",
+      "displayName": "Almond Milk",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of cream almond milk carton with almond graphics, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "milk-soy",
+      "assetName": "product-milk-soy",
+      "displayName": "Soy Milk",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of light green soy milk carton with soy pod graphics, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "milk-coconut",
+      "assetName": "product-milk-coconut",
+      "displayName": "Coconut Milk",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of unbranded white coconut milk can beside one opened coconut half, clearly non-dairy, single grocery product composition, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "milk-condensed",
+      "assetName": "product-milk-condensed",
+      "displayName": "Condensed Milk",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of small unbranded metal can of sweetened condensed milk with a spoon showing thick pale cream, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "milk-evaporated",
+      "assetName": "product-milk-evaporated",
+      "displayName": "Evaporated Milk",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of small unbranded metal can of evaporated milk with a small pouring cup of light milk, visually distinct from condensed milk, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "eggs-white",
+      "assetName": "product-eggs-white",
+      "displayName": "Eggs",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of top-down grey egg carton with six visible white eggs, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "eggs-brown",
+      "assetName": "product-eggs-brown",
+      "displayName": "Brown Eggs",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of top-down egg carton with brown eggs, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "egg-noodles",
+      "assetName": "product-egg-noodles",
+      "displayName": "Egg Noodles",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of bundle of dry curled yellow egg noodles, clearly noodles and not eggs, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "butter",
+      "assetName": "product-butter",
+      "displayName": "Butter",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of stick of yellow butter with partial paper wrapper, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "ghee",
+      "assetName": "product-ghee",
+      "displayName": "Ghee",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of clear glass jar filled with rich golden clarified butter and a small spoon, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "cheese",
+      "assetName": "product-cheese",
+      "displayName": "Cheese",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of wedge of yellow cheddar cheese, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "cream-cheese",
+      "assetName": "product-cream-cheese",
+      "displayName": "Cream Cheese",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of opened unbranded cream cheese tub with smooth white spread and a small spreading knife, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "cottage-cheese",
+      "assetName": "product-cottage-cheese",
+      "displayName": "Cottage Cheese",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of small open unbranded tub containing visible white cottage-cheese curds, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "paneer",
+      "assetName": "product-paneer",
+      "displayName": "Paneer",
+      "categoryId": "dairy",
+      "prompt": "Photorealistic grocery catalog cutout of fresh white paneer block with several neat cubes, no plate or text, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "bananas",
+      "assetName": "product-bananas",
+      "displayName": "Bananas",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of bunch of yellow bananas, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "banana-bread",
+      "assetName": "product-banana-bread",
+      "displayName": "Banana Bread",
+      "categoryId": "bakery",
+      "prompt": "Photorealistic grocery catalog cutout of sliced loaf of banana bread showing moist crumb and banana cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "apples",
+      "assetName": "product-apples",
+      "displayName": "Apples",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of two fresh red apples, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "apple-juice",
+      "assetName": "product-apple-juice",
+      "displayName": "Apple Juice",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of unbranded clear bottle of amber apple juice with a small apple cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "apple-cider-vinegar",
+      "assetName": "product-apple-cider-vinegar",
+      "displayName": "Apple Cider Vinegar",
+      "categoryId": "condiments",
+      "prompt": "Photorealistic grocery catalog cutout of amber glass vinegar bottle with a small apple visual cue, no readable label, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "tomatoes",
+      "assetName": "product-tomatoes",
+      "displayName": "Tomatoes",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of cluster of ripe red tomatoes on the vine, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "tomato-sauce",
+      "assetName": "product-tomato-sauce",
+      "displayName": "Tomato Sauce",
+      "categoryId": "condiments",
+      "prompt": "Photorealistic grocery catalog cutout of unbranded glass jar filled with smooth red tomato sauce and a tomato-and-basil visual cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "tomato-paste",
+      "assetName": "product-tomato-paste",
+      "displayName": "Tomato Paste",
+      "categoryId": "condiments",
+      "prompt": "Photorealistic grocery catalog cutout of small unbranded tomato-paste can with dense dark-red paste visible on a spoon, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "canned-tomatoes",
+      "assetName": "product-canned-tomatoes",
+      "displayName": "Canned Tomatoes",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of open unbranded metal can with diced red tomatoes visibly inside, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "onions",
+      "assetName": "product-onions",
+      "displayName": "Onions",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of two whole yellow onions with papery skins, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "green-onions",
+      "assetName": "product-green-onions",
+      "displayName": "Green Onions",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of bunch of fresh green onions with white bulbs and long green stalks, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "shallots",
+      "assetName": "product-shallots",
+      "displayName": "Shallots",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of cluster of reddish-brown shallots, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "potatoes",
+      "assetName": "product-potatoes",
+      "displayName": "Potatoes",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of three russet potatoes, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "sweet-potatoes",
+      "assetName": "product-sweet-potatoes",
+      "displayName": "Sweet Potatoes",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of two orange-fleshed sweet potatoes with copper skin, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "cilantro",
+      "assetName": "product-cilantro",
+      "displayName": "Cilantro",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of bundle of feathery cilantro leaves with tied stems, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "spinach",
+      "assetName": "product-spinach",
+      "displayName": "Spinach",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of pile of dark broad crinkled spinach leaves, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "avocados",
+      "assetName": "product-avocados",
+      "displayName": "Avocados",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of whole avocado beside a halved avocado showing green flesh and pit, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "avocado-oil",
+      "assetName": "product-avocado-oil",
+      "displayName": "Avocado Oil",
+      "categoryId": "condiments",
+      "prompt": "Photorealistic grocery catalog cutout of tall clear bottle of golden-green avocado oil with a small avocado cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "lemons",
+      "assetName": "product-lemons",
+      "displayName": "Lemons",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of two bright yellow lemons, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "limes",
+      "assetName": "product-limes",
+      "displayName": "Limes",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of two bright green limes, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "lettuce",
+      "assetName": "product-lettuce",
+      "displayName": "Lettuce",
+      "categoryId": "produce",
+      "prompt": "Photorealistic grocery catalog cutout of fresh green head of lettuce, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "bread-loaf",
+      "assetName": "product-bread-loaf",
+      "displayName": "Bread",
+      "categoryId": "bakery",
+      "prompt": "Photorealistic grocery catalog cutout of sliced sandwich bread loaf, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "bagels",
+      "assetName": "product-bagels",
+      "displayName": "Bagels",
+      "categoryId": "bakery",
+      "prompt": "Photorealistic grocery catalog cutout of stack of plain bagels, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "tortillas",
+      "assetName": "product-tortillas",
+      "displayName": "Tortillas",
+      "categoryId": "bakery",
+      "prompt": "Photorealistic grocery catalog cutout of stack of flour tortillas, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "naan",
+      "assetName": "product-naan",
+      "displayName": "Naan",
+      "categoryId": "bakery",
+      "prompt": "Photorealistic grocery catalog cutout of warm bubbled naan flatbread, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "roti",
+      "assetName": "product-roti",
+      "displayName": "Roti",
+      "categoryId": "bakery",
+      "prompt": "Photorealistic grocery catalog cutout of round thin whole-wheat roti flatbread, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "paratha",
+      "assetName": "product-paratha",
+      "displayName": "Paratha",
+      "categoryId": "bakery",
+      "prompt": "Photorealistic grocery catalog cutout of flaky layered golden-brown paratha, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "pita",
+      "assetName": "product-pita",
+      "displayName": "Pita",
+      "categoryId": "bakery",
+      "prompt": "Photorealistic grocery catalog cutout of round pita bread pocket slightly open, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "chicken-breast",
+      "assetName": "product-chicken-breast",
+      "displayName": "Chicken",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of raw chicken breast fillets, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "chicken-thighs",
+      "assetName": "product-chicken-thighs",
+      "displayName": "Chicken Thighs",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of raw chicken thighs with skin, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "chicken-wings",
+      "assetName": "product-chicken-wings",
+      "displayName": "Chicken Wings",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of raw chicken wings clustered together, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "rotisserie-chicken",
+      "assetName": "product-rotisserie-chicken",
+      "displayName": "Rotisserie Chicken",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of whole cooked golden-brown rotisserie chicken in a simple clear deli tray, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "chicken-broth",
+      "assetName": "product-chicken-broth",
+      "displayName": "Chicken Broth",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of unbranded broth carton with a small bowl of clear golden chicken broth, no readable text, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "ground-beef",
+      "assetName": "product-ground-beef",
+      "displayName": "Ground Beef",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of portion of raw ground beef, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "steak",
+      "assetName": "product-steak",
+      "displayName": "Steak",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of raw beef steak cut, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "bacon",
+      "assetName": "product-bacon",
+      "displayName": "Bacon",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of strips of raw bacon, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "pork",
+      "assetName": "product-pork",
+      "displayName": "Pork",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of raw pork chops, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "sausage",
+      "assetName": "product-sausage",
+      "displayName": "Sausage",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of linked raw sausages, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "ground-turkey",
+      "assetName": "product-ground-turkey",
+      "displayName": "Ground Turkey",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of portion of raw ground turkey meat, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "turkey-breast",
+      "assetName": "product-turkey-breast",
+      "displayName": "Turkey Breast",
+      "categoryId": "meat",
+      "prompt": "Photorealistic grocery catalog cutout of sliced roasted turkey breast deli cuts, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "salmon",
+      "assetName": "product-salmon",
+      "displayName": "Salmon",
+      "categoryId": "seafood",
+      "prompt": "Photorealistic grocery catalog cutout of raw salmon fillet, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "shrimp",
+      "assetName": "product-shrimp",
+      "displayName": "Shrimp",
+      "categoryId": "seafood",
+      "prompt": "Photorealistic grocery catalog cutout of raw shrimp clustered, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "tuna-steak",
+      "assetName": "product-tuna-steak",
+      "displayName": "Tuna Steak",
+      "categoryId": "seafood",
+      "prompt": "Photorealistic grocery catalog cutout of raw tuna steak showing deep red flesh, clearly fish not beef, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "rice-basmati",
+      "assetName": "product-rice-basmati",
+      "displayName": "Basmati Rice",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of bag of long-grain basmati rice, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "rice-white",
+      "assetName": "product-rice-white",
+      "displayName": "Rice",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of clear plastic bag of white rice grains, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "rice-noodles",
+      "assetName": "product-rice-noodles",
+      "displayName": "Rice Noodles",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of bundle of thin dry white translucent rice noodles, clearly different from rice grains, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "rice-vinegar",
+      "assetName": "product-rice-vinegar",
+      "displayName": "Rice Vinegar",
+      "categoryId": "condiments",
+      "prompt": "Photorealistic grocery catalog cutout of clear bottle of pale rice vinegar with a small rice cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "rice-cakes",
+      "assetName": "product-rice-cakes",
+      "displayName": "Rice Cakes",
+      "categoryId": "snacks",
+      "prompt": "Photorealistic grocery catalog cutout of stack of round puffed rice cakes, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "pasta",
+      "assetName": "product-pasta",
+      "displayName": "Pasta",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of nest of dry spaghetti pasta, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "pasta-sauce",
+      "assetName": "product-pasta-sauce",
+      "displayName": "Pasta Sauce",
+      "categoryId": "condiments",
+      "prompt": "Photorealistic grocery catalog cutout of unbranded glass jar of red pasta sauce with basil and a small pasta cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "flour",
+      "assetName": "product-flour",
+      "displayName": "Flour",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of white paper flour bag with a scoop of flour, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "cereal",
+      "assetName": "product-cereal",
+      "displayName": "Cereal",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of bowl of breakfast cereal with flakes, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "soup",
+      "assetName": "product-soup",
+      "displayName": "Soup",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of open can of soup with steam cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "peanut-butter",
+      "assetName": "product-peanut-butter",
+      "displayName": "Peanut Butter",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of open jar of peanut butter with a knife, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "almond-butter",
+      "assetName": "product-almond-butter",
+      "displayName": "Almond Butter",
+      "categoryId": "pantry",
+      "prompt": "Photorealistic grocery catalog cutout of open jar of almond butter with visible almond pieces and whole almonds beside it, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "olive-oil",
+      "assetName": "product-olive-oil",
+      "displayName": "Olive Oil",
+      "categoryId": "condiments",
+      "prompt": "Photorealistic grocery catalog cutout of green glass bottle of olive oil, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "gochujang",
+      "assetName": "product-gochujang",
+      "displayName": "Gochujang",
+      "categoryId": "condiments",
+      "prompt": "Photorealistic grocery catalog cutout of squat red Korean paste tub with chili cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "kimchi",
+      "assetName": "product-kimchi",
+      "displayName": "Kimchi",
+      "categoryId": "deli",
+      "prompt": "Photorealistic grocery catalog cutout of bowl of red kimchi, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "hummus",
+      "assetName": "product-hummus",
+      "displayName": "Hummus",
+      "categoryId": "deli",
+      "prompt": "Photorealistic grocery catalog cutout of bowl of hummus with olive oil swirl, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "coffee",
+      "assetName": "product-coffee",
+      "displayName": "Coffee",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of bag of coffee beans with a coffee cup cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "coffee-creamer",
+      "assetName": "product-coffee-creamer",
+      "displayName": "Coffee Creamer",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of small unbranded creamer bottle beside a coffee cup with lightened coffee, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "tea",
+      "assetName": "product-tea",
+      "displayName": "Tea",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of box of tea bags with loose tea leaves, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "water",
+      "assetName": "product-water",
+      "displayName": "Water",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of clear plastic water bottle, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "coconut-water",
+      "assetName": "product-coconut-water",
+      "displayName": "Coconut Water",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of clear bottle of coconut water with a coconut half cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "orange-juice",
+      "assetName": "product-orange-juice",
+      "displayName": "Orange Juice",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of orange juice carton with orange cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "cranberry-juice",
+      "assetName": "product-cranberry-juice",
+      "displayName": "Cranberry Juice",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of bottle of deep red cranberry juice with cranberry cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "grape-juice",
+      "assetName": "product-grape-juice",
+      "displayName": "Grape Juice",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of bottle of purple grape juice with grape cluster cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "juice-boxes",
+      "assetName": "product-juice-boxes",
+      "displayName": "Juice Boxes",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of two small unbranded juice boxes with straws, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "beer",
+      "assetName": "product-beer",
+      "displayName": "Beer",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of amber glass beer bottle with condensation, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "root-beer",
+      "assetName": "product-root-beer",
+      "displayName": "Root Beer",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of unbranded dark root-beer soda bottle and small frothy soda mug, clearly a soft drink and not alcoholic beer, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "ginger-ale",
+      "assetName": "product-ginger-ale",
+      "displayName": "Ginger Ale",
+      "categoryId": "drinks",
+      "prompt": "Photorealistic grocery catalog cutout of unbranded pale-gold soda can with fresh ginger root visual cue, clearly a soft drink, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "ice-cream",
+      "assetName": "product-ice-cream",
+      "displayName": "Ice Cream",
+      "categoryId": "frozen",
+      "prompt": "Photorealistic grocery catalog cutout of ice cream scoop in a bowl, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "frozen-pizza",
+      "assetName": "product-frozen-pizza",
+      "displayName": "Frozen Pizza",
+      "categoryId": "frozen",
+      "prompt": "Photorealistic grocery catalog cutout of frozen pizza in an open box, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "pizza-rolls",
+      "assetName": "product-pizza-rolls",
+      "displayName": "Pizza Rolls",
+      "categoryId": "frozen",
+      "prompt": "Photorealistic grocery catalog cutout of plate of golden pizza rolls / pizza bites showing melted cheese, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "frozen-vegetables",
+      "assetName": "product-frozen-vegetables",
+      "displayName": "Frozen Vegetables",
+      "categoryId": "frozen",
+      "prompt": "Photorealistic grocery catalog cutout of bag of mixed frozen vegetables, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "chips",
+      "assetName": "product-chips",
+      "displayName": "Chips",
+      "categoryId": "snacks",
+      "prompt": "Photorealistic grocery catalog cutout of open bag of potato chips with chips spilling, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "granola-bars",
+      "assetName": "product-granola-bars",
+      "displayName": "Granola Bars",
+      "categoryId": "snacks",
+      "prompt": "Photorealistic grocery catalog cutout of stack of granola bars, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "paper-towels",
+      "assetName": "product-paper-towels",
+      "displayName": "Paper Towels",
+      "categoryId": "household",
+      "prompt": "Photorealistic grocery catalog cutout of roll of paper towels, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "toilet-paper",
+      "assetName": "product-toilet-paper",
+      "displayName": "Toilet Paper",
+      "categoryId": "household",
+      "prompt": "Photorealistic grocery catalog cutout of roll of toilet paper, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "dish-soap",
+      "assetName": "product-dish-soap",
+      "displayName": "Dish Soap",
+      "categoryId": "household",
+      "prompt": "Photorealistic grocery catalog cutout of bottle of dish soap with sponge cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "disinfecting-wipes",
+      "assetName": "product-disinfecting-wipes",
+      "displayName": "Disinfecting Wipes",
+      "categoryId": "household",
+      "prompt": "Photorealistic grocery catalog cutout of tub of disinfecting cleaning wipes with a wipe partially pulled out, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "toothpaste",
+      "assetName": "product-toothpaste",
+      "displayName": "Toothpaste",
+      "categoryId": "health",
+      "prompt": "Photorealistic grocery catalog cutout of toothpaste tube with toothbrush cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "shampoo",
+      "assetName": "product-shampoo",
+      "displayName": "Shampoo",
+      "categoryId": "health",
+      "prompt": "Photorealistic grocery catalog cutout of bottle of shampoo, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "conditioner",
+      "assetName": "product-conditioner",
+      "displayName": "Conditioner",
+      "categoryId": "health",
+      "prompt": "Photorealistic grocery catalog cutout of bottle of hair conditioner visually distinct from shampoo, soft pastel bottle, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "diapers",
+      "assetName": "product-diapers",
+      "displayName": "Diapers",
+      "categoryId": "baby",
+      "prompt": "Photorealistic grocery catalog cutout of stack of folded baby diapers, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "diaper-cream",
+      "assetName": "product-diaper-cream",
+      "displayName": "Diaper Cream",
+      "categoryId": "baby",
+      "prompt": "Photorealistic grocery catalog cutout of tube of diaper rash cream with a soft baby-care cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "baby-wipes",
+      "assetName": "product-baby-wipes",
+      "displayName": "Baby Wipes",
+      "categoryId": "baby",
+      "prompt": "Photorealistic grocery catalog cutout of package of baby wipes, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "dog-food",
+      "assetName": "product-dog-food",
+      "displayName": "Dog Food",
+      "categoryId": "pet",
+      "prompt": "Photorealistic grocery catalog cutout of brown dog food bag with bone icon and kibble bowl, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "cat-food",
+      "assetName": "product-cat-food",
+      "displayName": "Cat Food",
+      "categoryId": "pet",
+      "prompt": "Photorealistic grocery catalog cutout of cat food bag with fish cue and kibble bowl, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "pet-shampoo",
+      "assetName": "product-pet-shampoo",
+      "displayName": "Pet Shampoo",
+      "categoryId": "pet",
+      "prompt": "Photorealistic grocery catalog cutout of bottle of pet shampoo with a small paw-print cue, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    },
+    {
+      "productId": "flowers",
+      "assetName": "product-flowers",
+      "displayName": "Flowers",
+      "categoryId": "floral",
+      "prompt": "Photorealistic grocery catalog cutout of fresh flower bouquet with roses and tulips, accurate natural texture, centered on transparent background, soft studio contact shadow, readable at thumbnail size, no plate, no text, no brand",
+      "status": "needs_new_asset"
+    }
+  ]
+}

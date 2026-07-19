@@ -23,36 +23,41 @@ struct TabHeaderActionButton: View {
 }
 
 struct TabScreenHeader<Action: View>: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     let title: String
     var metadata: String?
     @ViewBuilder let action: () -> Action
 
+    private var usesCompactTitle: Bool {
+        DynamicTypeLayout.usesCompactScreenTitle(dynamicTypeSize)
+    }
+
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(title)
-                    .font(AppTypography.largeScreenTitle)
+            VStack(alignment: .leading, spacing: usesCompactTitle ? 4 : 6) {
+                Text(EssentialText.attributed(title))
+                    .font(AppTypography.topLevelScreenTitle(for: dynamicTypeSize))
                     .foregroundStyle(AppColors.ink)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.85)
+                    .essentialTextLayout(dynamicTypeSize: dynamicTypeSize, regularLineLimit: 2)
+                    .multilineTextAlignment(.leading)
 
                 if let metadata {
                     Text(metadata)
                         .font(AppTypography.metadata)
                         .foregroundStyle(AppColors.inkSecondary)
-                        .lineLimit(3)
-                        .minimumScaleFactor(0.9)
+                        .lineLimit(usesCompactTitle ? nil : 3)
                         .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
                 }
             }
-
-            Spacer(minLength: 0)
+            .frame(maxWidth: .infinity, alignment: .leading)
 
             action()
         }
         .adaptiveHorizontalPadding()
         .safeAreaPadding(.top, AppSpacing.topHeaderTopInset)
-        .padding(.bottom, AppSpacing.topHeaderBottomSpacing)
+        .padding(.bottom, usesCompactTitle ? 8 : AppSpacing.topHeaderBottomSpacing)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

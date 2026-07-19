@@ -344,12 +344,18 @@ enum GroupedSectionKind {
 
 /// Unified read-only group card for Store and Categories tabs.
 struct GroupedSummaryCard: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     let kind: GroupedSectionKind
     let itemCount: Int
     let items: [GroceryItem]
 
     private let horizontalPadding: CGFloat = 14
     private let iconSize: CGFloat = 44
+
+    private var usesAccessibilityLayout: Bool {
+        DynamicTypeLayout.usesAccessibilityLayout(dynamicTypeSize)
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -392,31 +398,62 @@ struct GroupedSummaryCard: View {
 
     @ViewBuilder
     private var groupHeader: some View {
-        HStack(alignment: .center, spacing: 12) {
-            groupIcon
+        if usesAccessibilityLayout {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(alignment: .top, spacing: 12) {
+                    groupIcon
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text(groupTitle)
-                    .font(AppTypography.cardTitle)
-                    .foregroundStyle(AppColors.ink)
-                    .lineLimit(1)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(EssentialText.attributed(groupTitle))
+                            .font(AppTypography.adaptiveCardTitle(for: dynamicTypeSize))
+                            .foregroundStyle(AppColors.ink)
+                            .essentialTextLayout(dynamicTypeSize: dynamicTypeSize, regularLineLimit: 2)
 
-                Text(statusLabel)
-                    .font(AppTypography.metadata)
-                    .foregroundStyle(AppColors.inkSecondary)
-                    .lineLimit(1)
+                        Text(statusLabel)
+                            .font(AppTypography.metadata)
+                            .foregroundStyle(AppColors.inkSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Image(systemName: AppIcons.chevron)
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(AppColors.inkSecondary)
+                        .padding(.top, 4)
+                }
 
                 if itemCount > 0 {
                     ProgressView(value: shoppingProgress)
                         .tint(AppColors.accentSuccess)
                 }
             }
+        } else {
+            HStack(alignment: .center, spacing: 12) {
+                groupIcon
 
-            Spacer(minLength: 8)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(groupTitle)
+                        .font(AppTypography.cardTitle)
+                        .foregroundStyle(AppColors.ink)
+                        .lineLimit(1)
 
-            Image(systemName: AppIcons.chevron)
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(AppColors.inkSecondary)
+                    Text(statusLabel)
+                        .font(AppTypography.metadata)
+                        .foregroundStyle(AppColors.inkSecondary)
+                        .lineLimit(1)
+
+                    if itemCount > 0 {
+                        ProgressView(value: shoppingProgress)
+                            .tint(AppColors.accentSuccess)
+                    }
+                }
+
+                Spacer(minLength: 8)
+
+                Image(systemName: AppIcons.chevron)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(AppColors.inkSecondary)
+            }
         }
     }
 

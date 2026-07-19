@@ -20,6 +20,17 @@ struct AppRootView: View {
 
     var body: some View {
         Group {
+            #if DEBUG
+            if Stage1ItemRowReviewLaunch.isRequested {
+                Stage1ItemRowReviewHarness(scene: Stage1ItemRowReviewLaunch.scene)
+            } else if hasCompletedOnboarding {
+                MainTabView()
+            } else {
+                OnboardingView {
+                    hasCompletedOnboarding = true
+                }
+            }
+            #else
             if hasCompletedOnboarding {
                 MainTabView()
             } else {
@@ -27,6 +38,7 @@ struct AppRootView: View {
                     hasCompletedOnboarding = true
                 }
             }
+            #endif
         }
         .preferredColorScheme(colorScheme)
         .onOpenURL { url in

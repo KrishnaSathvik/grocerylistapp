@@ -52,6 +52,10 @@
     "emoji": "🫒"
   },
   {
+    "keyword": "mung bean sprouts",
+    "emoji": "🌱"
+  },
+  {
     "keyword": "whole wheat bread",
     "emoji": "🍞"
   },
@@ -294,6 +298,10 @@
   {
     "keyword": "sweet potatoes",
     "emoji": "🍠"
+  },
+  {
+    "keyword": "yardlong beans",
+    "emoji": "🫘"
   },
   {
     "keyword": "sarson ka saag",
@@ -772,12 +780,20 @@
     "emoji": "🥬"
   },
   {
+    "keyword": "salad greens",
+    "emoji": "🥬"
+  },
+  {
     "keyword": "bottle gourd",
     "emoji": "🥒"
   },
   {
     "keyword": "bitter gourd",
     "emoji": "🥒"
+  },
+  {
+    "keyword": "chawli beans",
+    "emoji": "🫘"
   },
   {
     "keyword": "shimla mirch",
@@ -802,6 +818,14 @@
   {
     "keyword": "curry leaves",
     "emoji": "🍃"
+  },
+  {
+    "keyword": "methi leaves",
+    "emoji": "🍃"
+  },
+  {
+    "keyword": "moringa pods",
+    "emoji": "🌿"
   },
   {
     "keyword": "cream cheese",
@@ -1162,6 +1186,10 @@
   {
     "keyword": "green chili",
     "emoji": "🌶️"
+  },
+  {
+    "keyword": "fennel bulb",
+    "emoji": "🥬"
   },
   {
     "keyword": "fresh herbs",
@@ -1580,6 +1608,10 @@
     "emoji": "🍃"
   },
   {
+    "keyword": "drumsticks",
+    "emoji": "🌿"
+  },
+  {
     "keyword": "whole milk",
     "emoji": "🥛"
   },
@@ -1976,6 +2008,10 @@
     "emoji": "🥝"
   },
   {
+    "keyword": "java plum",
+    "emoji": "🫐"
+  },
+  {
     "keyword": "starfruit",
     "emoji": "⭐"
   },
@@ -2030,6 +2066,10 @@
   {
     "keyword": "ivy gourd",
     "emoji": "🥒"
+  },
+  {
+    "keyword": "sem phali",
+    "emoji": "🫘"
   },
   {
     "keyword": "aubergine",
@@ -2528,6 +2568,10 @@
     "emoji": "🌶️"
   },
   {
+    "keyword": "parsnips",
+    "emoji": "🥕"
+  },
+  {
     "keyword": "cilantro",
     "emoji": "🌿"
   },
@@ -2998,6 +3042,14 @@
   {
     "keyword": "pumpkin",
     "emoji": "🎃"
+  },
+  {
+    "keyword": "turnips",
+    "emoji": "🥕"
+  },
+  {
+    "keyword": "tindora",
+    "emoji": "🥒"
   },
   {
     "keyword": "sprouts",
@@ -3716,6 +3768,10 @@
     "emoji": "🫘"
   },
   {
+    "keyword": "sarson",
+    "emoji": "🥬"
+  },
+  {
     "keyword": "bathua",
     "emoji": "🥬"
   },
@@ -4130,6 +4186,10 @@
   {
     "keyword": "plums",
     "emoji": "🫐"
+  },
+  {
+    "keyword": "chiku",
+    "emoji": "🥝"
   },
   {
     "keyword": "jamun",
@@ -4694,6 +4754,10 @@
   {
     "keyword": "taro",
     "emoji": "🥔"
+  },
+  {
+    "keyword": "guar",
+    "emoji": "🫘"
   },
   {
     "keyword": "muli",

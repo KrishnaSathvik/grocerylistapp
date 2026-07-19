@@ -42,7 +42,7 @@ struct ItemMetadataChips: View {
     var body: some View {
         switch mode {
         case .full:
-            FullMetadataDisplay(item: item, inkColor: secondaryInk, isMuted: isMuted)
+            FullMetadataDisplay(item: item, inkColor: secondaryInk)
         case .hidden:
             EmptyView()
         case .categoryOnly:
@@ -91,7 +91,6 @@ struct ItemMetadataChips: View {
 private struct FullMetadataDisplay: View {
     let item: GroceryItem
     var inkColor: Color = AppColors.inkSecondary
-    var isMuted: Bool = false
 
     private var categoryLabel: String {
         CategoryService.label(for: item.categoryId)
@@ -104,14 +103,13 @@ private struct FullMetadataDisplay: View {
     }
 
     var body: some View {
+        // fixedSize options only appear when they fully fit. The final fallback must
+        // truncate — AdaptiveItemRowLayout does not clip, and a fixedSize last child
+        // was painting category text under the quantity stepper.
         ViewThatFits(in: .horizontal) {
             metadataLine(includeStore: true)
             metadataLine(includeStore: false)
-            CategoryCompactPill(
-                categoryId: item.categoryId,
-                label: categoryLabel,
-                isMuted: isMuted
-            )
+            truncatingCategoryLabel
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityLabel(metadataAccessibilityLabel)
@@ -130,6 +128,15 @@ private struct FullMetadataDisplay: View {
                 .foregroundStyle(inkColor)
                 .fixedSize(horizontal: true, vertical: false)
         }
+    }
+
+    private var truncatingCategoryLabel: some View {
+        Text(categoryLabel)
+            .font(AppTypography.metadata)
+            .foregroundStyle(inkColor)
+            .lineLimit(1)
+            .truncationMode(.tail)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var metadataAccessibilityLabel: String {

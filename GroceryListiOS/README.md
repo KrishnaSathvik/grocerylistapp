@@ -80,7 +80,7 @@ Natural-language parsing when you add items:
 - **Share active list** — native share sheet with formatted text
 - **QR code** — scannable encode of list payload (up to 50 items)
 - **Import shared list** — scan QR, paste text, or open `#import=` web links
-- **Web-compatible codec** (`ListCodec`) — `GLIST1:` payload + gzip, matches [grocerylistapp.vercel.app](https://grocerylistapp.vercel.app/)
+- **Web-compatible codec** (`ListCodec`) — `GLIST1:` payload + gzip, matches [smartgrocerylists.app](https://smartgrocerylists.app/)
 - **Deep links** — `onOpenURL` import flow with add-or-replace confirmation
 - **Local JSON backup & restore** — export/import all lists via Files
 
@@ -387,7 +387,7 @@ See `PRODUCT_ASSET_TRACKER.md` for live counts. Distinguish **catalog coverage**
 
 - **Prefix:** `GLIST1:`
 - **Payload:** JSON list + items, optionally compressed
-- **Web URL:** `https://grocerylistapp.vercel.app/#import=<payload>`
+- **Web URL:** `https://smartgrocerylists.app/app?import=<payload>`
 - **Limit:** 50 items per share link
 
 ### Import paths
@@ -461,18 +461,20 @@ Use these URLs in App Store Connect (not a raw email address for Support URL):
 
 | Field | URL |
 |-------|-----|
-| **Marketing URL** | `https://grocerylistapp.vercel.app/home` |
-| **Support URL** | `https://grocerylistapp.vercel.app/support` |
-| **Privacy Policy URL** | `https://grocerylistapp.vercel.app/privacy` |
+| **Marketing URL** | `https://smartgrocerylists.app/` |
+| **Support URL** | `https://smartgrocerylists.app/support` |
+| **Privacy Policy URL** | `https://smartgrocerylists.app/privacy` |
 
 ### App Review notes (suggested)
 
 ```text
-Grocery List is a local-first grocery list app. No account or login is required.
+Groceries — Smart Lists is a local-first grocery list app. No account or login is required.
 
-Support: https://grocerylistapp.vercel.app/support
-Privacy: https://grocerylistapp.vercel.app/privacy
+Support: https://smartgrocerylists.app/support
+Privacy: https://smartgrocerylists.app/privacy
 Support email: grocerylistapp.support@gmail.com
+
+Camera permission is used only to scan QR codes when importing a shared list. You can also import by pasting text or opening a share link.
 
 To test sharing: create a list, tap Share, and scan the QR code on another device or import the shared text from More → Import Shared List.
 ```

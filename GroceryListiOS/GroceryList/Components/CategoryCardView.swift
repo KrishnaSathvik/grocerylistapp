@@ -1,13 +1,15 @@
 import SwiftUI
 
 struct CategoryCardView: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     let categoryId: String
     let label: String
     let itemCount: Int
     var isExpanded: Bool = false
 
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(alignment: .top, spacing: 14) {
             CategoryIconView(
                 categoryId: categoryId,
                 containerSize: 44,
@@ -15,20 +17,21 @@ struct CategoryCardView: View {
             )
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(label)
-                    .font(AppTypography.cardTitle)
+                Text(EssentialText.attributed(label))
+                    .font(AppTypography.adaptiveCardTitle(for: dynamicTypeSize))
                     .foregroundStyle(AppColors.ink)
-                    .lineLimit(1)
+                    .essentialTextLayout(dynamicTypeSize: dynamicTypeSize, regularLineLimit: 1)
                 Text("\(itemCount) item\(itemCount == 1 ? "" : "s")")
                     .font(AppTypography.metadata)
                     .foregroundStyle(AppColors.inkSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
-
-            Spacer(minLength: 0)
+            .frame(maxWidth: .infinity, alignment: .leading)
 
             Image(systemName: isExpanded ? "chevron.up" : AppIcons.chevron)
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundStyle(AppColors.inkSecondary)
+                .frame(width: AppSpacing.minTapTarget, height: AppSpacing.minTapTarget, alignment: .topTrailing)
         }
         .appCard()
     }
@@ -41,12 +44,14 @@ struct CategoryCardView: View {
 }
 
 struct CategorySectionHeader: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     let categoryId: String
     let label: String
     let itemCount: Int
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(alignment: .top, spacing: 12) {
             CategoryIconView(
                 categoryId: categoryId,
                 containerSize: 36,
@@ -54,13 +59,14 @@ struct CategorySectionHeader: View {
             )
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(label)
-                    .font(AppTypography.cardTitle)
+                Text(EssentialText.attributed(label))
+                    .font(AppTypography.adaptiveCardTitle(for: dynamicTypeSize))
                     .foregroundStyle(AppColors.ink)
-                    .lineLimit(1)
+                    .essentialTextLayout(dynamicTypeSize: dynamicTypeSize, regularLineLimit: 1)
                 Text("\(itemCount) item\(itemCount == 1 ? "" : "s")")
                     .font(AppTypography.metadata)
                     .foregroundStyle(AppColors.inkSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
             Spacer(minLength: 0)

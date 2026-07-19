@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import SwiftData
 
@@ -7,28 +8,32 @@ enum ProduceReviewSeed {
     static let launchArgument = "-B1ProduceReview"
     static let listName = "B1 Produce Review"
 
-    /// Representative Phase B1 items, with store phrases so Store grouping is meaningful.
+    /// Stage 1 / B1 acceptance names plus long titles for content-fit review.
+    /// Store phrases keep Store grouping meaningful.
+    /// Gate names are ordered near the top so first-viewport screenshots cover them.
     static let reviewLines: [String] = [
-        "Mango from Walmart",
         "Orange from Walmart",
         "Grapes from Walmart",
-        "Strawberries from Costco",
-        "Watermelon from Costco",
-        "Papaya from Walmart",
+        "Cabbage from Walmart",
+        "Broccoli from Costco",
         "Cucumber from Walmart",
         "Zucchini from Walmart",
-        "Broccoli from Costco",
+        "Eggplant from Indian Bazaar",
+        "Mushrooms from Costco",
+        "Strawberries from Costco",
+        "Watermelon from Costco",
+        "Chicken drumsticks from Costco",
+        "Extra virgin olive oil from Walmart",
+        "Unsweetened vanilla almond milk from Costco",
+        "Mango from Walmart",
+        "Papaya from Walmart",
         "Cauliflower from Costco",
         "Carrots from Walmart",
         "Sweet potatoes from Walmart",
         "Bell peppers from Walmart",
         "Green chilies from Indian Bazaar",
-        "Eggplant from Indian Bazaar",
-        "Mushrooms from Costco",
-        "Cabbage from Walmart",
         "Okra from Indian Bazaar",
         "Lauki from Indian Bazaar",
-        "Chicken drumsticks from Costco",
     ]
 
     static var isRequested: Bool {
@@ -59,16 +64,15 @@ enum ProduceReviewSeed {
             GroceryItemService.addItems(name: line, to: list, context: context)
         }
 
-        // Mark two items completed to review opacity / saturation treatment.
+        // Mark two trailing filler items completed (keep gate names in TO GET).
         let sorted = list.items.sorted { $0.sortOrder < $1.sortOrder }
-        if let first = sorted.first {
-            _ = GroceryItemService.toggleComplete(first, context: context)
-        }
-        if sorted.count > 5 {
-            _ = GroceryItemService.toggleComplete(sorted[5], context: context)
+        if sorted.count >= 2 {
+            _ = GroceryItemService.toggleComplete(sorted[sorted.count - 1], context: context)
+            _ = GroceryItemService.toggleComplete(sorted[sorted.count - 2], context: context)
         }
 
         ActiveListResolver.setActive(list)
         return list
     }
 }
+#endif

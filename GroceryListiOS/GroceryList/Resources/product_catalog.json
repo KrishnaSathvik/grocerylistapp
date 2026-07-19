@@ -175,6 +175,26 @@
     ]
   },
   {
+    "id": "heavy-cream",
+    "displayName": "Heavy Cream",
+    "assetName": "product-heavy-cream",
+    "categoryId": "dairy",
+    "keywords": [
+      "heavy whipping cream",
+      "whipping cream",
+      "heavy cream"
+    ]
+  },
+  {
+    "id": "sour-cream",
+    "displayName": "Sour Cream",
+    "assetName": "product-sour-cream",
+    "categoryId": "dairy",
+    "keywords": [
+      "sour cream"
+    ]
+  },
+  {
     "id": "yogurt",
     "displayName": "Yogurt",
     "assetName": "product-yogurt",
@@ -212,7 +232,6 @@
     "assetName": "product-apples",
     "categoryId": "produce",
     "keywords": [
-      "custard apple",
       "green apple",
       "wood apple",
       "apples",
@@ -407,7 +426,6 @@
     "categoryId": "produce",
     "keywords": [
       "iceberg lettuce",
-      "spring mix",
       "lettuce",
       "romaine"
     ]
@@ -798,7 +816,6 @@
     "assetName": "product-pumpkin",
     "categoryId": "produce",
     "keywords": [
-      "pumpkin seeds",
       "pumpkin",
       "kaddu"
     ]
@@ -824,6 +841,379 @@
       "bottle gourd",
       "lauki",
       "ghia"
+    ]
+  },
+  {
+    "id": "kale",
+    "displayName": "Kale",
+    "assetName": "product-kale",
+    "categoryId": "produce",
+    "keywords": [
+      "kale"
+    ]
+  },
+  {
+    "id": "arugula",
+    "displayName": "Arugula",
+    "assetName": "product-arugula",
+    "categoryId": "produce",
+    "keywords": [
+      "arugula",
+      "rocket"
+    ]
+  },
+  {
+    "id": "bok-choy",
+    "displayName": "Bok Choy",
+    "assetName": "product-bok-choy",
+    "categoryId": "produce",
+    "keywords": [
+      "bok choy",
+      "bok-choy",
+      "pak choi",
+      "bokchoy"
+    ]
+  },
+  {
+    "id": "brussels-sprouts",
+    "displayName": "Brussels Sprouts",
+    "assetName": "product-brussels-sprouts",
+    "categoryId": "produce",
+    "keywords": [
+      "brussels sprouts",
+      "brussels-sprouts",
+      "brussel sprouts",
+      "brussels sprout"
+    ]
+  },
+  {
+    "id": "mixed-greens",
+    "displayName": "Mixed Greens",
+    "assetName": "product-mixed-greens",
+    "categoryId": "produce",
+    "keywords": [
+      "mixed greens",
+      "salad greens",
+      "spring mix",
+      "salad mix"
+    ]
+  },
+  {
+    "id": "bean-sprouts",
+    "displayName": "Bean Sprouts",
+    "assetName": "product-bean-sprouts",
+    "categoryId": "produce",
+    "keywords": [
+      "mung bean sprouts",
+      "bean sprouts",
+      "mung sprouts",
+      "bean sprout"
+    ]
+  },
+  {
+    "id": "leeks",
+    "displayName": "Leeks",
+    "assetName": "product-leeks",
+    "categoryId": "produce",
+    "keywords": [
+      "leeks",
+      "leek"
+    ]
+  },
+  {
+    "id": "fennel",
+    "displayName": "Fennel",
+    "assetName": "product-fennel",
+    "categoryId": "produce",
+    "keywords": [
+      "fennel bulb",
+      "fennel"
+    ]
+  },
+  {
+    "id": "parsnips",
+    "displayName": "Parsnips",
+    "assetName": "product-parsnips",
+    "categoryId": "produce",
+    "keywords": [
+      "parsnips",
+      "parsnip"
+    ]
+  },
+  {
+    "id": "turnips",
+    "displayName": "Turnips",
+    "assetName": "product-turnips",
+    "categoryId": "produce",
+    "keywords": [
+      "turnips",
+      "turnip"
+    ]
+  },
+  {
+    "id": "basil",
+    "displayName": "Basil",
+    "assetName": "product-basil",
+    "categoryId": "produce",
+    "keywords": [
+      "basil",
+      "tulsi"
+    ]
+  },
+  {
+    "id": "mint",
+    "displayName": "Mint",
+    "assetName": "product-mint",
+    "categoryId": "produce",
+    "keywords": [
+      "pudina",
+      "mint"
+    ]
+  },
+  {
+    "id": "parsley",
+    "displayName": "Parsley",
+    "assetName": "product-parsley",
+    "categoryId": "produce",
+    "keywords": [
+      "parsley"
+    ]
+  },
+  {
+    "id": "dill",
+    "displayName": "Dill",
+    "assetName": "product-dill",
+    "categoryId": "produce",
+    "keywords": [
+      "dill weed",
+      "dill",
+      "suva"
+    ]
+  },
+  {
+    "id": "rosemary",
+    "displayName": "Rosemary",
+    "assetName": "product-rosemary",
+    "categoryId": "produce",
+    "keywords": [
+      "rosemary"
+    ]
+  },
+  {
+    "id": "thyme",
+    "displayName": "Thyme",
+    "assetName": "product-thyme",
+    "categoryId": "produce",
+    "keywords": [
+      "thyme"
+    ]
+  },
+  {
+    "id": "curry-leaves",
+    "displayName": "Curry Leaves",
+    "assetName": "product-curry-leaves",
+    "categoryId": "produce",
+    "keywords": [
+      "curry leaves",
+      "curry leaf",
+      "kadi patta"
+    ]
+  },
+  {
+    "id": "fenugreek-leaves",
+    "displayName": "Fenugreek Leaves",
+    "assetName": "product-fenugreek-leaves",
+    "categoryId": "produce",
+    "keywords": [
+      "fenugreek leaves",
+      "methi leaves",
+      "kasuri methi",
+      "fresh methi",
+      "methi"
+    ]
+  },
+  {
+    "id": "mustard-greens",
+    "displayName": "Mustard Greens",
+    "assetName": "product-mustard-greens",
+    "categoryId": "produce",
+    "keywords": [
+      "mustard greens",
+      "sarson ka saag",
+      "sarson ka tel",
+      "sarson"
+    ]
+  },
+  {
+    "id": "bitter-gourd",
+    "displayName": "Bitter Gourd",
+    "assetName": "product-bitter-gourd",
+    "categoryId": "produce",
+    "keywords": [
+      "bitter gourd",
+      "bitter melon",
+      "karela"
+    ]
+  },
+  {
+    "id": "ridge-gourd",
+    "displayName": "Ridge Gourd",
+    "assetName": "product-ridge-gourd",
+    "categoryId": "produce",
+    "keywords": [
+      "ridge gourd",
+      "turai",
+      "luffa",
+      "tori"
+    ]
+  },
+  {
+    "id": "ivy-gourd",
+    "displayName": "Ivy Gourd",
+    "assetName": "product-ivy-gourd",
+    "categoryId": "produce",
+    "keywords": [
+      "ivy gourd",
+      "tindora",
+      "tendli"
+    ]
+  },
+  {
+    "id": "pointed-gourd",
+    "displayName": "Pointed Gourd",
+    "assetName": "product-pointed-gourd",
+    "categoryId": "produce",
+    "keywords": [
+      "pointed gourd",
+      "parwal",
+      "parval"
+    ]
+  },
+  {
+    "id": "taro",
+    "displayName": "Taro",
+    "assetName": "product-taro",
+    "categoryId": "produce",
+    "keywords": [
+      "colocasia",
+      "taro",
+      "arbi"
+    ]
+  },
+  {
+    "id": "cluster-beans",
+    "displayName": "Cluster Beans",
+    "assetName": "product-cluster-beans",
+    "categoryId": "produce",
+    "keywords": [
+      "cluster beans",
+      "cluster bean",
+      "gavar",
+      "guar"
+    ]
+  },
+  {
+    "id": "long-beans",
+    "displayName": "Long Beans",
+    "assetName": "product-long-beans",
+    "categoryId": "produce",
+    "keywords": [
+      "yardlong beans",
+      "chawli beans",
+      "long beans",
+      "long bean",
+      "chawli"
+    ]
+  },
+  {
+    "id": "flat-beans",
+    "displayName": "Flat Beans",
+    "assetName": "product-flat-beans",
+    "categoryId": "produce",
+    "keywords": [
+      "flat beans",
+      "flat bean",
+      "sem phali",
+      "sem"
+    ]
+  },
+  {
+    "id": "drumsticks-moringa",
+    "displayName": "Drumsticks (Moringa)",
+    "assetName": "product-drumsticks-moringa",
+    "categoryId": "produce",
+    "keywords": [
+      "moringa drumstick",
+      "moringa pods",
+      "drumsticks",
+      "drumstick",
+      "moringa",
+      "sahjan"
+    ]
+  },
+  {
+    "id": "jackfruit",
+    "displayName": "Jackfruit",
+    "assetName": "product-jackfruit",
+    "categoryId": "produce",
+    "keywords": [
+      "jackfruit",
+      "kathal"
+    ]
+  },
+  {
+    "id": "guava",
+    "displayName": "Guava",
+    "assetName": "product-guava",
+    "categoryId": "produce",
+    "keywords": [
+      "guava",
+      "amrud"
+    ]
+  },
+  {
+    "id": "amla",
+    "displayName": "Amla",
+    "assetName": "product-amla",
+    "categoryId": "produce",
+    "keywords": [
+      "indian gooseberry",
+      "Indian gooseberry",
+      "amla"
+    ]
+  },
+  {
+    "id": "custard-apple",
+    "displayName": "Custard Apple",
+    "assetName": "product-custard-apple",
+    "categoryId": "produce",
+    "keywords": [
+      "custard apple",
+      "sitaphal",
+      "sharifa"
+    ]
+  },
+  {
+    "id": "sapota",
+    "displayName": "Sapota",
+    "assetName": "product-sapota",
+    "categoryId": "produce",
+    "keywords": [
+      "sapodilla",
+      "sapota",
+      "chikoo",
+      "chiku"
+    ]
+  },
+  {
+    "id": "jamun",
+    "displayName": "Jamun",
+    "assetName": "product-jamun",
+    "categoryId": "produce",
+    "keywords": [
+      "black plum",
+      "java plum",
+      "jamun"
     ]
   },
   {

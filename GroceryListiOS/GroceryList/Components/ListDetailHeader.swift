@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ListDetailHeader: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     let listName: String
     let lists: [GroceryList]
     var canClearCompleted: Bool = false
@@ -15,63 +17,18 @@ struct ListDetailHeader: View {
 
     @State private var showListOptions = false
 
+    private var usesStackedHeader: Bool {
+        DynamicTypeLayout.usesStackedListHeader(dynamicTypeSize)
+    }
+
     var body: some View {
-        ZStack {
-            HStack {
-                Button(action: onBack) {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(AppColors.ink)
-                        .frame(width: 44, height: 44, alignment: .leading)
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Back to lists")
-
-                Spacer(minLength: 0)
-
-                Button(action: onShareList) {
-                    Image(systemName: AppIcons.share)
-                        .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(AppColors.ink)
-                        .frame(width: 44, height: 44)
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Share list")
-
-                Button {
-                    showListOptions = true
-                } label: {
-                    Image(systemName: AppIcons.more)
-                        .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(AppColors.ink)
-                        .frame(width: 44, height: 44, alignment: .trailing)
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("List options")
-                .accessibilityHint("Rename, delete, or manage completed items")
+        Group {
+            if usesStackedHeader {
+                stackedHeader
+            } else {
+                compactHeader
             }
-
-            Menu {
-                ForEach(lists) { other in
-                    Button(other.name) {
-                        onSelectList(other)
-                    }
-                }
-            } label: {
-                HStack(spacing: 4) {
-                    Text(listName)
-                        .font(AppTypography.navTitle)
-                        .foregroundStyle(AppColors.ink)
-                        .lineLimit(1)
-                    Image(systemName: "chevron.down")
-                        .font(AppTypography.badge)
-                        .foregroundStyle(AppColors.inkSecondary)
-                }
-            }
-            .accessibilityLabel("Current list, \(listName)")
-            .accessibilityHint("Opens list picker")
         }
-        .frame(height: 44)
         .sheet(isPresented: $showListOptions) {
             ListOptionsSheet(
                 showCompletedItems: showCompletedItems,
@@ -95,6 +52,94 @@ struct ListDetailHeader: View {
             )
         }
     }
+
+    private var compactHeader: some View {
+        HStack(alignment: .center, spacing: 4) {
+            backButton
+            listPickerLabel(lineLimit: 1)
+                .frame(maxWidth: .infinity)
+            shareButton
+            moreButton
+        }
+        .frame(minHeight: 44)
+    }
+
+    private var stackedHeader: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 4) {
+                backButton
+                Spacer(minLength: 0)
+                shareButton
+                moreButton
+            }
+            listPickerLabel(lineLimit: 2)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 4)
+        }
+    }
+
+    private var backButton: some View {
+        Button(action: onBack) {
+            Image(systemName: "chevron.left")
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(AppColors.ink)
+                .frame(width: 44, height: 44, alignment: .leading)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Back to lists")
+    }
+
+    private var shareButton: some View {
+        Button(action: onShareList) {
+            Image(systemName: AppIcons.share)
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(AppColors.ink)
+                .frame(width: 44, height: 44)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Share list")
+    }
+
+    private var moreButton: some View {
+        Button {
+            showListOptions = true
+        } label: {
+            Image(systemName: AppIcons.more)
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(AppColors.ink)
+                .frame(width: 44, height: 44, alignment: .trailing)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("List options")
+        .accessibilityHint("Rename, delete, or manage completed items")
+    }
+
+    private func listPickerLabel(lineLimit: Int) -> some View {
+        Menu {
+            ForEach(lists) { other in
+                Button(other.name) {
+                    onSelectList(other)
+                }
+            }
+        } label: {
+            HStack(spacing: 4) {
+                Text(EssentialText.attributed(listName))
+                    .font(AppTypography.navTitle)
+                    .foregroundStyle(AppColors.ink)
+                    .lineLimit(lineLimit)
+                    .multilineTextAlignment(usesStackedHeader ? .leading : .center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .layoutPriority(1)
+                Image(systemName: "chevron.down")
+                    .font(AppTypography.badge)
+                    .foregroundStyle(AppColors.inkSecondary)
+            }
+            .frame(maxWidth: .infinity, alignment: usesStackedHeader ? .leading : .center)
+            .contentShape(Rectangle())
+        }
+        .accessibilityLabel("Current list, \(listName)")
+        .accessibilityHint("Opens list picker")
+    }
 }
 
 private struct ListOptionsSheet: View {
@@ -111,11 +156,7 @@ private struct ListOptionsSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 0) {
-                    optionRow(
-                        title: "Rename list",
-                        systemImage: "pencil",
-                        action: onRename
-                    )
+                    optionRow(title: "Rename list", systemImage: "pencil", action: onRename)
                     optionRow(
                         title: showCompletedItems ? "Hide Completed Items" : "Show Completed Items",
                         systemImage: showCompletedItems ? "eye.slash" : "eye",
@@ -156,9 +197,9 @@ private struct ListOptionsSheet: View {
     }
 
     private var listOptionsSheetHeight: CGFloat {
-        var rows: CGFloat = 3 // rename, completed visibility, delete
+        var rows: CGFloat = 3
         if canClearCompleted { rows += 1 }
-        return 56 + (rows * 52) + 24 // nav bar + rows + padding
+        return 56 + (rows * 52) + 24
     }
 
     private func optionRow(
@@ -173,11 +214,9 @@ private struct ListOptionsSheet: View {
                     .font(.system(size: 17, weight: .medium))
                     .frame(width: 24)
                     .foregroundStyle(isDestructive ? AppColors.accentDestructive : AppColors.accentPrimary)
-
                 Text(title)
                     .font(AppTypography.itemTitle)
                     .foregroundStyle(isDestructive ? AppColors.accentDestructive : AppColors.ink)
-
                 Spacer(minLength: 0)
             }
             .adaptiveHorizontalPadding()
@@ -188,3 +227,39 @@ private struct ListOptionsSheet: View {
         .accessibilityLabel(title)
     }
 }
+
+#if DEBUG
+#Preview("Header · Large") {
+    ListDetailHeaderPreview(dynamicTypeSize: .large, name: "B1 Produce Review")
+}
+
+#Preview("Header · Accessibility Large") {
+    ListDetailHeaderPreview(dynamicTypeSize: .accessibility1, name: "B1 Produce Review")
+}
+
+#Preview("Header · Long name") {
+    ListDetailHeaderPreview(dynamicTypeSize: .accessibility3, name: "A Very Long Grocery List Name")
+}
+
+private struct ListDetailHeaderPreview: View {
+    let dynamicTypeSize: DynamicTypeSize
+    let name: String
+
+    var body: some View {
+        ListDetailHeader(
+            listName: name,
+            lists: [GroceryList(name: name), GroceryList(name: "Weekly Groceries")],
+            onBack: {},
+            onSelectList: { _ in },
+            onShareList: {},
+            onRenameList: {},
+            onToggleCompletedVisibility: {},
+            onClearCompleted: {},
+            onDeleteList: {}
+        )
+        .padding()
+        .environment(\.dynamicTypeSize, dynamicTypeSize)
+        .background(AppColors.backgroundGrouped)
+    }
+}
+#endif

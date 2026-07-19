@@ -1,0 +1,7 @@
+device=iPhone 17 Pro Max
+udid=9099927E-D0E0-4822-A3A1-89E7AF19B109
+slug=iphone17promax
+captured_at=2026-07-18T01:37:07Z
+/Users/krishnasathvikmantripragada/grocery-list-app/GroceryListiOS/DesignReferences/dynamic-type-review/iphone17promax-size-large-light-list-detail.png
+  pixelWidth: 1320
+  pixelHeight: 2868

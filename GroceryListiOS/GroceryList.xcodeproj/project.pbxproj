@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B2C3D4E5F60718293A4B5C6D /* ProduceReviewSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* ProduceReviewSeed.swift */; };
+		C3D4E5F60718293A4B5C6D7E /* FinalCatalogReviewSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5060718293A4B5C /* FinalCatalogReviewSeed.swift */; };
 		03BDCA09405F22EA3E0145E5 /* ItemInputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B749CD621F729E167F5E1 /* ItemInputParser.swift */; };
 		043695907C0D47281DD09700 /* QuantityParserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E243F8A8756427E41252B /* QuantityParserServiceTests.swift */; };
 		0692E1F8EF5FE32880E1D01B /* GroceryCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48836CC7547D62A065FFFA0 /* GroceryCatalog.swift */; };
@@ -43,6 +44,7 @@
 		363B02B19B1A3EB93757F06E /* GroceryIllustrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9BC698B9448B333AEFCA3 /* GroceryIllustrations.swift */; };
 		36B30EFC4E6BFC48B9ADE681 /* ListDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4959EDFC736304F76F002 /* ListDetailHeader.swift */; };
 		36E1C946009FD31E35CE75A5 /* ConfigurableItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BC95E36D083F73D221D03 /* ConfigurableItemRow.swift */; };
+		A1B2C3D4E5F6708192A3B4C1 /* Stage1ItemRowReviewHarness.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6708192A3B4C2 /* Stage1ItemRowReviewHarness.swift */; };
 		3ACC820CEC6FF7D5A65E7D31 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E630FB1C0D033A21A9E53D /* XCTest.framework */; };
 		3C4D5E6F708192A3B4C5D6E7 /* ShareLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E6F708192A3B4C5D6E7F8 /* ShareLinkService.swift */; };
 		3CE9A70FFC58616E0C22FFC9 /* CategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89297178BBB784A42BDB1647 /* CategoryDetailView.swift */; };
@@ -106,6 +108,9 @@
 		9C70DCFAF35C204DDE3477FC /* EditItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54567CA9D5D4330CAF2410AF /* EditItemSheet.swift */; };
 		A0668CED43CCD8FDA2E0E31C /* CategoryLearningServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFB32991CF20FE4DCB5249 /* CategoryLearningServiceTests.swift */; };
 		A192C6472C266A26B6B4FCCA /* V1PolishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBC6D56B13A97BCEE7E2380 /* V1PolishTests.swift */; };
+		E8B2C3D4F5061728394A5B6D /* DynamicTypeLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2C3D4F5061728394A5B6C /* DynamicTypeLayoutTests.swift */; };
+		F1A2B3C4D5E60718293A4B5C6 /* ItemRowFitGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E60718293A4B5C5 /* ItemRowFitGeometryTests.swift */; };
+		A7C4E19F2B8D4061E5F0A9C2 /* ItemMetadataChipsFittingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C4E19F2B8D4061E5F0A9C1 /* ItemMetadataChipsFittingTests.swift */; };
 		A46F963C17A51FB926E304A8 /* QuickAddHelperText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1CC1A6A498CCF0D8E9D34 /* QuickAddHelperText.swift */; };
 		A49232AF2F44F5F42CF58568 /* ImportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E6EBD30EA10AAFB48F7F4 /* ImportCoordinator.swift */; };
 		A61BBDE196F19123E2794DE7 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285D600DDB2F68E97FBB5F1 /* SettingsRow.swift */; };
@@ -114,6 +119,7 @@
 		B023003120951354B78907E8 /* StoreBranding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2756729C7D0C7BAB2A0B15B /* StoreBranding.swift */; };
 		B71AB6874497A4A767699761 /* QuantityParserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCA46A529F96ADD8ADE879E /* QuantityParserService.swift */; };
 		B80172B627A229E30FEE6A50 /* asset_manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = EC318F39EC92BAC2E793EFEC /* asset_manifest.json */; };
+		C8D4E19F2B8D4061E5F0B1A2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C8D4E19F2B8D4061E5F0B1A1 /* PrivacyInfo.xcprivacy */; };
 		B940559AFF937D16A87549AB /* ShareListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C614D34FE97DCA7B5B2E8 /* ShareListSheet.swift */; };
 		B985E6D0A0F411E089281A07 /* UndoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C0E879C2646BD1E3A49A62 /* UndoBanner.swift */; };
 		BCA2F29ED371AE910F9FD186 /* QRCodeDisplaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84C17E40822302A0F87972 /* QRCodeDisplaySheet.swift */; };
@@ -151,6 +157,11 @@
 		F2CA3A111D55EC5AC7E3521F /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5F0AAD2C1F1CAEB359DD7 /* FeedbackView.swift */; };
 		F32D22281946EC4D1F386853 /* AddItemDetectionPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3FA05AAFFD149D6E4A55B /* AddItemDetectionPreview.swift */; };
 		F709C12F07FF847D9A97BA82 /* AppTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8846FEB3DBE17A2726AAF9F /* AppTypography.swift */; };
+		D7A1B2C3E4F5061728394A5C /* DynamicTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1B2C3E4F5061728394A5B /* DynamicTypeLayout.swift */; };
+		E2F3A4B5C6D708192A3B4C5D /* ItemRowFitGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3A4B5C6D708192A3B4C5C /* ItemRowFitGeometry.swift */; };
+		B4C5D6E7F8091A2B3C4D5E01 /* ItemRowLayoutRoles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5D6E7F8091A2B3C4D5E00 /* ItemRowLayoutRoles.swift */; };
+		A3B4C5D6E7F8091A2B3C4D5E /* AdaptiveItemRowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4C5D6E7F8091A2B3C4D5D /* AdaptiveItemRowLayout.swift */; };
+		F5A6B7C8D9E0012A3B4C5D6F /* EssentialWordWrappingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6B7C8D9E0012A3B4C5D6E /* EssentialWordWrappingText.swift */; };
 		F79302ECEC66B0579290110A /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB36360837B965A6594F3A1 /* QRCodeGenerator.swift */; };
 		F861C09D3D38021112816D91 /* CreateListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D734FE3FE913394A108CFC7 /* CreateListSheet.swift */; };
 		FADBABD5351BA22FB52B3167 /* GroceryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFFAEB54C9FC2085C539E0A /* GroceryStore.swift */; };
@@ -171,6 +182,7 @@
 
 /* Begin PBXFileReference section */
 		A1B2C3D4E5F60718293A4B5C /* ProduceReviewSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProduceReviewSeed.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5060718293A4B5C /* FinalCatalogReviewSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCatalogReviewSeed.swift; sourceTree = "<group>"; };
 		0106B8CF613C1757649F1BC6 /* ListCodecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCodecTests.swift; sourceTree = "<group>"; };
 		0285D600DDB2F68E97FBB5F1 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		044EE79AFA9BD8C2DE6C25E2 /* ListImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListImportService.swift; sourceTree = "<group>"; };
@@ -184,6 +196,9 @@
 		1944948265A6F5CCD844927B /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
 		1B7F3BE61034696535DEE802 /* AuditFixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditFixTests.swift; sourceTree = "<group>"; };
 		1BBC6D56B13A97BCEE7E2380 /* V1PolishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V1PolishTests.swift; sourceTree = "<group>"; };
+		E8B2C3D4F5061728394A5B6C /* DynamicTypeLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTypeLayoutTests.swift; sourceTree = "<group>"; };
+		F1A2B3C4D5E60718293A4B5C5 /* ItemRowFitGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowFitGeometryTests.swift; sourceTree = "<group>"; };
+		A7C4E19F2B8D4061E5F0A9C1 /* ItemMetadataChipsFittingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMetadataChipsFittingTests.swift; sourceTree = "<group>"; };
 		1D734FE3FE913394A108CFC7 /* CreateListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListSheet.swift; sourceTree = "<group>"; };
 		1E73EE626ABF2297BFA7912F /* AppIconService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconService.swift; sourceTree = "<group>"; };
 		1F27EB84911E2F134E9E37B2 /* AddCustomCategorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomCategorySheet.swift; sourceTree = "<group>"; };
@@ -201,6 +216,7 @@
 		3254AF8DA3E2C69C8D2C5F03 /* CategoryIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryIconView.swift; sourceTree = "<group>"; };
 		34930B2E594D062F7D82B85B /* AddCustomStoreSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomStoreSheet.swift; sourceTree = "<group>"; };
 		357968A72FFD8470008AA587 /* GroceryList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GroceryList.entitlements; sourceTree = "<group>"; };
+		C8D4E19F2B8D4061E5F0B1A1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		35E4959EDFC736304F76F002 /* ListDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailHeader.swift; sourceTree = "<group>"; };
 		363B0E83F48FD4FB476E7925 /* ItemInputParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInputParserTests.swift; sourceTree = "<group>"; };
 		3685E330EC5277A9DD5661C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -274,6 +290,7 @@
 		9B3643A01BFD77DBC3C2CF23 /* ItemMetadataChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMetadataChips.swift; sourceTree = "<group>"; };
 		9C9A2E69E6DAC7ECF39C8711 /* ProductThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductThumbnailView.swift; sourceTree = "<group>"; };
 		9E3BC95E36D083F73D221D03 /* ConfigurableItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableItemRow.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6708192A3B4C2 /* Stage1ItemRowReviewHarness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage1ItemRowReviewHarness.swift; sourceTree = "<group>"; };
 		9E8FF22D515690B10DC26C78 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		9F2ECB04C2578D21683C847F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		A2F3FA05AAFFD149D6E4A55B /* AddItemDetectionPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemDetectionPreview.swift; sourceTree = "<group>"; };
@@ -297,6 +314,11 @@
 		C587B589E060FCEC3DEE4159 /* ShareActiveListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActiveListView.swift; sourceTree = "<group>"; };
 		C68FF5DFA5756E5C54C95B75 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		C8846FEB3DBE17A2726AAF9F /* AppTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTypography.swift; sourceTree = "<group>"; };
+		D7A1B2C3E4F5061728394A5B /* DynamicTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTypeLayout.swift; sourceTree = "<group>"; };
+		E2F3A4B5C6D708192A3B4C5C /* ItemRowFitGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowFitGeometry.swift; sourceTree = "<group>"; };
+		B4C5D6E7F8091A2B3C4D5E00 /* ItemRowLayoutRoles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowLayoutRoles.swift; sourceTree = "<group>"; };
+		F5A6B7C8D9E0012A3B4C5D6E /* EssentialWordWrappingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialWordWrappingText.swift; sourceTree = "<group>"; };
+		A3B4C5D6E7F8091A2B3C4D5D /* AdaptiveItemRowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveItemRowLayout.swift; sourceTree = "<group>"; };
 		CB38A5CD06B26CC5AC1F4C6C /* FilterPillBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPillBar.swift; sourceTree = "<group>"; };
 		CC2515555C3B73AD4B67502F /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		CDB4DA785C7A968BC8A352B8 /* StoreGroupedListContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreGroupedListContent.swift; sourceTree = "<group>"; };
@@ -414,6 +436,11 @@
 				7E82DADDC59072ABE0C906DA /* AppIcons.swift */,
 				7FC2EB1A58550E9A8D4DFD9C /* AppSpacing.swift */,
 				C8846FEB3DBE17A2726AAF9F /* AppTypography.swift */,
+				D7A1B2C3E4F5061728394A5B /* DynamicTypeLayout.swift */,
+				F5A6B7C8D9E0012A3B4C5D6E /* EssentialWordWrappingText.swift */,
+				E2F3A4B5C6D708192A3B4C5C /* ItemRowFitGeometry.swift */,
+				B4C5D6E7F8091A2B3C4D5E00 /* ItemRowLayoutRoles.swift */,
+				A3B4C5D6E7F8091A2B3C4D5D /* AdaptiveItemRowLayout.swift */,
 				923779A8C91F3FEB343AB4B6 /* ImageEmptyStateHero.swift */,
 				2D1D9DA1A34826358143A64E /* SettingsSubpageStyle.swift */,
 				7EEF8DA535A2D240EB1E4CE4 /* TabBarSafeArea.swift */,
@@ -435,6 +462,9 @@
 				1944948265A6F5CCD844927B /* PersistenceServiceTests.swift */,
 				779E243F8A8756427E41252B /* QuantityParserServiceTests.swift */,
 				2E956FA1586C16C9393B67AA /* StoreDetectionServiceTests.swift */,
+				E8B2C3D4F5061728394A5B6C /* DynamicTypeLayoutTests.swift */,
+				F1A2B3C4D5E60718293A4B5C5 /* ItemRowFitGeometryTests.swift */,
+				A7C4E19F2B8D4061E5F0A9C1 /* ItemMetadataChipsFittingTests.swift */,
 				1BBC6D56B13A97BCEE7E2380 /* V1PolishTests.swift */,
 			);
 			path = GroceryListTests;
@@ -459,6 +489,7 @@
 				3254AF8DA3E2C69C8D2C5F03 /* CategoryIconView.swift */,
 				A6E80167258F8E82AAB61778 /* CategoryPickerSection.swift */,
 				9E3BC95E36D083F73D221D03 /* ConfigurableItemRow.swift */,
+				A1B2C3D4E5F6708192A3B4C2 /* Stage1ItemRowReviewHarness.swift */,
 				BB156A7FAF49AB71C0B6E8A6 /* EmojiLabel.swift */,
 				496182E24F7F20FB0CBF91BD /* EmptyStateScene.swift */,
 				F7A8E1C31F21987D8F74EF46 /* EmptyStateVariants.swift */,
@@ -509,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				357968A72FFD8470008AA587 /* GroceryList.entitlements */,
+				C8D4E19F2B8D4061E5F0B1A1 /* PrivacyInfo.xcprivacy */,
 				54FE5E34995DE10F87DF7B85 /* Components */,
 				490CD259D3EED38A828CDE6E /* DesignSystem */,
 				BF657CFE8769AAE6C0570C29 /* Models */,
@@ -546,6 +578,7 @@
 				95144A5EB97974F64A86D69E /* ModelContainerSetup.swift */,
 				F6EE032878540565F52429E0 /* SeedData.swift */,
 				A1B2C3D4E5F60718293A4B5C /* ProduceReviewSeed.swift */,
+				B1C2D3E4F5060718293A4B5C /* FinalCatalogReviewSeed.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -749,6 +782,7 @@
 				81C6B4745B3A2B9A3F851C86 /* item_emoji_map.json in Resources */,
 				C97409E15128E9D2631227B7 /* product_catalog.json in Resources */,
 				EDE94D808440BE948D58C437 /* product_image_map.json in Resources */,
+				C8D4E19F2B8D4061E5F0B1A2 /* PrivacyInfo.xcprivacy in Resources */,
 				7F541BB7BBCE1C0E2C548264 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,6 +805,9 @@
 				8563E7760EDB6B88A6B1DEF8 /* PersistenceServiceTests.swift in Sources */,
 				043695907C0D47281DD09700 /* QuantityParserServiceTests.swift in Sources */,
 				30DCE8C15EA4BC4A7E94A95F /* StoreDetectionServiceTests.swift in Sources */,
+				E8B2C3D4F5061728394A5B6D /* DynamicTypeLayoutTests.swift in Sources */,
+				F1A2B3C4D5E60718293A4B5C6 /* ItemRowFitGeometryTests.swift in Sources */,
+				A7C4E19F2B8D4061E5F0A9C2 /* ItemMetadataChipsFittingTests.swift in Sources */,
 				A192C6472C266A26B6B4FCCA /* V1PolishTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,6 +823,7 @@
 				ED26F5061310D8D8B563BD8A /* CategoryIconView.swift in Sources */,
 				99187F532216EF2F01CA6C97 /* CategoryPickerSection.swift in Sources */,
 				36E1C946009FD31E35CE75A5 /* ConfigurableItemRow.swift in Sources */,
+				A1B2C3D4E5F6708192A3B4C1 /* Stage1ItemRowReviewHarness.swift in Sources */,
 				FBDFC0FE7FE131B7572C583A /* EmojiLabel.swift in Sources */,
 				E88E2B0A1F358DCEBB6B95AB /* EmptyStateScene.swift in Sources */,
 				9B9DF11C67FA126CCB49D231 /* EmptyStateVariants.swift in Sources */,
@@ -824,6 +862,11 @@
 				5A85F739AB7EB58FF7D33E65 /* AppIcons.swift in Sources */,
 				0FDA0A050AAFFFF80FEDE83D /* AppSpacing.swift in Sources */,
 				F709C12F07FF847D9A97BA82 /* AppTypography.swift in Sources */,
+				D7A1B2C3E4F5061728394A5C /* DynamicTypeLayout.swift in Sources */,
+				F5A6B7C8D9E0012A3B4C5D6F /* EssentialWordWrappingText.swift in Sources */,
+				E2F3A4B5C6D708192A3B4C5D /* ItemRowFitGeometry.swift in Sources */,
+				B4C5D6E7F8091A2B3C4D5E01 /* ItemRowLayoutRoles.swift in Sources */,
+				A3B4C5D6E7F8091A2B3C4D5E /* AdaptiveItemRowLayout.swift in Sources */,
 				963B6926E7F26CC6AA5B7CCD /* ImageEmptyStateHero.swift in Sources */,
 				708AC2F51D296ECBDB6A5C11 /* SettingsSubpageStyle.swift in Sources */,
 				1B3AB88A0B800FEE32327F7C /* TabBarSafeArea.swift in Sources */,
@@ -838,6 +881,7 @@
 				5ED1F2873E7F9AA20E040FF2 /* ModelContainerSetup.swift in Sources */,
 				54297C7C71D127A5097129EF /* SeedData.swift in Sources */,
 				B2C3D4E5F60718293A4B5C6D /* ProduceReviewSeed.swift in Sources */,
+				C3D4E5F60718293A4B5C6D7E /* FinalCatalogReviewSeed.swift in Sources */,
 				63D7F1624EF687F369E05F41 /* ActiveListResolver.swift in Sources */,
 				30BB0E60EC7518925FA0BC30 /* AppIconService.swift in Sources */,
 				691935F0B12E3CCBBE3CCC32 /* AppSupport.swift in Sources */,
@@ -946,17 +990,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GroceryList/GroceryList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 766WG2GGCA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Smart Groceries";
+				INFOPLIST_KEY_CFBundleDisplayName = Groceries;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR codes to import shared grocery lists.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.krishnasathvik.grocerylistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -989,17 +1034,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GroceryList/GroceryList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 766WG2GGCA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Smart Groceries";
+				INFOPLIST_KEY_CFBundleDisplayName = Groceries;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR codes to import shared grocery lists.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.krishnasathvik.grocerylistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

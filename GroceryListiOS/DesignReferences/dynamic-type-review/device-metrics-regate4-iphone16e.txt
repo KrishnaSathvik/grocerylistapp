@@ -1,0 +1,7 @@
+device=iPhone 16e
+udid=E473950E-476D-47E7-BF04-4C6A111985CC
+slug=regate4-iphone16e
+captured_at=2026-07-18T03:33:21Z
+/Users/krishnasathvikmantripragada/grocery-list-app/GroceryListiOS/DesignReferences/dynamic-type-review/regate4-iphone16e-size-large-light-list-detail.png
+  pixelWidth: 1170
+  pixelHeight: 2532

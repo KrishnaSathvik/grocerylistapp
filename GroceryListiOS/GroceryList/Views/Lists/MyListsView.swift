@@ -12,6 +12,10 @@ struct MyListsView: View {
 
     @State private var path = NavigationPath()
     @State private var sheetMode: ListSheetMode?
+    #if DEBUG
+    @State private var didAutoOpenProduceReview = false
+    @State private var didAutoOpenFinalCatalogReview = false
+    #endif
 
     enum ListSheetMode: Identifiable {
         case create
@@ -92,6 +96,25 @@ struct MyListsView: View {
             .navigationDestination(for: UUID.self) { listId in
                 ListDetailRoute(listId: listId, lists: lists)
             }
+            #if DEBUG
+            .onAppear {
+                // Screenshot harness: `-B1ProduceReview` / `-FinalCatalogReview` seed + jump into detail.
+                guard path.isEmpty else { return }
+                if ProduceReviewSeed.isRequested, !didAutoOpenProduceReview,
+                   let list = lists.first(where: { $0.name == ProduceReviewSeed.listName }) {
+                    didAutoOpenProduceReview = true
+                    ActiveListResolver.setActive(list)
+                    path.append(list.id)
+                    return
+                }
+                if FinalCatalogReviewSeed.isRequested, !didAutoOpenFinalCatalogReview,
+                   let list = lists.first(where: { $0.name == FinalCatalogReviewSeed.listName }) {
+                    didAutoOpenFinalCatalogReview = true
+                    ActiveListResolver.setActive(list)
+                    path.append(list.id)
+                }
+            }
+            #endif
             .fullScreenCover(item: $sheetMode) { mode in
                 switch mode {
                 case .create:
